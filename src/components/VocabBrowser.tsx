@@ -101,7 +101,7 @@ export function VocabBrowser({
               + Add all HSK {selectedLevel}
             </button>
             {addLevelMenu && (
-              <div className="absolute right-0 top-full z-30 mt-1 w-56 rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark">
+              <div className="absolute right-0 top-full z-30 mt-1 w-56 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:max-w-none">
                 <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
                   Add HSK {selectedLevel} to...
                 </p>

@@ -59,7 +59,7 @@ export function FlashcardManager({
           onChange={(e) => setNewName(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleCreate()}
           placeholder="New flashcard list..."
-          className="flex-1 rounded-xl border border-cn-border bg-cn-surface px-4 py-2.5 text-cn-ink outline-none transition-colors placeholder:text-cn-muted/40 focus:border-cn-red dark:border-cn-border-dark dark:bg-cn-surface-dark dark:text-cn-cream"
+          className="min-w-0 flex-1 rounded-xl border border-cn-border bg-cn-surface px-4 py-2.5 text-cn-ink outline-none transition-colors placeholder:text-cn-muted/40 focus:border-cn-red dark:border-cn-border-dark dark:bg-cn-surface-dark dark:text-cn-cream"
         />
         <button
           onClick={handleCreate}
@@ -112,7 +112,7 @@ export function FlashcardManager({
                     if (e.key === 'Escape') setEditingId(null);
                   }}
                   onBlur={commitRename}
-                  className="flex-1 rounded-lg border border-cn-red bg-transparent px-2 py-1 text-cn-ink outline-none dark:text-cn-cream"
+                  className="min-w-0 flex-1 rounded-lg border border-cn-red bg-transparent px-2 py-1 text-cn-ink outline-none dark:text-cn-cream"
                 />
               ) : (
                 <button

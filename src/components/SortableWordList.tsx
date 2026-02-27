@@ -78,6 +78,7 @@ export function SortableWordList({
   onRemove: (wordId: string) => void;
 }) {
   const [words, setWords] = useState<VocabWord[]>([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     getWordsByIds(wordIds).then((fetched) => {
@@ -99,6 +100,16 @@ export function SortableWordList({
     onReorder(arrayMove(wordIds, oldIndex, newIndex));
   };
 
+  const q = search.toLowerCase().trim();
+  const filtered = q
+    ? words.filter(
+        (w) =>
+          w.hanzi.includes(q) ||
+          w.pinyin.toLowerCase().includes(q) ||
+          w.english.toLowerCase().includes(q)
+      )
+    : words;
+
   if (words.length === 0) {
     return (
       <div className="flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-cn-border py-12 dark:border-cn-border-dark">
@@ -113,14 +124,49 @@ export function SortableWordList({
   }
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={wordIds} strategy={verticalListSortingStrategy}>
+    <div className="flex flex-col gap-3">
+      {/* Search within list */}
+      <div className="relative">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cn-muted/50 dark:text-cn-muted-dark/50">
+          <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clipRule="evenodd" />
+        </svg>
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search in list..."
+          className="w-full rounded-xl border border-cn-border bg-cn-surface py-2.5 pl-10 pr-4 text-sm text-cn-ink outline-none transition-colors placeholder:text-cn-muted/40 focus:border-cn-red dark:border-cn-border-dark dark:bg-cn-surface-dark dark:text-cn-cream dark:placeholder:text-cn-muted-dark/40 dark:focus:border-cn-red-light"
+        />
+        {search && (
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-cn-muted dark:text-cn-muted-dark">
+            {filtered.length} / {words.length}
+          </span>
+        )}
+      </div>
+
+      {q ? (
+        /* When searching, show flat list (no drag) */
         <div className="flex flex-col gap-2">
-          {words.map((word) => (
+          {filtered.map((word) => (
             <SortableItem key={word.id} word={word} onRemove={onRemove} />
           ))}
+          {filtered.length === 0 && (
+            <p className="py-6 text-center text-cn-muted dark:text-cn-muted-dark">
+              No matches in this list
+            </p>
+          )}
         </div>
-      </SortableContext>
-    </DndContext>
+      ) : (
+        <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+          <SortableContext items={wordIds} strategy={verticalListSortingStrategy}>
+            <div className="flex flex-col gap-2">
+              {words.map((word) => (
+                <SortableItem key={word.id} word={word} onRemove={onRemove} />
+              ))}
+            </div>
+          </SortableContext>
+        </DndContext>
+      )}
+    </div>
   );
 }
