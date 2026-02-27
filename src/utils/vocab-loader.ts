@@ -15,11 +15,13 @@ export async function loadVocabIntoDb(): Promise<void> {
   const count = await db.vocab.count();
   if (count > 0) return; // already loaded
 
-  for (const level of HSK_LEVELS) {
-    const response = await fetch(`${import.meta.env.BASE_URL}data/hsk-${level}.json`);
-    const words: VocabWord[] = await response.json();
-    await db.vocab.bulkPut(words);
-  }
+  const allWords = await Promise.all(
+    HSK_LEVELS.map(async (level) => {
+      const response = await fetch(`${import.meta.env.BASE_URL}data/hsk-${level}.json`);
+      return response.json() as Promise<VocabWord[]>;
+    })
+  );
+  await db.vocab.bulkPut(allWords.flat());
 }
 
 export async function getWordsByLevel(level: number): Promise<VocabWord[]> {
