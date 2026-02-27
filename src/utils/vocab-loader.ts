@@ -3,6 +3,14 @@ import type { VocabWord } from '../types';
 
 const HSK_LEVELS = [1, 2, 3, 4, 5, 6] as const;
 
+/** Strip tone marks: ǐ → i, ā → a, ü → u, etc. */
+export function stripTones(s: string): string {
+  return s
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/ü/g, 'u');
+}
+
 export async function loadVocabIntoDb(): Promise<void> {
   const count = await db.vocab.count();
   if (count > 0) return; // already loaded
@@ -26,11 +34,13 @@ export async function getWordsByIds(ids: string[]): Promise<VocabWord[]> {
 export async function searchWords(query: string): Promise<VocabWord[]> {
   const q = query.toLowerCase().trim();
   if (!q) return [];
+  const qPlain = stripTones(q);
   return db.vocab
     .filter(
       (w) =>
         w.hanzi.includes(q) ||
         w.pinyin.toLowerCase().includes(q) ||
+        stripTones(w.pinyin.toLowerCase()).includes(qPlain) ||
         w.english.toLowerCase().includes(q)
     )
     .limit(50)

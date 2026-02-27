@@ -17,7 +17,7 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import type { VocabWord } from '../types';
-import { getWordsByIds } from '../utils/vocab-loader';
+import { getWordsByIds, stripTones } from '../utils/vocab-loader';
 
 function SortableItem({
   word,
@@ -101,11 +101,13 @@ export function SortableWordList({
   };
 
   const q = search.toLowerCase().trim();
+  const qPlain = stripTones(q);
   const filtered = q
     ? words.filter(
         (w) =>
           w.hanzi.includes(q) ||
           w.pinyin.toLowerCase().includes(q) ||
+          stripTones(w.pinyin.toLowerCase()).includes(qPlain) ||
           w.english.toLowerCase().includes(q)
       )
     : words;
