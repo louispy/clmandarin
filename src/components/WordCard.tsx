@@ -11,6 +11,7 @@ export function WordCard({
   onCreateListAndAdd,
   visibility,
   compact,
+  onClick,
 }: {
   word: VocabWord;
   isFavorite: boolean;
@@ -20,6 +21,7 @@ export function WordCard({
   onCreateListAndAdd: (name: string, wordId: string) => void;
   visibility: VisibilityState;
   compact?: boolean;
+  onClick?: () => void;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showCreate, setShowCreate] = useState(false);
@@ -57,7 +59,7 @@ export function WordCard({
     >
       <div className="flex items-start gap-4">
         {/* Main content */}
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 cursor-pointer" onClick={onClick}>
           {/* Hanzi */}
           {visibility.hanzi ? (
             <p className={`font-bold text-cn-ink dark:text-cn-cream ${compact ? 'text-2xl' : 'text-4xl'}`}>

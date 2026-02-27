@@ -7,14 +7,16 @@ export function FlashcardViewer({
   onClose,
   dark,
   onToggleDark,
+  startIndex,
 }: {
   words: VocabWord[];
   listName: string;
   onClose: () => void;
   dark: boolean;
   onToggleDark: () => void;
+  startIndex?: number;
 }) {
-  const [index, setIndex] = useState(() => Math.floor(Math.random() * words.length));
+  const [index, setIndex] = useState(() => startIndex ?? Math.floor(Math.random() * words.length));
   const [flipped, setFlipped] = useState(false);
   const [showHints, setShowHints] = useState(false); // pinyin+meaning on front face
 

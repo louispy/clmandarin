@@ -22,9 +22,11 @@ import { getWordsByIds, stripTones } from '../utils/vocab-loader';
 function SortableItem({
   word,
   onRemove,
+  onStudy,
 }: {
   word: VocabWord;
   onRemove: (id: string) => void;
+  onStudy?: (id: string) => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: word.id });
@@ -49,7 +51,7 @@ function SortableItem({
           <path fillRule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75ZM2 8a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8Zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
         </svg>
       </button>
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 cursor-pointer" onClick={() => onStudy?.(word.id)}>
         <span className="text-2xl font-bold text-cn-ink dark:text-cn-cream">{word.hanzi}</span>
         <span className="ml-3 text-lg text-cn-red dark:text-cn-red-light">{word.pinyin}</span>
         {word.english && (
@@ -72,10 +74,12 @@ export function SortableWordList({
   wordIds,
   onReorder,
   onRemove,
+  onStudyWord,
 }: {
   wordIds: string[];
   onReorder: (newIds: string[]) => void;
   onRemove: (wordId: string) => void;
+  onStudyWord?: (wordId: string) => void;
 }) {
   const [words, setWords] = useState<VocabWord[]>([]);
   const [search, setSearch] = useState('');
@@ -150,7 +154,7 @@ export function SortableWordList({
         /* When searching, show flat list (no drag) */
         <div className="flex flex-col gap-2">
           {filtered.map((word) => (
-            <SortableItem key={word.id} word={word} onRemove={onRemove} />
+            <SortableItem key={word.id} word={word} onRemove={onRemove} onStudy={onStudyWord} />
           ))}
           {filtered.length === 0 && (
             <p className="py-6 text-center text-cn-muted dark:text-cn-muted-dark">
@@ -163,7 +167,7 @@ export function SortableWordList({
           <SortableContext items={wordIds} strategy={verticalListSortingStrategy}>
             <div className="flex flex-col gap-2">
               {words.map((word) => (
-                <SortableItem key={word.id} word={word} onRemove={onRemove} />
+                <SortableItem key={word.id} word={word} onRemove={onRemove} onStudy={onStudyWord} />
               ))}
             </div>
           </SortableContext>

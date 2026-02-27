@@ -23,6 +23,8 @@ export function VocabBrowser({
   onToggleVisibility,
   viewMode,
   onToggleViewMode,
+  onStudyWord,
+  onStudyLevel,
 }: {
   words: VocabWord[];
   selectedLevel: number;
@@ -41,6 +43,8 @@ export function VocabBrowser({
   onToggleVisibility: (field: keyof VisibilityState) => void;
   viewMode: 'list' | 'grid';
   onToggleViewMode: () => void;
+  onStudyWord: (wordId: string) => void;
+  onStudyLevel: (level: number) => void;
 }) {
   const [addLevelMenu, setAddLevelMenu] = useState(false);
   const [addLevelCreate, setAddLevelCreate] = useState(false);
@@ -92,8 +96,16 @@ export function VocabBrowser({
             </button>
           ))}
 
+          {/* Study this level */}
+          <button
+            onClick={() => onStudyLevel(selectedLevel)}
+            className="ml-auto rounded-xl bg-cn-red px-4 py-2 text-sm font-bold text-white shadow-md shadow-cn-red/20 transition-all hover:bg-cn-red-dark hover:shadow-lg"
+          >
+            Study
+          </button>
+
           {/* Add entire level to a flashcard list */}
-          <div ref={addLevelRef} className="relative ml-auto">
+          <div ref={addLevelRef} className="relative">
             <button
               onClick={() => setAddLevelMenu(!addLevelMenu)}
               className="rounded-xl bg-cn-gold/10 px-4 py-2 text-sm font-bold text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:text-cn-gold-light"
@@ -238,6 +250,7 @@ export function VocabBrowser({
               onAddToList={onAddToList}
               onCreateListAndAdd={onCreateListAndAdd}
               visibility={visibility}
+              onClick={() => onStudyWord(word.id)}
             />
           ))}
         </div>
@@ -250,6 +263,7 @@ export function VocabBrowser({
               isFavorite={isFavorite(word.id)}
               onToggleFavorite={onToggleFavorite}
               visibility={visibility}
+              onClick={() => onStudyWord(word.id)}
             />
           ))}
         </div>

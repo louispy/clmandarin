@@ -23,6 +23,7 @@ export function App() {
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [studyWords, setStudyWords] = useState<VocabWord[] | null>(null);
   const [studyListName, setStudyListName] = useState('');
+  const [studyStartIndex, setStudyStartIndex] = useState<number | undefined>(undefined);
 
   const handleAddToList = useCallback(
     (listId: string, wordId: string) => {
@@ -65,7 +66,41 @@ export function App() {
       .filter((w): w is VocabWord => !!w);
     setStudyWords(ordered);
     setStudyListName(listsHook.activeList.name);
+    setStudyStartIndex(undefined);
   }, [listsHook.activeList]);
+
+  const handleStudyFromWord = useCallback(
+    async (wordId: string, allWords: VocabWord[], label: string) => {
+      const idx = allWords.findIndex((w) => w.id === wordId);
+      setStudyWords(allWords);
+      setStudyListName(label);
+      setStudyStartIndex(idx >= 0 ? idx : undefined);
+    },
+    []
+  );
+
+  const handleStudyLevel = useCallback(async (level: number) => {
+    const words = await getWordsByLevel(level);
+    setStudyWords(words);
+    setStudyListName(`HSK ${level}`);
+    setStudyStartIndex(undefined);
+  }, []);
+
+  const handleStudyListWord = useCallback(
+    async (wordId: string) => {
+      if (!listsHook.activeList) return;
+      const words = await getWordsByIds(listsHook.activeList.wordIds);
+      const map = new Map(words.map((w) => [w.id, w]));
+      const ordered = listsHook.activeList.wordIds
+        .map((id) => map.get(id))
+        .filter((w): w is VocabWord => !!w);
+      const idx = ordered.findIndex((w) => w.id === wordId);
+      setStudyWords(ordered);
+      setStudyListName(listsHook.activeList.name);
+      setStudyStartIndex(idx >= 0 ? idx : undefined);
+    },
+    [listsHook.activeList]
+  );
 
   if (vocab.loading) {
     return (
@@ -86,9 +121,10 @@ export function App() {
         <FlashcardViewer
           words={studyWords}
           listName={studyListName}
-          onClose={() => setStudyWords(null)}
+          onClose={() => { setStudyWords(null); setStudyStartIndex(undefined); }}
           dark={dark}
           onToggleDark={toggleDark}
+          startIndex={studyStartIndex}
         />
       </div>
     );
@@ -172,6 +208,8 @@ export function App() {
               onToggleVisibility={toggleVisibility}
               viewMode={viewMode}
               onToggleViewMode={() => setViewMode((v) => (v === 'list' ? 'grid' : 'list'))}
+              onStudyWord={(wordId) => handleStudyFromWord(wordId, vocab.words, vocab.isSearching ? 'Search results' : `HSK ${vocab.selectedLevel}`)}
+              onStudyLevel={handleStudyLevel}
             />
           )}
 
@@ -217,6 +255,7 @@ export function App() {
                     onRemove={(wordId) =>
                       listsHook.removeWordFromList(listsHook.activeList!.id, wordId)
                     }
+                    onStudyWord={handleStudyListWord}
                   />
                 </div>
               )}
