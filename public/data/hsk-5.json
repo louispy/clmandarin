@@ -1,0 +1,10402 @@
+[
+  {
+    "id": "hsk5-001",
+    "hskLevel": 5,
+    "number": 1,
+    "hanzi": "唉",
+    "pinyin": "āi",
+    "english": "alas"
+  },
+  {
+    "id": "hsk5-002",
+    "hskLevel": 5,
+    "number": 2,
+    "hanzi": "爱心",
+    "pinyin": "àixīn",
+    "english": "love"
+  },
+  {
+    "id": "hsk5-003",
+    "hskLevel": 5,
+    "number": 3,
+    "hanzi": "安慰",
+    "pinyin": "ānwèi",
+    "english": "comfort"
+  },
+  {
+    "id": "hsk5-004",
+    "hskLevel": 5,
+    "number": 4,
+    "hanzi": "岸",
+    "pinyin": "àn",
+    "english": "bank"
+  },
+  {
+    "id": "hsk5-005",
+    "hskLevel": 5,
+    "number": 5,
+    "hanzi": "熬夜",
+    "pinyin": "áoyè",
+    "english": "stay up late"
+  },
+  {
+    "id": "hsk5-006",
+    "hskLevel": 5,
+    "number": 6,
+    "hanzi": "包含",
+    "pinyin": "bāohán",
+    "english": "Contain"
+  },
+  {
+    "id": "hsk5-007",
+    "hskLevel": 5,
+    "number": 7,
+    "hanzi": "宝贵",
+    "pinyin": "bǎoguì",
+    "english": "valuable"
+  },
+  {
+    "id": "hsk5-008",
+    "hskLevel": 5,
+    "number": 8,
+    "hanzi": "保存",
+    "pinyin": "bǎocún",
+    "english": "Preservation"
+  },
+  {
+    "id": "hsk5-009",
+    "hskLevel": 5,
+    "number": 9,
+    "hanzi": "保留",
+    "pinyin": "bǎoliú",
+    "english": "Retain"
+  },
+  {
+    "id": "hsk5-010",
+    "hskLevel": 5,
+    "number": 10,
+    "hanzi": "报到",
+    "pinyin": "bàodào",
+    "english": "register,check in"
+  },
+  {
+    "id": "hsk5-011",
+    "hskLevel": 5,
+    "number": 11,
+    "hanzi": "报告",
+    "pinyin": "bàogào",
+    "english": "Presentation"
+  },
+  {
+    "id": "hsk5-012",
+    "hskLevel": 5,
+    "number": 12,
+    "hanzi": "悲观",
+    "pinyin": "bēiguān",
+    "english": "Pessimism"
+  },
+  {
+    "id": "hsk5-013",
+    "hskLevel": 5,
+    "number": 13,
+    "hanzi": "背景",
+    "pinyin": "bèijǐng",
+    "english": "background"
+  },
+  {
+    "id": "hsk5-014",
+    "hskLevel": 5,
+    "number": 14,
+    "hanzi": "被子",
+    "pinyin": "bèizi",
+    "english": "quilt"
+  },
+  {
+    "id": "hsk5-015",
+    "hskLevel": 5,
+    "number": 15,
+    "hanzi": "本科",
+    "pinyin": "běnkē",
+    "english": "Undergraduate"
+  },
+  {
+    "id": "hsk5-016",
+    "hskLevel": 5,
+    "number": 16,
+    "hanzi": "本领",
+    "pinyin": "běnlǐng",
+    "english": "ability"
+  },
+  {
+    "id": "hsk5-017",
+    "hskLevel": 5,
+    "number": 17,
+    "hanzi": "比例",
+    "pinyin": "bǐlì",
+    "english": "Proportion"
+  },
+  {
+    "id": "hsk5-018",
+    "hskLevel": 5,
+    "number": 18,
+    "hanzi": "必然",
+    "pinyin": "bìrán",
+    "english": "Inevitable"
+  },
+  {
+    "id": "hsk5-019",
+    "hskLevel": 5,
+    "number": 19,
+    "hanzi": "必要",
+    "pinyin": "bìyào",
+    "english": "necessary"
+  },
+  {
+    "id": "hsk5-020",
+    "hskLevel": 5,
+    "number": 20,
+    "hanzi": "鞭炮",
+    "pinyin": "biānpào",
+    "english": "firecracker"
+  },
+  {
+    "id": "hsk5-021",
+    "hskLevel": 5,
+    "number": 21,
+    "hanzi": "辩论",
+    "pinyin": "biànlùn",
+    "english": "Debate"
+  },
+  {
+    "id": "hsk5-022",
+    "hskLevel": 5,
+    "number": 22,
+    "hanzi": "标志",
+    "pinyin": "biāozhì",
+    "english": "sign"
+  },
+  {
+    "id": "hsk5-023",
+    "hskLevel": 5,
+    "number": 23,
+    "hanzi": "表达",
+    "pinyin": "biǎodá",
+    "english": "Expression"
+  },
+  {
+    "id": "hsk5-024",
+    "hskLevel": 5,
+    "number": 24,
+    "hanzi": "表面",
+    "pinyin": "biǎomiàn",
+    "english": "surface"
+  },
+  {
+    "id": "hsk5-025",
+    "hskLevel": 5,
+    "number": 25,
+    "hanzi": "表情",
+    "pinyin": "biǎoqíng",
+    "english": "Expression"
+  },
+  {
+    "id": "hsk5-026",
+    "hskLevel": 5,
+    "number": 26,
+    "hanzi": "表现",
+    "pinyin": "biǎoxiàn",
+    "english": "performance"
+  },
+  {
+    "id": "hsk5-027",
+    "hskLevel": 5,
+    "number": 27,
+    "hanzi": "冰激凌",
+    "pinyin": "bīngjīlíng",
+    "english": "ice cream"
+  },
+  {
+    "id": "hsk5-028",
+    "hskLevel": 5,
+    "number": 28,
+    "hanzi": "玻璃",
+    "pinyin": "bōli",
+    "english": "Glass"
+  },
+  {
+    "id": "hsk5-029",
+    "hskLevel": 5,
+    "number": 29,
+    "hanzi": "博物馆",
+    "pinyin": "bówùguǎn",
+    "english": "Museum"
+  },
+  {
+    "id": "hsk5-030",
+    "hskLevel": 5,
+    "number": 30,
+    "hanzi": "不断",
+    "pinyin": "búduàn",
+    "english": "Constantly"
+  },
+  {
+    "id": "hsk5-031",
+    "hskLevel": 5,
+    "number": 31,
+    "hanzi": "不见得",
+    "pinyin": "bújiàndé",
+    "english": "Not necessarily"
+  },
+  {
+    "id": "hsk5-032",
+    "hskLevel": 5,
+    "number": 32,
+    "hanzi": "不耐烦",
+    "pinyin": "búnàifán",
+    "english": "Impatient"
+  },
+  {
+    "id": "hsk5-033",
+    "hskLevel": 5,
+    "number": 33,
+    "hanzi": "补充",
+    "pinyin": "bǔchōng",
+    "english": "supplement"
+  },
+  {
+    "id": "hsk5-034",
+    "hskLevel": 5,
+    "number": 34,
+    "hanzi": "不然",
+    "pinyin": "bùrán",
+    "english": "otherwise"
+  },
+  {
+    "id": "hsk5-035",
+    "hskLevel": 5,
+    "number": 35,
+    "hanzi": "不足",
+    "pinyin": "bùzú",
+    "english": "insufficient"
+  },
+  {
+    "id": "hsk5-036",
+    "hskLevel": 5,
+    "number": 36,
+    "hanzi": "部门",
+    "pinyin": "bùmén",
+    "english": "department"
+  },
+  {
+    "id": "hsk5-037",
+    "hskLevel": 5,
+    "number": 37,
+    "hanzi": "财产",
+    "pinyin": "cáichǎn",
+    "english": "property"
+  },
+  {
+    "id": "hsk5-038",
+    "hskLevel": 5,
+    "number": 38,
+    "hanzi": "踩",
+    "pinyin": "cǎi",
+    "english": "step on"
+  },
+  {
+    "id": "hsk5-039",
+    "hskLevel": 5,
+    "number": 39,
+    "hanzi": "采取",
+    "pinyin": "cǎiqǔ",
+    "english": "take, adopt"
+  },
+  {
+    "id": "hsk5-040",
+    "hskLevel": 5,
+    "number": 40,
+    "hanzi": "参考",
+    "pinyin": "cānkǎo",
+    "english": "Reference resources"
+  },
+  {
+    "id": "hsk5-041",
+    "hskLevel": 5,
+    "number": 41,
+    "hanzi": "操场",
+    "pinyin": "cāochǎng",
+    "english": "Playground"
+  },
+  {
+    "id": "hsk5-042",
+    "hskLevel": 5,
+    "number": 42,
+    "hanzi": "插",
+    "pinyin": "chā",
+    "english": "insert"
+  },
+  {
+    "id": "hsk5-043",
+    "hskLevel": 5,
+    "number": 43,
+    "hanzi": "叉子",
+    "pinyin": "chāzi",
+    "english": "Fork"
+  },
+  {
+    "id": "hsk5-044",
+    "hskLevel": 5,
+    "number": 44,
+    "hanzi": "拆",
+    "pinyin": "chāi",
+    "english": "Remove"
+  },
+  {
+    "id": "hsk5-045",
+    "hskLevel": 5,
+    "number": 45,
+    "hanzi": "产生",
+    "pinyin": "chǎnshēng",
+    "english": "produce"
+  },
+  {
+    "id": "hsk5-046",
+    "hskLevel": 5,
+    "number": 46,
+    "hanzi": "常识",
+    "pinyin": "chángshí",
+    "english": "common sense"
+  },
+  {
+    "id": "hsk5-047",
+    "hskLevel": 5,
+    "number": 47,
+    "hanzi": "潮湿",
+    "pinyin": "cháoshī",
+    "english": "damp"
+  },
+  {
+    "id": "hsk5-048",
+    "hskLevel": 5,
+    "number": 48,
+    "hanzi": "吵",
+    "pinyin": "chǎo",
+    "english": "Noisy"
+  },
+  {
+    "id": "hsk5-049",
+    "hskLevel": 5,
+    "number": 49,
+    "hanzi": "车库",
+    "pinyin": "chēkù",
+    "english": "Garage"
+  },
+  {
+    "id": "hsk5-050",
+    "hskLevel": 5,
+    "number": 50,
+    "hanzi": "彻底",
+    "pinyin": "chèdǐ",
+    "english": "thorough"
+  },
+  {
+    "id": "hsk5-051",
+    "hskLevel": 5,
+    "number": 51,
+    "hanzi": "趁",
+    "pinyin": "chèn",
+    "english": "while"
+  },
+  {
+    "id": "hsk5-052",
+    "hskLevel": 5,
+    "number": 52,
+    "hanzi": "称",
+    "pinyin": "chēng",
+    "english": "call"
+  },
+  {
+    "id": "hsk5-053",
+    "hskLevel": 5,
+    "number": 53,
+    "hanzi": "称赞",
+    "pinyin": "chēngzàn",
+    "english": "Praise"
+  },
+  {
+    "id": "hsk5-054",
+    "hskLevel": 5,
+    "number": 54,
+    "hanzi": "承担",
+    "pinyin": "chéngdān",
+    "english": "bear"
+  },
+  {
+    "id": "hsk5-055",
+    "hskLevel": 5,
+    "number": 55,
+    "hanzi": "承受",
+    "pinyin": "chéngshòu",
+    "english": "bear"
+  },
+  {
+    "id": "hsk5-056",
+    "hskLevel": 5,
+    "number": 56,
+    "hanzi": "程序",
+    "pinyin": "chéngxù",
+    "english": "program"
+  },
+  {
+    "id": "hsk5-057",
+    "hskLevel": 5,
+    "number": 57,
+    "hanzi": "成立",
+    "pinyin": "chénglì",
+    "english": "establish"
+  },
+  {
+    "id": "hsk5-058",
+    "hskLevel": 5,
+    "number": 58,
+    "hanzi": "成人",
+    "pinyin": "chéngrén",
+    "english": "adult"
+  },
+  {
+    "id": "hsk5-059",
+    "hskLevel": 5,
+    "number": 59,
+    "hanzi": "成语",
+    "pinyin": "chéngyǔ",
+    "english": "idiom"
+  },
+  {
+    "id": "hsk5-060",
+    "hskLevel": 5,
+    "number": 60,
+    "hanzi": "诚恳",
+    "pinyin": "chéngkěn",
+    "english": "sincere"
+  },
+  {
+    "id": "hsk5-061",
+    "hskLevel": 5,
+    "number": 61,
+    "hanzi": "持续",
+    "pinyin": "chíxù",
+    "english": "Continued"
+  },
+  {
+    "id": "hsk5-062",
+    "hskLevel": 5,
+    "number": 62,
+    "hanzi": "尺子",
+    "pinyin": "chǐzi",
+    "english": "Ruler"
+  },
+  {
+    "id": "hsk5-063",
+    "hskLevel": 5,
+    "number": 63,
+    "hanzi": "冲",
+    "pinyin": "chōng",
+    "english": "punching"
+  },
+  {
+    "id": "hsk5-064",
+    "hskLevel": 5,
+    "number": 64,
+    "hanzi": "充分",
+    "pinyin": "chōngfèn",
+    "english": "To the full"
+  },
+  {
+    "id": "hsk5-065",
+    "hskLevel": 5,
+    "number": 65,
+    "hanzi": "重复",
+    "pinyin": "chóngfù",
+    "english": "repeat"
+  },
+  {
+    "id": "hsk5-066",
+    "hskLevel": 5,
+    "number": 66,
+    "hanzi": "宠物",
+    "pinyin": "chǒngwù",
+    "english": "Pet"
+  },
+  {
+    "id": "hsk5-067",
+    "hskLevel": 5,
+    "number": 67,
+    "hanzi": "抽象",
+    "pinyin": "chōuxiàng",
+    "english": "abstract"
+  },
+  {
+    "id": "hsk5-068",
+    "hskLevel": 5,
+    "number": 68,
+    "hanzi": "丑",
+    "pinyin": "chǒu",
+    "english": "ugly"
+  },
+  {
+    "id": "hsk5-069",
+    "hskLevel": 5,
+    "number": 69,
+    "hanzi": "出口",
+    "pinyin": "chūkǒu",
+    "english": "Exit"
+  },
+  {
+    "id": "hsk5-070",
+    "hskLevel": 5,
+    "number": 70,
+    "hanzi": "出示",
+    "pinyin": "chūshì",
+    "english": "show"
+  },
+  {
+    "id": "hsk5-071",
+    "hskLevel": 5,
+    "number": 71,
+    "hanzi": "出席",
+    "pinyin": "chūxí",
+    "english": "Attend"
+  },
+  {
+    "id": "hsk5-072",
+    "hskLevel": 5,
+    "number": 72,
+    "hanzi": "除非",
+    "pinyin": "chúfēi",
+    "english": "Unless"
+  },
+  {
+    "id": "hsk5-073",
+    "hskLevel": 5,
+    "number": 73,
+    "hanzi": "除夕",
+    "pinyin": "chúxī",
+    "english": "the New Year's Eve"
+  },
+  {
+    "id": "hsk5-074",
+    "hskLevel": 5,
+    "number": 74,
+    "hanzi": "处理",
+    "pinyin": "chǔlǐ",
+    "english": "Handle"
+  },
+  {
+    "id": "hsk5-075",
+    "hskLevel": 5,
+    "number": 75,
+    "hanzi": "传染",
+    "pinyin": "chuánrǎn",
+    "english": "contagion"
+  },
+  {
+    "id": "hsk5-076",
+    "hskLevel": 5,
+    "number": 76,
+    "hanzi": "传统",
+    "pinyin": "chuántǒng",
+    "english": "tradition"
+  },
+  {
+    "id": "hsk5-077",
+    "hskLevel": 5,
+    "number": 77,
+    "hanzi": "闯",
+    "pinyin": "chuǎng",
+    "english": "rush; dash"
+  },
+  {
+    "id": "hsk5-078",
+    "hskLevel": 5,
+    "number": 78,
+    "hanzi": "吹",
+    "pinyin": "chuī",
+    "english": "blow"
+  },
+  {
+    "id": "hsk5-079",
+    "hskLevel": 5,
+    "number": 79,
+    "hanzi": "此外",
+    "pinyin": "cǐwài",
+    "english": "in addition"
+  },
+  {
+    "id": "hsk5-080",
+    "hskLevel": 5,
+    "number": 80,
+    "hanzi": "次要",
+    "pinyin": "cìyào",
+    "english": "secondary"
+  },
+  {
+    "id": "hsk5-081",
+    "hskLevel": 5,
+    "number": 81,
+    "hanzi": "匆忙",
+    "pinyin": "cōngmáng",
+    "english": "hastily"
+  },
+  {
+    "id": "hsk5-082",
+    "hskLevel": 5,
+    "number": 82,
+    "hanzi": "从而",
+    "pinyin": "cóng’ér",
+    "english": "thus"
+  },
+  {
+    "id": "hsk5-083",
+    "hskLevel": 5,
+    "number": 83,
+    "hanzi": "从前",
+    "pinyin": "cóngqián",
+    "english": "before"
+  },
+  {
+    "id": "hsk5-084",
+    "hskLevel": 5,
+    "number": 84,
+    "hanzi": "粗糙",
+    "pinyin": "cūcāo",
+    "english": "rough"
+  },
+  {
+    "id": "hsk5-085",
+    "hskLevel": 5,
+    "number": 85,
+    "hanzi": "醋",
+    "pinyin": "cù",
+    "english": "vinegar"
+  },
+  {
+    "id": "hsk5-086",
+    "hskLevel": 5,
+    "number": 86,
+    "hanzi": "促使",
+    "pinyin": "cùshǐ",
+    "english": "Urge"
+  },
+  {
+    "id": "hsk5-087",
+    "hskLevel": 5,
+    "number": 87,
+    "hanzi": "措施",
+    "pinyin": "cuòshī",
+    "english": "Measures"
+  },
+  {
+    "id": "hsk5-088",
+    "hskLevel": 5,
+    "number": 88,
+    "hanzi": "打工",
+    "pinyin": "dǎgōng",
+    "english": "Work"
+  },
+  {
+    "id": "hsk5-089",
+    "hskLevel": 5,
+    "number": 89,
+    "hanzi": "大厦",
+    "pinyin": "dàshà",
+    "english": "Large building"
+  },
+  {
+    "id": "hsk5-090",
+    "hskLevel": 5,
+    "number": 90,
+    "hanzi": "大象",
+    "pinyin": "dàxiàng",
+    "english": "Elephant"
+  },
+  {
+    "id": "hsk5-091",
+    "hskLevel": 5,
+    "number": 91,
+    "hanzi": "代表",
+    "pinyin": "dàibiǎo",
+    "english": "representative"
+  },
+  {
+    "id": "hsk5-092",
+    "hskLevel": 5,
+    "number": 92,
+    "hanzi": "待遇",
+    "pinyin": "dàiyù",
+    "english": "treatment"
+  },
+  {
+    "id": "hsk5-093",
+    "hskLevel": 5,
+    "number": 93,
+    "hanzi": "单调",
+    "pinyin": "dāndiào",
+    "english": "monotonous"
+  },
+  {
+    "id": "hsk5-094",
+    "hskLevel": 5,
+    "number": 94,
+    "hanzi": "单位",
+    "pinyin": "dānwèi",
+    "english": "Company"
+  },
+  {
+    "id": "hsk5-095",
+    "hskLevel": 5,
+    "number": 95,
+    "hanzi": "担任",
+    "pinyin": "dānrèn",
+    "english": "To serve as"
+  },
+  {
+    "id": "hsk5-096",
+    "hskLevel": 5,
+    "number": 96,
+    "hanzi": "耽误",
+    "pinyin": "dānwu",
+    "english": "delay"
+  },
+  {
+    "id": "hsk5-097",
+    "hskLevel": 5,
+    "number": 97,
+    "hanzi": "淡",
+    "pinyin": "dàn",
+    "english": "light"
+  },
+  {
+    "id": "hsk5-098",
+    "hskLevel": 5,
+    "number": 98,
+    "hanzi": "倒霉",
+    "pinyin": "dǎoméi",
+    "english": "fall on evil days"
+  },
+  {
+    "id": "hsk5-099",
+    "hskLevel": 5,
+    "number": 99,
+    "hanzi": "道理",
+    "pinyin": "dàolǐ",
+    "english": "truth"
+  },
+  {
+    "id": "hsk5-100",
+    "hskLevel": 5,
+    "number": 100,
+    "hanzi": "登记",
+    "pinyin": "dēngjì",
+    "english": "register"
+  },
+  {
+    "id": "hsk5-101",
+    "hskLevel": 5,
+    "number": 101,
+    "hanzi": "等于",
+    "pinyin": "děngyú",
+    "english": "Be equal to"
+  },
+  {
+    "id": "hsk5-102",
+    "hskLevel": 5,
+    "number": 102,
+    "hanzi": "滴",
+    "pinyin": "dī",
+    "english": "drop"
+  },
+  {
+    "id": "hsk5-103",
+    "hskLevel": 5,
+    "number": 103,
+    "hanzi": "敌人",
+    "pinyin": "dírén",
+    "english": "Enemy"
+  },
+  {
+    "id": "hsk5-104",
+    "hskLevel": 5,
+    "number": 104,
+    "hanzi": "递",
+    "pinyin": "dì",
+    "english": "Delivery"
+  },
+  {
+    "id": "hsk5-105",
+    "hskLevel": 5,
+    "number": 105,
+    "hanzi": "地毯",
+    "pinyin": "dìtǎn",
+    "english": "Carpet"
+  },
+  {
+    "id": "hsk5-106",
+    "hskLevel": 5,
+    "number": 106,
+    "hanzi": "地震",
+    "pinyin": "dìzhèn",
+    "english": "earthquake"
+  },
+  {
+    "id": "hsk5-107",
+    "hskLevel": 5,
+    "number": 107,
+    "hanzi": "电池",
+    "pinyin": "diànchí",
+    "english": "Battery"
+  },
+  {
+    "id": "hsk5-108",
+    "hskLevel": 5,
+    "number": 108,
+    "hanzi": "顶",
+    "pinyin": "dǐng",
+    "english": "top"
+  },
+  {
+    "id": "hsk5-109",
+    "hskLevel": 5,
+    "number": 109,
+    "hanzi": "冻",
+    "pinyin": "dòng",
+    "english": "freeze"
+  },
+  {
+    "id": "hsk5-110",
+    "hskLevel": 5,
+    "number": 110,
+    "hanzi": "动画片",
+    "pinyin": "dònghuàpiàn",
+    "english": "Cartoon"
+  },
+  {
+    "id": "hsk5-111",
+    "hskLevel": 5,
+    "number": 111,
+    "hanzi": "逗",
+    "pinyin": "dòu",
+    "english": "Funny"
+  },
+  {
+    "id": "hsk5-112",
+    "hskLevel": 5,
+    "number": 112,
+    "hanzi": "独特",
+    "pinyin": "dútè",
+    "english": "unique"
+  },
+  {
+    "id": "hsk5-113",
+    "hskLevel": 5,
+    "number": 113,
+    "hanzi": "度过",
+    "pinyin": "dùguò",
+    "english": "Spend"
+  },
+  {
+    "id": "hsk5-114",
+    "hskLevel": 5,
+    "number": 114,
+    "hanzi": "对比",
+    "pinyin": "duìbǐ",
+    "english": "Contrast"
+  },
+  {
+    "id": "hsk5-115",
+    "hskLevel": 5,
+    "number": 115,
+    "hanzi": "对待",
+    "pinyin": "duìdài",
+    "english": "treat"
+  },
+  {
+    "id": "hsk5-116",
+    "hskLevel": 5,
+    "number": 116,
+    "hanzi": "对手",
+    "pinyin": "duìshǒu",
+    "english": "Opponent"
+  },
+  {
+    "id": "hsk5-117",
+    "hskLevel": 5,
+    "number": 117,
+    "hanzi": "吨",
+    "pinyin": "dūn",
+    "english": "ton"
+  },
+  {
+    "id": "hsk5-118",
+    "hskLevel": 5,
+    "number": 118,
+    "hanzi": "顿",
+    "pinyin": "dùn",
+    "english": "Meal"
+  },
+  {
+    "id": "hsk5-119",
+    "hskLevel": 5,
+    "number": 119,
+    "hanzi": "多亏",
+    "pinyin": "duōkuī",
+    "english": "thanks to"
+  },
+  {
+    "id": "hsk5-120",
+    "hskLevel": 5,
+    "number": 120,
+    "hanzi": "朵",
+    "pinyin": "duǒ",
+    "english": "classifier of flower"
+  },
+  {
+    "id": "hsk5-121",
+    "hskLevel": 5,
+    "number": 121,
+    "hanzi": "发表",
+    "pinyin": "fābiǎo",
+    "english": "Publish"
+  },
+  {
+    "id": "hsk5-122",
+    "hskLevel": 5,
+    "number": 122,
+    "hanzi": "发达",
+    "pinyin": "fādá",
+    "english": "To develop"
+  },
+  {
+    "id": "hsk5-123",
+    "hskLevel": 5,
+    "number": 123,
+    "hanzi": "发挥",
+    "pinyin": "fāhuī",
+    "english": "Develop"
+  },
+  {
+    "id": "hsk5-124",
+    "hskLevel": 5,
+    "number": 124,
+    "hanzi": "发票",
+    "pinyin": "fāpiào",
+    "english": "invoice"
+  },
+  {
+    "id": "hsk5-125",
+    "hskLevel": 5,
+    "number": 125,
+    "hanzi": "发言",
+    "pinyin": "fāyán",
+    "english": "give a speech"
+  },
+  {
+    "id": "hsk5-126",
+    "hskLevel": 5,
+    "number": 126,
+    "hanzi": "罚款",
+    "pinyin": "fákuǎn",
+    "english": "forfeit; amerce; fine"
+  },
+  {
+    "id": "hsk5-127",
+    "hskLevel": 5,
+    "number": 127,
+    "hanzi": "法院",
+    "pinyin": "fǎyuàn",
+    "english": "Court"
+  },
+  {
+    "id": "hsk5-128",
+    "hskLevel": 5,
+    "number": 128,
+    "hanzi": "繁荣",
+    "pinyin": "fánróng",
+    "english": "Boom"
+  },
+  {
+    "id": "hsk5-129",
+    "hskLevel": 5,
+    "number": 129,
+    "hanzi": "反而",
+    "pinyin": "fǎn’ér",
+    "english": "Instead"
+  },
+  {
+    "id": "hsk5-130",
+    "hskLevel": 5,
+    "number": 130,
+    "hanzi": "反应",
+    "pinyin": "fǎnyìng",
+    "english": "reaction"
+  },
+  {
+    "id": "hsk5-131",
+    "hskLevel": 5,
+    "number": 131,
+    "hanzi": "反正",
+    "pinyin": "fǎnzhèng",
+    "english": "anyway"
+  },
+  {
+    "id": "hsk5-132",
+    "hskLevel": 5,
+    "number": 132,
+    "hanzi": "范围",
+    "pinyin": "fànwéi",
+    "english": "Range"
+  },
+  {
+    "id": "hsk5-133",
+    "hskLevel": 5,
+    "number": 133,
+    "hanzi": "方案",
+    "pinyin": "fāng’àn",
+    "english": "programme"
+  },
+  {
+    "id": "hsk5-134",
+    "hskLevel": 5,
+    "number": 134,
+    "hanzi": "方式",
+    "pinyin": "fāngshì",
+    "english": "mode"
+  },
+  {
+    "id": "hsk5-135",
+    "hskLevel": 5,
+    "number": 135,
+    "hanzi": "妨碍",
+    "pinyin": "fáng’ài",
+    "english": "Hinder"
+  },
+  {
+    "id": "hsk5-136",
+    "hskLevel": 5,
+    "number": 136,
+    "hanzi": "肥皂",
+    "pinyin": "féizào",
+    "english": "soap"
+  },
+  {
+    "id": "hsk5-137",
+    "hskLevel": 5,
+    "number": 137,
+    "hanzi": "分布",
+    "pinyin": "fēnbù",
+    "english": "distribution"
+  },
+  {
+    "id": "hsk5-138",
+    "hskLevel": 5,
+    "number": 138,
+    "hanzi": "分手",
+    "pinyin": "fēnshǒu",
+    "english": "Break up"
+  },
+  {
+    "id": "hsk5-139",
+    "hskLevel": 5,
+    "number": 139,
+    "hanzi": "风景",
+    "pinyin": "fēngjǐng",
+    "english": "Scenery"
+  },
+  {
+    "id": "hsk5-140",
+    "hskLevel": 5,
+    "number": 140,
+    "hanzi": "风险",
+    "pinyin": "fēngxiǎn",
+    "english": "risk"
+  },
+  {
+    "id": "hsk5-141",
+    "hskLevel": 5,
+    "number": 141,
+    "hanzi": "讽刺",
+    "pinyin": "fěngcì",
+    "english": "satire"
+  },
+  {
+    "id": "hsk5-142",
+    "hskLevel": 5,
+    "number": 142,
+    "hanzi": "否认",
+    "pinyin": "fǒurèn",
+    "english": "deny"
+  },
+  {
+    "id": "hsk5-143",
+    "hskLevel": 5,
+    "number": 143,
+    "hanzi": "扶",
+    "pinyin": "fú",
+    "english": "hold up"
+  },
+  {
+    "id": "hsk5-144",
+    "hskLevel": 5,
+    "number": 144,
+    "hanzi": "复制",
+    "pinyin": "fùzhì",
+    "english": "copy"
+  },
+  {
+    "id": "hsk5-145",
+    "hskLevel": 5,
+    "number": 145,
+    "hanzi": "改进",
+    "pinyin": "gǎijìn",
+    "english": "Improvement"
+  },
+  {
+    "id": "hsk5-146",
+    "hskLevel": 5,
+    "number": 146,
+    "hanzi": "改正",
+    "pinyin": "gǎizhèng",
+    "english": "correction"
+  },
+  {
+    "id": "hsk5-147",
+    "hskLevel": 5,
+    "number": 147,
+    "hanzi": "概括",
+    "pinyin": "gàikuò",
+    "english": "Generalization"
+  },
+  {
+    "id": "hsk5-148",
+    "hskLevel": 5,
+    "number": 148,
+    "hanzi": "感想",
+    "pinyin": "gǎnxiǎng",
+    "english": "Feel"
+  },
+  {
+    "id": "hsk5-149",
+    "hskLevel": 5,
+    "number": 149,
+    "hanzi": "赶快",
+    "pinyin": "gǎnkuài",
+    "english": "hurry up"
+  },
+  {
+    "id": "hsk5-150",
+    "hskLevel": 5,
+    "number": 150,
+    "hanzi": "干活儿",
+    "pinyin": "gànhuór",
+    "english": "work on a job"
+  },
+  {
+    "id": "hsk5-151",
+    "hskLevel": 5,
+    "number": 151,
+    "hanzi": "高级",
+    "pinyin": "gāojí",
+    "english": "senior"
+  },
+  {
+    "id": "hsk5-152",
+    "hskLevel": 5,
+    "number": 152,
+    "hanzi": "告别",
+    "pinyin": "gàobié",
+    "english": "farewell"
+  },
+  {
+    "id": "hsk5-153",
+    "hskLevel": 5,
+    "number": 153,
+    "hanzi": "隔壁",
+    "pinyin": "gébì",
+    "english": "next door"
+  },
+  {
+    "id": "hsk5-154",
+    "hskLevel": 5,
+    "number": 154,
+    "hanzi": "个人",
+    "pinyin": "gèrén",
+    "english": "personal"
+  },
+  {
+    "id": "hsk5-155",
+    "hskLevel": 5,
+    "number": 155,
+    "hanzi": "各自",
+    "pinyin": "gèzì",
+    "english": "Each"
+  },
+  {
+    "id": "hsk5-156",
+    "hskLevel": 5,
+    "number": 156,
+    "hanzi": "根本",
+    "pinyin": "gēnběn",
+    "english": "at all"
+  },
+  {
+    "id": "hsk5-157",
+    "hskLevel": 5,
+    "number": 157,
+    "hanzi": "公开",
+    "pinyin": "gōngkāi",
+    "english": "open"
+  },
+  {
+    "id": "hsk5-158",
+    "hskLevel": 5,
+    "number": 158,
+    "hanzi": "公平",
+    "pinyin": "gōngpíng",
+    "english": "fair"
+  },
+  {
+    "id": "hsk5-159",
+    "hskLevel": 5,
+    "number": 159,
+    "hanzi": "公寓",
+    "pinyin": "gōngyù",
+    "english": "apartment"
+  },
+  {
+    "id": "hsk5-160",
+    "hskLevel": 5,
+    "number": 160,
+    "hanzi": "工厂",
+    "pinyin": "gōngchǎng",
+    "english": "factory"
+  },
+  {
+    "id": "hsk5-161",
+    "hskLevel": 5,
+    "number": 161,
+    "hanzi": "工具",
+    "pinyin": "gōngjù",
+    "english": "tool"
+  },
+  {
+    "id": "hsk5-162",
+    "hskLevel": 5,
+    "number": 162,
+    "hanzi": "工业",
+    "pinyin": "gōngyè",
+    "english": "Industry"
+  },
+  {
+    "id": "hsk5-163",
+    "hskLevel": 5,
+    "number": 163,
+    "hanzi": "功能",
+    "pinyin": "gōngnéng",
+    "english": "function"
+  },
+  {
+    "id": "hsk5-164",
+    "hskLevel": 5,
+    "number": 164,
+    "hanzi": "沟通",
+    "pinyin": "gōutōng",
+    "english": "Communicate"
+  },
+  {
+    "id": "hsk5-165",
+    "hskLevel": 5,
+    "number": 165,
+    "hanzi": "姑娘",
+    "pinyin": "gūniang",
+    "english": "girl"
+  },
+  {
+    "id": "hsk5-166",
+    "hskLevel": 5,
+    "number": 166,
+    "hanzi": "古代",
+    "pinyin": "gǔdài",
+    "english": "Ancient"
+  },
+  {
+    "id": "hsk5-167",
+    "hskLevel": 5,
+    "number": 167,
+    "hanzi": "鼓掌",
+    "pinyin": "gǔzhǎng",
+    "english": "applause"
+  },
+  {
+    "id": "hsk5-168",
+    "hskLevel": 5,
+    "number": 168,
+    "hanzi": "骨头",
+    "pinyin": "gǔtou",
+    "english": "Bone"
+  },
+  {
+    "id": "hsk5-169",
+    "hskLevel": 5,
+    "number": 169,
+    "hanzi": "乖",
+    "pinyin": "guāi",
+    "english": "Good behaved"
+  },
+  {
+    "id": "hsk5-170",
+    "hskLevel": 5,
+    "number": 170,
+    "hanzi": "怪不得",
+    "pinyin": "guàibude",
+    "english": "No wonder"
+  },
+  {
+    "id": "hsk5-171",
+    "hskLevel": 5,
+    "number": 171,
+    "hanzi": "观察",
+    "pinyin": "guānchá",
+    "english": "observation"
+  },
+  {
+    "id": "hsk5-172",
+    "hskLevel": 5,
+    "number": 172,
+    "hanzi": "观念",
+    "pinyin": "guānniàn",
+    "english": "concept"
+  },
+  {
+    "id": "hsk5-173",
+    "hskLevel": 5,
+    "number": 173,
+    "hanzi": "冠军",
+    "pinyin": "guànjūn",
+    "english": "Champion"
+  },
+  {
+    "id": "hsk5-174",
+    "hskLevel": 5,
+    "number": 174,
+    "hanzi": "光滑",
+    "pinyin": "guānghuá",
+    "english": "smooth"
+  },
+  {
+    "id": "hsk5-175",
+    "hskLevel": 5,
+    "number": 175,
+    "hanzi": "光明",
+    "pinyin": "guāngmíng",
+    "english": "light"
+  },
+  {
+    "id": "hsk5-176",
+    "hskLevel": 5,
+    "number": 176,
+    "hanzi": "广大",
+    "pinyin": "guǎngdà",
+    "english": "Vast"
+  },
+  {
+    "id": "hsk5-177",
+    "hskLevel": 5,
+    "number": 177,
+    "hanzi": "规律",
+    "pinyin": "guīlǜ",
+    "english": "Law"
+  },
+  {
+    "id": "hsk5-178",
+    "hskLevel": 5,
+    "number": 178,
+    "hanzi": "规则",
+    "pinyin": "guīzé",
+    "english": "rule"
+  },
+  {
+    "id": "hsk5-179",
+    "hskLevel": 5,
+    "number": 179,
+    "hanzi": "滚",
+    "pinyin": "gǔn",
+    "english": "rolling"
+  },
+  {
+    "id": "hsk5-180",
+    "hskLevel": 5,
+    "number": 180,
+    "hanzi": "国庆节",
+    "pinyin": "guóqìngjié",
+    "english": "National Day"
+  },
+  {
+    "id": "hsk5-181",
+    "hskLevel": 5,
+    "number": 181,
+    "hanzi": "果实",
+    "pinyin": "guǒshí",
+    "english": "fruit"
+  },
+  {
+    "id": "hsk5-182",
+    "hskLevel": 5,
+    "number": 182,
+    "hanzi": "过敏",
+    "pinyin": "guòmǐn",
+    "english": "allergy"
+  },
+  {
+    "id": "hsk5-183",
+    "hskLevel": 5,
+    "number": 183,
+    "hanzi": "海鲜",
+    "pinyin": "hǎixiān",
+    "english": "seafood"
+  },
+  {
+    "id": "hsk5-184",
+    "hskLevel": 5,
+    "number": 184,
+    "hanzi": "豪华",
+    "pinyin": "háohuá",
+    "english": "luxury"
+  },
+  {
+    "id": "hsk5-185",
+    "hskLevel": 5,
+    "number": 185,
+    "hanzi": "好奇",
+    "pinyin": "hàoqí",
+    "english": "Be curious"
+  },
+  {
+    "id": "hsk5-186",
+    "hskLevel": 5,
+    "number": 186,
+    "hanzi": "何必",
+    "pinyin": "hébì",
+    "english": "Why"
+  },
+  {
+    "id": "hsk5-187",
+    "hskLevel": 5,
+    "number": 187,
+    "hanzi": "合法",
+    "pinyin": "héfǎ",
+    "english": "legitimate"
+  },
+  {
+    "id": "hsk5-188",
+    "hskLevel": 5,
+    "number": 188,
+    "hanzi": "合理",
+    "pinyin": "hélǐ",
+    "english": "reasonable"
+  },
+  {
+    "id": "hsk5-189",
+    "hskLevel": 5,
+    "number": 189,
+    "hanzi": "合同",
+    "pinyin": "hétong",
+    "english": "contract"
+  },
+  {
+    "id": "hsk5-190",
+    "hskLevel": 5,
+    "number": 190,
+    "hanzi": "合作",
+    "pinyin": "hézuò",
+    "english": "cooperation"
+  },
+  {
+    "id": "hsk5-191",
+    "hskLevel": 5,
+    "number": 191,
+    "hanzi": "恨",
+    "pinyin": "hèn",
+    "english": "hate"
+  },
+  {
+    "id": "hsk5-192",
+    "hskLevel": 5,
+    "number": 192,
+    "hanzi": "猴子",
+    "pinyin": "hóuzi",
+    "english": "Monkey"
+  },
+  {
+    "id": "hsk5-193",
+    "hskLevel": 5,
+    "number": 193,
+    "hanzi": "后背",
+    "pinyin": "hòubèi",
+    "english": "back"
+  },
+  {
+    "id": "hsk5-194",
+    "hskLevel": 5,
+    "number": 194,
+    "hanzi": "忽视",
+    "pinyin": "hūshì",
+    "english": "Ignore"
+  },
+  {
+    "id": "hsk5-195",
+    "hskLevel": 5,
+    "number": 195,
+    "hanzi": "壶",
+    "pinyin": "hú",
+    "english": "pot"
+  },
+  {
+    "id": "hsk5-196",
+    "hskLevel": 5,
+    "number": 196,
+    "hanzi": "胡说",
+    "pinyin": "húshuō",
+    "english": "Nonsense"
+  },
+  {
+    "id": "hsk5-197",
+    "hskLevel": 5,
+    "number": 197,
+    "hanzi": "糊涂",
+    "pinyin": "hútu",
+    "english": "Confused"
+  },
+  {
+    "id": "hsk5-198",
+    "hskLevel": 5,
+    "number": 198,
+    "hanzi": "花生",
+    "pinyin": "huāshēng",
+    "english": "peanut"
+  },
+  {
+    "id": "hsk5-199",
+    "hskLevel": 5,
+    "number": 199,
+    "hanzi": "划",
+    "pinyin": "huá",
+    "english": "Rowing"
+  },
+  {
+    "id": "hsk5-200",
+    "hskLevel": 5,
+    "number": 200,
+    "hanzi": "话题",
+    "pinyin": "huàtí",
+    "english": "Topic of conversation"
+  },
+  {
+    "id": "hsk5-201",
+    "hskLevel": 5,
+    "number": 201,
+    "hanzi": "怀念",
+    "pinyin": "huáiniàn",
+    "english": "miss"
+  },
+  {
+    "id": "hsk5-202",
+    "hskLevel": 5,
+    "number": 202,
+    "hanzi": "怀孕",
+    "pinyin": "huáiyùn",
+    "english": "become pregnant"
+  },
+  {
+    "id": "hsk5-203",
+    "hskLevel": 5,
+    "number": 203,
+    "hanzi": "慌张",
+    "pinyin": "huāngzhāng",
+    "english": "flurried"
+  },
+  {
+    "id": "hsk5-204",
+    "hskLevel": 5,
+    "number": 204,
+    "hanzi": "黄金",
+    "pinyin": "huángjīn",
+    "english": "gold"
+  },
+  {
+    "id": "hsk5-205",
+    "hskLevel": 5,
+    "number": 205,
+    "hanzi": "灰",
+    "pinyin": "huī",
+    "english": "ash"
+  },
+  {
+    "id": "hsk5-206",
+    "hskLevel": 5,
+    "number": 206,
+    "hanzi": "灰心",
+    "pinyin": "huīxīn",
+    "english": "Lose heart; be discouraged"
+  },
+  {
+    "id": "hsk5-207",
+    "hskLevel": 5,
+    "number": 207,
+    "hanzi": "婚礼",
+    "pinyin": "hūnlǐ",
+    "english": "wedding"
+  },
+  {
+    "id": "hsk5-208",
+    "hskLevel": 5,
+    "number": 208,
+    "hanzi": "活跃",
+    "pinyin": "huóyuè",
+    "english": "active"
+  },
+  {
+    "id": "hsk5-209",
+    "hskLevel": 5,
+    "number": 209,
+    "hanzi": "伙伴",
+    "pinyin": "huǒbàn",
+    "english": "Partner"
+  },
+  {
+    "id": "hsk5-210",
+    "hskLevel": 5,
+    "number": 210,
+    "hanzi": "或许",
+    "pinyin": "huòxǔ",
+    "english": "maybe; probably"
+  },
+  {
+    "id": "hsk5-211",
+    "hskLevel": 5,
+    "number": 211,
+    "hanzi": "基本",
+    "pinyin": "jīběn",
+    "english": "basic"
+  },
+  {
+    "id": "hsk5-212",
+    "hskLevel": 5,
+    "number": 212,
+    "hanzi": "机器",
+    "pinyin": "jīqì",
+    "english": "machine"
+  },
+  {
+    "id": "hsk5-213",
+    "hskLevel": 5,
+    "number": 213,
+    "hanzi": "及格",
+    "pinyin": "jígé",
+    "english": "pass"
+  },
+  {
+    "id": "hsk5-214",
+    "hskLevel": 5,
+    "number": 214,
+    "hanzi": "集合",
+    "pinyin": "jíhé",
+    "english": "aggregate"
+  },
+  {
+    "id": "hsk5-215",
+    "hskLevel": 5,
+    "number": 215,
+    "hanzi": "集中",
+    "pinyin": "jízhōng",
+    "english": "focus"
+  },
+  {
+    "id": "hsk5-216",
+    "hskLevel": 5,
+    "number": 216,
+    "hanzi": "急诊",
+    "pinyin": "jízhěn",
+    "english": "emergency"
+  },
+  {
+    "id": "hsk5-217",
+    "hskLevel": 5,
+    "number": 217,
+    "hanzi": "记忆",
+    "pinyin": "jìyì",
+    "english": "memory"
+  },
+  {
+    "id": "hsk5-218",
+    "hskLevel": 5,
+    "number": 218,
+    "hanzi": "纪录",
+    "pinyin": "jìlù",
+    "english": "Record"
+  },
+  {
+    "id": "hsk5-219",
+    "hskLevel": 5,
+    "number": 219,
+    "hanzi": "纪念",
+    "pinyin": "jìniàn",
+    "english": "memorialize"
+  },
+  {
+    "id": "hsk5-220",
+    "hskLevel": 5,
+    "number": 220,
+    "hanzi": "家务",
+    "pinyin": "jiāwù",
+    "english": "Housework"
+  },
+  {
+    "id": "hsk5-221",
+    "hskLevel": 5,
+    "number": 221,
+    "hanzi": "嘉宾",
+    "pinyin": "jiābīn",
+    "english": "Distinguished guest"
+  },
+  {
+    "id": "hsk5-222",
+    "hskLevel": 5,
+    "number": 222,
+    "hanzi": "甲",
+    "pinyin": "jiǎ",
+    "english": "nail"
+  },
+  {
+    "id": "hsk5-223",
+    "hskLevel": 5,
+    "number": 223,
+    "hanzi": "假如",
+    "pinyin": "jiǎrú",
+    "english": "If"
+  },
+  {
+    "id": "hsk5-224",
+    "hskLevel": 5,
+    "number": 224,
+    "hanzi": "假装",
+    "pinyin": "jiǎzhuāng",
+    "english": "pretend"
+  },
+  {
+    "id": "hsk5-225",
+    "hskLevel": 5,
+    "number": 225,
+    "hanzi": "驾驶",
+    "pinyin": "jiàshǐ",
+    "english": "Drive"
+  },
+  {
+    "id": "hsk5-226",
+    "hskLevel": 5,
+    "number": 226,
+    "hanzi": "坚强",
+    "pinyin": "jiānqiáng",
+    "english": "Firm"
+  },
+  {
+    "id": "hsk5-227",
+    "hskLevel": 5,
+    "number": 227,
+    "hanzi": "艰苦",
+    "pinyin": "jiānkǔ",
+    "english": "hard"
+  },
+  {
+    "id": "hsk5-228",
+    "hskLevel": 5,
+    "number": 228,
+    "hanzi": "捡",
+    "pinyin": "jiǎn",
+    "english": "pick up"
+  },
+  {
+    "id": "hsk5-229",
+    "hskLevel": 5,
+    "number": 229,
+    "hanzi": "简直",
+    "pinyin": "jiǎnzhí",
+    "english": "simply"
+  },
+  {
+    "id": "hsk5-230",
+    "hskLevel": 5,
+    "number": 230,
+    "hanzi": "健身",
+    "pinyin": "jiànshēn",
+    "english": "workout"
+  },
+  {
+    "id": "hsk5-231",
+    "hskLevel": 5,
+    "number": 231,
+    "hanzi": "建设",
+    "pinyin": "jiànshè",
+    "english": "build"
+  },
+  {
+    "id": "hsk5-232",
+    "hskLevel": 5,
+    "number": 232,
+    "hanzi": "建筑",
+    "pinyin": "jiànzhù",
+    "english": "Architecture"
+  },
+  {
+    "id": "hsk5-233",
+    "hskLevel": 5,
+    "number": 233,
+    "hanzi": "键盘",
+    "pinyin": "jiànpán",
+    "english": "keyboard"
+  },
+  {
+    "id": "hsk5-234",
+    "hskLevel": 5,
+    "number": 234,
+    "hanzi": "讲座",
+    "pinyin": "jiǎngzuò",
+    "english": "Lecture"
+  },
+  {
+    "id": "hsk5-235",
+    "hskLevel": 5,
+    "number": 235,
+    "hanzi": "酱油",
+    "pinyin": "jiàngyóu",
+    "english": "soy sauce"
+  },
+  {
+    "id": "hsk5-236",
+    "hskLevel": 5,
+    "number": 236,
+    "hanzi": "浇",
+    "pinyin": "jiāo",
+    "english": "pour it over"
+  },
+  {
+    "id": "hsk5-237",
+    "hskLevel": 5,
+    "number": 237,
+    "hanzi": "交换",
+    "pinyin": "jiāohuàn",
+    "english": "exchange"
+  },
+  {
+    "id": "hsk5-238",
+    "hskLevel": 5,
+    "number": 238,
+    "hanzi": "交往",
+    "pinyin": "jiāowǎng",
+    "english": "affiliate with"
+  },
+  {
+    "id": "hsk5-239",
+    "hskLevel": 5,
+    "number": 239,
+    "hanzi": "角度",
+    "pinyin": "jiǎodù",
+    "english": "angle"
+  },
+  {
+    "id": "hsk5-240",
+    "hskLevel": 5,
+    "number": 240,
+    "hanzi": "教材",
+    "pinyin": "jiàocái",
+    "english": "teaching material"
+  },
+  {
+    "id": "hsk5-241",
+    "hskLevel": 5,
+    "number": 241,
+    "hanzi": "教训",
+    "pinyin": "jiàoxùn",
+    "english": "lesson"
+  },
+  {
+    "id": "hsk5-242",
+    "hskLevel": 5,
+    "number": 242,
+    "hanzi": "接待",
+    "pinyin": "jiēdài",
+    "english": "Reception"
+  },
+  {
+    "id": "hsk5-243",
+    "hskLevel": 5,
+    "number": 243,
+    "hanzi": "结实",
+    "pinyin": "jiēshi",
+    "english": "strong"
+  },
+  {
+    "id": "hsk5-244",
+    "hskLevel": 5,
+    "number": 244,
+    "hanzi": "节省",
+    "pinyin": "jiéshěng",
+    "english": "save"
+  },
+  {
+    "id": "hsk5-245",
+    "hskLevel": 5,
+    "number": 245,
+    "hanzi": "结构",
+    "pinyin": "jiégòu",
+    "english": "structure"
+  },
+  {
+    "id": "hsk5-246",
+    "hskLevel": 5,
+    "number": 246,
+    "hanzi": "结合",
+    "pinyin": "jiéhé",
+    "english": "Combination"
+  },
+  {
+    "id": "hsk5-247",
+    "hskLevel": 5,
+    "number": 247,
+    "hanzi": "结论",
+    "pinyin": "jiélùn",
+    "english": "conclusion"
+  },
+  {
+    "id": "hsk5-248",
+    "hskLevel": 5,
+    "number": 248,
+    "hanzi": "结账",
+    "pinyin": "jiézhàng",
+    "english": "Checkout"
+  },
+  {
+    "id": "hsk5-249",
+    "hskLevel": 5,
+    "number": 249,
+    "hanzi": "届",
+    "pinyin": "jiè",
+    "english": "Session"
+  },
+  {
+    "id": "hsk5-250",
+    "hskLevel": 5,
+    "number": 250,
+    "hanzi": "借口",
+    "pinyin": "jièkǒu",
+    "english": "Excuse"
+  },
+  {
+    "id": "hsk5-251",
+    "hskLevel": 5,
+    "number": 251,
+    "hanzi": "戒",
+    "pinyin": "jiè",
+    "english": "Quit"
+  },
+  {
+    "id": "hsk5-252",
+    "hskLevel": 5,
+    "number": 252,
+    "hanzi": "紧急",
+    "pinyin": "jǐnjí",
+    "english": "urgent"
+  },
+  {
+    "id": "hsk5-253",
+    "hskLevel": 5,
+    "number": 253,
+    "hanzi": "尽快",
+    "pinyin": "jǐnkuài",
+    "english": "as soon as possible"
+  },
+  {
+    "id": "hsk5-254",
+    "hskLevel": 5,
+    "number": 254,
+    "hanzi": "谨慎",
+    "pinyin": "jǐnshèn",
+    "english": "cautious"
+  },
+  {
+    "id": "hsk5-255",
+    "hskLevel": 5,
+    "number": 255,
+    "hanzi": "进步",
+    "pinyin": "jìnbù",
+    "english": "progress"
+  },
+  {
+    "id": "hsk5-256",
+    "hskLevel": 5,
+    "number": 256,
+    "hanzi": "近代",
+    "pinyin": "jìndài",
+    "english": "Modern"
+  },
+  {
+    "id": "hsk5-257",
+    "hskLevel": 5,
+    "number": 257,
+    "hanzi": "尽量",
+    "pinyin": "jìnliàng",
+    "english": "as far as possible"
+  },
+  {
+    "id": "hsk5-258",
+    "hskLevel": 5,
+    "number": 258,
+    "hanzi": "精神",
+    "pinyin": "jīngshén",
+    "english": "spirit"
+  },
+  {
+    "id": "hsk5-259",
+    "hskLevel": 5,
+    "number": 259,
+    "hanzi": "经典",
+    "pinyin": "jīngdiǎn",
+    "english": "classics; scriptures"
+  },
+  {
+    "id": "hsk5-260",
+    "hskLevel": 5,
+    "number": 260,
+    "hanzi": "救",
+    "pinyin": "jiù",
+    "english": "save"
+  },
+  {
+    "id": "hsk5-261",
+    "hskLevel": 5,
+    "number": 261,
+    "hanzi": "舅舅",
+    "pinyin": "jiùjiu",
+    "english": "uncle"
+  },
+  {
+    "id": "hsk5-262",
+    "hskLevel": 5,
+    "number": 262,
+    "hanzi": "桔子",
+    "pinyin": "júzi",
+    "english": "Orange"
+  },
+  {
+    "id": "hsk5-263",
+    "hskLevel": 5,
+    "number": 263,
+    "hanzi": "具备",
+    "pinyin": "jùbèi",
+    "english": "Have, possess"
+  },
+  {
+    "id": "hsk5-264",
+    "hskLevel": 5,
+    "number": 264,
+    "hanzi": "巨大",
+    "pinyin": "jùdà",
+    "english": "huge"
+  },
+  {
+    "id": "hsk5-265",
+    "hskLevel": 5,
+    "number": 265,
+    "hanzi": "决赛",
+    "pinyin": "juésài",
+    "english": "Finals"
+  },
+  {
+    "id": "hsk5-266",
+    "hskLevel": 5,
+    "number": 266,
+    "hanzi": "绝对",
+    "pinyin": "juéduì",
+    "english": "Absolutely"
+  },
+  {
+    "id": "hsk5-267",
+    "hskLevel": 5,
+    "number": 267,
+    "hanzi": "军事",
+    "pinyin": "jūnshì",
+    "english": "Military"
+  },
+  {
+    "id": "hsk5-268",
+    "hskLevel": 5,
+    "number": 268,
+    "hanzi": "开放",
+    "pinyin": "kāifàng",
+    "english": "To open up"
+  },
+  {
+    "id": "hsk5-269",
+    "hskLevel": 5,
+    "number": 269,
+    "hanzi": "开水",
+    "pinyin": "kāishuǐ",
+    "english": "Boiling water"
+  },
+  {
+    "id": "hsk5-270",
+    "hskLevel": 5,
+    "number": 270,
+    "hanzi": "砍",
+    "pinyin": "kǎn",
+    "english": "cut"
+  },
+  {
+    "id": "hsk5-271",
+    "hskLevel": 5,
+    "number": 271,
+    "hanzi": "看不起",
+    "pinyin": "kànbuqǐ",
+    "english": "Despise"
+  },
+  {
+    "id": "hsk5-272",
+    "hskLevel": 5,
+    "number": 272,
+    "hanzi": "可见",
+    "pinyin": "kějiàn",
+    "english": "so; it`s thus clear"
+  },
+  {
+    "id": "hsk5-273",
+    "hskLevel": 5,
+    "number": 273,
+    "hanzi": "可怕",
+    "pinyin": "kěpà",
+    "english": "dreadful"
+  },
+  {
+    "id": "hsk5-274",
+    "hskLevel": 5,
+    "number": 274,
+    "hanzi": "克",
+    "pinyin": "kè",
+    "english": "gram"
+  },
+  {
+    "id": "hsk5-275",
+    "hskLevel": 5,
+    "number": 275,
+    "hanzi": "客观",
+    "pinyin": "kèguān",
+    "english": "objective"
+  },
+  {
+    "id": "hsk5-276",
+    "hskLevel": 5,
+    "number": 276,
+    "hanzi": "控制",
+    "pinyin": "kòngzhì",
+    "english": "control"
+  },
+  {
+    "id": "hsk5-277",
+    "hskLevel": 5,
+    "number": 277,
+    "hanzi": "口味",
+    "pinyin": "kǒuwèi",
+    "english": "Flavor"
+  },
+  {
+    "id": "hsk5-278",
+    "hskLevel": 5,
+    "number": 278,
+    "hanzi": "夸",
+    "pinyin": "kuā",
+    "english": "boast, praise"
+  },
+  {
+    "id": "hsk5-279",
+    "hskLevel": 5,
+    "number": 279,
+    "hanzi": "扩大",
+    "pinyin": "kuòdà",
+    "english": "Expand"
+  },
+  {
+    "id": "hsk5-280",
+    "hskLevel": 5,
+    "number": 280,
+    "hanzi": "辣椒",
+    "pinyin": "làjiāo",
+    "english": "Pepper, spice"
+  },
+  {
+    "id": "hsk5-281",
+    "hskLevel": 5,
+    "number": 281,
+    "hanzi": "烂",
+    "pinyin": "làn",
+    "english": "rotten"
+  },
+  {
+    "id": "hsk5-282",
+    "hskLevel": 5,
+    "number": 282,
+    "hanzi": "劳动",
+    "pinyin": "láodòng",
+    "english": "labour"
+  },
+  {
+    "id": "hsk5-283",
+    "hskLevel": 5,
+    "number": 283,
+    "hanzi": "老板",
+    "pinyin": "lǎobǎn",
+    "english": "Boss"
+  },
+  {
+    "id": "hsk5-284",
+    "hskLevel": 5,
+    "number": 284,
+    "hanzi": "老鼠",
+    "pinyin": "lǎoshǔ",
+    "english": "Mouse"
+  },
+  {
+    "id": "hsk5-285",
+    "hskLevel": 5,
+    "number": 285,
+    "hanzi": "姥姥",
+    "pinyin": "lǎolao",
+    "english": "Grandma"
+  },
+  {
+    "id": "hsk5-286",
+    "hskLevel": 5,
+    "number": 286,
+    "hanzi": "理论",
+    "pinyin": "lǐlùn",
+    "english": "theory"
+  },
+  {
+    "id": "hsk5-287",
+    "hskLevel": 5,
+    "number": 287,
+    "hanzi": "理由",
+    "pinyin": "lǐyóu",
+    "english": "Reason"
+  },
+  {
+    "id": "hsk5-288",
+    "hskLevel": 5,
+    "number": 288,
+    "hanzi": "立刻",
+    "pinyin": "lìkè",
+    "english": "immediately"
+  },
+  {
+    "id": "hsk5-289",
+    "hskLevel": 5,
+    "number": 289,
+    "hanzi": "力量",
+    "pinyin": "lìliàng",
+    "english": "Power"
+  },
+  {
+    "id": "hsk5-290",
+    "hskLevel": 5,
+    "number": 290,
+    "hanzi": "利息",
+    "pinyin": "lìxī",
+    "english": "accrual; interest"
+  },
+  {
+    "id": "hsk5-291",
+    "hskLevel": 5,
+    "number": 291,
+    "hanzi": "利用",
+    "pinyin": "lìyòng",
+    "english": "utilize"
+  },
+  {
+    "id": "hsk5-292",
+    "hskLevel": 5,
+    "number": 292,
+    "hanzi": "连忙",
+    "pinyin": "liánmáng",
+    "english": "Hurriedly"
+  },
+  {
+    "id": "hsk5-293",
+    "hskLevel": 5,
+    "number": 293,
+    "hanzi": "联合",
+    "pinyin": "liánhé",
+    "english": "union"
+  },
+  {
+    "id": "hsk5-294",
+    "hskLevel": 5,
+    "number": 294,
+    "hanzi": "了不起",
+    "pinyin": "liǎobuqǐ",
+    "english": "Amazing"
+  },
+  {
+    "id": "hsk5-295",
+    "hskLevel": 5,
+    "number": 295,
+    "hanzi": "列车",
+    "pinyin": "lièchē",
+    "english": "train"
+  },
+  {
+    "id": "hsk5-296",
+    "hskLevel": 5,
+    "number": 296,
+    "hanzi": "临时",
+    "pinyin": "línshí",
+    "english": "temporary"
+  },
+  {
+    "id": "hsk5-297",
+    "hskLevel": 5,
+    "number": 297,
+    "hanzi": "灵活",
+    "pinyin": "línghuó",
+    "english": "flexible"
+  },
+  {
+    "id": "hsk5-298",
+    "hskLevel": 5,
+    "number": 298,
+    "hanzi": "领域",
+    "pinyin": "lǐngyù",
+    "english": "field"
+  },
+  {
+    "id": "hsk5-299",
+    "hskLevel": 5,
+    "number": 299,
+    "hanzi": "流传",
+    "pinyin": "liúchuán",
+    "english": "spread"
+  },
+  {
+    "id": "hsk5-300",
+    "hskLevel": 5,
+    "number": 300,
+    "hanzi": "浏览",
+    "pinyin": "liúlǎn",
+    "english": "browse"
+  },
+  {
+    "id": "hsk5-301",
+    "hskLevel": 5,
+    "number": 301,
+    "hanzi": "龙",
+    "pinyin": "lóng",
+    "english": "dragon"
+  },
+  {
+    "id": "hsk5-302",
+    "hskLevel": 5,
+    "number": 302,
+    "hanzi": "漏",
+    "pinyin": "lòu",
+    "english": "leak"
+  },
+  {
+    "id": "hsk5-303",
+    "hskLevel": 5,
+    "number": 303,
+    "hanzi": "陆地",
+    "pinyin": "lùdì",
+    "english": "land"
+  },
+  {
+    "id": "hsk5-304",
+    "hskLevel": 5,
+    "number": 304,
+    "hanzi": "录取",
+    "pinyin": "lùqǔ",
+    "english": "matriculate"
+  },
+  {
+    "id": "hsk5-305",
+    "hskLevel": 5,
+    "number": 305,
+    "hanzi": "论文",
+    "pinyin": "lùnwén",
+    "english": "paper"
+  },
+  {
+    "id": "hsk5-306",
+    "hskLevel": 5,
+    "number": 306,
+    "hanzi": "落后",
+    "pinyin": "luòhòu",
+    "english": "backward, fall behind"
+  },
+  {
+    "id": "hsk5-307",
+    "hskLevel": 5,
+    "number": 307,
+    "hanzi": "骂",
+    "pinyin": "mà",
+    "english": "scold"
+  },
+  {
+    "id": "hsk5-308",
+    "hskLevel": 5,
+    "number": 308,
+    "hanzi": "麦克风",
+    "pinyin": "màikèfēng",
+    "english": "Microphone"
+  },
+  {
+    "id": "hsk5-309",
+    "hskLevel": 5,
+    "number": 309,
+    "hanzi": "满足",
+    "pinyin": "mǎnzú",
+    "english": "satisfy"
+  },
+  {
+    "id": "hsk5-310",
+    "hskLevel": 5,
+    "number": 310,
+    "hanzi": "冒险",
+    "pinyin": "màoxiǎn",
+    "english": "adventure"
+  },
+  {
+    "id": "hsk5-311",
+    "hskLevel": 5,
+    "number": 311,
+    "hanzi": "眉毛",
+    "pinyin": "méimao",
+    "english": "eyebrow"
+  },
+  {
+    "id": "hsk5-312",
+    "hskLevel": 5,
+    "number": 312,
+    "hanzi": "美术",
+    "pinyin": "měishù",
+    "english": "Fine Arts"
+  },
+  {
+    "id": "hsk5-313",
+    "hskLevel": 5,
+    "number": 313,
+    "hanzi": "秘密",
+    "pinyin": "mìmì",
+    "english": "Secret"
+  },
+  {
+    "id": "hsk5-314",
+    "hskLevel": 5,
+    "number": 314,
+    "hanzi": "面对",
+    "pinyin": "miànduì",
+    "english": "Face"
+  },
+  {
+    "id": "hsk5-315",
+    "hskLevel": 5,
+    "number": 315,
+    "hanzi": "面临",
+    "pinyin": "miànlín",
+    "english": "face"
+  },
+  {
+    "id": "hsk5-316",
+    "hskLevel": 5,
+    "number": 316,
+    "hanzi": "苗条",
+    "pinyin": "miáotiao",
+    "english": "slim"
+  },
+  {
+    "id": "hsk5-317",
+    "hskLevel": 5,
+    "number": 317,
+    "hanzi": "明确",
+    "pinyin": "míngquè",
+    "english": "To make clear"
+  },
+  {
+    "id": "hsk5-318",
+    "hskLevel": 5,
+    "number": 318,
+    "hanzi": "明显",
+    "pinyin": "míngxiǎn",
+    "english": "obvious"
+  },
+  {
+    "id": "hsk5-319",
+    "hskLevel": 5,
+    "number": 319,
+    "hanzi": "名牌",
+    "pinyin": "míngpái",
+    "english": "famous brand"
+  },
+  {
+    "id": "hsk5-320",
+    "hskLevel": 5,
+    "number": 320,
+    "hanzi": "名胜古迹",
+    "pinyin": "míngshènggǔjì",
+    "english": "Places of historic interest and scenic beauty"
+  },
+  {
+    "id": "hsk5-321",
+    "hskLevel": 5,
+    "number": 321,
+    "hanzi": "命令",
+    "pinyin": "mìnglìng",
+    "english": "call; nominate"
+  },
+  {
+    "id": "hsk5-322",
+    "hskLevel": 5,
+    "number": 322,
+    "hanzi": "摸",
+    "pinyin": "mō",
+    "english": "feel, touch"
+  },
+  {
+    "id": "hsk5-323",
+    "hskLevel": 5,
+    "number": 323,
+    "hanzi": "模糊",
+    "pinyin": "móhu",
+    "english": "vague"
+  },
+  {
+    "id": "hsk5-324",
+    "hskLevel": 5,
+    "number": 324,
+    "hanzi": "摩托车",
+    "pinyin": "mótuōchē",
+    "english": "Motorcycle"
+  },
+  {
+    "id": "hsk5-325",
+    "hskLevel": 5,
+    "number": 325,
+    "hanzi": "某",
+    "pinyin": "mǒu",
+    "english": "some"
+  },
+  {
+    "id": "hsk5-326",
+    "hskLevel": 5,
+    "number": 326,
+    "hanzi": "目标",
+    "pinyin": "mùbiāo",
+    "english": "target"
+  },
+  {
+    "id": "hsk5-327",
+    "hskLevel": 5,
+    "number": 327,
+    "hanzi": "目录",
+    "pinyin": "mùlù",
+    "english": "Catalog"
+  },
+  {
+    "id": "hsk5-328",
+    "hskLevel": 5,
+    "number": 328,
+    "hanzi": "木头",
+    "pinyin": "mùtou",
+    "english": "wood"
+  },
+  {
+    "id": "hsk5-329",
+    "hskLevel": 5,
+    "number": 329,
+    "hanzi": "哪怕",
+    "pinyin": "nǎpà",
+    "english": "even if"
+  },
+  {
+    "id": "hsk5-330",
+    "hskLevel": 5,
+    "number": 330,
+    "hanzi": "难免",
+    "pinyin": "nánmiǎn",
+    "english": "Unavoidable"
+  },
+  {
+    "id": "hsk5-331",
+    "hskLevel": 5,
+    "number": 331,
+    "hanzi": "脑袋",
+    "pinyin": "nǎodai",
+    "english": "head"
+  },
+  {
+    "id": "hsk5-332",
+    "hskLevel": 5,
+    "number": 332,
+    "hanzi": "内科",
+    "pinyin": "nèikē",
+    "english": "Internal medicine"
+  },
+  {
+    "id": "hsk5-333",
+    "hskLevel": 5,
+    "number": 333,
+    "hanzi": "嫩",
+    "pinyin": "nèn",
+    "english": "tender, delicate"
+  },
+  {
+    "id": "hsk5-334",
+    "hskLevel": 5,
+    "number": 334,
+    "hanzi": "能干",
+    "pinyin": "nénggàn",
+    "english": "capable"
+  },
+  {
+    "id": "hsk5-335",
+    "hskLevel": 5,
+    "number": 335,
+    "hanzi": "能源",
+    "pinyin": "néngyuán",
+    "english": "energy"
+  },
+  {
+    "id": "hsk5-336",
+    "hskLevel": 5,
+    "number": 336,
+    "hanzi": "年代",
+    "pinyin": "niándài",
+    "english": "years"
+  },
+  {
+    "id": "hsk5-337",
+    "hskLevel": 5,
+    "number": 337,
+    "hanzi": "年纪",
+    "pinyin": "niánjì",
+    "english": "Age"
+  },
+  {
+    "id": "hsk5-338",
+    "hskLevel": 5,
+    "number": 338,
+    "hanzi": "宁可",
+    "pinyin": "nìngkě",
+    "english": "would rather"
+  },
+  {
+    "id": "hsk5-339",
+    "hskLevel": 5,
+    "number": 339,
+    "hanzi": "牛仔裤",
+    "pinyin": "niúzǎikù",
+    "english": "Jeans"
+  },
+  {
+    "id": "hsk5-340",
+    "hskLevel": 5,
+    "number": 340,
+    "hanzi": "农村",
+    "pinyin": "nóngcūn",
+    "english": "countryside"
+  },
+  {
+    "id": "hsk5-341",
+    "hskLevel": 5,
+    "number": 341,
+    "hanzi": "农业",
+    "pinyin": "nóngyè",
+    "english": "Agriculture"
+  },
+  {
+    "id": "hsk5-342",
+    "hskLevel": 5,
+    "number": 342,
+    "hanzi": "女士",
+    "pinyin": "nǚshì",
+    "english": "Madam"
+  },
+  {
+    "id": "hsk5-343",
+    "hskLevel": 5,
+    "number": 343,
+    "hanzi": "派",
+    "pinyin": "pài",
+    "english": "send"
+  },
+  {
+    "id": "hsk5-344",
+    "hskLevel": 5,
+    "number": 344,
+    "hanzi": "赔偿",
+    "pinyin": "péicháng",
+    "english": "compensate for"
+  },
+  {
+    "id": "hsk5-345",
+    "hskLevel": 5,
+    "number": 345,
+    "hanzi": "培养",
+    "pinyin": "péiyǎng",
+    "english": "culture, foster"
+  },
+  {
+    "id": "hsk5-346",
+    "hskLevel": 5,
+    "number": 346,
+    "hanzi": "配合",
+    "pinyin": "pèihé",
+    "english": "Coordination"
+  },
+  {
+    "id": "hsk5-347",
+    "hskLevel": 5,
+    "number": 347,
+    "hanzi": "披",
+    "pinyin": "pī",
+    "english": "drape over one`s shoulders"
+  },
+  {
+    "id": "hsk5-348",
+    "hskLevel": 5,
+    "number": 348,
+    "hanzi": "片面",
+    "pinyin": "piànmiàn",
+    "english": "one-sided"
+  },
+  {
+    "id": "hsk5-349",
+    "hskLevel": 5,
+    "number": 349,
+    "hanzi": "拼音",
+    "pinyin": "pīnyīn",
+    "english": "pinyin"
+  },
+  {
+    "id": "hsk5-350",
+    "hskLevel": 5,
+    "number": 350,
+    "hanzi": "平",
+    "pinyin": "píng",
+    "english": "flat"
+  },
+  {
+    "id": "hsk5-351",
+    "hskLevel": 5,
+    "number": 351,
+    "hanzi": "平常",
+    "pinyin": "píngcháng",
+    "english": "Usual"
+  },
+  {
+    "id": "hsk5-352",
+    "hskLevel": 5,
+    "number": 352,
+    "hanzi": "平方",
+    "pinyin": "píngfāng",
+    "english": "square"
+  },
+  {
+    "id": "hsk5-353",
+    "hskLevel": 5,
+    "number": 353,
+    "hanzi": "平静",
+    "pinyin": "píngjìng",
+    "english": "calm"
+  },
+  {
+    "id": "hsk5-354",
+    "hskLevel": 5,
+    "number": 354,
+    "hanzi": "评价",
+    "pinyin": "píngjià",
+    "english": "evaluate"
+  },
+  {
+    "id": "hsk5-355",
+    "hskLevel": 5,
+    "number": 355,
+    "hanzi": "破坏",
+    "pinyin": "pòhuài",
+    "english": "Destruction"
+  },
+  {
+    "id": "hsk5-356",
+    "hskLevel": 5,
+    "number": 356,
+    "hanzi": "期待",
+    "pinyin": "qīdài",
+    "english": "expect"
+  },
+  {
+    "id": "hsk5-357",
+    "hskLevel": 5,
+    "number": 357,
+    "hanzi": "奇迹",
+    "pinyin": "qíjì",
+    "english": "Miracle"
+  },
+  {
+    "id": "hsk5-358",
+    "hskLevel": 5,
+    "number": 358,
+    "hanzi": "启发",
+    "pinyin": "qǐfā",
+    "english": "Inspire"
+  },
+  {
+    "id": "hsk5-359",
+    "hskLevel": 5,
+    "number": 359,
+    "hanzi": "气氛",
+    "pinyin": "qìfēn",
+    "english": "atmosphere"
+  },
+  {
+    "id": "hsk5-360",
+    "hskLevel": 5,
+    "number": 360,
+    "hanzi": "汽油",
+    "pinyin": "qìyóu",
+    "english": "gasoline"
+  },
+  {
+    "id": "hsk5-361",
+    "hskLevel": 5,
+    "number": 361,
+    "hanzi": "谦虚",
+    "pinyin": "qiānxū",
+    "english": "Modest"
+  },
+  {
+    "id": "hsk5-362",
+    "hskLevel": 5,
+    "number": 362,
+    "hanzi": "签",
+    "pinyin": "qiān",
+    "english": "Sign"
+  },
+  {
+    "id": "hsk5-363",
+    "hskLevel": 5,
+    "number": 363,
+    "hanzi": "浅",
+    "pinyin": "qiǎn",
+    "english": "shallow"
+  },
+  {
+    "id": "hsk5-364",
+    "hskLevel": 5,
+    "number": 364,
+    "hanzi": "枪",
+    "pinyin": "qiāng",
+    "english": "gun"
+  },
+  {
+    "id": "hsk5-365",
+    "hskLevel": 5,
+    "number": 365,
+    "hanzi": "强调",
+    "pinyin": "qiángdiào",
+    "english": "Emphasize"
+  },
+  {
+    "id": "hsk5-366",
+    "hskLevel": 5,
+    "number": 366,
+    "hanzi": "抢",
+    "pinyin": "qiǎng",
+    "english": "rob"
+  },
+  {
+    "id": "hsk5-367",
+    "hskLevel": 5,
+    "number": 367,
+    "hanzi": "悄悄",
+    "pinyin": "qiāoqiāo",
+    "english": "quietly"
+  },
+  {
+    "id": "hsk5-368",
+    "hskLevel": 5,
+    "number": 368,
+    "hanzi": "瞧",
+    "pinyin": "qiáo",
+    "english": "look"
+  },
+  {
+    "id": "hsk5-369",
+    "hskLevel": 5,
+    "number": 369,
+    "hanzi": "巧妙",
+    "pinyin": "qiǎomiào",
+    "english": "clever"
+  },
+  {
+    "id": "hsk5-370",
+    "hskLevel": 5,
+    "number": 370,
+    "hanzi": "亲爱",
+    "pinyin": "qīn’ài",
+    "english": "Dear"
+  },
+  {
+    "id": "hsk5-371",
+    "hskLevel": 5,
+    "number": 371,
+    "hanzi": "亲切",
+    "pinyin": "qīnqiè",
+    "english": "kind"
+  },
+  {
+    "id": "hsk5-372",
+    "hskLevel": 5,
+    "number": 372,
+    "hanzi": "勤奋",
+    "pinyin": "qínfèn",
+    "english": "hardworking"
+  },
+  {
+    "id": "hsk5-373",
+    "hskLevel": 5,
+    "number": 373,
+    "hanzi": "青春",
+    "pinyin": "qīngchūn",
+    "english": "Youth"
+  },
+  {
+    "id": "hsk5-374",
+    "hskLevel": 5,
+    "number": 374,
+    "hanzi": "轻视",
+    "pinyin": "qīngshì",
+    "english": "Despise"
+  },
+  {
+    "id": "hsk5-375",
+    "hskLevel": 5,
+    "number": 375,
+    "hanzi": "请求",
+    "pinyin": "qǐngqiú",
+    "english": "request"
+  },
+  {
+    "id": "hsk5-376",
+    "hskLevel": 5,
+    "number": 376,
+    "hanzi": "球迷",
+    "pinyin": "qiúmí",
+    "english": "fans"
+  },
+  {
+    "id": "hsk5-377",
+    "hskLevel": 5,
+    "number": 377,
+    "hanzi": "趋势",
+    "pinyin": "qūshì",
+    "english": "trend"
+  },
+  {
+    "id": "hsk5-378",
+    "hskLevel": 5,
+    "number": 378,
+    "hanzi": "去世",
+    "pinyin": "qùshì",
+    "english": "pass away"
+  },
+  {
+    "id": "hsk5-379",
+    "hskLevel": 5,
+    "number": 379,
+    "hanzi": "权力",
+    "pinyin": "quánlì",
+    "english": "power"
+  },
+  {
+    "id": "hsk5-380",
+    "hskLevel": 5,
+    "number": 380,
+    "hanzi": "劝",
+    "pinyin": "quàn",
+    "english": "persuade"
+  },
+  {
+    "id": "hsk5-381",
+    "hskLevel": 5,
+    "number": 381,
+    "hanzi": "缺乏",
+    "pinyin": "quēfá",
+    "english": "Lack"
+  },
+  {
+    "id": "hsk5-382",
+    "hskLevel": 5,
+    "number": 382,
+    "hanzi": "确认",
+    "pinyin": "quèrèn",
+    "english": "confirm"
+  },
+  {
+    "id": "hsk5-383",
+    "hskLevel": 5,
+    "number": 383,
+    "hanzi": "群",
+    "pinyin": "qún",
+    "english": "group"
+  },
+  {
+    "id": "hsk5-384",
+    "hskLevel": 5,
+    "number": 384,
+    "hanzi": "燃烧",
+    "pinyin": "ránshāo",
+    "english": "burning"
+  },
+  {
+    "id": "hsk5-385",
+    "hskLevel": 5,
+    "number": 385,
+    "hanzi": "绕",
+    "pinyin": "rào",
+    "english": "Around"
+  },
+  {
+    "id": "hsk5-386",
+    "hskLevel": 5,
+    "number": 386,
+    "hanzi": "热爱",
+    "pinyin": "rè’ài",
+    "english": "Ardently love"
+  },
+  {
+    "id": "hsk5-387",
+    "hskLevel": 5,
+    "number": 387,
+    "hanzi": "热心",
+    "pinyin": "rèxīn",
+    "english": "enthusiastic"
+  },
+  {
+    "id": "hsk5-388",
+    "hskLevel": 5,
+    "number": 388,
+    "hanzi": "人才",
+    "pinyin": "réncái",
+    "english": "talented people"
+  },
+  {
+    "id": "hsk5-389",
+    "hskLevel": 5,
+    "number": 389,
+    "hanzi": "人类",
+    "pinyin": "rénlèi",
+    "english": "Human beings"
+  },
+  {
+    "id": "hsk5-390",
+    "hskLevel": 5,
+    "number": 390,
+    "hanzi": "人生",
+    "pinyin": "rénshēng",
+    "english": "Life"
+  },
+  {
+    "id": "hsk5-391",
+    "hskLevel": 5,
+    "number": 391,
+    "hanzi": "人物",
+    "pinyin": "rénwù",
+    "english": "character"
+  },
+  {
+    "id": "hsk5-392",
+    "hskLevel": 5,
+    "number": 392,
+    "hanzi": "忍不住",
+    "pinyin": "rěnbuzhù",
+    "english": "Unable to bear"
+  },
+  {
+    "id": "hsk5-393",
+    "hskLevel": 5,
+    "number": 393,
+    "hanzi": "日程",
+    "pinyin": "rìchéng",
+    "english": "schedule"
+  },
+  {
+    "id": "hsk5-394",
+    "hskLevel": 5,
+    "number": 394,
+    "hanzi": "日历",
+    "pinyin": "rìlì",
+    "english": "calendar"
+  },
+  {
+    "id": "hsk5-395",
+    "hskLevel": 5,
+    "number": 395,
+    "hanzi": "日用品",
+    "pinyin": "rìyòngpǐn",
+    "english": "Daily Necessities"
+  },
+  {
+    "id": "hsk5-396",
+    "hskLevel": 5,
+    "number": 396,
+    "hanzi": "如何",
+    "pinyin": "rúhé",
+    "english": "How"
+  },
+  {
+    "id": "hsk5-397",
+    "hskLevel": 5,
+    "number": 397,
+    "hanzi": "软件",
+    "pinyin": "ruǎnjiàn",
+    "english": "Software"
+  },
+  {
+    "id": "hsk5-398",
+    "hskLevel": 5,
+    "number": 398,
+    "hanzi": "洒",
+    "pinyin": "sǎ",
+    "english": "sprinkle"
+  },
+  {
+    "id": "hsk5-399",
+    "hskLevel": 5,
+    "number": 399,
+    "hanzi": "嗓子",
+    "pinyin": "sǎngzi",
+    "english": "throat"
+  },
+  {
+    "id": "hsk5-400",
+    "hskLevel": 5,
+    "number": 400,
+    "hanzi": "沙滩",
+    "pinyin": "shātān",
+    "english": "beach"
+  },
+  {
+    "id": "hsk5-401",
+    "hskLevel": 5,
+    "number": 401,
+    "hanzi": "晒",
+    "pinyin": "shài",
+    "english": "The sun"
+  },
+  {
+    "id": "hsk5-402",
+    "hskLevel": 5,
+    "number": 402,
+    "hanzi": "闪电",
+    "pinyin": "shǎndiàn",
+    "english": "lightning"
+  },
+  {
+    "id": "hsk5-403",
+    "hskLevel": 5,
+    "number": 403,
+    "hanzi": "善于",
+    "pinyin": "shànyú",
+    "english": "be good at"
+  },
+  {
+    "id": "hsk5-404",
+    "hskLevel": 5,
+    "number": 404,
+    "hanzi": "商品",
+    "pinyin": "shāngpǐn",
+    "english": "commodity"
+  },
+  {
+    "id": "hsk5-405",
+    "hskLevel": 5,
+    "number": 405,
+    "hanzi": "商务",
+    "pinyin": "shāngwù",
+    "english": "business"
+  },
+  {
+    "id": "hsk5-406",
+    "hskLevel": 5,
+    "number": 406,
+    "hanzi": "伤害",
+    "pinyin": "shānghài",
+    "english": "hurt"
+  },
+  {
+    "id": "hsk5-407",
+    "hskLevel": 5,
+    "number": 407,
+    "hanzi": "舍不得",
+    "pinyin": "shěbude",
+    "english": "Hate to part with or use"
+  },
+  {
+    "id": "hsk5-408",
+    "hskLevel": 5,
+    "number": 408,
+    "hanzi": "设计",
+    "pinyin": "shèjì",
+    "english": "Design"
+  },
+  {
+    "id": "hsk5-409",
+    "hskLevel": 5,
+    "number": 409,
+    "hanzi": "摄影",
+    "pinyin": "shèyǐng",
+    "english": "Photography"
+  },
+  {
+    "id": "hsk5-410",
+    "hskLevel": 5,
+    "number": 410,
+    "hanzi": "伸",
+    "pinyin": "shēn",
+    "english": "stretch"
+  },
+  {
+    "id": "hsk5-411",
+    "hskLevel": 5,
+    "number": 411,
+    "hanzi": "深刻",
+    "pinyin": "shēnkè",
+    "english": "profound"
+  },
+  {
+    "id": "hsk5-412",
+    "hskLevel": 5,
+    "number": 412,
+    "hanzi": "身份",
+    "pinyin": "shēnfèn",
+    "english": "identity"
+  },
+  {
+    "id": "hsk5-413",
+    "hskLevel": 5,
+    "number": 413,
+    "hanzi": "神秘",
+    "pinyin": "shénmì",
+    "english": "mysterious"
+  },
+  {
+    "id": "hsk5-414",
+    "hskLevel": 5,
+    "number": 414,
+    "hanzi": "生动",
+    "pinyin": "shēngdòng",
+    "english": "vivid"
+  },
+  {
+    "id": "hsk5-415",
+    "hskLevel": 5,
+    "number": 415,
+    "hanzi": "生长",
+    "pinyin": "shēngzhǎng",
+    "english": "grow"
+  },
+  {
+    "id": "hsk5-416",
+    "hskLevel": 5,
+    "number": 416,
+    "hanzi": "诗",
+    "pinyin": "shī",
+    "english": "poetry"
+  },
+  {
+    "id": "hsk5-417",
+    "hskLevel": 5,
+    "number": 417,
+    "hanzi": "失眠",
+    "pinyin": "shīmián",
+    "english": "insomnia"
+  },
+  {
+    "id": "hsk5-418",
+    "hskLevel": 5,
+    "number": 418,
+    "hanzi": "狮子",
+    "pinyin": "shīzi",
+    "english": "Lion"
+  },
+  {
+    "id": "hsk5-419",
+    "hskLevel": 5,
+    "number": 419,
+    "hanzi": "时代",
+    "pinyin": "shídài",
+    "english": "times, epoch"
+  },
+  {
+    "id": "hsk5-420",
+    "hskLevel": 5,
+    "number": 420,
+    "hanzi": "时髦",
+    "pinyin": "shímáo",
+    "english": "Fashionable"
+  },
+  {
+    "id": "hsk5-421",
+    "hskLevel": 5,
+    "number": 421,
+    "hanzi": "时尚",
+    "pinyin": "shíshàng",
+    "english": "fashion"
+  },
+  {
+    "id": "hsk5-422",
+    "hskLevel": 5,
+    "number": 422,
+    "hanzi": "实习",
+    "pinyin": "shíxí",
+    "english": "Internship"
+  },
+  {
+    "id": "hsk5-423",
+    "hskLevel": 5,
+    "number": 423,
+    "hanzi": "实验",
+    "pinyin": "shíyàn",
+    "english": "Experiment"
+  },
+  {
+    "id": "hsk5-424",
+    "hskLevel": 5,
+    "number": 424,
+    "hanzi": "石头",
+    "pinyin": "shítou",
+    "english": "stone"
+  },
+  {
+    "id": "hsk5-425",
+    "hskLevel": 5,
+    "number": 425,
+    "hanzi": "使劲儿",
+    "pinyin": "shǐjìnr",
+    "english": "exert all one's strength"
+  },
+  {
+    "id": "hsk5-426",
+    "hskLevel": 5,
+    "number": 426,
+    "hanzi": "始终",
+    "pinyin": "shǐzhōng",
+    "english": "Throughout"
+  },
+  {
+    "id": "hsk5-427",
+    "hskLevel": 5,
+    "number": 427,
+    "hanzi": "试卷",
+    "pinyin": "shìjuàn",
+    "english": "test paper"
+  },
+  {
+    "id": "hsk5-428",
+    "hskLevel": 5,
+    "number": 428,
+    "hanzi": "市场",
+    "pinyin": "shìchǎng",
+    "english": "market"
+  },
+  {
+    "id": "hsk5-429",
+    "hskLevel": 5,
+    "number": 429,
+    "hanzi": "事物",
+    "pinyin": "shìwù",
+    "english": "Thing"
+  },
+  {
+    "id": "hsk5-430",
+    "hskLevel": 5,
+    "number": 430,
+    "hanzi": "收据",
+    "pinyin": "shōujù",
+    "english": "receipt"
+  },
+  {
+    "id": "hsk5-431",
+    "hskLevel": 5,
+    "number": 431,
+    "hanzi": "手工",
+    "pinyin": "shǒugōng",
+    "english": "manual"
+  },
+  {
+    "id": "hsk5-432",
+    "hskLevel": 5,
+    "number": 432,
+    "hanzi": "手术",
+    "pinyin": "shǒushù",
+    "english": "Operation"
+  },
+  {
+    "id": "hsk5-433",
+    "hskLevel": 5,
+    "number": 433,
+    "hanzi": "手续",
+    "pinyin": "shǒuxù",
+    "english": "procedures"
+  },
+  {
+    "id": "hsk5-434",
+    "hskLevel": 5,
+    "number": 434,
+    "hanzi": "首",
+    "pinyin": "shǒu",
+    "english": "head, chief"
+  },
+  {
+    "id": "hsk5-435",
+    "hskLevel": 5,
+    "number": 435,
+    "hanzi": "受伤",
+    "pinyin": "shòushāng",
+    "english": "Injured"
+  },
+  {
+    "id": "hsk5-436",
+    "hskLevel": 5,
+    "number": 436,
+    "hanzi": "寿命",
+    "pinyin": "shòumìng",
+    "english": "Life"
+  },
+  {
+    "id": "hsk5-437",
+    "hskLevel": 5,
+    "number": 437,
+    "hanzi": "书架",
+    "pinyin": "shūjià",
+    "english": "bookshelf"
+  },
+  {
+    "id": "hsk5-438",
+    "hskLevel": 5,
+    "number": 438,
+    "hanzi": "输入",
+    "pinyin": "shūrù",
+    "english": "import; input"
+  },
+  {
+    "id": "hsk5-439",
+    "hskLevel": 5,
+    "number": 439,
+    "hanzi": "熟练",
+    "pinyin": "shúliàn",
+    "english": "skilled"
+  },
+  {
+    "id": "hsk5-440",
+    "hskLevel": 5,
+    "number": 440,
+    "hanzi": "鼠标",
+    "pinyin": "shǔbiāo",
+    "english": "mouse"
+  },
+  {
+    "id": "hsk5-441",
+    "hskLevel": 5,
+    "number": 441,
+    "hanzi": "数据",
+    "pinyin": "shùjù",
+    "english": "data"
+  },
+  {
+    "id": "hsk5-442",
+    "hskLevel": 5,
+    "number": 442,
+    "hanzi": "数码",
+    "pinyin": "shùmǎ",
+    "english": "Digital"
+  },
+  {
+    "id": "hsk5-443",
+    "hskLevel": 5,
+    "number": 443,
+    "hanzi": "摔倒",
+    "pinyin": "shuāidǎo",
+    "english": "fall"
+  },
+  {
+    "id": "hsk5-444",
+    "hskLevel": 5,
+    "number": 444,
+    "hanzi": "双方",
+    "pinyin": "shuāngfāng",
+    "english": "both sides"
+  },
+  {
+    "id": "hsk5-445",
+    "hskLevel": 5,
+    "number": 445,
+    "hanzi": "税",
+    "pinyin": "shuì",
+    "english": "tax"
+  },
+  {
+    "id": "hsk5-446",
+    "hskLevel": 5,
+    "number": 446,
+    "hanzi": "说服",
+    "pinyin": "shuōfú",
+    "english": "Persuade"
+  },
+  {
+    "id": "hsk5-447",
+    "hskLevel": 5,
+    "number": 447,
+    "hanzi": "丝绸",
+    "pinyin": "sīchóu",
+    "english": "silk"
+  },
+  {
+    "id": "hsk5-448",
+    "hskLevel": 5,
+    "number": 448,
+    "hanzi": "思想",
+    "pinyin": "sīxiǎng",
+    "english": "thought"
+  },
+  {
+    "id": "hsk5-449",
+    "hskLevel": 5,
+    "number": 449,
+    "hanzi": "似乎",
+    "pinyin": "sìhū",
+    "english": "It seems that"
+  },
+  {
+    "id": "hsk5-450",
+    "hskLevel": 5,
+    "number": 450,
+    "hanzi": "随身",
+    "pinyin": "suíshēn",
+    "english": "Carry on"
+  },
+  {
+    "id": "hsk5-451",
+    "hskLevel": 5,
+    "number": 451,
+    "hanzi": "碎",
+    "pinyin": "suì",
+    "english": "broken"
+  },
+  {
+    "id": "hsk5-452",
+    "hskLevel": 5,
+    "number": 452,
+    "hanzi": "损失",
+    "pinyin": "sǔnshī",
+    "english": "loss"
+  },
+  {
+    "id": "hsk5-453",
+    "hskLevel": 5,
+    "number": 453,
+    "hanzi": "锁",
+    "pinyin": "suǒ",
+    "english": "lock"
+  },
+  {
+    "id": "hsk5-454",
+    "hskLevel": 5,
+    "number": 454,
+    "hanzi": "台阶",
+    "pinyin": "táijiē",
+    "english": "Steps"
+  },
+  {
+    "id": "hsk5-455",
+    "hskLevel": 5,
+    "number": 455,
+    "hanzi": "太极拳",
+    "pinyin": "tàijíquán",
+    "english": "Taiji boxing"
+  },
+  {
+    "id": "hsk5-456",
+    "hskLevel": 5,
+    "number": 456,
+    "hanzi": "逃",
+    "pinyin": "táo",
+    "english": "flee"
+  },
+  {
+    "id": "hsk5-457",
+    "hskLevel": 5,
+    "number": 457,
+    "hanzi": "淘气",
+    "pinyin": "táoqì",
+    "english": "naughty"
+  },
+  {
+    "id": "hsk5-458",
+    "hskLevel": 5,
+    "number": 458,
+    "hanzi": "讨价还价",
+    "pinyin": "tǎojiàhuánjià",
+    "english": "bargain"
+  },
+  {
+    "id": "hsk5-459",
+    "hskLevel": 5,
+    "number": 459,
+    "hanzi": "套",
+    "pinyin": "tào",
+    "english": "set"
+  },
+  {
+    "id": "hsk5-460",
+    "hskLevel": 5,
+    "number": 460,
+    "hanzi": "特色",
+    "pinyin": "tèsè",
+    "english": "characteristic"
+  },
+  {
+    "id": "hsk5-461",
+    "hskLevel": 5,
+    "number": 461,
+    "hanzi": "提倡",
+    "pinyin": "tíchàng",
+    "english": "promote"
+  },
+  {
+    "id": "hsk5-462",
+    "hskLevel": 5,
+    "number": 462,
+    "hanzi": "题目",
+    "pinyin": "tímù",
+    "english": "subject"
+  },
+  {
+    "id": "hsk5-463",
+    "hskLevel": 5,
+    "number": 463,
+    "hanzi": "体贴",
+    "pinyin": "tǐtiē",
+    "english": "Considerate"
+  },
+  {
+    "id": "hsk5-464",
+    "hskLevel": 5,
+    "number": 464,
+    "hanzi": "体验",
+    "pinyin": "tǐyàn",
+    "english": "experience"
+  },
+  {
+    "id": "hsk5-465",
+    "hskLevel": 5,
+    "number": 465,
+    "hanzi": "天空",
+    "pinyin": "tiānkōng",
+    "english": "sky"
+  },
+  {
+    "id": "hsk5-466",
+    "hskLevel": 5,
+    "number": 466,
+    "hanzi": "天真",
+    "pinyin": "tiānzhēn",
+    "english": "naive"
+  },
+  {
+    "id": "hsk5-467",
+    "hskLevel": 5,
+    "number": 467,
+    "hanzi": "调整",
+    "pinyin": "tiáozhěng",
+    "english": "adjustment"
+  },
+  {
+    "id": "hsk5-468",
+    "hskLevel": 5,
+    "number": 468,
+    "hanzi": "通常",
+    "pinyin": "tōngcháng",
+    "english": "usually"
+  },
+  {
+    "id": "hsk5-469",
+    "hskLevel": 5,
+    "number": 469,
+    "hanzi": "统一",
+    "pinyin": "tǒngyī",
+    "english": "Unified"
+  },
+  {
+    "id": "hsk5-470",
+    "hskLevel": 5,
+    "number": 470,
+    "hanzi": "痛快",
+    "pinyin": "tòngkuài",
+    "english": "Happy, to one`s great satisfaction"
+  },
+  {
+    "id": "hsk5-471",
+    "hskLevel": 5,
+    "number": 471,
+    "hanzi": "偷",
+    "pinyin": "tōu",
+    "english": "steal"
+  },
+  {
+    "id": "hsk5-472",
+    "hskLevel": 5,
+    "number": 472,
+    "hanzi": "投资",
+    "pinyin": "tóuzī",
+    "english": "Investment"
+  },
+  {
+    "id": "hsk5-473",
+    "hskLevel": 5,
+    "number": 473,
+    "hanzi": "突出",
+    "pinyin": "tūchū",
+    "english": "prominent"
+  },
+  {
+    "id": "hsk5-474",
+    "hskLevel": 5,
+    "number": 474,
+    "hanzi": "土豆",
+    "pinyin": "tǔdòu",
+    "english": "Potato"
+  },
+  {
+    "id": "hsk5-475",
+    "hskLevel": 5,
+    "number": 475,
+    "hanzi": "兔子",
+    "pinyin": "tùzi",
+    "english": "Rabbit"
+  },
+  {
+    "id": "hsk5-476",
+    "hskLevel": 5,
+    "number": 476,
+    "hanzi": "推辞",
+    "pinyin": "tuīcí",
+    "english": "Refuse"
+  },
+  {
+    "id": "hsk5-477",
+    "hskLevel": 5,
+    "number": 477,
+    "hanzi": "推荐",
+    "pinyin": "tuījiàn",
+    "english": "Recommend"
+  },
+  {
+    "id": "hsk5-478",
+    "hskLevel": 5,
+    "number": 478,
+    "hanzi": "退",
+    "pinyin": "tuì",
+    "english": "retreat"
+  },
+  {
+    "id": "hsk5-479",
+    "hskLevel": 5,
+    "number": 479,
+    "hanzi": "退休",
+    "pinyin": "tuìxiū",
+    "english": "retire"
+  },
+  {
+    "id": "hsk5-480",
+    "hskLevel": 5,
+    "number": 480,
+    "hanzi": "外公",
+    "pinyin": "wàigōng",
+    "english": "grandpa (mother's side)"
+  },
+  {
+    "id": "hsk5-481",
+    "hskLevel": 5,
+    "number": 481,
+    "hanzi": "完整",
+    "pinyin": "wánzhěng",
+    "english": "complete"
+  },
+  {
+    "id": "hsk5-482",
+    "hskLevel": 5,
+    "number": 482,
+    "hanzi": "玩具",
+    "pinyin": "wánjù",
+    "english": "Toys"
+  },
+  {
+    "id": "hsk5-483",
+    "hskLevel": 5,
+    "number": 483,
+    "hanzi": "万一",
+    "pinyin": "wànyī",
+    "english": "In case"
+  },
+  {
+    "id": "hsk5-484",
+    "hskLevel": 5,
+    "number": 484,
+    "hanzi": "威胁",
+    "pinyin": "wēixié",
+    "english": "threaten"
+  },
+  {
+    "id": "hsk5-485",
+    "hskLevel": 5,
+    "number": 485,
+    "hanzi": "维修",
+    "pinyin": "wéixiū",
+    "english": "Repair"
+  },
+  {
+    "id": "hsk5-486",
+    "hskLevel": 5,
+    "number": 486,
+    "hanzi": "围绕",
+    "pinyin": "wéirào",
+    "english": "around"
+  },
+  {
+    "id": "hsk5-487",
+    "hskLevel": 5,
+    "number": 487,
+    "hanzi": "尾巴",
+    "pinyin": "wěiba",
+    "english": "tail"
+  },
+  {
+    "id": "hsk5-488",
+    "hskLevel": 5,
+    "number": 488,
+    "hanzi": "委屈",
+    "pinyin": "wěiqu",
+    "english": "suffer from injustice"
+  },
+  {
+    "id": "hsk5-489",
+    "hskLevel": 5,
+    "number": 489,
+    "hanzi": "胃",
+    "pinyin": "wèi",
+    "english": "stomach"
+  },
+  {
+    "id": "hsk5-490",
+    "hskLevel": 5,
+    "number": 490,
+    "hanzi": "位于",
+    "pinyin": "wèiyú",
+    "english": "Be located"
+  },
+  {
+    "id": "hsk5-491",
+    "hskLevel": 5,
+    "number": 491,
+    "hanzi": "未必",
+    "pinyin": "wèibì",
+    "english": "not necessarily"
+  },
+  {
+    "id": "hsk5-492",
+    "hskLevel": 5,
+    "number": 492,
+    "hanzi": "温柔",
+    "pinyin": "wēnróu",
+    "english": "Tender"
+  },
+  {
+    "id": "hsk5-493",
+    "hskLevel": 5,
+    "number": 493,
+    "hanzi": "文具",
+    "pinyin": "wénjù",
+    "english": "Stationery"
+  },
+  {
+    "id": "hsk5-494",
+    "hskLevel": 5,
+    "number": 494,
+    "hanzi": "文学",
+    "pinyin": "wénxué",
+    "english": "literature"
+  },
+  {
+    "id": "hsk5-495",
+    "hskLevel": 5,
+    "number": 495,
+    "hanzi": "稳定",
+    "pinyin": "wěndìng",
+    "english": "Stable"
+  },
+  {
+    "id": "hsk5-496",
+    "hskLevel": 5,
+    "number": 496,
+    "hanzi": "问候",
+    "pinyin": "wènhòu",
+    "english": "To greet"
+  },
+  {
+    "id": "hsk5-497",
+    "hskLevel": 5,
+    "number": 497,
+    "hanzi": "卧室",
+    "pinyin": "wòshì",
+    "english": "Bedroom"
+  },
+  {
+    "id": "hsk5-498",
+    "hskLevel": 5,
+    "number": 498,
+    "hanzi": "无数",
+    "pinyin": "wúshù",
+    "english": "Countless"
+  },
+  {
+    "id": "hsk5-499",
+    "hskLevel": 5,
+    "number": 499,
+    "hanzi": "勿",
+    "pinyin": "wù",
+    "english": "Not"
+  },
+  {
+    "id": "hsk5-500",
+    "hskLevel": 5,
+    "number": 500,
+    "hanzi": "物质",
+    "pinyin": "wùzhì",
+    "english": "material"
+  },
+  {
+    "id": "hsk5-501",
+    "hskLevel": 5,
+    "number": 501,
+    "hanzi": "吸取",
+    "pinyin": "xīqǔ",
+    "english": "Draw"
+  },
+  {
+    "id": "hsk5-502",
+    "hskLevel": 5,
+    "number": 502,
+    "hanzi": "系统",
+    "pinyin": "xìtǒng",
+    "english": "system"
+  },
+  {
+    "id": "hsk5-503",
+    "hskLevel": 5,
+    "number": 503,
+    "hanzi": "戏剧",
+    "pinyin": "xìjù",
+    "english": "drama"
+  },
+  {
+    "id": "hsk5-504",
+    "hskLevel": 5,
+    "number": 504,
+    "hanzi": "吓",
+    "pinyin": "xià",
+    "english": "scare"
+  },
+  {
+    "id": "hsk5-505",
+    "hskLevel": 5,
+    "number": 505,
+    "hanzi": "夏令营",
+    "pinyin": "xiàlìngyíng",
+    "english": "Summer camp"
+  },
+  {
+    "id": "hsk5-506",
+    "hskLevel": 5,
+    "number": 506,
+    "hanzi": "下载",
+    "pinyin": "xiàzài",
+    "english": "download"
+  },
+  {
+    "id": "hsk5-507",
+    "hskLevel": 5,
+    "number": 507,
+    "hanzi": "显然",
+    "pinyin": "xiǎnrán",
+    "english": "Obviously"
+  },
+  {
+    "id": "hsk5-508",
+    "hskLevel": 5,
+    "number": 508,
+    "hanzi": "县",
+    "pinyin": "xiàn",
+    "english": "county"
+  },
+  {
+    "id": "hsk5-509",
+    "hskLevel": 5,
+    "number": 509,
+    "hanzi": "现象",
+    "pinyin": "xiànxiàng",
+    "english": "phenomenon"
+  },
+  {
+    "id": "hsk5-510",
+    "hskLevel": 5,
+    "number": 510,
+    "hanzi": "香肠",
+    "pinyin": "xiāngcháng",
+    "english": "sausage"
+  },
+  {
+    "id": "hsk5-511",
+    "hskLevel": 5,
+    "number": 511,
+    "hanzi": "相当",
+    "pinyin": "xiāngdāng",
+    "english": "Quite"
+  },
+  {
+    "id": "hsk5-512",
+    "hskLevel": 5,
+    "number": 512,
+    "hanzi": "相似",
+    "pinyin": "xiāngsì",
+    "english": "Be similar"
+  },
+  {
+    "id": "hsk5-513",
+    "hskLevel": 5,
+    "number": 513,
+    "hanzi": "想念",
+    "pinyin": "xiǎngniàn",
+    "english": "miss"
+  },
+  {
+    "id": "hsk5-514",
+    "hskLevel": 5,
+    "number": 514,
+    "hanzi": "享受",
+    "pinyin": "xiǎngshòu",
+    "english": "enjoy"
+  },
+  {
+    "id": "hsk5-515",
+    "hskLevel": 5,
+    "number": 515,
+    "hanzi": "项链",
+    "pinyin": "xiàngliàn",
+    "english": "Necklace"
+  },
+  {
+    "id": "hsk5-516",
+    "hskLevel": 5,
+    "number": 516,
+    "hanzi": "象征",
+    "pinyin": "xiàngzhēng",
+    "english": "Symbolize"
+  },
+  {
+    "id": "hsk5-517",
+    "hskLevel": 5,
+    "number": 517,
+    "hanzi": "消极",
+    "pinyin": "xiāojí",
+    "english": "negative"
+  },
+  {
+    "id": "hsk5-518",
+    "hskLevel": 5,
+    "number": 518,
+    "hanzi": "消失",
+    "pinyin": "xiāoshī",
+    "english": "disappear"
+  },
+  {
+    "id": "hsk5-519",
+    "hskLevel": 5,
+    "number": 519,
+    "hanzi": "小气",
+    "pinyin": "xiǎoqi",
+    "english": "Mean"
+  },
+  {
+    "id": "hsk5-520",
+    "hskLevel": 5,
+    "number": 520,
+    "hanzi": "孝顺",
+    "pinyin": "xiàoshun",
+    "english": "Filial piety"
+  },
+  {
+    "id": "hsk5-521",
+    "hskLevel": 5,
+    "number": 521,
+    "hanzi": "斜",
+    "pinyin": "xié",
+    "english": "oblique"
+  },
+  {
+    "id": "hsk5-522",
+    "hskLevel": 5,
+    "number": 522,
+    "hanzi": "写作",
+    "pinyin": "xiězuò",
+    "english": "writing"
+  },
+  {
+    "id": "hsk5-523",
+    "hskLevel": 5,
+    "number": 523,
+    "hanzi": "心理",
+    "pinyin": "xīnlǐ",
+    "english": "Psychology"
+  },
+  {
+    "id": "hsk5-524",
+    "hskLevel": 5,
+    "number": 524,
+    "hanzi": "心脏",
+    "pinyin": "xīnzàng",
+    "english": "heart"
+  },
+  {
+    "id": "hsk5-525",
+    "hskLevel": 5,
+    "number": 525,
+    "hanzi": "信任",
+    "pinyin": "xìnrèn",
+    "english": "trust"
+  },
+  {
+    "id": "hsk5-526",
+    "hskLevel": 5,
+    "number": 526,
+    "hanzi": "行为",
+    "pinyin": "xíngwéi",
+    "english": "behavior"
+  },
+  {
+    "id": "hsk5-527",
+    "hskLevel": 5,
+    "number": 527,
+    "hanzi": "形容",
+    "pinyin": "xíngróng",
+    "english": "describe"
+  },
+  {
+    "id": "hsk5-528",
+    "hskLevel": 5,
+    "number": 528,
+    "hanzi": "形势",
+    "pinyin": "xíngshì",
+    "english": "situation"
+  },
+  {
+    "id": "hsk5-529",
+    "hskLevel": 5,
+    "number": 529,
+    "hanzi": "形状",
+    "pinyin": "xíngzhuàng",
+    "english": "shape"
+  },
+  {
+    "id": "hsk5-530",
+    "hskLevel": 5,
+    "number": 530,
+    "hanzi": "幸运",
+    "pinyin": "xìngyùn",
+    "english": "lucky"
+  },
+  {
+    "id": "hsk5-531",
+    "hskLevel": 5,
+    "number": 531,
+    "hanzi": "兄弟",
+    "pinyin": "xiōngdì",
+    "english": "Brother"
+  },
+  {
+    "id": "hsk5-532",
+    "hskLevel": 5,
+    "number": 532,
+    "hanzi": "虚心",
+    "pinyin": "xūxīn",
+    "english": "With an open mind, modest"
+  },
+  {
+    "id": "hsk5-533",
+    "hskLevel": 5,
+    "number": 533,
+    "hanzi": "宣布",
+    "pinyin": "xuānbù",
+    "english": "Announce"
+  },
+  {
+    "id": "hsk5-534",
+    "hskLevel": 5,
+    "number": 534,
+    "hanzi": "学术",
+    "pinyin": "xuéshù",
+    "english": "learning"
+  },
+  {
+    "id": "hsk5-535",
+    "hskLevel": 5,
+    "number": 535,
+    "hanzi": "询问",
+    "pinyin": "xúnwèn",
+    "english": "inquiry"
+  },
+  {
+    "id": "hsk5-536",
+    "hskLevel": 5,
+    "number": 536,
+    "hanzi": "训练",
+    "pinyin": "xùnliàn",
+    "english": "training"
+  },
+  {
+    "id": "hsk5-537",
+    "hskLevel": 5,
+    "number": 537,
+    "hanzi": "押金",
+    "pinyin": "yājīn",
+    "english": "deposit"
+  },
+  {
+    "id": "hsk5-538",
+    "hskLevel": 5,
+    "number": 538,
+    "hanzi": "牙齿",
+    "pinyin": "yáchǐ",
+    "english": "tooth"
+  },
+  {
+    "id": "hsk5-539",
+    "hskLevel": 5,
+    "number": 539,
+    "hanzi": "宴会",
+    "pinyin": "yànhuì",
+    "english": "banquet"
+  },
+  {
+    "id": "hsk5-540",
+    "hskLevel": 5,
+    "number": 540,
+    "hanzi": "痒",
+    "pinyin": "yǎng",
+    "english": "itch"
+  },
+  {
+    "id": "hsk5-541",
+    "hskLevel": 5,
+    "number": 541,
+    "hanzi": "样式",
+    "pinyin": "yàngshì",
+    "english": "style"
+  },
+  {
+    "id": "hsk5-542",
+    "hskLevel": 5,
+    "number": 542,
+    "hanzi": "腰",
+    "pinyin": "yāo",
+    "english": "waist"
+  },
+  {
+    "id": "hsk5-543",
+    "hskLevel": 5,
+    "number": 543,
+    "hanzi": "咬",
+    "pinyin": "yǎo",
+    "english": "bite"
+  },
+  {
+    "id": "hsk5-544",
+    "hskLevel": 5,
+    "number": 544,
+    "hanzi": "夜",
+    "pinyin": "yè",
+    "english": "night"
+  },
+  {
+    "id": "hsk5-545",
+    "hskLevel": 5,
+    "number": 545,
+    "hanzi": "业余",
+    "pinyin": "yèyú",
+    "english": "amateur"
+  },
+  {
+    "id": "hsk5-546",
+    "hskLevel": 5,
+    "number": 546,
+    "hanzi": "依然",
+    "pinyin": "yīrán",
+    "english": "still"
+  },
+  {
+    "id": "hsk5-547",
+    "hskLevel": 5,
+    "number": 547,
+    "hanzi": "一旦",
+    "pinyin": "yídàn",
+    "english": "once; in case"
+  },
+  {
+    "id": "hsk5-548",
+    "hskLevel": 5,
+    "number": 548,
+    "hanzi": "一致",
+    "pinyin": "yízhì",
+    "english": "Agreement"
+  },
+  {
+    "id": "hsk5-549",
+    "hskLevel": 5,
+    "number": 549,
+    "hanzi": "一再",
+    "pinyin": "yízài",
+    "english": "repeatedly"
+  },
+  {
+    "id": "hsk5-550",
+    "hskLevel": 5,
+    "number": 550,
+    "hanzi": "移民",
+    "pinyin": "yímín",
+    "english": "immigrant"
+  },
+  {
+    "id": "hsk5-551",
+    "hskLevel": 5,
+    "number": 551,
+    "hanzi": "疑问",
+    "pinyin": "yíwèn",
+    "english": "Doubt"
+  },
+  {
+    "id": "hsk5-552",
+    "hskLevel": 5,
+    "number": 552,
+    "hanzi": "以来",
+    "pinyin": "yǐlái",
+    "english": "Since"
+  },
+  {
+    "id": "hsk5-553",
+    "hskLevel": 5,
+    "number": 553,
+    "hanzi": "意外",
+    "pinyin": "yìwài",
+    "english": "Accident"
+  },
+  {
+    "id": "hsk5-554",
+    "hskLevel": 5,
+    "number": 554,
+    "hanzi": "议论",
+    "pinyin": "yìlùn",
+    "english": "Discussion"
+  },
+  {
+    "id": "hsk5-555",
+    "hskLevel": 5,
+    "number": 555,
+    "hanzi": "义务",
+    "pinyin": "yìwù",
+    "english": "obligation"
+  },
+  {
+    "id": "hsk5-556",
+    "hskLevel": 5,
+    "number": 556,
+    "hanzi": "因素",
+    "pinyin": "yīnsù",
+    "english": "Factor"
+  },
+  {
+    "id": "hsk5-557",
+    "hskLevel": 5,
+    "number": 557,
+    "hanzi": "英俊",
+    "pinyin": "yīngjùn",
+    "english": "Handsome and spirited"
+  },
+  {
+    "id": "hsk5-558",
+    "hskLevel": 5,
+    "number": 558,
+    "hanzi": "营养",
+    "pinyin": "yíngyǎng",
+    "english": "Nutrition"
+  },
+  {
+    "id": "hsk5-559",
+    "hskLevel": 5,
+    "number": 559,
+    "hanzi": "硬",
+    "pinyin": "yìng",
+    "english": "hard"
+  },
+  {
+    "id": "hsk5-560",
+    "hskLevel": 5,
+    "number": 560,
+    "hanzi": "应付",
+    "pinyin": "yìngfu",
+    "english": "cope with"
+  },
+  {
+    "id": "hsk5-561",
+    "hskLevel": 5,
+    "number": 561,
+    "hanzi": "应用",
+    "pinyin": "yìngyòng",
+    "english": "application"
+  },
+  {
+    "id": "hsk5-562",
+    "hskLevel": 5,
+    "number": 562,
+    "hanzi": "拥挤",
+    "pinyin": "yōngjǐ",
+    "english": "Crowded"
+  },
+  {
+    "id": "hsk5-563",
+    "hskLevel": 5,
+    "number": 563,
+    "hanzi": "勇气",
+    "pinyin": "yǒngqì",
+    "english": "courage"
+  },
+  {
+    "id": "hsk5-564",
+    "hskLevel": 5,
+    "number": 564,
+    "hanzi": "用功",
+    "pinyin": "yònggōng",
+    "english": "Diligent"
+  },
+  {
+    "id": "hsk5-565",
+    "hskLevel": 5,
+    "number": 565,
+    "hanzi": "优惠",
+    "pinyin": "yōuhuì",
+    "english": "preferential; favorable"
+  },
+  {
+    "id": "hsk5-566",
+    "hskLevel": 5,
+    "number": 566,
+    "hanzi": "优势",
+    "pinyin": "yōushì",
+    "english": "advantage"
+  },
+  {
+    "id": "hsk5-567",
+    "hskLevel": 5,
+    "number": 567,
+    "hanzi": "悠久",
+    "pinyin": "yōujiǔ",
+    "english": "long"
+  },
+  {
+    "id": "hsk5-568",
+    "hskLevel": 5,
+    "number": 568,
+    "hanzi": "油炸",
+    "pinyin": "yóuzhá",
+    "english": "Fried"
+  },
+  {
+    "id": "hsk5-569",
+    "hskLevel": 5,
+    "number": 569,
+    "hanzi": "有利",
+    "pinyin": "yǒulì",
+    "english": "favourable, beneficial"
+  },
+  {
+    "id": "hsk5-570",
+    "hskLevel": 5,
+    "number": 570,
+    "hanzi": "娱乐",
+    "pinyin": "yúlè",
+    "english": "entertainment"
+  },
+  {
+    "id": "hsk5-571",
+    "hskLevel": 5,
+    "number": 571,
+    "hanzi": "预报",
+    "pinyin": "yùbào",
+    "english": "prediction"
+  },
+  {
+    "id": "hsk5-572",
+    "hskLevel": 5,
+    "number": 572,
+    "hanzi": "预防",
+    "pinyin": "yùfáng",
+    "english": "Prevention"
+  },
+  {
+    "id": "hsk5-573",
+    "hskLevel": 5,
+    "number": 573,
+    "hanzi": "圆",
+    "pinyin": "yuán",
+    "english": "circular"
+  },
+  {
+    "id": "hsk5-574",
+    "hskLevel": 5,
+    "number": 574,
+    "hanzi": "元旦",
+    "pinyin": "uándàn",
+    "english": "New year's Day"
+  },
+  {
+    "id": "hsk5-575",
+    "hskLevel": 5,
+    "number": 575,
+    "hanzi": "员工",
+    "pinyin": "yuángōng",
+    "english": "employee"
+  },
+  {
+    "id": "hsk5-576",
+    "hskLevel": 5,
+    "number": 576,
+    "hanzi": "愿望",
+    "pinyin": "yuànwàng",
+    "english": "desire, wish"
+  },
+  {
+    "id": "hsk5-577",
+    "hskLevel": 5,
+    "number": 577,
+    "hanzi": "晕",
+    "pinyin": "yūn",
+    "english": "faint"
+  },
+  {
+    "id": "hsk5-578",
+    "hskLevel": 5,
+    "number": 578,
+    "hanzi": "运气",
+    "pinyin": "yùnqi",
+    "english": "luck"
+  },
+  {
+    "id": "hsk5-579",
+    "hskLevel": 5,
+    "number": 579,
+    "hanzi": "运用",
+    "pinyin": "yùnyòng",
+    "english": "Application"
+  },
+  {
+    "id": "hsk5-580",
+    "hskLevel": 5,
+    "number": 580,
+    "hanzi": "灾害",
+    "pinyin": "zāihài",
+    "english": "disaster"
+  },
+  {
+    "id": "hsk5-581",
+    "hskLevel": 5,
+    "number": 581,
+    "hanzi": "在乎",
+    "pinyin": "zàihu",
+    "english": "care about"
+  },
+  {
+    "id": "hsk5-582",
+    "hskLevel": 5,
+    "number": 582,
+    "hanzi": "再三",
+    "pinyin": "zàisān",
+    "english": "repeatedly"
+  },
+  {
+    "id": "hsk5-583",
+    "hskLevel": 5,
+    "number": 583,
+    "hanzi": "赞成",
+    "pinyin": "zànchéng",
+    "english": "Agreement"
+  },
+  {
+    "id": "hsk5-584",
+    "hskLevel": 5,
+    "number": 584,
+    "hanzi": "糟糕",
+    "pinyin": "zāogāo",
+    "english": "Too bad"
+  },
+  {
+    "id": "hsk5-585",
+    "hskLevel": 5,
+    "number": 585,
+    "hanzi": "造成",
+    "pinyin": "zàochéng",
+    "english": "cause"
+  },
+  {
+    "id": "hsk5-586",
+    "hskLevel": 5,
+    "number": 586,
+    "hanzi": "责备",
+    "pinyin": "zébèi",
+    "english": "Reproach"
+  },
+  {
+    "id": "hsk5-587",
+    "hskLevel": 5,
+    "number": 587,
+    "hanzi": "窄",
+    "pinyin": "zhǎi",
+    "english": "narrow"
+  },
+  {
+    "id": "hsk5-588",
+    "hskLevel": 5,
+    "number": 588,
+    "hanzi": "展开",
+    "pinyin": "zhǎnkāi",
+    "english": "Open"
+  },
+  {
+    "id": "hsk5-589",
+    "hskLevel": 5,
+    "number": 589,
+    "hanzi": "掌握",
+    "pinyin": "zhǎngwò",
+    "english": "master"
+  },
+  {
+    "id": "hsk5-590",
+    "hskLevel": 5,
+    "number": 590,
+    "hanzi": "账户",
+    "pinyin": "zhànghù",
+    "english": "account"
+  },
+  {
+    "id": "hsk5-591",
+    "hskLevel": 5,
+    "number": 591,
+    "hanzi": "珍惜",
+    "pinyin": "zhēnxī",
+    "english": "cherish"
+  },
+  {
+    "id": "hsk5-592",
+    "hskLevel": 5,
+    "number": 592,
+    "hanzi": "阵",
+    "pinyin": "zhèn",
+    "english": "front"
+  },
+  {
+    "id": "hsk5-593",
+    "hskLevel": 5,
+    "number": 593,
+    "hanzi": "睁",
+    "pinyin": "zhēng",
+    "english": "open (eyes)"
+  },
+  {
+    "id": "hsk5-594",
+    "hskLevel": 5,
+    "number": 594,
+    "hanzi": "争取",
+    "pinyin": "zhēngqǔ",
+    "english": "strive for"
+  },
+  {
+    "id": "hsk5-595",
+    "hskLevel": 5,
+    "number": 595,
+    "hanzi": "整个",
+    "pinyin": "zhěnggè",
+    "english": "Whole"
+  },
+  {
+    "id": "hsk5-596",
+    "hskLevel": 5,
+    "number": 596,
+    "hanzi": "整齐",
+    "pinyin": "zhěngqí",
+    "english": "neat"
+  },
+  {
+    "id": "hsk5-597",
+    "hskLevel": 5,
+    "number": 597,
+    "hanzi": "正",
+    "pinyin": "zhèng",
+    "english": "just"
+  },
+  {
+    "id": "hsk5-598",
+    "hskLevel": 5,
+    "number": 598,
+    "hanzi": "政府",
+    "pinyin": "zhèngfǔ",
+    "english": "government"
+  },
+  {
+    "id": "hsk5-599",
+    "hskLevel": 5,
+    "number": 599,
+    "hanzi": "证件",
+    "pinyin": "zhèngjiàn",
+    "english": "Certificates"
+  },
+  {
+    "id": "hsk5-600",
+    "hskLevel": 5,
+    "number": 600,
+    "hanzi": "支",
+    "pinyin": "zhī",
+    "english": "branch (measure word)"
+  },
+  {
+    "id": "hsk5-601",
+    "hskLevel": 5,
+    "number": 601,
+    "hanzi": "支票",
+    "pinyin": "zhīpiào",
+    "english": "Check"
+  },
+  {
+    "id": "hsk5-602",
+    "hskLevel": 5,
+    "number": 602,
+    "hanzi": "指导",
+    "pinyin": "zhǐdǎo",
+    "english": "guidance"
+  },
+  {
+    "id": "hsk5-603",
+    "hskLevel": 5,
+    "number": 603,
+    "hanzi": "制定",
+    "pinyin": "zhìdìng",
+    "english": "Formulate"
+  },
+  {
+    "id": "hsk5-604",
+    "hskLevel": 5,
+    "number": 604,
+    "hanzi": "制造",
+    "pinyin": "zhìzào",
+    "english": "Manufacture"
+  },
+  {
+    "id": "hsk5-605",
+    "hskLevel": 5,
+    "number": 605,
+    "hanzi": "智慧",
+    "pinyin": "zhìhuì",
+    "english": "wisdom"
+  },
+  {
+    "id": "hsk5-606",
+    "hskLevel": 5,
+    "number": 606,
+    "hanzi": "秩序",
+    "pinyin": "zhìxù",
+    "english": "order"
+  },
+  {
+    "id": "hsk5-607",
+    "hskLevel": 5,
+    "number": 607,
+    "hanzi": "中介",
+    "pinyin": "zhōngjiè",
+    "english": "intermediary"
+  },
+  {
+    "id": "hsk5-608",
+    "hskLevel": 5,
+    "number": 608,
+    "hanzi": "中旬",
+    "pinyin": "zhōngxún",
+    "english": "Mid"
+  },
+  {
+    "id": "hsk5-609",
+    "hskLevel": 5,
+    "number": 609,
+    "hanzi": "周到",
+    "pinyin": "zhōudào",
+    "english": "thoughtful"
+  },
+  {
+    "id": "hsk5-610",
+    "hskLevel": 5,
+    "number": 610,
+    "hanzi": "逐步",
+    "pinyin": "zhúbù",
+    "english": "gradually"
+  },
+  {
+    "id": "hsk5-611",
+    "hskLevel": 5,
+    "number": 611,
+    "hanzi": "竹子",
+    "pinyin": "zhúzi",
+    "english": "Bamboo"
+  },
+  {
+    "id": "hsk5-612",
+    "hskLevel": 5,
+    "number": 612,
+    "hanzi": "主持",
+    "pinyin": "zhǔchí",
+    "english": "Host"
+  },
+  {
+    "id": "hsk5-613",
+    "hskLevel": 5,
+    "number": 613,
+    "hanzi": "主观",
+    "pinyin": "zhǔguān",
+    "english": "subjective"
+  },
+  {
+    "id": "hsk5-614",
+    "hskLevel": 5,
+    "number": 614,
+    "hanzi": "主题",
+    "pinyin": "zhǔtí",
+    "english": "theme"
+  },
+  {
+    "id": "hsk5-615",
+    "hskLevel": 5,
+    "number": 615,
+    "hanzi": "主任",
+    "pinyin": "zhǔrèn",
+    "english": "Headmaster"
+  },
+  {
+    "id": "hsk5-616",
+    "hskLevel": 5,
+    "number": 616,
+    "hanzi": "抓",
+    "pinyin": "zhuā",
+    "english": "grab"
+  },
+  {
+    "id": "hsk5-617",
+    "hskLevel": 5,
+    "number": 617,
+    "hanzi": "专家",
+    "pinyin": "zhuānjiā",
+    "english": "expert"
+  },
+  {
+    "id": "hsk5-618",
+    "hskLevel": 5,
+    "number": 618,
+    "hanzi": "专心",
+    "pinyin": "zhuānxīn",
+    "english": "Attentively"
+  },
+  {
+    "id": "hsk5-619",
+    "hskLevel": 5,
+    "number": 619,
+    "hanzi": "转告",
+    "pinyin": "zhuǎngào",
+    "english": "Tell, transmit"
+  },
+  {
+    "id": "hsk5-620",
+    "hskLevel": 5,
+    "number": 620,
+    "hanzi": "装",
+    "pinyin": "zhuāng",
+    "english": "pretend"
+  },
+  {
+    "id": "hsk5-621",
+    "hskLevel": 5,
+    "number": 621,
+    "hanzi": "装修",
+    "pinyin": "zhuāngxiū",
+    "english": "decorate house"
+  },
+  {
+    "id": "hsk5-622",
+    "hskLevel": 5,
+    "number": 622,
+    "hanzi": "状况",
+    "pinyin": "zhuàngkuàng",
+    "english": "status"
+  },
+  {
+    "id": "hsk5-623",
+    "hskLevel": 5,
+    "number": 623,
+    "hanzi": "追",
+    "pinyin": "zhuī",
+    "english": "run after"
+  },
+  {
+    "id": "hsk5-624",
+    "hskLevel": 5,
+    "number": 624,
+    "hanzi": "资格",
+    "pinyin": "zīgé",
+    "english": "Qualifications"
+  },
+  {
+    "id": "hsk5-625",
+    "hskLevel": 5,
+    "number": 625,
+    "hanzi": "资料",
+    "pinyin": "zīliào",
+    "english": "data"
+  },
+  {
+    "id": "hsk5-626",
+    "hskLevel": 5,
+    "number": 626,
+    "hanzi": "姿势",
+    "pinyin": "zīshì",
+    "english": "posture"
+  },
+  {
+    "id": "hsk5-627",
+    "hskLevel": 5,
+    "number": 627,
+    "hanzi": "紫",
+    "pinyin": "zǐ",
+    "english": "purple"
+  },
+  {
+    "id": "hsk5-628",
+    "hskLevel": 5,
+    "number": 628,
+    "hanzi": "字幕",
+    "pinyin": "zìmù",
+    "english": "Subtitle"
+  },
+  {
+    "id": "hsk5-629",
+    "hskLevel": 5,
+    "number": 629,
+    "hanzi": "自动",
+    "pinyin": "zìdòng",
+    "english": "automatic"
+  },
+  {
+    "id": "hsk5-630",
+    "hskLevel": 5,
+    "number": 630,
+    "hanzi": "自由",
+    "pinyin": "zìyóu",
+    "english": "free"
+  },
+  {
+    "id": "hsk5-631",
+    "hskLevel": 5,
+    "number": 631,
+    "hanzi": "综合",
+    "pinyin": "zōnghé",
+    "english": "comprehensive"
+  },
+  {
+    "id": "hsk5-632",
+    "hskLevel": 5,
+    "number": 632,
+    "hanzi": "总共",
+    "pinyin": "zǒnggòng",
+    "english": "In total"
+  },
+  {
+    "id": "hsk5-633",
+    "hskLevel": 5,
+    "number": 633,
+    "hanzi": "总理",
+    "pinyin": "zǒnglǐ",
+    "english": "prime minister"
+  },
+  {
+    "id": "hsk5-634",
+    "hskLevel": 5,
+    "number": 634,
+    "hanzi": "总算",
+    "pinyin": "zǒngsuàn",
+    "english": "finally"
+  },
+  {
+    "id": "hsk5-635",
+    "hskLevel": 5,
+    "number": 635,
+    "hanzi": "总之",
+    "pinyin": "zǒngzhī",
+    "english": "in short, in brief"
+  },
+  {
+    "id": "hsk5-636",
+    "hskLevel": 5,
+    "number": 636,
+    "hanzi": "组成",
+    "pinyin": "zǔchéng",
+    "english": "Form"
+  },
+  {
+    "id": "hsk5-637",
+    "hskLevel": 5,
+    "number": 637,
+    "hanzi": "组织",
+    "pinyin": "zǔzhī",
+    "english": "organization"
+  },
+  {
+    "id": "hsk5-638",
+    "hskLevel": 5,
+    "number": 638,
+    "hanzi": "作文",
+    "pinyin": "zuòwén",
+    "english": "composition"
+  },
+  {
+    "id": "hsk5-639",
+    "hskLevel": 5,
+    "number": 639,
+    "hanzi": "哎",
+    "pinyin": "āi",
+    "english": "Oh"
+  },
+  {
+    "id": "hsk5-640",
+    "hskLevel": 5,
+    "number": 640,
+    "hanzi": "爱护",
+    "pinyin": "àihù",
+    "english": "Care"
+  },
+  {
+    "id": "hsk5-641",
+    "hskLevel": 5,
+    "number": 641,
+    "hanzi": "爱惜",
+    "pinyin": "àixī",
+    "english": "Cherish"
+  },
+  {
+    "id": "hsk5-642",
+    "hskLevel": 5,
+    "number": 642,
+    "hanzi": "安装",
+    "pinyin": "ānzhuāng",
+    "english": "install"
+  },
+  {
+    "id": "hsk5-643",
+    "hskLevel": 5,
+    "number": 643,
+    "hanzi": "暗",
+    "pinyin": "àn",
+    "english": "dark"
+  },
+  {
+    "id": "hsk5-644",
+    "hskLevel": 5,
+    "number": 644,
+    "hanzi": "把握",
+    "pinyin": "bǎwò",
+    "english": "grasp"
+  },
+  {
+    "id": "hsk5-645",
+    "hskLevel": 5,
+    "number": 645,
+    "hanzi": "摆",
+    "pinyin": "bǎi",
+    "english": "pendulum"
+  },
+  {
+    "id": "hsk5-646",
+    "hskLevel": 5,
+    "number": 646,
+    "hanzi": "办理",
+    "pinyin": "bànlǐ",
+    "english": "handle"
+  },
+  {
+    "id": "hsk5-647",
+    "hskLevel": 5,
+    "number": 647,
+    "hanzi": "傍晚",
+    "pinyin": "bàngwǎn",
+    "english": "Evening"
+  },
+  {
+    "id": "hsk5-648",
+    "hskLevel": 5,
+    "number": 648,
+    "hanzi": "包裹",
+    "pinyin": "bāoguǒ",
+    "english": "package"
+  },
+  {
+    "id": "hsk5-649",
+    "hskLevel": 5,
+    "number": 649,
+    "hanzi": "包括",
+    "pinyin": "bāokuò",
+    "english": "Include"
+  },
+  {
+    "id": "hsk5-650",
+    "hskLevel": 5,
+    "number": 650,
+    "hanzi": "薄",
+    "pinyin": "báo",
+    "english": "thin"
+  },
+  {
+    "id": "hsk5-651",
+    "hskLevel": 5,
+    "number": 651,
+    "hanzi": "宝贝",
+    "pinyin": "bǎobèi",
+    "english": "baby"
+  },
+  {
+    "id": "hsk5-652",
+    "hskLevel": 5,
+    "number": 652,
+    "hanzi": "保持",
+    "pinyin": "bǎochí",
+    "english": "keep"
+  },
+  {
+    "id": "hsk5-653",
+    "hskLevel": 5,
+    "number": 653,
+    "hanzi": "保险",
+    "pinyin": "bǎoxiǎn",
+    "english": "Insurance"
+  },
+  {
+    "id": "hsk5-654",
+    "hskLevel": 5,
+    "number": 654,
+    "hanzi": "抱怨",
+    "pinyin": "bàoyuàn",
+    "english": "Complain"
+  },
+  {
+    "id": "hsk5-655",
+    "hskLevel": 5,
+    "number": 655,
+    "hanzi": "报道",
+    "pinyin": "bàodào",
+    "english": "report"
+  },
+  {
+    "id": "hsk5-656",
+    "hskLevel": 5,
+    "number": 656,
+    "hanzi": "报社",
+    "pinyin": "bàoshè",
+    "english": "Newspaper office"
+  },
+  {
+    "id": "hsk5-657",
+    "hskLevel": 5,
+    "number": 657,
+    "hanzi": "背",
+    "pinyin": "bèi",
+    "english": "Back"
+  },
+  {
+    "id": "hsk5-658",
+    "hskLevel": 5,
+    "number": 658,
+    "hanzi": "本质",
+    "pinyin": "běnzhì",
+    "english": "essence"
+  },
+  {
+    "id": "hsk5-659",
+    "hskLevel": 5,
+    "number": 659,
+    "hanzi": "彼此",
+    "pinyin": "bǐcǐ",
+    "english": "each other"
+  },
+  {
+    "id": "hsk5-660",
+    "hskLevel": 5,
+    "number": 660,
+    "hanzi": "毕竟",
+    "pinyin": "bìjìng",
+    "english": "after all"
+  },
+  {
+    "id": "hsk5-661",
+    "hskLevel": 5,
+    "number": 661,
+    "hanzi": "避免",
+    "pinyin": "bìmiǎn",
+    "english": "avoid"
+  },
+  {
+    "id": "hsk5-662",
+    "hskLevel": 5,
+    "number": 662,
+    "hanzi": "编辑",
+    "pinyin": "biānjí",
+    "english": "edit"
+  },
+  {
+    "id": "hsk5-663",
+    "hskLevel": 5,
+    "number": 663,
+    "hanzi": "便",
+    "pinyin": "biàn",
+    "english": "then, in that case"
+  },
+  {
+    "id": "hsk5-664",
+    "hskLevel": 5,
+    "number": 664,
+    "hanzi": "标点",
+    "pinyin": "biāodiǎn",
+    "english": "punctuation"
+  },
+  {
+    "id": "hsk5-665",
+    "hskLevel": 5,
+    "number": 665,
+    "hanzi": "表明",
+    "pinyin": "biǎomíng",
+    "english": "Indicate"
+  },
+  {
+    "id": "hsk5-666",
+    "hskLevel": 5,
+    "number": 666,
+    "hanzi": "病毒",
+    "pinyin": "bìngdú",
+    "english": "virus"
+  },
+  {
+    "id": "hsk5-667",
+    "hskLevel": 5,
+    "number": 667,
+    "hanzi": "播放",
+    "pinyin": "bōfàng",
+    "english": "play"
+  },
+  {
+    "id": "hsk5-668",
+    "hskLevel": 5,
+    "number": 668,
+    "hanzi": "脖子",
+    "pinyin": "bózi",
+    "english": "neck"
+  },
+  {
+    "id": "hsk5-669",
+    "hskLevel": 5,
+    "number": 669,
+    "hanzi": "不要紧",
+    "pinyin": "búyàojǐn",
+    "english": "Never mind"
+  },
+  {
+    "id": "hsk5-670",
+    "hskLevel": 5,
+    "number": 670,
+    "hanzi": "布",
+    "pinyin": "bù",
+    "english": "cloth, textile"
+  },
+  {
+    "id": "hsk5-671",
+    "hskLevel": 5,
+    "number": 671,
+    "hanzi": "不安",
+    "pinyin": "bù’ān",
+    "english": "Uneasy, unstable"
+  },
+  {
+    "id": "hsk5-672",
+    "hskLevel": 5,
+    "number": 672,
+    "hanzi": "不得了",
+    "pinyin": "bùdéliǎo",
+    "english": "Very"
+  },
+  {
+    "id": "hsk5-673",
+    "hskLevel": 5,
+    "number": 673,
+    "hanzi": "不如",
+    "pinyin": "bùrú",
+    "english": "not as good as"
+  },
+  {
+    "id": "hsk5-674",
+    "hskLevel": 5,
+    "number": 674,
+    "hanzi": "步骤",
+    "pinyin": "bùzhòu",
+    "english": "step"
+  },
+  {
+    "id": "hsk5-675",
+    "hskLevel": 5,
+    "number": 675,
+    "hanzi": "采访",
+    "pinyin": "cǎifǎng",
+    "english": "interview"
+  },
+  {
+    "id": "hsk5-676",
+    "hskLevel": 5,
+    "number": 676,
+    "hanzi": "彩虹",
+    "pinyin": "cǎihóng",
+    "english": "Rainbow"
+  },
+  {
+    "id": "hsk5-677",
+    "hskLevel": 5,
+    "number": 677,
+    "hanzi": "参与",
+    "pinyin": "cānyù",
+    "english": "participate in"
+  },
+  {
+    "id": "hsk5-678",
+    "hskLevel": 5,
+    "number": 678,
+    "hanzi": "惭愧",
+    "pinyin": "cánkuì",
+    "english": "Be ashamed"
+  },
+  {
+    "id": "hsk5-679",
+    "hskLevel": 5,
+    "number": 679,
+    "hanzi": "操心",
+    "pinyin": "cāoxīn",
+    "english": "Worry"
+  },
+  {
+    "id": "hsk5-680",
+    "hskLevel": 5,
+    "number": 680,
+    "hanzi": "册",
+    "pinyin": "cè",
+    "english": "volume, book"
+  },
+  {
+    "id": "hsk5-681",
+    "hskLevel": 5,
+    "number": 681,
+    "hanzi": "测验",
+    "pinyin": "cèyàn",
+    "english": "test"
+  },
+  {
+    "id": "hsk5-682",
+    "hskLevel": 5,
+    "number": 682,
+    "hanzi": "曾经",
+    "pinyin": "céngjīng",
+    "english": "once"
+  },
+  {
+    "id": "hsk5-683",
+    "hskLevel": 5,
+    "number": 683,
+    "hanzi": "差距",
+    "pinyin": "chājù",
+    "english": "disparity; distance"
+  },
+  {
+    "id": "hsk5-684",
+    "hskLevel": 5,
+    "number": 684,
+    "hanzi": "产品",
+    "pinyin": "chǎnpǐn",
+    "english": "product"
+  },
+  {
+    "id": "hsk5-685",
+    "hskLevel": 5,
+    "number": 685,
+    "hanzi": "长途",
+    "pinyin": "chángtú",
+    "english": "Long-distance"
+  },
+  {
+    "id": "hsk5-686",
+    "hskLevel": 5,
+    "number": 686,
+    "hanzi": "抄",
+    "pinyin": "chāo",
+    "english": "copy"
+  },
+  {
+    "id": "hsk5-687",
+    "hskLevel": 5,
+    "number": 687,
+    "hanzi": "超级",
+    "pinyin": "chāojí",
+    "english": "super"
+  },
+  {
+    "id": "hsk5-688",
+    "hskLevel": 5,
+    "number": 688,
+    "hanzi": "朝",
+    "pinyin": "cháo",
+    "english": "towards"
+  },
+  {
+    "id": "hsk5-689",
+    "hskLevel": 5,
+    "number": 689,
+    "hanzi": "炒",
+    "pinyin": "chǎo",
+    "english": "fry"
+  },
+  {
+    "id": "hsk5-690",
+    "hskLevel": 5,
+    "number": 690,
+    "hanzi": "吵架",
+    "pinyin": "chǎojià",
+    "english": "quarrel"
+  },
+  {
+    "id": "hsk5-691",
+    "hskLevel": 5,
+    "number": 691,
+    "hanzi": "车厢",
+    "pinyin": "chēxiāng",
+    "english": "carriage"
+  },
+  {
+    "id": "hsk5-692",
+    "hskLevel": 5,
+    "number": 692,
+    "hanzi": "沉默",
+    "pinyin": "chénmò",
+    "english": "silent"
+  },
+  {
+    "id": "hsk5-693",
+    "hskLevel": 5,
+    "number": 693,
+    "hanzi": "称呼",
+    "pinyin": "chēnghu",
+    "english": "to address"
+  },
+  {
+    "id": "hsk5-694",
+    "hskLevel": 5,
+    "number": 694,
+    "hanzi": "承认",
+    "pinyin": "chéngrèn",
+    "english": "Admit"
+  },
+  {
+    "id": "hsk5-695",
+    "hskLevel": 5,
+    "number": 695,
+    "hanzi": "程度",
+    "pinyin": "chéngdù",
+    "english": "degree"
+  },
+  {
+    "id": "hsk5-696",
+    "hskLevel": 5,
+    "number": 696,
+    "hanzi": "成分",
+    "pinyin": "chéngfèn",
+    "english": "component"
+  },
+  {
+    "id": "hsk5-697",
+    "hskLevel": 5,
+    "number": 697,
+    "hanzi": "成果",
+    "pinyin": "chéngguǒ",
+    "english": "Achievements"
+  },
+  {
+    "id": "hsk5-698",
+    "hskLevel": 5,
+    "number": 698,
+    "hanzi": "成就",
+    "pinyin": "chéngjiù",
+    "english": "achievement"
+  },
+  {
+    "id": "hsk5-699",
+    "hskLevel": 5,
+    "number": 699,
+    "hanzi": "成熟",
+    "pinyin": "chéngshú",
+    "english": "mature"
+  },
+  {
+    "id": "hsk5-700",
+    "hskLevel": 5,
+    "number": 700,
+    "hanzi": "成长",
+    "pinyin": "chéngzhǎng",
+    "english": "Grow up"
+  },
+  {
+    "id": "hsk5-701",
+    "hskLevel": 5,
+    "number": 701,
+    "hanzi": "吃亏",
+    "pinyin": "chīkuī",
+    "english": "Suffer"
+  },
+  {
+    "id": "hsk5-702",
+    "hskLevel": 5,
+    "number": 702,
+    "hanzi": "迟早",
+    "pinyin": "chízǎo",
+    "english": "sooner or later"
+  },
+  {
+    "id": "hsk5-703",
+    "hskLevel": 5,
+    "number": 703,
+    "hanzi": "池塘",
+    "pinyin": "chítáng",
+    "english": "Pond"
+  },
+  {
+    "id": "hsk5-704",
+    "hskLevel": 5,
+    "number": 704,
+    "hanzi": "翅膀",
+    "pinyin": "chìbǎng",
+    "english": "Wing"
+  },
+  {
+    "id": "hsk5-705",
+    "hskLevel": 5,
+    "number": 705,
+    "hanzi": "充电器",
+    "pinyin": "chōngdiànqì",
+    "english": "Charger"
+  },
+  {
+    "id": "hsk5-706",
+    "hskLevel": 5,
+    "number": 706,
+    "hanzi": "充满",
+    "pinyin": "chōngmǎn",
+    "english": "full of"
+  },
+  {
+    "id": "hsk5-707",
+    "hskLevel": 5,
+    "number": 707,
+    "hanzi": "抽屉",
+    "pinyin": "chōuti",
+    "english": "drawer"
+  },
+  {
+    "id": "hsk5-708",
+    "hskLevel": 5,
+    "number": 708,
+    "hanzi": "臭",
+    "pinyin": "chòu",
+    "english": "smelly"
+  },
+  {
+    "id": "hsk5-709",
+    "hskLevel": 5,
+    "number": 709,
+    "hanzi": "出版",
+    "pinyin": "chūbǎn",
+    "english": "publish"
+  },
+  {
+    "id": "hsk5-710",
+    "hskLevel": 5,
+    "number": 710,
+    "hanzi": "出色",
+    "pinyin": "chūsè",
+    "english": "excellent; outstanding"
+  },
+  {
+    "id": "hsk5-711",
+    "hskLevel": 5,
+    "number": 711,
+    "hanzi": "初级",
+    "pinyin": "chūjí",
+    "english": "primary"
+  },
+  {
+    "id": "hsk5-712",
+    "hskLevel": 5,
+    "number": 712,
+    "hanzi": "传播",
+    "pinyin": "chuánbō",
+    "english": "spread"
+  },
+  {
+    "id": "hsk5-713",
+    "hskLevel": 5,
+    "number": 713,
+    "hanzi": "传说",
+    "pinyin": "chuánshuō",
+    "english": "Legend"
+  },
+  {
+    "id": "hsk5-714",
+    "hskLevel": 5,
+    "number": 714,
+    "hanzi": "窗帘",
+    "pinyin": "chuānglián",
+    "english": "Window curtains"
+  },
+  {
+    "id": "hsk5-715",
+    "hskLevel": 5,
+    "number": 715,
+    "hanzi": "创造",
+    "pinyin": "chuàngzào",
+    "english": "create"
+  },
+  {
+    "id": "hsk5-716",
+    "hskLevel": 5,
+    "number": 716,
+    "hanzi": "词汇",
+    "pinyin": "cíhuì",
+    "english": "vocabulary"
+  },
+  {
+    "id": "hsk5-717",
+    "hskLevel": 5,
+    "number": 717,
+    "hanzi": "辞职",
+    "pinyin": "cízhí",
+    "english": "Resignation"
+  },
+  {
+    "id": "hsk5-718",
+    "hskLevel": 5,
+    "number": 718,
+    "hanzi": "刺激",
+    "pinyin": "cìjī",
+    "english": "stimulate"
+  },
+  {
+    "id": "hsk5-719",
+    "hskLevel": 5,
+    "number": 719,
+    "hanzi": "从此",
+    "pinyin": "cóngcǐ",
+    "english": "from then on"
+  },
+  {
+    "id": "hsk5-720",
+    "hskLevel": 5,
+    "number": 720,
+    "hanzi": "从事",
+    "pinyin": "cóngshì",
+    "english": "Be engaged in"
+  },
+  {
+    "id": "hsk5-721",
+    "hskLevel": 5,
+    "number": 721,
+    "hanzi": "促进",
+    "pinyin": "cùjìn",
+    "english": "Promote"
+  },
+  {
+    "id": "hsk5-722",
+    "hskLevel": 5,
+    "number": 722,
+    "hanzi": "催",
+    "pinyin": "cuī",
+    "english": "Reminder, urge"
+  },
+  {
+    "id": "hsk5-723",
+    "hskLevel": 5,
+    "number": 723,
+    "hanzi": "存在",
+    "pinyin": "cúnzài",
+    "english": "existence"
+  },
+  {
+    "id": "hsk5-724",
+    "hskLevel": 5,
+    "number": 724,
+    "hanzi": "答应",
+    "pinyin": "dāying",
+    "english": "promise"
+  },
+  {
+    "id": "hsk5-725",
+    "hskLevel": 5,
+    "number": 725,
+    "hanzi": "达到",
+    "pinyin": "dádào",
+    "english": "Achieve"
+  },
+  {
+    "id": "hsk5-726",
+    "hskLevel": 5,
+    "number": 726,
+    "hanzi": "打交道",
+    "pinyin": "dǎjiāodao",
+    "english": "Dealing with"
+  },
+  {
+    "id": "hsk5-727",
+    "hskLevel": 5,
+    "number": 727,
+    "hanzi": "打喷嚏",
+    "pinyin": "dǎpēntì",
+    "english": "Sneeze"
+  },
+  {
+    "id": "hsk5-728",
+    "hskLevel": 5,
+    "number": 728,
+    "hanzi": "打听",
+    "pinyin": "dǎting",
+    "english": "Inquire"
+  },
+  {
+    "id": "hsk5-729",
+    "hskLevel": 5,
+    "number": 729,
+    "hanzi": "大方",
+    "pinyin": "dàfang",
+    "english": "generous"
+  },
+  {
+    "id": "hsk5-730",
+    "hskLevel": 5,
+    "number": 730,
+    "hanzi": "大型",
+    "pinyin": "dàxíng",
+    "english": "large"
+  },
+  {
+    "id": "hsk5-731",
+    "hskLevel": 5,
+    "number": 731,
+    "hanzi": "呆",
+    "pinyin": "dāi",
+    "english": "stay"
+  },
+  {
+    "id": "hsk5-732",
+    "hskLevel": 5,
+    "number": 732,
+    "hanzi": "代替",
+    "pinyin": "dàitì",
+    "english": "replace"
+  },
+  {
+    "id": "hsk5-733",
+    "hskLevel": 5,
+    "number": 733,
+    "hanzi": "贷款",
+    "pinyin": "dàikuǎn",
+    "english": "extend credit to; provide a loan"
+  },
+  {
+    "id": "hsk5-734",
+    "hskLevel": 5,
+    "number": 734,
+    "hanzi": "单纯",
+    "pinyin": "dānchún",
+    "english": "Simple"
+  },
+  {
+    "id": "hsk5-735",
+    "hskLevel": 5,
+    "number": 735,
+    "hanzi": "单独",
+    "pinyin": "dāndú",
+    "english": "Alone"
+  },
+  {
+    "id": "hsk5-736",
+    "hskLevel": 5,
+    "number": 736,
+    "hanzi": "单元",
+    "pinyin": "dānyuán",
+    "english": "unit"
+  },
+  {
+    "id": "hsk5-737",
+    "hskLevel": 5,
+    "number": 737,
+    "hanzi": "胆小鬼",
+    "pinyin": "dǎnxiǎoguǐ",
+    "english": "Coward"
+  },
+  {
+    "id": "hsk5-738",
+    "hskLevel": 5,
+    "number": 738,
+    "hanzi": "当地",
+    "pinyin": "dāngdì",
+    "english": "Local"
+  },
+  {
+    "id": "hsk5-739",
+    "hskLevel": 5,
+    "number": 739,
+    "hanzi": "当心",
+    "pinyin": "dāngxīn",
+    "english": "Watch out"
+  },
+  {
+    "id": "hsk5-740",
+    "hskLevel": 5,
+    "number": 740,
+    "hanzi": "挡",
+    "pinyin": "dǎng",
+    "english": "block"
+  },
+  {
+    "id": "hsk5-741",
+    "hskLevel": 5,
+    "number": 741,
+    "hanzi": "岛屿",
+    "pinyin": "dǎoyǔ",
+    "english": "Islands"
+  },
+  {
+    "id": "hsk5-742",
+    "hskLevel": 5,
+    "number": 742,
+    "hanzi": "导演",
+    "pinyin": "dǎoyǎn",
+    "english": "director"
+  },
+  {
+    "id": "hsk5-743",
+    "hskLevel": 5,
+    "number": 743,
+    "hanzi": "导致",
+    "pinyin": "dǎozhì",
+    "english": "cause"
+  },
+  {
+    "id": "hsk5-744",
+    "hskLevel": 5,
+    "number": 744,
+    "hanzi": "到达",
+    "pinyin": "dàodá",
+    "english": "Arrive"
+  },
+  {
+    "id": "hsk5-745",
+    "hskLevel": 5,
+    "number": 745,
+    "hanzi": "道德",
+    "pinyin": "dàodé",
+    "english": "Morality"
+  },
+  {
+    "id": "hsk5-746",
+    "hskLevel": 5,
+    "number": 746,
+    "hanzi": "等待",
+    "pinyin": "děngdài",
+    "english": "wait for"
+  },
+  {
+    "id": "hsk5-747",
+    "hskLevel": 5,
+    "number": 747,
+    "hanzi": "的确",
+    "pinyin": "díquè",
+    "english": "indeed; be certain to"
+  },
+  {
+    "id": "hsk5-748",
+    "hskLevel": 5,
+    "number": 748,
+    "hanzi": "地道",
+    "pinyin": "dìdao",
+    "english": "tunnel"
+  },
+  {
+    "id": "hsk5-749",
+    "hskLevel": 5,
+    "number": 749,
+    "hanzi": "地理",
+    "pinyin": "dìlǐ",
+    "english": "Geography"
+  },
+  {
+    "id": "hsk5-750",
+    "hskLevel": 5,
+    "number": 750,
+    "hanzi": "地区",
+    "pinyin": "dìqū",
+    "english": "region"
+  },
+  {
+    "id": "hsk5-751",
+    "hskLevel": 5,
+    "number": 751,
+    "hanzi": "地位",
+    "pinyin": "dìwèi",
+    "english": "status"
+  },
+  {
+    "id": "hsk5-752",
+    "hskLevel": 5,
+    "number": 752,
+    "hanzi": "点心",
+    "pinyin": "diǎnxin",
+    "english": "snack"
+  },
+  {
+    "id": "hsk5-753",
+    "hskLevel": 5,
+    "number": 753,
+    "hanzi": "电台",
+    "pinyin": "diàntái",
+    "english": "radio station"
+  },
+  {
+    "id": "hsk5-754",
+    "hskLevel": 5,
+    "number": 754,
+    "hanzi": "钓",
+    "pinyin": "diào",
+    "english": "Fishing"
+  },
+  {
+    "id": "hsk5-755",
+    "hskLevel": 5,
+    "number": 755,
+    "hanzi": "洞",
+    "pinyin": "dòng",
+    "english": "hole"
+  },
+  {
+    "id": "hsk5-756",
+    "hskLevel": 5,
+    "number": 756,
+    "hanzi": "豆腐",
+    "pinyin": "dòufu",
+    "english": "Bean curd"
+  },
+  {
+    "id": "hsk5-757",
+    "hskLevel": 5,
+    "number": 757,
+    "hanzi": "独立",
+    "pinyin": "dúlì",
+    "english": "Independent"
+  },
+  {
+    "id": "hsk5-758",
+    "hskLevel": 5,
+    "number": 758,
+    "hanzi": "断",
+    "pinyin": "duàn",
+    "english": "break"
+  },
+  {
+    "id": "hsk5-759",
+    "hskLevel": 5,
+    "number": 759,
+    "hanzi": "堆",
+    "pinyin": "duī",
+    "english": "heap"
+  },
+  {
+    "id": "hsk5-760",
+    "hskLevel": 5,
+    "number": 760,
+    "hanzi": "对方",
+    "pinyin": "duìfāng",
+    "english": "the other party"
+  },
+  {
+    "id": "hsk5-761",
+    "hskLevel": 5,
+    "number": 761,
+    "hanzi": "对象",
+    "pinyin": "duìxiàng",
+    "english": "object"
+  },
+  {
+    "id": "hsk5-762",
+    "hskLevel": 5,
+    "number": 762,
+    "hanzi": "兑换",
+    "pinyin": "duìhuàn",
+    "english": "exchange"
+  },
+  {
+    "id": "hsk5-763",
+    "hskLevel": 5,
+    "number": 763,
+    "hanzi": "蹲",
+    "pinyin": "dūn",
+    "english": "squat"
+  },
+  {
+    "id": "hsk5-764",
+    "hskLevel": 5,
+    "number": 764,
+    "hanzi": "多余",
+    "pinyin": "duōyú",
+    "english": "surplus"
+  },
+  {
+    "id": "hsk5-765",
+    "hskLevel": 5,
+    "number": 765,
+    "hanzi": "躲藏",
+    "pinyin": "duǒcáng",
+    "english": "Hide oneself"
+  },
+  {
+    "id": "hsk5-766",
+    "hskLevel": 5,
+    "number": 766,
+    "hanzi": "恶劣",
+    "pinyin": "èliè",
+    "english": "Adverse"
+  },
+  {
+    "id": "hsk5-767",
+    "hskLevel": 5,
+    "number": 767,
+    "hanzi": "耳环",
+    "pinyin": "ěrhuán",
+    "english": "Earrings"
+  },
+  {
+    "id": "hsk5-768",
+    "hskLevel": 5,
+    "number": 768,
+    "hanzi": "发愁",
+    "pinyin": "fāchóu",
+    "english": "To be worried"
+  },
+  {
+    "id": "hsk5-769",
+    "hskLevel": 5,
+    "number": 769,
+    "hanzi": "发抖",
+    "pinyin": "fādǒu",
+    "english": "Tremble"
+  },
+  {
+    "id": "hsk5-770",
+    "hskLevel": 5,
+    "number": 770,
+    "hanzi": "发明",
+    "pinyin": "fāmíng",
+    "english": "Invention"
+  },
+  {
+    "id": "hsk5-771",
+    "hskLevel": 5,
+    "number": 771,
+    "hanzi": "翻",
+    "pinyin": "fān",
+    "english": "Turn"
+  },
+  {
+    "id": "hsk5-772",
+    "hskLevel": 5,
+    "number": 772,
+    "hanzi": "反复",
+    "pinyin": "fǎnfù",
+    "english": "Repeatedly"
+  },
+  {
+    "id": "hsk5-773",
+    "hskLevel": 5,
+    "number": 773,
+    "hanzi": "反映",
+    "pinyin": "fǎnyìng",
+    "english": "reflect"
+  },
+  {
+    "id": "hsk5-774",
+    "hskLevel": 5,
+    "number": 774,
+    "hanzi": "方",
+    "pinyin": "fāng",
+    "english": "square"
+  },
+  {
+    "id": "hsk5-775",
+    "hskLevel": 5,
+    "number": 775,
+    "hanzi": "仿佛",
+    "pinyin": "fǎngfú",
+    "english": "as if"
+  },
+  {
+    "id": "hsk5-776",
+    "hskLevel": 5,
+    "number": 776,
+    "hanzi": "非",
+    "pinyin": "fēi",
+    "english": "wrong; non"
+  },
+  {
+    "id": "hsk5-777",
+    "hskLevel": 5,
+    "number": 777,
+    "hanzi": "废话",
+    "pinyin": "fèihuà",
+    "english": "Crap"
+  },
+  {
+    "id": "hsk5-778",
+    "hskLevel": 5,
+    "number": 778,
+    "hanzi": "分别",
+    "pinyin": "fēnbié",
+    "english": "part"
+  },
+  {
+    "id": "hsk5-779",
+    "hskLevel": 5,
+    "number": 779,
+    "hanzi": "分配",
+    "pinyin": "fēnpèi",
+    "english": "distribution"
+  },
+  {
+    "id": "hsk5-780",
+    "hskLevel": 5,
+    "number": 780,
+    "hanzi": "分析",
+    "pinyin": "fēnxī",
+    "english": "Analysis"
+  },
+  {
+    "id": "hsk5-781",
+    "hskLevel": 5,
+    "number": 781,
+    "hanzi": "纷纷",
+    "pinyin": "fēnfēn",
+    "english": "one after another"
+  },
+  {
+    "id": "hsk5-782",
+    "hskLevel": 5,
+    "number": 782,
+    "hanzi": "奋斗",
+    "pinyin": "fèndòu",
+    "english": "Struggle"
+  },
+  {
+    "id": "hsk5-783",
+    "hskLevel": 5,
+    "number": 783,
+    "hanzi": "风格",
+    "pinyin": "fēnggé",
+    "english": "style"
+  },
+  {
+    "id": "hsk5-784",
+    "hskLevel": 5,
+    "number": 784,
+    "hanzi": "风俗",
+    "pinyin": "fēngsú",
+    "english": "Customs"
+  },
+  {
+    "id": "hsk5-785",
+    "hskLevel": 5,
+    "number": 785,
+    "hanzi": "疯狂",
+    "pinyin": "fēngkuáng",
+    "english": "Insane"
+  },
+  {
+    "id": "hsk5-786",
+    "hskLevel": 5,
+    "number": 786,
+    "hanzi": "否定",
+    "pinyin": "fǒudìng",
+    "english": "negative"
+  },
+  {
+    "id": "hsk5-787",
+    "hskLevel": 5,
+    "number": 787,
+    "hanzi": "幅",
+    "pinyin": "fú",
+    "english": "classifier of picture"
+  },
+  {
+    "id": "hsk5-788",
+    "hskLevel": 5,
+    "number": 788,
+    "hanzi": "服装",
+    "pinyin": "fúzhuāng",
+    "english": "costume; dress"
+  },
+  {
+    "id": "hsk5-789",
+    "hskLevel": 5,
+    "number": 789,
+    "hanzi": "辅导",
+    "pinyin": "fǔdǎo",
+    "english": "Coach"
+  },
+  {
+    "id": "hsk5-790",
+    "hskLevel": 5,
+    "number": 790,
+    "hanzi": "妇女",
+    "pinyin": "fùnǚ",
+    "english": "Woman"
+  },
+  {
+    "id": "hsk5-791",
+    "hskLevel": 5,
+    "number": 791,
+    "hanzi": "改革",
+    "pinyin": "gǎigé",
+    "english": "reform"
+  },
+  {
+    "id": "hsk5-792",
+    "hskLevel": 5,
+    "number": 792,
+    "hanzi": "改善",
+    "pinyin": "gǎishàn",
+    "english": "Improve"
+  },
+  {
+    "id": "hsk5-793",
+    "hskLevel": 5,
+    "number": 793,
+    "hanzi": "盖",
+    "pinyin": "gài",
+    "english": "cover"
+  },
+  {
+    "id": "hsk5-794",
+    "hskLevel": 5,
+    "number": 794,
+    "hanzi": "概念",
+    "pinyin": "gàiniàn",
+    "english": "concept"
+  },
+  {
+    "id": "hsk5-795",
+    "hskLevel": 5,
+    "number": 795,
+    "hanzi": "干脆",
+    "pinyin": "gāncuì",
+    "english": "simply"
+  },
+  {
+    "id": "hsk5-796",
+    "hskLevel": 5,
+    "number": 796,
+    "hanzi": "干燥",
+    "pinyin": "gānzào",
+    "english": "Dry"
+  },
+  {
+    "id": "hsk5-797",
+    "hskLevel": 5,
+    "number": 797,
+    "hanzi": "感激",
+    "pinyin": "gǎnjī",
+    "english": "Appreciate"
+  },
+  {
+    "id": "hsk5-798",
+    "hskLevel": 5,
+    "number": 798,
+    "hanzi": "感受",
+    "pinyin": "gǎnshòu",
+    "english": "feel"
+  },
+  {
+    "id": "hsk5-799",
+    "hskLevel": 5,
+    "number": 799,
+    "hanzi": "赶紧",
+    "pinyin": "gǎnjǐn",
+    "english": "Quickly"
+  },
+  {
+    "id": "hsk5-800",
+    "hskLevel": 5,
+    "number": 800,
+    "hanzi": "钢铁",
+    "pinyin": "gāngtiě",
+    "english": "steel"
+  },
+  {
+    "id": "hsk5-801",
+    "hskLevel": 5,
+    "number": 801,
+    "hanzi": "高档",
+    "pinyin": "gāodàng",
+    "english": "High-grade"
+  },
+  {
+    "id": "hsk5-802",
+    "hskLevel": 5,
+    "number": 802,
+    "hanzi": "搞",
+    "pinyin": "gǎo",
+    "english": "get"
+  },
+  {
+    "id": "hsk5-803",
+    "hskLevel": 5,
+    "number": 803,
+    "hanzi": "格外",
+    "pinyin": "géwài",
+    "english": "especially"
+  },
+  {
+    "id": "hsk5-804",
+    "hskLevel": 5,
+    "number": 804,
+    "hanzi": "个别",
+    "pinyin": "gèbié",
+    "english": "individual"
+  },
+  {
+    "id": "hsk5-805",
+    "hskLevel": 5,
+    "number": 805,
+    "hanzi": "个性",
+    "pinyin": "gèxìng",
+    "english": "personality"
+  },
+  {
+    "id": "hsk5-806",
+    "hskLevel": 5,
+    "number": 806,
+    "hanzi": "根",
+    "pinyin": "gēn",
+    "english": "root"
+  },
+  {
+    "id": "hsk5-807",
+    "hskLevel": 5,
+    "number": 807,
+    "hanzi": "公布",
+    "pinyin": "gōngbù",
+    "english": "Publish"
+  },
+  {
+    "id": "hsk5-808",
+    "hskLevel": 5,
+    "number": 808,
+    "hanzi": "公元",
+    "pinyin": "gōngyuán",
+    "english": "A.D."
+  },
+  {
+    "id": "hsk5-809",
+    "hskLevel": 5,
+    "number": 809,
+    "hanzi": "公主",
+    "pinyin": "gōngzhǔ",
+    "english": "princess"
+  },
+  {
+    "id": "hsk5-810",
+    "hskLevel": 5,
+    "number": 810,
+    "hanzi": "工程师",
+    "pinyin": "gōngchéngshī",
+    "english": "Engineer"
+  },
+  {
+    "id": "hsk5-811",
+    "hskLevel": 5,
+    "number": 811,
+    "hanzi": "工人",
+    "pinyin": "gōngrén",
+    "english": "Worker"
+  },
+  {
+    "id": "hsk5-812",
+    "hskLevel": 5,
+    "number": 812,
+    "hanzi": "恭喜",
+    "pinyin": "gōngxǐ",
+    "english": "congratulations"
+  },
+  {
+    "id": "hsk5-813",
+    "hskLevel": 5,
+    "number": 813,
+    "hanzi": "贡献",
+    "pinyin": "gòngxiàn",
+    "english": "contribution"
+  },
+  {
+    "id": "hsk5-814",
+    "hskLevel": 5,
+    "number": 814,
+    "hanzi": "构成",
+    "pinyin": "gòuchéng",
+    "english": "constitute"
+  },
+  {
+    "id": "hsk5-815",
+    "hskLevel": 5,
+    "number": 815,
+    "hanzi": "姑姑",
+    "pinyin": "gūgu",
+    "english": "aunt"
+  },
+  {
+    "id": "hsk5-816",
+    "hskLevel": 5,
+    "number": 816,
+    "hanzi": "古典",
+    "pinyin": "gǔdiǎn",
+    "english": "classical"
+  },
+  {
+    "id": "hsk5-817",
+    "hskLevel": 5,
+    "number": 817,
+    "hanzi": "鼓舞",
+    "pinyin": "gǔwǔ",
+    "english": "Inspire"
+  },
+  {
+    "id": "hsk5-818",
+    "hskLevel": 5,
+    "number": 818,
+    "hanzi": "股票",
+    "pinyin": "gǔpiào",
+    "english": "shares; stock"
+  },
+  {
+    "id": "hsk5-819",
+    "hskLevel": 5,
+    "number": 819,
+    "hanzi": "固定",
+    "pinyin": "gùdìng",
+    "english": "fixed"
+  },
+  {
+    "id": "hsk5-820",
+    "hskLevel": 5,
+    "number": 820,
+    "hanzi": "挂号",
+    "pinyin": "guàhào",
+    "english": "Register"
+  },
+  {
+    "id": "hsk5-821",
+    "hskLevel": 5,
+    "number": 821,
+    "hanzi": "拐弯",
+    "pinyin": "guǎiwān",
+    "english": "Turn"
+  },
+  {
+    "id": "hsk5-822",
+    "hskLevel": 5,
+    "number": 822,
+    "hanzi": "官",
+    "pinyin": "guān",
+    "english": "officer"
+  },
+  {
+    "id": "hsk5-823",
+    "hskLevel": 5,
+    "number": 823,
+    "hanzi": "关闭",
+    "pinyin": "guānbì",
+    "english": "close; shut"
+  },
+  {
+    "id": "hsk5-824",
+    "hskLevel": 5,
+    "number": 824,
+    "hanzi": "观点",
+    "pinyin": "guāndiǎn",
+    "english": "viewpoint"
+  },
+  {
+    "id": "hsk5-825",
+    "hskLevel": 5,
+    "number": 825,
+    "hanzi": "管子",
+    "pinyin": "guǎnzi",
+    "english": "pipe"
+  },
+  {
+    "id": "hsk5-826",
+    "hskLevel": 5,
+    "number": 826,
+    "hanzi": "光临",
+    "pinyin": "guānglín",
+    "english": "presence"
+  },
+  {
+    "id": "hsk5-827",
+    "hskLevel": 5,
+    "number": 827,
+    "hanzi": "光盘",
+    "pinyin": "guāngpán",
+    "english": "CD"
+  },
+  {
+    "id": "hsk5-828",
+    "hskLevel": 5,
+    "number": 828,
+    "hanzi": "广场",
+    "pinyin": "guǎngchǎng",
+    "english": "square"
+  },
+  {
+    "id": "hsk5-829",
+    "hskLevel": 5,
+    "number": 829,
+    "hanzi": "广泛",
+    "pinyin": "guǎngfàn",
+    "english": "widely"
+  },
+  {
+    "id": "hsk5-830",
+    "hskLevel": 5,
+    "number": 830,
+    "hanzi": "规矩",
+    "pinyin": "guīju",
+    "english": "Rules"
+  },
+  {
+    "id": "hsk5-831",
+    "hskLevel": 5,
+    "number": 831,
+    "hanzi": "规模",
+    "pinyin": "guīmó",
+    "english": "scale"
+  },
+  {
+    "id": "hsk5-832",
+    "hskLevel": 5,
+    "number": 832,
+    "hanzi": "归纳",
+    "pinyin": "guīnà",
+    "english": "Induce"
+  },
+  {
+    "id": "hsk5-833",
+    "hskLevel": 5,
+    "number": 833,
+    "hanzi": "柜台",
+    "pinyin": "guìtái",
+    "english": "Counter"
+  },
+  {
+    "id": "hsk5-834",
+    "hskLevel": 5,
+    "number": 834,
+    "hanzi": "锅",
+    "pinyin": "guō",
+    "english": "pot"
+  },
+  {
+    "id": "hsk5-835",
+    "hskLevel": 5,
+    "number": 835,
+    "hanzi": "国王",
+    "pinyin": "guówáng",
+    "english": "king"
+  },
+  {
+    "id": "hsk5-836",
+    "hskLevel": 5,
+    "number": 836,
+    "hanzi": "果然",
+    "pinyin": "guǒrán",
+    "english": "Sure enough"
+  },
+  {
+    "id": "hsk5-837",
+    "hskLevel": 5,
+    "number": 837,
+    "hanzi": "过分",
+    "pinyin": "guòfèn",
+    "english": "excessive"
+  },
+  {
+    "id": "hsk5-838",
+    "hskLevel": 5,
+    "number": 838,
+    "hanzi": "过期",
+    "pinyin": "guòqī",
+    "english": "Be overdue"
+  },
+  {
+    "id": "hsk5-839",
+    "hskLevel": 5,
+    "number": 839,
+    "hanzi": "哈",
+    "pinyin": "hā",
+    "english": "ah"
+  },
+  {
+    "id": "hsk5-840",
+    "hskLevel": 5,
+    "number": 840,
+    "hanzi": "海关",
+    "pinyin": "hǎiguān",
+    "english": "Customs"
+  },
+  {
+    "id": "hsk5-841",
+    "hskLevel": 5,
+    "number": 841,
+    "hanzi": "喊",
+    "pinyin": "hǎn",
+    "english": "shout"
+  },
+  {
+    "id": "hsk5-842",
+    "hskLevel": 5,
+    "number": 842,
+    "hanzi": "行业",
+    "pinyin": "hángyè",
+    "english": "industry"
+  },
+  {
+    "id": "hsk5-843",
+    "hskLevel": 5,
+    "number": 843,
+    "hanzi": "好客",
+    "pinyin": "hàokè",
+    "english": "Hospitable"
+  },
+  {
+    "id": "hsk5-844",
+    "hskLevel": 5,
+    "number": 844,
+    "hanzi": "和平",
+    "pinyin": "hépíng",
+    "english": "peace"
+  },
+  {
+    "id": "hsk5-845",
+    "hskLevel": 5,
+    "number": 845,
+    "hanzi": "何况",
+    "pinyin": "hékuàng",
+    "english": "Not to mention"
+  },
+  {
+    "id": "hsk5-846",
+    "hskLevel": 5,
+    "number": 846,
+    "hanzi": "合影",
+    "pinyin": "héyǐng",
+    "english": "Group photo"
+  },
+  {
+    "id": "hsk5-847",
+    "hskLevel": 5,
+    "number": 847,
+    "hanzi": "核心",
+    "pinyin": "héxīn",
+    "english": "core"
+  },
+  {
+    "id": "hsk5-848",
+    "hskLevel": 5,
+    "number": 848,
+    "hanzi": "后果",
+    "pinyin": "hòuguǒ",
+    "english": "Consequence"
+  },
+  {
+    "id": "hsk5-849",
+    "hskLevel": 5,
+    "number": 849,
+    "hanzi": "忽然",
+    "pinyin": "hūrán",
+    "english": "suddenly"
+  },
+  {
+    "id": "hsk5-850",
+    "hskLevel": 5,
+    "number": 850,
+    "hanzi": "呼吸",
+    "pinyin": "hūxī",
+    "english": "breathing"
+  },
+  {
+    "id": "hsk5-851",
+    "hskLevel": 5,
+    "number": 851,
+    "hanzi": "蝴蝶",
+    "pinyin": "húdié",
+    "english": "Butterfly"
+  },
+  {
+    "id": "hsk5-852",
+    "hskLevel": 5,
+    "number": 852,
+    "hanzi": "胡同",
+    "pinyin": "hútòng",
+    "english": "Hutong"
+  },
+  {
+    "id": "hsk5-853",
+    "hskLevel": 5,
+    "number": 853,
+    "hanzi": "华裔",
+    "pinyin": "huáyì",
+    "english": "Chinese born"
+  },
+  {
+    "id": "hsk5-854",
+    "hskLevel": 5,
+    "number": 854,
+    "hanzi": "滑",
+    "pinyin": "huá",
+    "english": "slippery"
+  },
+  {
+    "id": "hsk5-855",
+    "hskLevel": 5,
+    "number": 855,
+    "hanzi": "化学",
+    "pinyin": "huàxué",
+    "english": "Chemistry"
+  },
+  {
+    "id": "hsk5-856",
+    "hskLevel": 5,
+    "number": 856,
+    "hanzi": "缓解",
+    "pinyin": "huǎnjiě",
+    "english": "relieve"
+  },
+  {
+    "id": "hsk5-857",
+    "hskLevel": 5,
+    "number": 857,
+    "hanzi": "幻想",
+    "pinyin": "huànxiǎng",
+    "english": "fantasy"
+  },
+  {
+    "id": "hsk5-858",
+    "hskLevel": 5,
+    "number": 858,
+    "hanzi": "挥",
+    "pinyin": "huī",
+    "english": "Essential"
+  },
+  {
+    "id": "hsk5-859",
+    "hskLevel": 5,
+    "number": 859,
+    "hanzi": "灰尘",
+    "pinyin": "huīchén",
+    "english": "dust"
+  },
+  {
+    "id": "hsk5-860",
+    "hskLevel": 5,
+    "number": 860,
+    "hanzi": "恢复",
+    "pinyin": "huīfù",
+    "english": "recovery"
+  },
+  {
+    "id": "hsk5-861",
+    "hskLevel": 5,
+    "number": 861,
+    "hanzi": "汇率",
+    "pinyin": "huìlǜ",
+    "english": "exchange rate"
+  },
+  {
+    "id": "hsk5-862",
+    "hskLevel": 5,
+    "number": 862,
+    "hanzi": "婚姻",
+    "pinyin": "hūnyīn",
+    "english": "Marriage"
+  },
+  {
+    "id": "hsk5-863",
+    "hskLevel": 5,
+    "number": 863,
+    "hanzi": "火柴",
+    "pinyin": "huǒchái",
+    "english": "Match"
+  },
+  {
+    "id": "hsk5-864",
+    "hskLevel": 5,
+    "number": 864,
+    "hanzi": "激烈",
+    "pinyin": "jīliè",
+    "english": "fierce"
+  },
+  {
+    "id": "hsk5-865",
+    "hskLevel": 5,
+    "number": 865,
+    "hanzi": "肌肉",
+    "pinyin": "jīròu",
+    "english": "muscle"
+  },
+  {
+    "id": "hsk5-866",
+    "hskLevel": 5,
+    "number": 866,
+    "hanzi": "极其",
+    "pinyin": "jíqí",
+    "english": "extremely"
+  },
+  {
+    "id": "hsk5-867",
+    "hskLevel": 5,
+    "number": 867,
+    "hanzi": "集体",
+    "pinyin": "jítǐ",
+    "english": "collective"
+  },
+  {
+    "id": "hsk5-868",
+    "hskLevel": 5,
+    "number": 868,
+    "hanzi": "急忙",
+    "pinyin": "jímáng",
+    "english": "Hastily"
+  },
+  {
+    "id": "hsk5-869",
+    "hskLevel": 5,
+    "number": 869,
+    "hanzi": "记录",
+    "pinyin": "jìlù",
+    "english": "Record"
+  },
+  {
+    "id": "hsk5-870",
+    "hskLevel": 5,
+    "number": 870,
+    "hanzi": "计算",
+    "pinyin": "jìsuàn",
+    "english": "Calculation"
+  },
+  {
+    "id": "hsk5-871",
+    "hskLevel": 5,
+    "number": 871,
+    "hanzi": "系领带",
+    "pinyin": "jìlǐngdài",
+    "english": "wear a tie"
+  },
+  {
+    "id": "hsk5-872",
+    "hskLevel": 5,
+    "number": 872,
+    "hanzi": "纪律",
+    "pinyin": "jìlǜ",
+    "english": "discipline"
+  },
+  {
+    "id": "hsk5-873",
+    "hskLevel": 5,
+    "number": 873,
+    "hanzi": "寂寞",
+    "pinyin": "jìmò",
+    "english": "lonely"
+  },
+  {
+    "id": "hsk5-874",
+    "hskLevel": 5,
+    "number": 874,
+    "hanzi": "家庭",
+    "pinyin": "jiātíng",
+    "english": "Family"
+  },
+  {
+    "id": "hsk5-875",
+    "hskLevel": 5,
+    "number": 875,
+    "hanzi": "家乡",
+    "pinyin": "jiāxiāng",
+    "english": "Hometown"
+  },
+  {
+    "id": "hsk5-876",
+    "hskLevel": 5,
+    "number": 876,
+    "hanzi": "夹子",
+    "pinyin": "jiāzi",
+    "english": "Clip"
+  },
+  {
+    "id": "hsk5-877",
+    "hskLevel": 5,
+    "number": 877,
+    "hanzi": "假设",
+    "pinyin": "jiǎshè",
+    "english": "in case of"
+  },
+  {
+    "id": "hsk5-878",
+    "hskLevel": 5,
+    "number": 878,
+    "hanzi": "嫁",
+    "pinyin": "jià",
+    "english": "get married to"
+  },
+  {
+    "id": "hsk5-879",
+    "hskLevel": 5,
+    "number": 879,
+    "hanzi": "价值",
+    "pinyin": "jiàzhí",
+    "english": "value"
+  },
+  {
+    "id": "hsk5-880",
+    "hskLevel": 5,
+    "number": 880,
+    "hanzi": "肩膀",
+    "pinyin": "jiānbǎng",
+    "english": "shoulder"
+  },
+  {
+    "id": "hsk5-881",
+    "hskLevel": 5,
+    "number": 881,
+    "hanzi": "坚决",
+    "pinyin": "jiānjué",
+    "english": "firm, determined"
+  },
+  {
+    "id": "hsk5-882",
+    "hskLevel": 5,
+    "number": 882,
+    "hanzi": "艰巨",
+    "pinyin": "jiānjù",
+    "english": "arduous"
+  },
+  {
+    "id": "hsk5-883",
+    "hskLevel": 5,
+    "number": 883,
+    "hanzi": "兼职",
+    "pinyin": "jiānzhí",
+    "english": "Part-time job"
+  },
+  {
+    "id": "hsk5-884",
+    "hskLevel": 5,
+    "number": 884,
+    "hanzi": "简历",
+    "pinyin": "jiǎnlì",
+    "english": "resume"
+  },
+  {
+    "id": "hsk5-885",
+    "hskLevel": 5,
+    "number": 885,
+    "hanzi": "剪刀",
+    "pinyin": "jiǎndāo",
+    "english": "scissors"
+  },
+  {
+    "id": "hsk5-886",
+    "hskLevel": 5,
+    "number": 886,
+    "hanzi": "建立",
+    "pinyin": "jiànlì",
+    "english": "establish"
+  },
+  {
+    "id": "hsk5-887",
+    "hskLevel": 5,
+    "number": 887,
+    "hanzi": "讲究",
+    "pinyin": "jiǎngjiu",
+    "english": "Pay attention to; daintily"
+  },
+  {
+    "id": "hsk5-888",
+    "hskLevel": 5,
+    "number": 888,
+    "hanzi": "交际",
+    "pinyin": "jiāojì",
+    "english": "communication"
+  },
+  {
+    "id": "hsk5-889",
+    "hskLevel": 5,
+    "number": 889,
+    "hanzi": "胶水",
+    "pinyin": "jiāoshuǐ",
+    "english": "glue"
+  },
+  {
+    "id": "hsk5-890",
+    "hskLevel": 5,
+    "number": 890,
+    "hanzi": "狡猾",
+    "pinyin": "jiǎohuá",
+    "english": "cunning"
+  },
+  {
+    "id": "hsk5-891",
+    "hskLevel": 5,
+    "number": 891,
+    "hanzi": "教练",
+    "pinyin": "jiàoliàn",
+    "english": "coach"
+  },
+  {
+    "id": "hsk5-892",
+    "hskLevel": 5,
+    "number": 892,
+    "hanzi": "接触",
+    "pinyin": "jiēchù",
+    "english": "Contact"
+  },
+  {
+    "id": "hsk5-893",
+    "hskLevel": 5,
+    "number": 893,
+    "hanzi": "接近",
+    "pinyin": "jiējìn",
+    "english": "near"
+  },
+  {
+    "id": "hsk5-894",
+    "hskLevel": 5,
+    "number": 894,
+    "hanzi": "阶段",
+    "pinyin": "jiēduàn",
+    "english": "stage"
+  },
+  {
+    "id": "hsk5-895",
+    "hskLevel": 5,
+    "number": 895,
+    "hanzi": "戒指",
+    "pinyin": "jièzhi",
+    "english": "Ring"
+  },
+  {
+    "id": "hsk5-896",
+    "hskLevel": 5,
+    "number": 896,
+    "hanzi": "金属",
+    "pinyin": "jīnshǔ",
+    "english": "Metal"
+  },
+  {
+    "id": "hsk5-897",
+    "hskLevel": 5,
+    "number": 897,
+    "hanzi": "进口",
+    "pinyin": "jìnkǒu",
+    "english": "Imported"
+  },
+  {
+    "id": "hsk5-898",
+    "hskLevel": 5,
+    "number": 898,
+    "hanzi": "尽力",
+    "pinyin": "jìnlì",
+    "english": "Try the best"
+  },
+  {
+    "id": "hsk5-899",
+    "hskLevel": 5,
+    "number": 899,
+    "hanzi": "精力",
+    "pinyin": "jīnglì",
+    "english": "energy"
+  },
+  {
+    "id": "hsk5-900",
+    "hskLevel": 5,
+    "number": 900,
+    "hanzi": "经商",
+    "pinyin": "jīngshāng",
+    "english": "be in business; trade"
+  },
+  {
+    "id": "hsk5-901",
+    "hskLevel": 5,
+    "number": 901,
+    "hanzi": "经营",
+    "pinyin": "jīngyíng",
+    "english": "Management"
+  },
+  {
+    "id": "hsk5-902",
+    "hskLevel": 5,
+    "number": 902,
+    "hanzi": "酒吧",
+    "pinyin": "jiǔbā",
+    "english": "Bar"
+  },
+  {
+    "id": "hsk5-903",
+    "hskLevel": 5,
+    "number": 903,
+    "hanzi": "救护车",
+    "pinyin": "jiùhùchē",
+    "english": "Ambulance"
+  },
+  {
+    "id": "hsk5-904",
+    "hskLevel": 5,
+    "number": 904,
+    "hanzi": "居然",
+    "pinyin": "jūrán",
+    "english": "actually"
+  },
+  {
+    "id": "hsk5-905",
+    "hskLevel": 5,
+    "number": 905,
+    "hanzi": "具体",
+    "pinyin": "jùtǐ",
+    "english": "specific"
+  },
+  {
+    "id": "hsk5-906",
+    "hskLevel": 5,
+    "number": 906,
+    "hanzi": "俱乐部",
+    "pinyin": "jùlèbù",
+    "english": "Club"
+  },
+  {
+    "id": "hsk5-907",
+    "hskLevel": 5,
+    "number": 907,
+    "hanzi": "据说",
+    "pinyin": "jùshuō",
+    "english": "allegedly; it`s said"
+  },
+  {
+    "id": "hsk5-908",
+    "hskLevel": 5,
+    "number": 908,
+    "hanzi": "捐",
+    "pinyin": "juān",
+    "english": "Donate"
+  },
+  {
+    "id": "hsk5-909",
+    "hskLevel": 5,
+    "number": 909,
+    "hanzi": "决心",
+    "pinyin": "juéxīn",
+    "english": "Determination"
+  },
+  {
+    "id": "hsk5-910",
+    "hskLevel": 5,
+    "number": 910,
+    "hanzi": "角色",
+    "pinyin": "juésè",
+    "english": "role"
+  },
+  {
+    "id": "hsk5-911",
+    "hskLevel": 5,
+    "number": 911,
+    "hanzi": "均匀",
+    "pinyin": "jūnyún",
+    "english": "uniformity"
+  },
+  {
+    "id": "hsk5-912",
+    "hskLevel": 5,
+    "number": 912,
+    "hanzi": "卡车",
+    "pinyin": "kǎchē",
+    "english": "Truck"
+  },
+  {
+    "id": "hsk5-913",
+    "hskLevel": 5,
+    "number": 913,
+    "hanzi": "开发",
+    "pinyin": "kāifā",
+    "english": "Development"
+  },
+  {
+    "id": "hsk5-914",
+    "hskLevel": 5,
+    "number": 914,
+    "hanzi": "开幕式",
+    "pinyin": "kāimùshì",
+    "english": "The opening ceremony"
+  },
+  {
+    "id": "hsk5-915",
+    "hskLevel": 5,
+    "number": 915,
+    "hanzi": "看望",
+    "pinyin": "kànwàng",
+    "english": "visit"
+  },
+  {
+    "id": "hsk5-916",
+    "hskLevel": 5,
+    "number": 916,
+    "hanzi": "靠",
+    "pinyin": "kào",
+    "english": "lean"
+  },
+  {
+    "id": "hsk5-917",
+    "hskLevel": 5,
+    "number": 917,
+    "hanzi": "颗",
+    "pinyin": "kē",
+    "english": "pellet (measure word)"
+  },
+  {
+    "id": "hsk5-918",
+    "hskLevel": 5,
+    "number": 918,
+    "hanzi": "可靠",
+    "pinyin": "kěkào",
+    "english": "reliable"
+  },
+  {
+    "id": "hsk5-919",
+    "hskLevel": 5,
+    "number": 919,
+    "hanzi": "课程",
+    "pinyin": "kèchéng",
+    "english": "curriculum"
+  },
+  {
+    "id": "hsk5-920",
+    "hskLevel": 5,
+    "number": 920,
+    "hanzi": "克服",
+    "pinyin": "kèfú",
+    "english": "Overcome"
+  },
+  {
+    "id": "hsk5-921",
+    "hskLevel": 5,
+    "number": 921,
+    "hanzi": "刻苦",
+    "pinyin": "kèkǔ",
+    "english": "Hardworking"
+  },
+  {
+    "id": "hsk5-922",
+    "hskLevel": 5,
+    "number": 922,
+    "hanzi": "空间",
+    "pinyin": "kōngjiān",
+    "english": "space"
+  },
+  {
+    "id": "hsk5-923",
+    "hskLevel": 5,
+    "number": 923,
+    "hanzi": "空闲",
+    "pinyin": "kòngxián",
+    "english": "free"
+  },
+  {
+    "id": "hsk5-924",
+    "hskLevel": 5,
+    "number": 924,
+    "hanzi": "夸张",
+    "pinyin": "kuāzhāng",
+    "english": "exagerate"
+  },
+  {
+    "id": "hsk5-925",
+    "hskLevel": 5,
+    "number": 925,
+    "hanzi": "会计",
+    "pinyin": "kuàijì",
+    "english": "accountant"
+  },
+  {
+    "id": "hsk5-926",
+    "hskLevel": 5,
+    "number": 926,
+    "hanzi": "宽",
+    "pinyin": "kuān",
+    "english": "wide"
+  },
+  {
+    "id": "hsk5-927",
+    "hskLevel": 5,
+    "number": 927,
+    "hanzi": "昆虫",
+    "pinyin": "kūnchóng",
+    "english": "insect"
+  },
+  {
+    "id": "hsk5-928",
+    "hskLevel": 5,
+    "number": 928,
+    "hanzi": "拦",
+    "pinyin": "lán",
+    "english": "Stop"
+  },
+  {
+    "id": "hsk5-929",
+    "hskLevel": 5,
+    "number": 929,
+    "hanzi": "朗读",
+    "pinyin": "lǎngdú",
+    "english": "Reading aloud"
+  },
+  {
+    "id": "hsk5-930",
+    "hskLevel": 5,
+    "number": 930,
+    "hanzi": "劳驾",
+    "pinyin": "láojià",
+    "english": "Excuse me"
+  },
+  {
+    "id": "hsk5-931",
+    "hskLevel": 5,
+    "number": 931,
+    "hanzi": "老百姓",
+    "pinyin": "lǎobǎixìng",
+    "english": "Ordinary people"
+  },
+  {
+    "id": "hsk5-932",
+    "hskLevel": 5,
+    "number": 932,
+    "hanzi": "老实",
+    "pinyin": "lǎoshi",
+    "english": "honest"
+  },
+  {
+    "id": "hsk5-933",
+    "hskLevel": 5,
+    "number": 933,
+    "hanzi": "老婆",
+    "pinyin": "lǎopó",
+    "english": "wife"
+  },
+  {
+    "id": "hsk5-934",
+    "hskLevel": 5,
+    "number": 934,
+    "hanzi": "乐观",
+    "pinyin": "lèguān",
+    "english": "optimistic"
+  },
+  {
+    "id": "hsk5-935",
+    "hskLevel": 5,
+    "number": 935,
+    "hanzi": "雷",
+    "pinyin": "léi",
+    "english": "Thunder"
+  },
+  {
+    "id": "hsk5-936",
+    "hskLevel": 5,
+    "number": 936,
+    "hanzi": "类型",
+    "pinyin": "lèixíng",
+    "english": "type"
+  },
+  {
+    "id": "hsk5-937",
+    "hskLevel": 5,
+    "number": 937,
+    "hanzi": "冷淡",
+    "pinyin": "lěngdàn",
+    "english": "cool attitude"
+  },
+  {
+    "id": "hsk5-938",
+    "hskLevel": 5,
+    "number": 938,
+    "hanzi": "梨",
+    "pinyin": "lí",
+    "english": "pear"
+  },
+  {
+    "id": "hsk5-939",
+    "hskLevel": 5,
+    "number": 939,
+    "hanzi": "离婚",
+    "pinyin": "líhūn",
+    "english": "divorce"
+  },
+  {
+    "id": "hsk5-940",
+    "hskLevel": 5,
+    "number": 940,
+    "hanzi": "厘米",
+    "pinyin": "límǐ",
+    "english": "centimeter"
+  },
+  {
+    "id": "hsk5-941",
+    "hskLevel": 5,
+    "number": 941,
+    "hanzi": "立即",
+    "pinyin": "lìjí",
+    "english": "immediately"
+  },
+  {
+    "id": "hsk5-942",
+    "hskLevel": 5,
+    "number": 942,
+    "hanzi": "利润",
+    "pinyin": "lìrùn",
+    "english": "profit"
+  },
+  {
+    "id": "hsk5-943",
+    "hskLevel": 5,
+    "number": 943,
+    "hanzi": "利益",
+    "pinyin": "lìyì",
+    "english": "interest"
+  },
+  {
+    "id": "hsk5-944",
+    "hskLevel": 5,
+    "number": 944,
+    "hanzi": "连续",
+    "pinyin": "liánxù",
+    "english": "serial"
+  },
+  {
+    "id": "hsk5-945",
+    "hskLevel": 5,
+    "number": 945,
+    "hanzi": "恋爱",
+    "pinyin": "liàn’ài",
+    "english": "Love, in love"
+  },
+  {
+    "id": "hsk5-946",
+    "hskLevel": 5,
+    "number": 946,
+    "hanzi": "良好",
+    "pinyin": "liánghǎo",
+    "english": "good"
+  },
+  {
+    "id": "hsk5-947",
+    "hskLevel": 5,
+    "number": 947,
+    "hanzi": "粮食",
+    "pinyin": "liángshi",
+    "english": "foodstuff"
+  },
+  {
+    "id": "hsk5-948",
+    "hskLevel": 5,
+    "number": 948,
+    "hanzi": "亮",
+    "pinyin": "liàng",
+    "english": "bright"
+  },
+  {
+    "id": "hsk5-949",
+    "hskLevel": 5,
+    "number": 949,
+    "hanzi": "铃",
+    "pinyin": "líng",
+    "english": "bell"
+  },
+  {
+    "id": "hsk5-950",
+    "hskLevel": 5,
+    "number": 950,
+    "hanzi": "零件",
+    "pinyin": "língjiàn",
+    "english": "Spare parts"
+  },
+  {
+    "id": "hsk5-951",
+    "hskLevel": 5,
+    "number": 951,
+    "hanzi": "零食",
+    "pinyin": "língshí",
+    "english": "snacks"
+  },
+  {
+    "id": "hsk5-952",
+    "hskLevel": 5,
+    "number": 952,
+    "hanzi": "领导",
+    "pinyin": "lǐngdǎo",
+    "english": "Leader"
+  },
+  {
+    "id": "hsk5-953",
+    "hskLevel": 5,
+    "number": 953,
+    "hanzi": "流泪",
+    "pinyin": "liúlèi",
+    "english": "Shed tears"
+  },
+  {
+    "id": "hsk5-954",
+    "hskLevel": 5,
+    "number": 954,
+    "hanzi": "陆续",
+    "pinyin": "lùxù",
+    "english": "One after another"
+  },
+  {
+    "id": "hsk5-955",
+    "hskLevel": 5,
+    "number": 955,
+    "hanzi": "录音",
+    "pinyin": "lùyīn",
+    "english": "Sound recording"
+  },
+  {
+    "id": "hsk5-956",
+    "hskLevel": 5,
+    "number": 956,
+    "hanzi": "轮流",
+    "pinyin": "lúnliú",
+    "english": "take turns"
+  },
+  {
+    "id": "hsk5-957",
+    "hskLevel": 5,
+    "number": 957,
+    "hanzi": "逻辑",
+    "pinyin": "luóji",
+    "english": "logic"
+  },
+  {
+    "id": "hsk5-958",
+    "hskLevel": 5,
+    "number": 958,
+    "hanzi": "馒头",
+    "pinyin": "mántou",
+    "english": "Steamed buns"
+  },
+  {
+    "id": "hsk5-959",
+    "hskLevel": 5,
+    "number": 959,
+    "hanzi": "毛病",
+    "pinyin": "máobìng",
+    "english": "Trouble"
+  },
+  {
+    "id": "hsk5-960",
+    "hskLevel": 5,
+    "number": 960,
+    "hanzi": "矛盾",
+    "pinyin": "máodùn",
+    "english": "contradiction"
+  },
+  {
+    "id": "hsk5-961",
+    "hskLevel": 5,
+    "number": 961,
+    "hanzi": "贸易",
+    "pinyin": "màoyì",
+    "english": "Trade"
+  },
+  {
+    "id": "hsk5-962",
+    "hskLevel": 5,
+    "number": 962,
+    "hanzi": "媒体",
+    "pinyin": "méitǐ",
+    "english": "media"
+  },
+  {
+    "id": "hsk5-963",
+    "hskLevel": 5,
+    "number": 963,
+    "hanzi": "煤炭",
+    "pinyin": "méitàn",
+    "english": "coal"
+  },
+  {
+    "id": "hsk5-964",
+    "hskLevel": 5,
+    "number": 964,
+    "hanzi": "魅力",
+    "pinyin": "mèilì",
+    "english": "charm"
+  },
+  {
+    "id": "hsk5-965",
+    "hskLevel": 5,
+    "number": 965,
+    "hanzi": "梦想",
+    "pinyin": "mèngxiǎng",
+    "english": "Dream"
+  },
+  {
+    "id": "hsk5-966",
+    "hskLevel": 5,
+    "number": 966,
+    "hanzi": "蜜蜂",
+    "pinyin": "mìfēng",
+    "english": "honeybee"
+  },
+  {
+    "id": "hsk5-967",
+    "hskLevel": 5,
+    "number": 967,
+    "hanzi": "密切",
+    "pinyin": "mìqiè",
+    "english": "close"
+  },
+  {
+    "id": "hsk5-968",
+    "hskLevel": 5,
+    "number": 968,
+    "hanzi": "秘书",
+    "pinyin": "mìshū",
+    "english": "secretary"
+  },
+  {
+    "id": "hsk5-969",
+    "hskLevel": 5,
+    "number": 969,
+    "hanzi": "面积",
+    "pinyin": "miànjī",
+    "english": "The measure of area"
+  },
+  {
+    "id": "hsk5-970",
+    "hskLevel": 5,
+    "number": 970,
+    "hanzi": "描写",
+    "pinyin": "miáoxiě",
+    "english": "describe"
+  },
+  {
+    "id": "hsk5-971",
+    "hskLevel": 5,
+    "number": 971,
+    "hanzi": "敏感",
+    "pinyin": "mǐngǎn",
+    "english": "Sensitive"
+  },
+  {
+    "id": "hsk5-972",
+    "hskLevel": 5,
+    "number": 972,
+    "hanzi": "明星",
+    "pinyin": "míngxīng",
+    "english": "Star"
+  },
+  {
+    "id": "hsk5-973",
+    "hskLevel": 5,
+    "number": 973,
+    "hanzi": "名片",
+    "pinyin": "míngpiàn",
+    "english": "business card"
+  },
+  {
+    "id": "hsk5-974",
+    "hskLevel": 5,
+    "number": 974,
+    "hanzi": "命运",
+    "pinyin": "mìngyùn",
+    "english": "fate, destiny"
+  },
+  {
+    "id": "hsk5-975",
+    "hskLevel": 5,
+    "number": 975,
+    "hanzi": "模仿",
+    "pinyin": "mófǎng",
+    "english": "imitate"
+  },
+  {
+    "id": "hsk5-976",
+    "hskLevel": 5,
+    "number": 976,
+    "hanzi": "模特",
+    "pinyin": "mótè",
+    "english": "model"
+  },
+  {
+    "id": "hsk5-977",
+    "hskLevel": 5,
+    "number": 977,
+    "hanzi": "陌生",
+    "pinyin": "mòshēng",
+    "english": "strange"
+  },
+  {
+    "id": "hsk5-978",
+    "hskLevel": 5,
+    "number": 978,
+    "hanzi": "目前",
+    "pinyin": "mùqián",
+    "english": "at present"
+  },
+  {
+    "id": "hsk5-979",
+    "hskLevel": 5,
+    "number": 979,
+    "hanzi": "难怪",
+    "pinyin": "nánguài",
+    "english": "no wonder"
+  },
+  {
+    "id": "hsk5-980",
+    "hskLevel": 5,
+    "number": 980,
+    "hanzi": "内部",
+    "pinyin": "nèibù",
+    "english": "interior"
+  },
+  {
+    "id": "hsk5-981",
+    "hskLevel": 5,
+    "number": 981,
+    "hanzi": "嗯",
+    "pinyin": "en",
+    "english": "Well"
+  },
+  {
+    "id": "hsk5-982",
+    "hskLevel": 5,
+    "number": 982,
+    "hanzi": "念",
+    "pinyin": "niàn",
+    "english": "Read"
+  },
+  {
+    "id": "hsk5-983",
+    "hskLevel": 5,
+    "number": 983,
+    "hanzi": "浓",
+    "pinyin": "nóng",
+    "english": "strong"
+  },
+  {
+    "id": "hsk5-984",
+    "hskLevel": 5,
+    "number": 984,
+    "hanzi": "农民",
+    "pinyin": "nóngmín",
+    "english": "farmer"
+  },
+  {
+    "id": "hsk5-985",
+    "hskLevel": 5,
+    "number": 985,
+    "hanzi": "欧洲",
+    "pinyin": "Ōuzhōu",
+    "english": "Europe"
+  },
+  {
+    "id": "hsk5-986",
+    "hskLevel": 5,
+    "number": 986,
+    "hanzi": "偶然",
+    "pinyin": "ǒurán",
+    "english": "accidental"
+  },
+  {
+    "id": "hsk5-987",
+    "hskLevel": 5,
+    "number": 987,
+    "hanzi": "拍",
+    "pinyin": "pāi",
+    "english": "beat"
+  },
+  {
+    "id": "hsk5-988",
+    "hskLevel": 5,
+    "number": 988,
+    "hanzi": "盼望",
+    "pinyin": "pànwàng",
+    "english": "look forward to"
+  },
+  {
+    "id": "hsk5-989",
+    "hskLevel": 5,
+    "number": 989,
+    "hanzi": "培训",
+    "pinyin": "péixùn",
+    "english": "Train"
+  },
+  {
+    "id": "hsk5-990",
+    "hskLevel": 5,
+    "number": 990,
+    "hanzi": "佩服",
+    "pinyin": "pèifu",
+    "english": "Admire"
+  },
+  {
+    "id": "hsk5-991",
+    "hskLevel": 5,
+    "number": 991,
+    "hanzi": "盆",
+    "pinyin": "pén",
+    "english": "basin, pot"
+  },
+  {
+    "id": "hsk5-992",
+    "hskLevel": 5,
+    "number": 992,
+    "hanzi": "碰",
+    "pinyin": "pèng",
+    "english": "touch, meet"
+  },
+  {
+    "id": "hsk5-993",
+    "hskLevel": 5,
+    "number": 993,
+    "hanzi": "批",
+    "pinyin": "pī",
+    "english": "batch"
+  },
+  {
+    "id": "hsk5-994",
+    "hskLevel": 5,
+    "number": 994,
+    "hanzi": "批准",
+    "pinyin": "pīzhǔn",
+    "english": "Approval"
+  },
+  {
+    "id": "hsk5-995",
+    "hskLevel": 5,
+    "number": 995,
+    "hanzi": "疲劳",
+    "pinyin": "píláo",
+    "english": "fatigue"
+  },
+  {
+    "id": "hsk5-996",
+    "hskLevel": 5,
+    "number": 996,
+    "hanzi": "匹",
+    "pinyin": "pǐ",
+    "english": "Horse (meaure word)"
+  },
+  {
+    "id": "hsk5-997",
+    "hskLevel": 5,
+    "number": 997,
+    "hanzi": "片",
+    "pinyin": "piàn",
+    "english": "slice"
+  },
+  {
+    "id": "hsk5-998",
+    "hskLevel": 5,
+    "number": 998,
+    "hanzi": "飘",
+    "pinyin": "piāo",
+    "english": "Gone with the wind"
+  },
+  {
+    "id": "hsk5-999",
+    "hskLevel": 5,
+    "number": 999,
+    "hanzi": "频道",
+    "pinyin": "píndào",
+    "english": "channel"
+  },
+  {
+    "id": "hsk5-1000",
+    "hskLevel": 5,
+    "number": 1000,
+    "hanzi": "凭",
+    "pinyin": "píng",
+    "english": "By"
+  },
+  {
+    "id": "hsk5-1001",
+    "hskLevel": 5,
+    "number": 1001,
+    "hanzi": "平安",
+    "pinyin": "píng’ān",
+    "english": "sound and safe"
+  },
+  {
+    "id": "hsk5-1002",
+    "hskLevel": 5,
+    "number": 1002,
+    "hanzi": "平等",
+    "pinyin": "píngděng",
+    "english": "equality"
+  },
+  {
+    "id": "hsk5-1003",
+    "hskLevel": 5,
+    "number": 1003,
+    "hanzi": "平衡",
+    "pinyin": "pínghéng",
+    "english": "balance"
+  },
+  {
+    "id": "hsk5-1004",
+    "hskLevel": 5,
+    "number": 1004,
+    "hanzi": "平均",
+    "pinyin": "píngjūn",
+    "english": "Average"
+  },
+  {
+    "id": "hsk5-1005",
+    "hskLevel": 5,
+    "number": 1005,
+    "hanzi": "破产",
+    "pinyin": "pòchǎn",
+    "english": "bankruptcy"
+  },
+  {
+    "id": "hsk5-1006",
+    "hskLevel": 5,
+    "number": 1006,
+    "hanzi": "迫切",
+    "pinyin": "pòqiè",
+    "english": "urgent"
+  },
+  {
+    "id": "hsk5-1007",
+    "hskLevel": 5,
+    "number": 1007,
+    "hanzi": "期间",
+    "pinyin": "qījiān",
+    "english": "Period"
+  },
+  {
+    "id": "hsk5-1008",
+    "hskLevel": 5,
+    "number": 1008,
+    "hanzi": "其余",
+    "pinyin": "qíyú",
+    "english": "Rest"
+  },
+  {
+    "id": "hsk5-1009",
+    "hskLevel": 5,
+    "number": 1009,
+    "hanzi": "企业",
+    "pinyin": "qǐyè",
+    "english": "enterprise"
+  },
+  {
+    "id": "hsk5-1010",
+    "hskLevel": 5,
+    "number": 1010,
+    "hanzi": "前途",
+    "pinyin": "qiántú",
+    "english": "future"
+  },
+  {
+    "id": "hsk5-1011",
+    "hskLevel": 5,
+    "number": 1011,
+    "hanzi": "欠",
+    "pinyin": "qiàn",
+    "english": "owe"
+  },
+  {
+    "id": "hsk5-1012",
+    "hskLevel": 5,
+    "number": 1012,
+    "hanzi": "墙",
+    "pinyin": "qiáng",
+    "english": "wall"
+  },
+  {
+    "id": "hsk5-1013",
+    "hskLevel": 5,
+    "number": 1013,
+    "hanzi": "强烈",
+    "pinyin": "qiángliè",
+    "english": "strong"
+  },
+  {
+    "id": "hsk5-1014",
+    "hskLevel": 5,
+    "number": 1014,
+    "hanzi": "切",
+    "pinyin": "qiē",
+    "english": "cut"
+  },
+  {
+    "id": "hsk5-1015",
+    "hskLevel": 5,
+    "number": 1015,
+    "hanzi": "亲自",
+    "pinyin": "qīnzì",
+    "english": "personally"
+  },
+  {
+    "id": "hsk5-1016",
+    "hskLevel": 5,
+    "number": 1016,
+    "hanzi": "青",
+    "pinyin": "qīng",
+    "english": "young"
+  },
+  {
+    "id": "hsk5-1017",
+    "hskLevel": 5,
+    "number": 1017,
+    "hanzi": "青少年",
+    "pinyin": "qīngshàonián",
+    "english": "Teenagers"
+  },
+  {
+    "id": "hsk5-1018",
+    "hskLevel": 5,
+    "number": 1018,
+    "hanzi": "轻易",
+    "pinyin": "qīngyì",
+    "english": "easily"
+  },
+  {
+    "id": "hsk5-1019",
+    "hskLevel": 5,
+    "number": 1019,
+    "hanzi": "清淡",
+    "pinyin": "qīngdàn",
+    "english": "light"
+  },
+  {
+    "id": "hsk5-1020",
+    "hskLevel": 5,
+    "number": 1020,
+    "hanzi": "情景",
+    "pinyin": "qíngjǐng",
+    "english": "scene"
+  },
+  {
+    "id": "hsk5-1021",
+    "hskLevel": 5,
+    "number": 1021,
+    "hanzi": "情绪",
+    "pinyin": "qíngxù",
+    "english": "emotion"
+  },
+  {
+    "id": "hsk5-1022",
+    "hskLevel": 5,
+    "number": 1022,
+    "hanzi": "庆祝",
+    "pinyin": "qìngzhù",
+    "english": "Celebrate"
+  },
+  {
+    "id": "hsk5-1023",
+    "hskLevel": 5,
+    "number": 1023,
+    "hanzi": "娶",
+    "pinyin": "qǔ",
+    "english": "marry"
+  },
+  {
+    "id": "hsk5-1024",
+    "hskLevel": 5,
+    "number": 1024,
+    "hanzi": "取消",
+    "pinyin": "qǔxiāo",
+    "english": "cancel"
+  },
+  {
+    "id": "hsk5-1025",
+    "hskLevel": 5,
+    "number": 1025,
+    "hanzi": "圈",
+    "pinyin": "quān",
+    "english": "circle"
+  },
+  {
+    "id": "hsk5-1026",
+    "hskLevel": 5,
+    "number": 1026,
+    "hanzi": "全面",
+    "pinyin": "quánmiàn",
+    "english": "comprehensive"
+  },
+  {
+    "id": "hsk5-1027",
+    "hskLevel": 5,
+    "number": 1027,
+    "hanzi": "权利",
+    "pinyin": "quánlì",
+    "english": "right, interest"
+  },
+  {
+    "id": "hsk5-1028",
+    "hskLevel": 5,
+    "number": 1028,
+    "hanzi": "确定",
+    "pinyin": "quèdìng",
+    "english": "Determine"
+  },
+  {
+    "id": "hsk5-1029",
+    "hskLevel": 5,
+    "number": 1029,
+    "hanzi": "热烈",
+    "pinyin": "rèliè",
+    "english": "warm"
+  },
+  {
+    "id": "hsk5-1030",
+    "hskLevel": 5,
+    "number": 1030,
+    "hanzi": "人口",
+    "pinyin": "rénkǒu",
+    "english": "population"
+  },
+  {
+    "id": "hsk5-1031",
+    "hskLevel": 5,
+    "number": 1031,
+    "hanzi": "人民币",
+    "pinyin": "rénmínbì",
+    "english": "RMB"
+  },
+  {
+    "id": "hsk5-1032",
+    "hskLevel": 5,
+    "number": 1032,
+    "hanzi": "人事",
+    "pinyin": "rénshì",
+    "english": "Personnel matters"
+  },
+  {
+    "id": "hsk5-1033",
+    "hskLevel": 5,
+    "number": 1033,
+    "hanzi": "人员",
+    "pinyin": "rényuán",
+    "english": "personnel"
+  },
+  {
+    "id": "hsk5-1034",
+    "hskLevel": 5,
+    "number": 1034,
+    "hanzi": "日常",
+    "pinyin": "rìcháng",
+    "english": "daily"
+  },
+  {
+    "id": "hsk5-1035",
+    "hskLevel": 5,
+    "number": 1035,
+    "hanzi": "日期",
+    "pinyin": "rìqī",
+    "english": "Date"
+  },
+  {
+    "id": "hsk5-1036",
+    "hskLevel": 5,
+    "number": 1036,
+    "hanzi": "日子",
+    "pinyin": "rìzi",
+    "english": "life, days"
+  },
+  {
+    "id": "hsk5-1037",
+    "hskLevel": 5,
+    "number": 1037,
+    "hanzi": "如今",
+    "pinyin": "rújīn",
+    "english": "nowadays"
+  },
+  {
+    "id": "hsk5-1038",
+    "hskLevel": 5,
+    "number": 1038,
+    "hanzi": "软",
+    "pinyin": "ruǎn",
+    "english": "soft"
+  },
+  {
+    "id": "hsk5-1039",
+    "hskLevel": 5,
+    "number": 1039,
+    "hanzi": "弱",
+    "pinyin": "ruò",
+    "english": "weak"
+  },
+  {
+    "id": "hsk5-1040",
+    "hskLevel": 5,
+    "number": 1040,
+    "hanzi": "色彩",
+    "pinyin": "sècǎi",
+    "english": "color"
+  },
+  {
+    "id": "hsk5-1041",
+    "hskLevel": 5,
+    "number": 1041,
+    "hanzi": "杀",
+    "pinyin": "shā",
+    "english": "kill"
+  },
+  {
+    "id": "hsk5-1042",
+    "hskLevel": 5,
+    "number": 1042,
+    "hanzi": "沙漠",
+    "pinyin": "shāmò",
+    "english": "Desert"
+  },
+  {
+    "id": "hsk5-1043",
+    "hskLevel": 5,
+    "number": 1043,
+    "hanzi": "傻",
+    "pinyin": "shǎ",
+    "english": "silly"
+  },
+  {
+    "id": "hsk5-1044",
+    "hskLevel": 5,
+    "number": 1044,
+    "hanzi": "删除",
+    "pinyin": "shānchú",
+    "english": "delete"
+  },
+  {
+    "id": "hsk5-1045",
+    "hskLevel": 5,
+    "number": 1045,
+    "hanzi": "善良",
+    "pinyin": "shànliáng",
+    "english": "kind; virtuous"
+  },
+  {
+    "id": "hsk5-1046",
+    "hskLevel": 5,
+    "number": 1046,
+    "hanzi": "扇子",
+    "pinyin": "shànzi",
+    "english": "Fan"
+  },
+  {
+    "id": "hsk5-1047",
+    "hskLevel": 5,
+    "number": 1047,
+    "hanzi": "商业",
+    "pinyin": "shāngyè",
+    "english": "business"
+  },
+  {
+    "id": "hsk5-1048",
+    "hskLevel": 5,
+    "number": 1048,
+    "hanzi": "上当",
+    "pinyin": "shàngdàng",
+    "english": "When"
+  },
+  {
+    "id": "hsk5-1049",
+    "hskLevel": 5,
+    "number": 1049,
+    "hanzi": "蛇",
+    "pinyin": "shé",
+    "english": "snake"
+  },
+  {
+    "id": "hsk5-1050",
+    "hskLevel": 5,
+    "number": 1050,
+    "hanzi": "设备",
+    "pinyin": "shèbèi",
+    "english": "equipment"
+  },
+  {
+    "id": "hsk5-1051",
+    "hskLevel": 5,
+    "number": 1051,
+    "hanzi": "设施",
+    "pinyin": "shèshī",
+    "english": "facilities"
+  },
+  {
+    "id": "hsk5-1052",
+    "hskLevel": 5,
+    "number": 1052,
+    "hanzi": "射击",
+    "pinyin": "shèjī",
+    "english": "Shooting"
+  },
+  {
+    "id": "hsk5-1053",
+    "hskLevel": 5,
+    "number": 1053,
+    "hanzi": "身材",
+    "pinyin": "shēncái",
+    "english": "figure"
+  },
+  {
+    "id": "hsk5-1054",
+    "hskLevel": 5,
+    "number": 1054,
+    "hanzi": "神话",
+    "pinyin": "shénhuà",
+    "english": "Myth"
+  },
+  {
+    "id": "hsk5-1055",
+    "hskLevel": 5,
+    "number": 1055,
+    "hanzi": "升",
+    "pinyin": "shēng",
+    "english": "rise"
+  },
+  {
+    "id": "hsk5-1056",
+    "hskLevel": 5,
+    "number": 1056,
+    "hanzi": "生产",
+    "pinyin": "shēngchǎn",
+    "english": "production"
+  },
+  {
+    "id": "hsk5-1057",
+    "hskLevel": 5,
+    "number": 1057,
+    "hanzi": "声调",
+    "pinyin": "shēngdiào",
+    "english": "Tone"
+  },
+  {
+    "id": "hsk5-1058",
+    "hskLevel": 5,
+    "number": 1058,
+    "hanzi": "绳子",
+    "pinyin": "shéngzi",
+    "english": "Rope"
+  },
+  {
+    "id": "hsk5-1059",
+    "hskLevel": 5,
+    "number": 1059,
+    "hanzi": "省略",
+    "pinyin": "shěnglüè",
+    "english": "ellipsis"
+  },
+  {
+    "id": "hsk5-1060",
+    "hskLevel": 5,
+    "number": 1060,
+    "hanzi": "胜利",
+    "pinyin": "shènglì",
+    "english": "victory"
+  },
+  {
+    "id": "hsk5-1061",
+    "hskLevel": 5,
+    "number": 1061,
+    "hanzi": "失去",
+    "pinyin": "shīqù",
+    "english": "Lose"
+  },
+  {
+    "id": "hsk5-1062",
+    "hskLevel": 5,
+    "number": 1062,
+    "hanzi": "失业",
+    "pinyin": "shīyè",
+    "english": "Unemployment"
+  },
+  {
+    "id": "hsk5-1063",
+    "hskLevel": 5,
+    "number": 1063,
+    "hanzi": "湿润",
+    "pinyin": "shīrùn",
+    "english": "Moist"
+  },
+  {
+    "id": "hsk5-1064",
+    "hskLevel": 5,
+    "number": 1064,
+    "hanzi": "时差",
+    "pinyin": "shíchā",
+    "english": "time difference"
+  },
+  {
+    "id": "hsk5-1065",
+    "hskLevel": 5,
+    "number": 1065,
+    "hanzi": "时刻",
+    "pinyin": "shíkè",
+    "english": "time"
+  },
+  {
+    "id": "hsk5-1066",
+    "hskLevel": 5,
+    "number": 1066,
+    "hanzi": "时期",
+    "pinyin": "shíqī",
+    "english": "period"
+  },
+  {
+    "id": "hsk5-1067",
+    "hskLevel": 5,
+    "number": 1067,
+    "hanzi": "实话",
+    "pinyin": "shíhuà",
+    "english": "The truth"
+  },
+  {
+    "id": "hsk5-1068",
+    "hskLevel": 5,
+    "number": 1068,
+    "hanzi": "实践",
+    "pinyin": "shíjiàn",
+    "english": "practice"
+  },
+  {
+    "id": "hsk5-1069",
+    "hskLevel": 5,
+    "number": 1069,
+    "hanzi": "实现",
+    "pinyin": "shíxiàn",
+    "english": "Realization"
+  },
+  {
+    "id": "hsk5-1070",
+    "hskLevel": 5,
+    "number": 1070,
+    "hanzi": "实用",
+    "pinyin": "shíyòng",
+    "english": "Practical"
+  },
+  {
+    "id": "hsk5-1071",
+    "hskLevel": 5,
+    "number": 1071,
+    "hanzi": "食物",
+    "pinyin": "shíwù",
+    "english": "food"
+  },
+  {
+    "id": "hsk5-1072",
+    "hskLevel": 5,
+    "number": 1072,
+    "hanzi": "士兵",
+    "pinyin": "shìbīng",
+    "english": "soldiers"
+  },
+  {
+    "id": "hsk5-1073",
+    "hskLevel": 5,
+    "number": 1073,
+    "hanzi": "似的",
+    "pinyin": "shìde",
+    "english": "Likely"
+  },
+  {
+    "id": "hsk5-1074",
+    "hskLevel": 5,
+    "number": 1074,
+    "hanzi": "事实",
+    "pinyin": "shìshí",
+    "english": "Fact"
+  },
+  {
+    "id": "hsk5-1075",
+    "hskLevel": 5,
+    "number": 1075,
+    "hanzi": "事先",
+    "pinyin": "shìxiān",
+    "english": "Prior"
+  },
+  {
+    "id": "hsk5-1076",
+    "hskLevel": 5,
+    "number": 1076,
+    "hanzi": "收获",
+    "pinyin": "shōuhuò",
+    "english": "Harvest"
+  },
+  {
+    "id": "hsk5-1077",
+    "hskLevel": 5,
+    "number": 1077,
+    "hanzi": "手套",
+    "pinyin": "shǒutào",
+    "english": "glove"
+  },
+  {
+    "id": "hsk5-1078",
+    "hskLevel": 5,
+    "number": 1078,
+    "hanzi": "手指",
+    "pinyin": "shǒuzhǐ",
+    "english": "finger"
+  },
+  {
+    "id": "hsk5-1079",
+    "hskLevel": 5,
+    "number": 1079,
+    "hanzi": "蔬菜",
+    "pinyin": "shūcài",
+    "english": "Vegetables"
+  },
+  {
+    "id": "hsk5-1080",
+    "hskLevel": 5,
+    "number": 1080,
+    "hanzi": "舒适",
+    "pinyin": "shūshì",
+    "english": "Comfortable"
+  },
+  {
+    "id": "hsk5-1081",
+    "hskLevel": 5,
+    "number": 1081,
+    "hanzi": "梳子",
+    "pinyin": "shūzi",
+    "english": "comb"
+  },
+  {
+    "id": "hsk5-1082",
+    "hskLevel": 5,
+    "number": 1082,
+    "hanzi": "属于",
+    "pinyin": "shǔyú",
+    "english": "belong to"
+  },
+  {
+    "id": "hsk5-1083",
+    "hskLevel": 5,
+    "number": 1083,
+    "hanzi": "数",
+    "pinyin": "shǔ",
+    "english": "to count"
+  },
+  {
+    "id": "hsk5-1084",
+    "hskLevel": 5,
+    "number": 1084,
+    "hanzi": "甩",
+    "pinyin": "shuǎi",
+    "english": "Rejection"
+  },
+  {
+    "id": "hsk5-1085",
+    "hskLevel": 5,
+    "number": 1085,
+    "hanzi": "说不定",
+    "pinyin": "shuōbudìng",
+    "english": "maybe"
+  },
+  {
+    "id": "hsk5-1086",
+    "hskLevel": 5,
+    "number": 1086,
+    "hanzi": "撕",
+    "pinyin": "sī",
+    "english": "tear"
+  },
+  {
+    "id": "hsk5-1087",
+    "hskLevel": 5,
+    "number": 1087,
+    "hanzi": "丝毫",
+    "pinyin": "sīháo",
+    "english": "A bit"
+  },
+  {
+    "id": "hsk5-1088",
+    "hskLevel": 5,
+    "number": 1088,
+    "hanzi": "思考",
+    "pinyin": "sīkǎo",
+    "english": "Reflection"
+  },
+  {
+    "id": "hsk5-1089",
+    "hskLevel": 5,
+    "number": 1089,
+    "hanzi": "私人",
+    "pinyin": "sīrén",
+    "english": "private"
+  },
+  {
+    "id": "hsk5-1090",
+    "hskLevel": 5,
+    "number": 1090,
+    "hanzi": "搜索",
+    "pinyin": "sōusuǒ",
+    "english": "search"
+  },
+  {
+    "id": "hsk5-1091",
+    "hskLevel": 5,
+    "number": 1091,
+    "hanzi": "宿舍",
+    "pinyin": "sùshè",
+    "english": "dormitory"
+  },
+  {
+    "id": "hsk5-1092",
+    "hskLevel": 5,
+    "number": 1092,
+    "hanzi": "随时",
+    "pinyin": "suíshí",
+    "english": "at any time"
+  },
+  {
+    "id": "hsk5-1093",
+    "hskLevel": 5,
+    "number": 1093,
+    "hanzi": "随手",
+    "pinyin": "suíshǒu",
+    "english": "Readily"
+  },
+  {
+    "id": "hsk5-1094",
+    "hskLevel": 5,
+    "number": 1094,
+    "hanzi": "缩短",
+    "pinyin": "suōduǎn",
+    "english": "Shorten"
+  },
+  {
+    "id": "hsk5-1095",
+    "hskLevel": 5,
+    "number": 1095,
+    "hanzi": "所",
+    "pinyin": "suǒ",
+    "english": "place"
+  },
+  {
+    "id": "hsk5-1096",
+    "hskLevel": 5,
+    "number": 1096,
+    "hanzi": "太太",
+    "pinyin": "tàitai",
+    "english": "Ma'am"
+  },
+  {
+    "id": "hsk5-1097",
+    "hskLevel": 5,
+    "number": 1097,
+    "hanzi": "谈判",
+    "pinyin": "tánpàn",
+    "english": "negotiation"
+  },
+  {
+    "id": "hsk5-1098",
+    "hskLevel": 5,
+    "number": 1098,
+    "hanzi": "坦率",
+    "pinyin": "tǎnshuài",
+    "english": "frank"
+  },
+  {
+    "id": "hsk5-1099",
+    "hskLevel": 5,
+    "number": 1099,
+    "hanzi": "烫",
+    "pinyin": "tàng",
+    "english": "Hot"
+  },
+  {
+    "id": "hsk5-1100",
+    "hskLevel": 5,
+    "number": 1100,
+    "hanzi": "桃",
+    "pinyin": "táo",
+    "english": "peach"
+  },
+  {
+    "id": "hsk5-1101",
+    "hskLevel": 5,
+    "number": 1101,
+    "hanzi": "逃避",
+    "pinyin": "táobì",
+    "english": "escape"
+  },
+  {
+    "id": "hsk5-1102",
+    "hskLevel": 5,
+    "number": 1102,
+    "hanzi": "特殊",
+    "pinyin": "tèshū",
+    "english": "special"
+  },
+  {
+    "id": "hsk5-1103",
+    "hskLevel": 5,
+    "number": 1103,
+    "hanzi": "特征",
+    "pinyin": "tèzhēng",
+    "english": "Features"
+  },
+  {
+    "id": "hsk5-1104",
+    "hskLevel": 5,
+    "number": 1104,
+    "hanzi": "疼爱",
+    "pinyin": "téng’ài",
+    "english": "Love dearly"
+  },
+  {
+    "id": "hsk5-1105",
+    "hskLevel": 5,
+    "number": 1105,
+    "hanzi": "提纲",
+    "pinyin": "tígāng",
+    "english": "outline"
+  },
+  {
+    "id": "hsk5-1106",
+    "hskLevel": 5,
+    "number": 1106,
+    "hanzi": "提问",
+    "pinyin": "tíwèn",
+    "english": "Put questions to"
+  },
+  {
+    "id": "hsk5-1107",
+    "hskLevel": 5,
+    "number": 1107,
+    "hanzi": "体会",
+    "pinyin": "tǐhuì",
+    "english": "Experience"
+  },
+  {
+    "id": "hsk5-1108",
+    "hskLevel": 5,
+    "number": 1108,
+    "hanzi": "体现",
+    "pinyin": "tǐxiàn",
+    "english": "Reflect"
+  },
+  {
+    "id": "hsk5-1109",
+    "hskLevel": 5,
+    "number": 1109,
+    "hanzi": "调皮",
+    "pinyin": "tiáopí",
+    "english": "naughty"
+  },
+  {
+    "id": "hsk5-1110",
+    "hskLevel": 5,
+    "number": 1110,
+    "hanzi": "挑战",
+    "pinyin": "tiǎozhàn",
+    "english": "challenge"
+  },
+  {
+    "id": "hsk5-1111",
+    "hskLevel": 5,
+    "number": 1111,
+    "hanzi": "痛苦",
+    "pinyin": "tòngkǔ",
+    "english": "Pain"
+  },
+  {
+    "id": "hsk5-1112",
+    "hskLevel": 5,
+    "number": 1112,
+    "hanzi": "投入",
+    "pinyin": "tóurù",
+    "english": "put into"
+  },
+  {
+    "id": "hsk5-1113",
+    "hskLevel": 5,
+    "number": 1113,
+    "hanzi": "透明",
+    "pinyin": "tòumíng",
+    "english": "transparent"
+  },
+  {
+    "id": "hsk5-1114",
+    "hskLevel": 5,
+    "number": 1114,
+    "hanzi": "土地",
+    "pinyin": "tǔdì",
+    "english": "land"
+  },
+  {
+    "id": "hsk5-1115",
+    "hskLevel": 5,
+    "number": 1115,
+    "hanzi": "吐",
+    "pinyin": "tù",
+    "english": "spit"
+  },
+  {
+    "id": "hsk5-1116",
+    "hskLevel": 5,
+    "number": 1116,
+    "hanzi": "团",
+    "pinyin": "tuán",
+    "english": "group"
+  },
+  {
+    "id": "hsk5-1117",
+    "hskLevel": 5,
+    "number": 1117,
+    "hanzi": "推广",
+    "pinyin": "tuīguǎng",
+    "english": "Extension"
+  },
+  {
+    "id": "hsk5-1118",
+    "hskLevel": 5,
+    "number": 1118,
+    "hanzi": "退步",
+    "pinyin": "tuìbù",
+    "english": "Backward"
+  },
+  {
+    "id": "hsk5-1119",
+    "hskLevel": 5,
+    "number": 1119,
+    "hanzi": "歪",
+    "pinyin": "wāi",
+    "english": "Crooked"
+  },
+  {
+    "id": "hsk5-1120",
+    "hskLevel": 5,
+    "number": 1120,
+    "hanzi": "外交",
+    "pinyin": "wàijiāo",
+    "english": "International Relations"
+  },
+  {
+    "id": "hsk5-1121",
+    "hskLevel": 5,
+    "number": 1121,
+    "hanzi": "完美",
+    "pinyin": "wánměi",
+    "english": "perfect"
+  },
+  {
+    "id": "hsk5-1122",
+    "hskLevel": 5,
+    "number": 1122,
+    "hanzi": "完善",
+    "pinyin": "wánshàn",
+    "english": "perfect"
+  },
+  {
+    "id": "hsk5-1123",
+    "hskLevel": 5,
+    "number": 1123,
+    "hanzi": "王子",
+    "pinyin": "wángzǐ",
+    "english": "prince"
+  },
+  {
+    "id": "hsk5-1124",
+    "hskLevel": 5,
+    "number": 1124,
+    "hanzi": "往返",
+    "pinyin": "wǎngfǎn",
+    "english": "Return"
+  },
+  {
+    "id": "hsk5-1125",
+    "hskLevel": 5,
+    "number": 1125,
+    "hanzi": "网络",
+    "pinyin": "wǎngluò",
+    "english": "network"
+  },
+  {
+    "id": "hsk5-1126",
+    "hskLevel": 5,
+    "number": 1126,
+    "hanzi": "危害",
+    "pinyin": "wēihài",
+    "english": "Harm"
+  },
+  {
+    "id": "hsk5-1127",
+    "hskLevel": 5,
+    "number": 1127,
+    "hanzi": "微笑",
+    "pinyin": "wēixiào",
+    "english": "Smile"
+  },
+  {
+    "id": "hsk5-1128",
+    "hskLevel": 5,
+    "number": 1128,
+    "hanzi": "违反",
+    "pinyin": "wéifǎn",
+    "english": "Violation"
+  },
+  {
+    "id": "hsk5-1129",
+    "hskLevel": 5,
+    "number": 1129,
+    "hanzi": "围巾",
+    "pinyin": "wéijīn",
+    "english": "scarf"
+  },
+  {
+    "id": "hsk5-1130",
+    "hskLevel": 5,
+    "number": 1130,
+    "hanzi": "唯一",
+    "pinyin": "wéiyī",
+    "english": "Only"
+  },
+  {
+    "id": "hsk5-1131",
+    "hskLevel": 5,
+    "number": 1131,
+    "hanzi": "伟大",
+    "pinyin": "wěidà",
+    "english": "great"
+  },
+  {
+    "id": "hsk5-1132",
+    "hskLevel": 5,
+    "number": 1132,
+    "hanzi": "胃口",
+    "pinyin": "wèikǒu",
+    "english": "Appetite"
+  },
+  {
+    "id": "hsk5-1133",
+    "hskLevel": 5,
+    "number": 1133,
+    "hanzi": "位置",
+    "pinyin": "wèizhì",
+    "english": "position"
+  },
+  {
+    "id": "hsk5-1134",
+    "hskLevel": 5,
+    "number": 1134,
+    "hanzi": "未来",
+    "pinyin": "wèilái",
+    "english": "Future"
+  },
+  {
+    "id": "hsk5-1135",
+    "hskLevel": 5,
+    "number": 1135,
+    "hanzi": "温暖",
+    "pinyin": "wēnnuǎn",
+    "english": "warm"
+  },
+  {
+    "id": "hsk5-1136",
+    "hskLevel": 5,
+    "number": 1136,
+    "hanzi": "闻",
+    "pinyin": "wén",
+    "english": "smell"
+  },
+  {
+    "id": "hsk5-1137",
+    "hskLevel": 5,
+    "number": 1137,
+    "hanzi": "文件",
+    "pinyin": "wénjiàn",
+    "english": "file"
+  },
+  {
+    "id": "hsk5-1138",
+    "hskLevel": 5,
+    "number": 1138,
+    "hanzi": "文明",
+    "pinyin": "wénmíng",
+    "english": "civilization"
+  },
+  {
+    "id": "hsk5-1139",
+    "hskLevel": 5,
+    "number": 1139,
+    "hanzi": "文字",
+    "pinyin": "wénzì",
+    "english": "writing, character"
+  },
+  {
+    "id": "hsk5-1140",
+    "hskLevel": 5,
+    "number": 1140,
+    "hanzi": "吻",
+    "pinyin": "wěn",
+    "english": "kiss"
+  },
+  {
+    "id": "hsk5-1141",
+    "hskLevel": 5,
+    "number": 1141,
+    "hanzi": "握手",
+    "pinyin": "wòshǒu",
+    "english": "Handshake"
+  },
+  {
+    "id": "hsk5-1142",
+    "hskLevel": 5,
+    "number": 1142,
+    "hanzi": "屋子",
+    "pinyin": "wūzi",
+    "english": "House"
+  },
+  {
+    "id": "hsk5-1143",
+    "hskLevel": 5,
+    "number": 1143,
+    "hanzi": "无奈",
+    "pinyin": "wúnài",
+    "english": "have no choice"
+  },
+  {
+    "id": "hsk5-1144",
+    "hskLevel": 5,
+    "number": 1144,
+    "hanzi": "无所谓",
+    "pinyin": "wúsuǒwèi",
+    "english": "cannot be designated as"
+  },
+  {
+    "id": "hsk5-1145",
+    "hskLevel": 5,
+    "number": 1145,
+    "hanzi": "武术",
+    "pinyin": "wǔshù",
+    "english": "A martial art"
+  },
+  {
+    "id": "hsk5-1146",
+    "hskLevel": 5,
+    "number": 1146,
+    "hanzi": "雾",
+    "pinyin": "wù",
+    "english": "Fog"
+  },
+  {
+    "id": "hsk5-1147",
+    "hskLevel": 5,
+    "number": 1147,
+    "hanzi": "物理",
+    "pinyin": "wùlǐ",
+    "english": "Physics"
+  },
+  {
+    "id": "hsk5-1148",
+    "hskLevel": 5,
+    "number": 1148,
+    "hanzi": "吸收",
+    "pinyin": "xīshōu",
+    "english": "absorb"
+  },
+  {
+    "id": "hsk5-1149",
+    "hskLevel": 5,
+    "number": 1149,
+    "hanzi": "系",
+    "pinyin": "xì",
+    "english": "department"
+  },
+  {
+    "id": "hsk5-1150",
+    "hskLevel": 5,
+    "number": 1150,
+    "hanzi": "细节",
+    "pinyin": "xìjié",
+    "english": "details"
+  },
+  {
+    "id": "hsk5-1151",
+    "hskLevel": 5,
+    "number": 1151,
+    "hanzi": "瞎",
+    "pinyin": "xiā",
+    "english": "blind"
+  },
+  {
+    "id": "hsk5-1152",
+    "hskLevel": 5,
+    "number": 1152,
+    "hanzi": "鲜艳",
+    "pinyin": "xiānyàn",
+    "english": "Colorful"
+  },
+  {
+    "id": "hsk5-1153",
+    "hskLevel": 5,
+    "number": 1153,
+    "hanzi": "显得",
+    "pinyin": "xiǎnde",
+    "english": "Appear, seem"
+  },
+  {
+    "id": "hsk5-1154",
+    "hskLevel": 5,
+    "number": 1154,
+    "hanzi": "显示",
+    "pinyin": "xiǎnshì",
+    "english": "display"
+  },
+  {
+    "id": "hsk5-1155",
+    "hskLevel": 5,
+    "number": 1155,
+    "hanzi": "现代",
+    "pinyin": "xiàndài",
+    "english": "modern"
+  },
+  {
+    "id": "hsk5-1156",
+    "hskLevel": 5,
+    "number": 1156,
+    "hanzi": "现实",
+    "pinyin": "xiànshí",
+    "english": "reality"
+  },
+  {
+    "id": "hsk5-1157",
+    "hskLevel": 5,
+    "number": 1157,
+    "hanzi": "限制",
+    "pinyin": "xiànzhì",
+    "english": "limit"
+  },
+  {
+    "id": "hsk5-1158",
+    "hskLevel": 5,
+    "number": 1158,
+    "hanzi": "相处",
+    "pinyin": "xiāngchǔ",
+    "english": "Get along with"
+  },
+  {
+    "id": "hsk5-1159",
+    "hskLevel": 5,
+    "number": 1159,
+    "hanzi": "相对",
+    "pinyin": "xiāngduì",
+    "english": "Relative"
+  },
+  {
+    "id": "hsk5-1160",
+    "hskLevel": 5,
+    "number": 1160,
+    "hanzi": "相关",
+    "pinyin": "xiāngguān",
+    "english": "correlate"
+  },
+  {
+    "id": "hsk5-1161",
+    "hskLevel": 5,
+    "number": 1161,
+    "hanzi": "想象",
+    "pinyin": "xiǎngxiàng",
+    "english": "imagine"
+  },
+  {
+    "id": "hsk5-1162",
+    "hskLevel": 5,
+    "number": 1162,
+    "hanzi": "项",
+    "pinyin": "xiàng",
+    "english": "term"
+  },
+  {
+    "id": "hsk5-1163",
+    "hskLevel": 5,
+    "number": 1163,
+    "hanzi": "项目",
+    "pinyin": "xiàngmù",
+    "english": "project"
+  },
+  {
+    "id": "hsk5-1164",
+    "hskLevel": 5,
+    "number": 1164,
+    "hanzi": "象棋",
+    "pinyin": "xiàngqí",
+    "english": "Xiangqi"
+  },
+  {
+    "id": "hsk5-1165",
+    "hskLevel": 5,
+    "number": 1165,
+    "hanzi": "消费",
+    "pinyin": "xiāofèi",
+    "english": "consumption"
+  },
+  {
+    "id": "hsk5-1166",
+    "hskLevel": 5,
+    "number": 1166,
+    "hanzi": "消化",
+    "pinyin": "xiāohuà",
+    "english": "Digestion"
+  },
+  {
+    "id": "hsk5-1167",
+    "hskLevel": 5,
+    "number": 1167,
+    "hanzi": "销售",
+    "pinyin": "xiāoshòu",
+    "english": "Sale"
+  },
+  {
+    "id": "hsk5-1168",
+    "hskLevel": 5,
+    "number": 1168,
+    "hanzi": "小麦",
+    "pinyin": "xiǎomài",
+    "english": "Wheat"
+  },
+  {
+    "id": "hsk5-1169",
+    "hskLevel": 5,
+    "number": 1169,
+    "hanzi": "效率",
+    "pinyin": "xiàolǜ",
+    "english": "efficiency"
+  },
+  {
+    "id": "hsk5-1170",
+    "hskLevel": 5,
+    "number": 1170,
+    "hanzi": "歇",
+    "pinyin": "xiē",
+    "english": "Rest"
+  },
+  {
+    "id": "hsk5-1171",
+    "hskLevel": 5,
+    "number": 1171,
+    "hanzi": "欣赏",
+    "pinyin": "xīnshǎng",
+    "english": "Appreciate"
+  },
+  {
+    "id": "hsk5-1172",
+    "hskLevel": 5,
+    "number": 1172,
+    "hanzi": "信号",
+    "pinyin": "xìnhào",
+    "english": "signal"
+  },
+  {
+    "id": "hsk5-1173",
+    "hskLevel": 5,
+    "number": 1173,
+    "hanzi": "行动",
+    "pinyin": "xíngdòng",
+    "english": "Get some action"
+  },
+  {
+    "id": "hsk5-1174",
+    "hskLevel": 5,
+    "number": 1174,
+    "hanzi": "行人",
+    "pinyin": "xíngrén",
+    "english": "pedestrian"
+  },
+  {
+    "id": "hsk5-1175",
+    "hskLevel": 5,
+    "number": 1175,
+    "hanzi": "形成",
+    "pinyin": "xíngchéng",
+    "english": "formation"
+  },
+  {
+    "id": "hsk5-1176",
+    "hskLevel": 5,
+    "number": 1176,
+    "hanzi": "形式",
+    "pinyin": "xíngshì",
+    "english": "form"
+  },
+  {
+    "id": "hsk5-1177",
+    "hskLevel": 5,
+    "number": 1177,
+    "hanzi": "形象",
+    "pinyin": "xíngxiàng",
+    "english": "image"
+  },
+  {
+    "id": "hsk5-1178",
+    "hskLevel": 5,
+    "number": 1178,
+    "hanzi": "性质",
+    "pinyin": "xìngzhì",
+    "english": "Nature"
+  },
+  {
+    "id": "hsk5-1179",
+    "hskLevel": 5,
+    "number": 1179,
+    "hanzi": "幸亏",
+    "pinyin": "xìngkuī",
+    "english": "Thanks"
+  },
+  {
+    "id": "hsk5-1180",
+    "hskLevel": 5,
+    "number": 1180,
+    "hanzi": "胸",
+    "pinyin": "xiōng",
+    "english": "chest"
+  },
+  {
+    "id": "hsk5-1181",
+    "hskLevel": 5,
+    "number": 1181,
+    "hanzi": "修改",
+    "pinyin": "xiūgǎi",
+    "english": "modify"
+  },
+  {
+    "id": "hsk5-1182",
+    "hskLevel": 5,
+    "number": 1182,
+    "hanzi": "休闲",
+    "pinyin": "xiūxián",
+    "english": "Leisure time"
+  },
+  {
+    "id": "hsk5-1183",
+    "hskLevel": 5,
+    "number": 1183,
+    "hanzi": "叙述",
+    "pinyin": "xùshù",
+    "english": "Narration"
+  },
+  {
+    "id": "hsk5-1184",
+    "hskLevel": 5,
+    "number": 1184,
+    "hanzi": "宣传",
+    "pinyin": "xuānchuán",
+    "english": "Propaganda"
+  },
+  {
+    "id": "hsk5-1185",
+    "hskLevel": 5,
+    "number": 1185,
+    "hanzi": "学历",
+    "pinyin": "xuélì",
+    "english": "education degree"
+  },
+  {
+    "id": "hsk5-1186",
+    "hskLevel": 5,
+    "number": 1186,
+    "hanzi": "学问",
+    "pinyin": "xuéwen",
+    "english": "knowledge"
+  },
+  {
+    "id": "hsk5-1187",
+    "hskLevel": 5,
+    "number": 1187,
+    "hanzi": "血",
+    "pinyin": "xuè",
+    "english": "blood"
+  },
+  {
+    "id": "hsk5-1188",
+    "hskLevel": 5,
+    "number": 1188,
+    "hanzi": "寻找",
+    "pinyin": "xúnzhǎo",
+    "english": "Seek, look for"
+  },
+  {
+    "id": "hsk5-1189",
+    "hskLevel": 5,
+    "number": 1189,
+    "hanzi": "迅速",
+    "pinyin": "xùnsù",
+    "english": "rapid"
+  },
+  {
+    "id": "hsk5-1190",
+    "hskLevel": 5,
+    "number": 1190,
+    "hanzi": "延长",
+    "pinyin": "yáncháng",
+    "english": "extend"
+  },
+  {
+    "id": "hsk5-1191",
+    "hskLevel": 5,
+    "number": 1191,
+    "hanzi": "严肃",
+    "pinyin": "yánsù",
+    "english": "serious"
+  },
+  {
+    "id": "hsk5-1192",
+    "hskLevel": 5,
+    "number": 1192,
+    "hanzi": "演讲",
+    "pinyin": "yǎnjiǎng",
+    "english": "speech"
+  },
+  {
+    "id": "hsk5-1193",
+    "hskLevel": 5,
+    "number": 1193,
+    "hanzi": "阳台",
+    "pinyin": "yángtái",
+    "english": "balcony"
+  },
+  {
+    "id": "hsk5-1194",
+    "hskLevel": 5,
+    "number": 1194,
+    "hanzi": "摇",
+    "pinyin": "yáo",
+    "english": "shake"
+  },
+  {
+    "id": "hsk5-1195",
+    "hskLevel": 5,
+    "number": 1195,
+    "hanzi": "要不",
+    "pinyin": "yàobù",
+    "english": "Or"
+  },
+  {
+    "id": "hsk5-1196",
+    "hskLevel": 5,
+    "number": 1196,
+    "hanzi": "业务",
+    "pinyin": "yèwù",
+    "english": "business"
+  },
+  {
+    "id": "hsk5-1197",
+    "hskLevel": 5,
+    "number": 1197,
+    "hanzi": "一辈子",
+    "pinyin": "yíbèizi",
+    "english": "A lifetime"
+  },
+  {
+    "id": "hsk5-1198",
+    "hskLevel": 5,
+    "number": 1198,
+    "hanzi": "一律",
+    "pinyin": "yílǜ",
+    "english": "all and singular"
+  },
+  {
+    "id": "hsk5-1199",
+    "hskLevel": 5,
+    "number": 1199,
+    "hanzi": "移动",
+    "pinyin": "yídòng",
+    "english": "move"
+  },
+  {
+    "id": "hsk5-1200",
+    "hskLevel": 5,
+    "number": 1200,
+    "hanzi": "遗憾",
+    "pinyin": "yíhàn",
+    "english": "pity"
+  },
+  {
+    "id": "hsk5-1201",
+    "hskLevel": 5,
+    "number": 1201,
+    "hanzi": "乙",
+    "pinyin": "yǐ",
+    "english": ""
+  },
+  {
+    "id": "hsk5-1202",
+    "hskLevel": 5,
+    "number": 1202,
+    "hanzi": "以及",
+    "pinyin": "yǐjí",
+    "english": "as well as"
+  },
+  {
+    "id": "hsk5-1203",
+    "hskLevel": 5,
+    "number": 1203,
+    "hanzi": "亿",
+    "pinyin": "yì",
+    "english": "Billion"
+  },
+  {
+    "id": "hsk5-1204",
+    "hskLevel": 5,
+    "number": 1204,
+    "hanzi": "意义",
+    "pinyin": "yìyì",
+    "english": "Significance"
+  },
+  {
+    "id": "hsk5-1205",
+    "hskLevel": 5,
+    "number": 1205,
+    "hanzi": "因而",
+    "pinyin": "yīn’ér",
+    "english": "thus"
+  },
+  {
+    "id": "hsk5-1206",
+    "hskLevel": 5,
+    "number": 1206,
+    "hanzi": "银",
+    "pinyin": "yín",
+    "english": "silver"
+  },
+  {
+    "id": "hsk5-1207",
+    "hskLevel": 5,
+    "number": 1207,
+    "hanzi": "印刷",
+    "pinyin": "yìnshuā",
+    "english": "printing"
+  },
+  {
+    "id": "hsk5-1208",
+    "hskLevel": 5,
+    "number": 1208,
+    "hanzi": "英雄",
+    "pinyin": "yīngxióng",
+    "english": "Hero"
+  },
+  {
+    "id": "hsk5-1209",
+    "hskLevel": 5,
+    "number": 1209,
+    "hanzi": "迎接",
+    "pinyin": "yíngjiē",
+    "english": "meet, welcome"
+  },
+  {
+    "id": "hsk5-1210",
+    "hskLevel": 5,
+    "number": 1210,
+    "hanzi": "营业",
+    "pinyin": "yíngyè",
+    "english": "Do business"
+  },
+  {
+    "id": "hsk5-1211",
+    "hskLevel": 5,
+    "number": 1211,
+    "hanzi": "影子",
+    "pinyin": "yǐngzi",
+    "english": "shadow"
+  },
+  {
+    "id": "hsk5-1212",
+    "hskLevel": 5,
+    "number": 1212,
+    "hanzi": "硬件",
+    "pinyin": "yìngjiàn",
+    "english": "Hardware"
+  },
+  {
+    "id": "hsk5-1213",
+    "hskLevel": 5,
+    "number": 1213,
+    "hanzi": "拥抱",
+    "pinyin": "yōngbào",
+    "english": "embrace"
+  },
+  {
+    "id": "hsk5-1214",
+    "hskLevel": 5,
+    "number": 1214,
+    "hanzi": "用途",
+    "pinyin": "yòngtú",
+    "english": "purpose"
+  },
+  {
+    "id": "hsk5-1215",
+    "hskLevel": 5,
+    "number": 1215,
+    "hanzi": "优美",
+    "pinyin": "yōuměi",
+    "english": "Graceful"
+  },
+  {
+    "id": "hsk5-1216",
+    "hskLevel": 5,
+    "number": 1216,
+    "hanzi": "游览",
+    "pinyin": "yóulǎn",
+    "english": "visit"
+  },
+  {
+    "id": "hsk5-1217",
+    "hskLevel": 5,
+    "number": 1217,
+    "hanzi": "犹豫",
+    "pinyin": "yóuyù",
+    "english": "hesitate"
+  },
+  {
+    "id": "hsk5-1218",
+    "hskLevel": 5,
+    "number": 1218,
+    "hanzi": "幼儿园",
+    "pinyin": "yòu’éryuán",
+    "english": "Kindergarten"
+  },
+  {
+    "id": "hsk5-1219",
+    "hskLevel": 5,
+    "number": 1219,
+    "hanzi": "与其",
+    "pinyin": "yǔqí",
+    "english": "Rather than"
+  },
+  {
+    "id": "hsk5-1220",
+    "hskLevel": 5,
+    "number": 1220,
+    "hanzi": "语气",
+    "pinyin": "yǔqì",
+    "english": "tone"
+  },
+  {
+    "id": "hsk5-1221",
+    "hskLevel": 5,
+    "number": 1221,
+    "hanzi": "预订",
+    "pinyin": "yùdìng",
+    "english": "book; subscribe for"
+  },
+  {
+    "id": "hsk5-1222",
+    "hskLevel": 5,
+    "number": 1222,
+    "hanzi": "玉米",
+    "pinyin": "yùmǐ",
+    "english": "Corn"
+  },
+  {
+    "id": "hsk5-1223",
+    "hskLevel": 5,
+    "number": 1223,
+    "hanzi": "原料",
+    "pinyin": "yuánliào",
+    "english": "raw material"
+  },
+  {
+    "id": "hsk5-1224",
+    "hskLevel": 5,
+    "number": 1224,
+    "hanzi": "原则",
+    "pinyin": "yuánzé",
+    "english": "Principle"
+  },
+  {
+    "id": "hsk5-1225",
+    "hskLevel": 5,
+    "number": 1225,
+    "hanzi": "乐器",
+    "pinyin": "yuèqì",
+    "english": "instrument"
+  },
+  {
+    "id": "hsk5-1226",
+    "hskLevel": 5,
+    "number": 1226,
+    "hanzi": "运输",
+    "pinyin": "yùnshū",
+    "english": "transport"
+  },
+  {
+    "id": "hsk5-1227",
+    "hskLevel": 5,
+    "number": 1227,
+    "hanzi": "在于",
+    "pinyin": "zàiyú",
+    "english": "rest with"
+  },
+  {
+    "id": "hsk5-1228",
+    "hskLevel": 5,
+    "number": 1228,
+    "hanzi": "赞美",
+    "pinyin": "zànměi",
+    "english": "Praise"
+  },
+  {
+    "id": "hsk5-1229",
+    "hskLevel": 5,
+    "number": 1229,
+    "hanzi": "则",
+    "pinyin": "zé",
+    "english": "be"
+  },
+  {
+    "id": "hsk5-1230",
+    "hskLevel": 5,
+    "number": 1230,
+    "hanzi": "摘",
+    "pinyin": "zhāi",
+    "english": "pick"
+  },
+  {
+    "id": "hsk5-1231",
+    "hskLevel": 5,
+    "number": 1231,
+    "hanzi": "粘贴",
+    "pinyin": "zhāntiē",
+    "english": "paste"
+  },
+  {
+    "id": "hsk5-1232",
+    "hskLevel": 5,
+    "number": 1232,
+    "hanzi": "展览",
+    "pinyin": "zhǎnlǎn",
+    "english": "exhibition"
+  },
+  {
+    "id": "hsk5-1233",
+    "hskLevel": 5,
+    "number": 1233,
+    "hanzi": "占",
+    "pinyin": "zhàn",
+    "english": "occupy"
+  },
+  {
+    "id": "hsk5-1234",
+    "hskLevel": 5,
+    "number": 1234,
+    "hanzi": "战争",
+    "pinyin": "zhànzhēng",
+    "english": "War"
+  },
+  {
+    "id": "hsk5-1235",
+    "hskLevel": 5,
+    "number": 1235,
+    "hanzi": "长辈",
+    "pinyin": "zhǎngbèi",
+    "english": "Elder"
+  },
+  {
+    "id": "hsk5-1236",
+    "hskLevel": 5,
+    "number": 1236,
+    "hanzi": "涨",
+    "pinyin": "zhǎng",
+    "english": "rise"
+  },
+  {
+    "id": "hsk5-1237",
+    "hskLevel": 5,
+    "number": 1237,
+    "hanzi": "招待",
+    "pinyin": "zhāodài",
+    "english": "Entertain"
+  },
+  {
+    "id": "hsk5-1238",
+    "hskLevel": 5,
+    "number": 1238,
+    "hanzi": "着火",
+    "pinyin": "zháohuǒ",
+    "english": "on fire"
+  },
+  {
+    "id": "hsk5-1239",
+    "hskLevel": 5,
+    "number": 1239,
+    "hanzi": "着凉",
+    "pinyin": "zháoliáng",
+    "english": "get cold"
+  },
+  {
+    "id": "hsk5-1240",
+    "hskLevel": 5,
+    "number": 1240,
+    "hanzi": "召开",
+    "pinyin": "zhàokāi",
+    "english": "convene"
+  },
+  {
+    "id": "hsk5-1241",
+    "hskLevel": 5,
+    "number": 1241,
+    "hanzi": "照常",
+    "pinyin": "zhàocháng",
+    "english": "as usual"
+  },
+  {
+    "id": "hsk5-1242",
+    "hskLevel": 5,
+    "number": 1242,
+    "hanzi": "哲学",
+    "pinyin": "zhéxué",
+    "english": "Philosophy"
+  },
+  {
+    "id": "hsk5-1243",
+    "hskLevel": 5,
+    "number": 1243,
+    "hanzi": "真实",
+    "pinyin": "zhēnshí",
+    "english": "real"
+  },
+  {
+    "id": "hsk5-1244",
+    "hskLevel": 5,
+    "number": 1244,
+    "hanzi": "针对",
+    "pinyin": "zhēnduì",
+    "english": "aim at"
+  },
+  {
+    "id": "hsk5-1245",
+    "hskLevel": 5,
+    "number": 1245,
+    "hanzi": "诊断",
+    "pinyin": "zhěnduàn",
+    "english": "Diagnosis"
+  },
+  {
+    "id": "hsk5-1246",
+    "hskLevel": 5,
+    "number": 1246,
+    "hanzi": "振动",
+    "pinyin": "zhèndòng",
+    "english": "Vibration"
+  },
+  {
+    "id": "hsk5-1247",
+    "hskLevel": 5,
+    "number": 1247,
+    "hanzi": "争论",
+    "pinyin": "zhēnglùn",
+    "english": "debate"
+  },
+  {
+    "id": "hsk5-1248",
+    "hskLevel": 5,
+    "number": 1248,
+    "hanzi": "征求",
+    "pinyin": "zhēngqiú",
+    "english": "ask for"
+  },
+  {
+    "id": "hsk5-1249",
+    "hskLevel": 5,
+    "number": 1249,
+    "hanzi": "整体",
+    "pinyin": "zhěngtǐ",
+    "english": "Whole"
+  },
+  {
+    "id": "hsk5-1250",
+    "hskLevel": 5,
+    "number": 1250,
+    "hanzi": "政治",
+    "pinyin": "zhèngzhì",
+    "english": "Politics"
+  },
+  {
+    "id": "hsk5-1251",
+    "hskLevel": 5,
+    "number": 1251,
+    "hanzi": "证据",
+    "pinyin": "zhèngjù",
+    "english": "evidence"
+  },
+  {
+    "id": "hsk5-1252",
+    "hskLevel": 5,
+    "number": 1252,
+    "hanzi": "挣",
+    "pinyin": "zhèng",
+    "english": "earn, make"
+  },
+  {
+    "id": "hsk5-1253",
+    "hskLevel": 5,
+    "number": 1253,
+    "hanzi": "直",
+    "pinyin": "zhí",
+    "english": "straight"
+  },
+  {
+    "id": "hsk5-1254",
+    "hskLevel": 5,
+    "number": 1254,
+    "hanzi": "执照",
+    "pinyin": "zhízhào",
+    "english": "License"
+  },
+  {
+    "id": "hsk5-1255",
+    "hskLevel": 5,
+    "number": 1255,
+    "hanzi": "指挥",
+    "pinyin": "zhǐhuī",
+    "english": "command"
+  },
+  {
+    "id": "hsk5-1256",
+    "hskLevel": 5,
+    "number": 1256,
+    "hanzi": "制度",
+    "pinyin": "zhìdù",
+    "english": "system"
+  },
+  {
+    "id": "hsk5-1257",
+    "hskLevel": 5,
+    "number": 1257,
+    "hanzi": "制作",
+    "pinyin": "zhìzuò",
+    "english": "Make"
+  },
+  {
+    "id": "hsk5-1258",
+    "hskLevel": 5,
+    "number": 1258,
+    "hanzi": "至今",
+    "pinyin": "zhìjīn",
+    "english": "so far"
+  },
+  {
+    "id": "hsk5-1259",
+    "hskLevel": 5,
+    "number": 1259,
+    "hanzi": "至于",
+    "pinyin": "zhìyú",
+    "english": "As for"
+  },
+  {
+    "id": "hsk5-1260",
+    "hskLevel": 5,
+    "number": 1260,
+    "hanzi": "治疗",
+    "pinyin": "zhìliáo",
+    "english": "Treatment"
+  },
+  {
+    "id": "hsk5-1261",
+    "hskLevel": 5,
+    "number": 1261,
+    "hanzi": "志愿者",
+    "pinyin": "zhìyuànzhě",
+    "english": "Volunteer"
+  },
+  {
+    "id": "hsk5-1262",
+    "hskLevel": 5,
+    "number": 1262,
+    "hanzi": "中心",
+    "pinyin": "zhōngxīn",
+    "english": "core"
+  },
+  {
+    "id": "hsk5-1263",
+    "hskLevel": 5,
+    "number": 1263,
+    "hanzi": "种类",
+    "pinyin": "zhǒnglèi",
+    "english": "type"
+  },
+  {
+    "id": "hsk5-1264",
+    "hskLevel": 5,
+    "number": 1264,
+    "hanzi": "重大",
+    "pinyin": "zhòngdà",
+    "english": "significant"
+  },
+  {
+    "id": "hsk5-1265",
+    "hskLevel": 5,
+    "number": 1265,
+    "hanzi": "重量",
+    "pinyin": "zhòngliàng",
+    "english": "weight"
+  },
+  {
+    "id": "hsk5-1266",
+    "hskLevel": 5,
+    "number": 1266,
+    "hanzi": "猪",
+    "pinyin": "zhū",
+    "english": "pig"
+  },
+  {
+    "id": "hsk5-1267",
+    "hskLevel": 5,
+    "number": 1267,
+    "hanzi": "逐渐",
+    "pinyin": "zhújiàn",
+    "english": "gradually"
+  },
+  {
+    "id": "hsk5-1268",
+    "hskLevel": 5,
+    "number": 1268,
+    "hanzi": "煮",
+    "pinyin": "zhǔ",
+    "english": "cook"
+  },
+  {
+    "id": "hsk5-1269",
+    "hskLevel": 5,
+    "number": 1269,
+    "hanzi": "主动",
+    "pinyin": "zhǔdòng",
+    "english": "active"
+  },
+  {
+    "id": "hsk5-1270",
+    "hskLevel": 5,
+    "number": 1270,
+    "hanzi": "主人",
+    "pinyin": "zhǔrén",
+    "english": "master"
+  },
+  {
+    "id": "hsk5-1271",
+    "hskLevel": 5,
+    "number": 1271,
+    "hanzi": "主席",
+    "pinyin": "zhǔxí",
+    "english": "Chairman"
+  },
+  {
+    "id": "hsk5-1272",
+    "hskLevel": 5,
+    "number": 1272,
+    "hanzi": "主张",
+    "pinyin": "zhǔzhāng",
+    "english": "opinion"
+  },
+  {
+    "id": "hsk5-1273",
+    "hskLevel": 5,
+    "number": 1273,
+    "hanzi": "祝福",
+    "pinyin": "zhùfú",
+    "english": "blessing"
+  },
+  {
+    "id": "hsk5-1274",
+    "hskLevel": 5,
+    "number": 1274,
+    "hanzi": "注册",
+    "pinyin": "zhùcè",
+    "english": "register"
+  },
+  {
+    "id": "hsk5-1275",
+    "hskLevel": 5,
+    "number": 1275,
+    "hanzi": "抓紧",
+    "pinyin": "zhuājǐn",
+    "english": "Pay close attention to, grasp"
+  },
+  {
+    "id": "hsk5-1276",
+    "hskLevel": 5,
+    "number": 1276,
+    "hanzi": "转变",
+    "pinyin": "zhuǎnbiàn",
+    "english": "change"
+  },
+  {
+    "id": "hsk5-1277",
+    "hskLevel": 5,
+    "number": 1277,
+    "hanzi": "装饰",
+    "pinyin": "zhuāngshì",
+    "english": "decorate"
+  },
+  {
+    "id": "hsk5-1278",
+    "hskLevel": 5,
+    "number": 1278,
+    "hanzi": "撞",
+    "pinyin": "zhuàng",
+    "english": "Hit"
+  },
+  {
+    "id": "hsk5-1279",
+    "hskLevel": 5,
+    "number": 1279,
+    "hanzi": "状态",
+    "pinyin": "zhuàngtài",
+    "english": "state"
+  },
+  {
+    "id": "hsk5-1280",
+    "hskLevel": 5,
+    "number": 1280,
+    "hanzi": "追求",
+    "pinyin": "zhuīqiú",
+    "english": "Pursuit"
+  },
+  {
+    "id": "hsk5-1281",
+    "hskLevel": 5,
+    "number": 1281,
+    "hanzi": "资金",
+    "pinyin": "zījīn",
+    "english": "capital"
+  },
+  {
+    "id": "hsk5-1282",
+    "hskLevel": 5,
+    "number": 1282,
+    "hanzi": "资源",
+    "pinyin": "zīyuán",
+    "english": "Resources"
+  },
+  {
+    "id": "hsk5-1283",
+    "hskLevel": 5,
+    "number": 1283,
+    "hanzi": "咨询",
+    "pinyin": "zīxún",
+    "english": "Consultation"
+  },
+  {
+    "id": "hsk5-1284",
+    "hskLevel": 5,
+    "number": 1284,
+    "hanzi": "字母",
+    "pinyin": "zìmǔ",
+    "english": "Letter"
+  },
+  {
+    "id": "hsk5-1285",
+    "hskLevel": 5,
+    "number": 1285,
+    "hanzi": "自从",
+    "pinyin": "zìcóng",
+    "english": "Since"
+  },
+  {
+    "id": "hsk5-1286",
+    "hskLevel": 5,
+    "number": 1286,
+    "hanzi": "自豪",
+    "pinyin": "zìháo",
+    "english": "Proud"
+  },
+  {
+    "id": "hsk5-1287",
+    "hskLevel": 5,
+    "number": 1287,
+    "hanzi": "自觉",
+    "pinyin": "zìjué",
+    "english": "Conscious"
+  },
+  {
+    "id": "hsk5-1288",
+    "hskLevel": 5,
+    "number": 1288,
+    "hanzi": "自私",
+    "pinyin": "zìsī",
+    "english": "selfish"
+  },
+  {
+    "id": "hsk5-1289",
+    "hskLevel": 5,
+    "number": 1289,
+    "hanzi": "自愿",
+    "pinyin": "zìyuàn",
+    "english": "voluntarily"
+  },
+  {
+    "id": "hsk5-1290",
+    "hskLevel": 5,
+    "number": 1290,
+    "hanzi": "总裁",
+    "pinyin": "zǒngcái",
+    "english": "CEO"
+  },
+  {
+    "id": "hsk5-1291",
+    "hskLevel": 5,
+    "number": 1291,
+    "hanzi": "总统",
+    "pinyin": "zǒngtǒng",
+    "english": "President"
+  },
+  {
+    "id": "hsk5-1292",
+    "hskLevel": 5,
+    "number": 1292,
+    "hanzi": "组",
+    "pinyin": "zǔ",
+    "english": "group"
+  },
+  {
+    "id": "hsk5-1293",
+    "hskLevel": 5,
+    "number": 1293,
+    "hanzi": "组合",
+    "pinyin": "zǔhé",
+    "english": "combination"
+  },
+  {
+    "id": "hsk5-1294",
+    "hskLevel": 5,
+    "number": 1294,
+    "hanzi": "阻止",
+    "pinyin": "zǔzhǐ",
+    "english": "prevent"
+  },
+  {
+    "id": "hsk5-1295",
+    "hskLevel": 5,
+    "number": 1295,
+    "hanzi": "醉",
+    "pinyin": "zuì",
+    "english": "drunk"
+  },
+  {
+    "id": "hsk5-1296",
+    "hskLevel": 5,
+    "number": 1296,
+    "hanzi": "最初",
+    "pinyin": "zuìchū",
+    "english": "First, at the beginning"
+  },
+  {
+    "id": "hsk5-1297",
+    "hskLevel": 5,
+    "number": 1297,
+    "hanzi": "尊敬",
+    "pinyin": "zūnjìng",
+    "english": "respect"
+  },
+  {
+    "id": "hsk5-1298",
+    "hskLevel": 5,
+    "number": 1298,
+    "hanzi": "遵守",
+    "pinyin": "zūnshǒu",
+    "english": "comply with"
+  },
+  {
+    "id": "hsk5-1299",
+    "hskLevel": 5,
+    "number": 1299,
+    "hanzi": "作品",
+    "pinyin": "zuòpǐn",
+    "english": "works"
+  },
+  {
+    "id": "hsk5-1300",
+    "hskLevel": 5,
+    "number": 1300,
+    "hanzi": "作为",
+    "pinyin": "zuòwéi",
+    "english": "As"
+  }
+]

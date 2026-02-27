@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Chinese red/gold palette */
+  --color-cn-red: #C41E3A;
+  --color-cn-red-light: #E8384F;
+  --color-cn-red-dark: #8B0000;
+  --color-cn-gold: #D4A017;
+  --color-cn-gold-light: #F0C75E;
+  --color-cn-gold-dark: #A67C00;
+  --color-cn-cream: #FFF8F0;
+  --color-cn-ink: #1A0A0A;
+  --color-cn-paper: #FFFDF7;
+  --color-cn-paper-dark: #1C1412;
+  --color-cn-surface: #FFFFFF;
+  --color-cn-surface-dark: #251A17;
+  --color-cn-border: #E8D5C4;
+  --color-cn-border-dark: #3D2B24;
+  --color-cn-muted: #8B7355;
+  --color-cn-muted-dark: #A69080;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
