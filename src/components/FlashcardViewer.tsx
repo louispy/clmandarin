@@ -184,35 +184,35 @@ export function FlashcardViewer({
       </div>
 
       {/* Nav */}
-      <div className="flex items-center justify-center gap-3 px-6 py-6">
+      <div className="flex items-center justify-center gap-2 px-3 py-5 sm:gap-3 sm:px-6 sm:py-6">
         <button
           onClick={prev}
           disabled={index === 0}
-          className="flex items-center gap-1 rounded-xl bg-cn-surface px-6 py-3 font-bold text-cn-ink shadow-sm transition-all hover:shadow-md disabled:opacity-30 dark:bg-cn-surface-dark dark:text-cn-cream"
+          className="flex items-center gap-1 rounded-xl bg-cn-surface px-3 py-2.5 text-sm font-bold text-cn-ink shadow-sm transition-all hover:shadow-md disabled:opacity-30 dark:bg-cn-surface-dark dark:text-cn-cream sm:px-6 sm:py-3 sm:text-base"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
             <path fillRule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clipRule="evenodd" />
           </svg>
-          Prev
+          <span className="hidden sm:inline">Prev</span>
         </button>
 
         {/* Random */}
         <button
           onClick={random}
           disabled={words.length <= 1}
-          className="flex items-center gap-1 rounded-xl bg-cn-surface px-4 py-3 font-bold text-cn-gold-dark shadow-sm transition-all hover:shadow-md disabled:opacity-30 dark:bg-cn-surface-dark dark:text-cn-gold-light"
+          className="flex items-center gap-1 rounded-xl bg-cn-surface px-3 py-2.5 text-sm font-bold text-cn-gold-dark shadow-sm transition-all hover:shadow-md disabled:opacity-30 dark:bg-cn-surface-dark dark:text-cn-gold-light sm:px-4 sm:py-3 sm:text-base"
           title="Random card (R)"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
             <path fillRule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z" clipRule="evenodd" />
           </svg>
-          Random
+          <span className="hidden sm:inline">Random</span>
         </button>
 
         {/* Show hints toggle — shows pinyin+meaning on front face */}
         <button
           onClick={() => setShowHints((h) => !h)}
-          className={`flex items-center gap-1 rounded-xl px-5 py-3 font-bold shadow-sm transition-all hover:shadow-md ${
+          className={`flex items-center gap-1 rounded-xl px-3 py-2.5 text-sm font-bold shadow-sm transition-all hover:shadow-md sm:px-5 sm:py-3 sm:text-base ${
             showHints
               ? 'bg-cn-gold/20 text-cn-gold-dark dark:text-cn-gold-light'
               : 'bg-cn-surface text-cn-muted dark:bg-cn-surface-dark dark:text-cn-muted-dark'
@@ -236,9 +236,9 @@ export function FlashcardViewer({
         <button
           onClick={next}
           disabled={index === words.length - 1}
-          className="flex items-center gap-1 rounded-xl bg-cn-surface px-6 py-3 font-bold text-cn-ink shadow-sm transition-all hover:shadow-md disabled:opacity-30 dark:bg-cn-surface-dark dark:text-cn-cream"
+          className="flex items-center gap-1 rounded-xl bg-cn-surface px-3 py-2.5 text-sm font-bold text-cn-ink shadow-sm transition-all hover:shadow-md disabled:opacity-30 dark:bg-cn-surface-dark dark:text-cn-cream sm:px-6 sm:py-3 sm:text-base"
         >
-          Next
+          <span className="hidden sm:inline">Next</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
             <path fillRule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638l-3.96-4.158a.75.75 0 1 1 1.08-1.04l5.25 5.5a.75.75 0 0 1 0 1.08l-5.25 5.5a.75.75 0 1 1-1.08-1.04l3.96-4.158H3.75A.75.75 0 0 1 3 10Z" clipRule="evenodd" />
           </svg>
