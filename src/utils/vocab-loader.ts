@@ -8,7 +8,7 @@ export async function loadVocabIntoDb(): Promise<void> {
   if (count > 0) return; // already loaded
 
   for (const level of HSK_LEVELS) {
-    const response = await fetch(`/data/hsk-${level}.json`);
+    const response = await fetch(`${import.meta.env.BASE_URL}data/hsk-${level}.json`);
     const words: VocabWord[] = await response.json();
     await db.vocab.bulkPut(words);
   }
