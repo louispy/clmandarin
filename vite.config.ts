@@ -10,7 +10,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['vite.svg', 'data/*.json'],
+      includeAssets: ['vite.svg', 'data/hsk-all.json'],
       manifest: {
         name: 'CLMandarin',
         short_name: 'CLMandarin',

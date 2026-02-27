@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { db } from '../db';
 import type { VocabWord } from '../types';
 import { loadVocabIntoDb, getWordsByLevel, searchWords } from '../utils/vocab-loader';
 
@@ -8,22 +9,36 @@ export function useVocab() {
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  const [dbReady, setDbReady] = useState(false);
 
   // Initialize DB on first mount
   useEffect(() => {
-    loadVocabIntoDb()
-      .then(() => setLoading(false))
-      .catch((err) => {
+    let cancelled = false;
+    (async () => {
+      try {
+        // Fast path: check if data already exists
+        const count = await db.vocab.count();
+        if (count > 0) {
+          if (!cancelled) { setDbReady(true); setLoading(false); }
+          return;
+        }
+        // First visit: load in background, show app shell immediately
+        if (!cancelled) setLoading(false);
+        await loadVocabIntoDb();
+        if (!cancelled) setDbReady(true);
+      } catch (err) {
         console.error('Failed to load vocab:', err);
-        setLoading(false);
-      });
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
   }, []);
 
-  // Load words when level changes or search clears
+  // Load words when level changes, search clears, or DB becomes ready
   useEffect(() => {
-    if (loading || isSearching) return;
+    if (!dbReady || isSearching) return;
     getWordsByLevel(selectedLevel).then(setWords);
-  }, [loading, selectedLevel, isSearching]);
+  }, [dbReady, selectedLevel, isSearching]);
 
   // Search
   const handleSearch = useCallback(
@@ -43,6 +58,7 @@ export function useVocab() {
   return {
     loading,
     words,
+    dbReady,
     selectedLevel,
     setSelectedLevel,
     searchQuery,

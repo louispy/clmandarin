@@ -7,6 +7,7 @@ const HSK_LEVELS = [1, 2, 3, 4, 5, 6];
 
 export function VocabBrowser({
   words,
+  dataLoading,
   selectedLevel,
   onSelectLevel,
   searchQuery,
@@ -27,6 +28,7 @@ export function VocabBrowser({
   onStudyLevel,
 }: {
   words: VocabWord[];
+  dataLoading?: boolean;
   selectedLevel: number;
   onSelectLevel: (level: number) => void;
   searchQuery: string;
@@ -238,7 +240,12 @@ export function VocabBrowser({
       </div>
 
       {/* Words */}
-      {viewMode === 'list' ? (
+      {dataLoading ? (
+        <div className="flex flex-col items-center gap-3 py-16">
+          <p className="text-5xl">&#23398;</p>
+          <p className="text-cn-muted dark:text-cn-muted-dark">Loading vocabulary...</p>
+        </div>
+      ) : viewMode === 'list' ? (
         <div className="flex flex-col gap-2">
           {words.map((word) => (
             <WordCard

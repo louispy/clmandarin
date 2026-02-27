@@ -192,6 +192,7 @@ export function App() {
           {view === 'browse' && (
             <VocabBrowser
               words={vocab.words}
+              dataLoading={!vocab.dbReady}
               selectedLevel={vocab.selectedLevel}
               onSelectLevel={vocab.setSelectedLevel}
               searchQuery={vocab.searchQuery}

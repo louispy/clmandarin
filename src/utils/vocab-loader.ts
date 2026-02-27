@@ -1,8 +1,6 @@
 import { db } from '../db';
 import type { VocabWord } from '../types';
 
-const HSK_LEVELS = [1, 2, 3, 4, 5, 6] as const;
-
 /** Strip tone marks: ǐ → i, ā → a, ü → u, etc. */
 export function stripTones(s: string): string {
   return s
@@ -15,13 +13,9 @@ export async function loadVocabIntoDb(): Promise<void> {
   const count = await db.vocab.count();
   if (count > 0) return; // already loaded
 
-  const allWords = await Promise.all(
-    HSK_LEVELS.map(async (level) => {
-      const response = await fetch(`${import.meta.env.BASE_URL}data/hsk-${level}.json`);
-      return response.json() as Promise<VocabWord[]>;
-    })
-  );
-  await db.vocab.bulkPut(allWords.flat());
+  const response = await fetch(`${import.meta.env.BASE_URL}data/hsk-all.json`);
+  const allWords = (await response.json()) as VocabWord[];
+  await db.vocab.bulkAdd(allWords);
 }
 
 export async function getWordsByLevel(level: number): Promise<VocabWord[]> {
