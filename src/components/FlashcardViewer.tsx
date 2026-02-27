@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import type { VocabWord } from '../types';
 
 export function FlashcardViewer({
@@ -16,25 +16,55 @@ export function FlashcardViewer({
   onToggleDark: () => void;
   startIndex?: number;
 }) {
-  const [index, setIndex] = useState(() => startIndex ?? Math.floor(Math.random() * words.length));
+  const initialIndex = startIndex ?? Math.floor(Math.random() * words.length);
+  const historyRef = useRef<number[]>([initialIndex]);
+  const historyPosRef = useRef(0);
+  const [index, setIndex] = useState(initialIndex);
   const [flipped, setFlipped] = useState(false);
-  const [showHints, setShowHints] = useState(false); // pinyin+meaning on front face
+  const [showHints, setShowHints] = useState(false);
+  const [canGoBack, setCanGoBack] = useState(false);
+  const [canGoForward, setCanGoForward] = useState(false);
 
   const word = words[index];
 
-  const next = useCallback(() => {
-    if (index < words.length - 1) {
-      setIndex((i) => i + 1);
-      setFlipped(false);
+  const navigate = useCallback((newIdx: number, clearForward: boolean) => {
+    if (clearForward) {
+      // Truncate forward history (like clicking a new link in browser)
+      historyRef.current = historyRef.current.slice(0, historyPosRef.current + 1);
     }
-  }, [index, words.length]);
+    historyRef.current.push(newIdx);
+    historyPosRef.current = historyRef.current.length - 1;
+    setIndex(newIdx);
+    setFlipped(false);
+    setCanGoBack(historyPosRef.current > 0);
+    setCanGoForward(false);
+  }, []);
+
+  const next = useCallback(() => {
+    // Forward through history if available
+    if (historyPosRef.current < historyRef.current.length - 1) {
+      historyPosRef.current++;
+      setIndex(historyRef.current[historyPosRef.current]);
+      setFlipped(false);
+      setCanGoBack(historyPosRef.current > 0);
+      setCanGoForward(historyPosRef.current < historyRef.current.length - 1);
+      return;
+    }
+    // Otherwise next sequential word
+    if (index < words.length - 1) {
+      navigate(index + 1, true);
+    }
+  }, [index, words.length, navigate]);
 
   const prev = useCallback(() => {
-    if (index > 0) {
-      setIndex((i) => i - 1);
+    if (historyPosRef.current > 0) {
+      historyPosRef.current--;
+      setIndex(historyRef.current[historyPosRef.current]);
       setFlipped(false);
+      setCanGoBack(historyPosRef.current > 0);
+      setCanGoForward(true);
     }
-  }, [index]);
+  }, []);
 
   const random = useCallback(() => {
     if (words.length <= 1) return;
@@ -42,9 +72,8 @@ export function FlashcardViewer({
     do {
       newIdx = Math.floor(Math.random() * words.length);
     } while (newIdx === index);
-    setIndex(newIdx);
-    setFlipped(false);
-  }, [index, words.length]);
+    navigate(newIdx, true);
+  }, [index, words.length, navigate]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -187,7 +216,7 @@ export function FlashcardViewer({
       <div className="flex items-center justify-center gap-2 px-3 py-5 sm:gap-3 sm:px-6 sm:py-6">
         <button
           onClick={prev}
-          disabled={index === 0}
+          disabled={!canGoBack}
           className="flex items-center gap-1 rounded-xl bg-cn-surface px-3 py-2.5 text-sm font-bold text-cn-ink shadow-sm transition-all hover:shadow-md disabled:opacity-30 dark:bg-cn-surface-dark dark:text-cn-cream sm:px-6 sm:py-3 sm:text-base"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
@@ -235,7 +264,7 @@ export function FlashcardViewer({
         {/* Next */}
         <button
           onClick={next}
-          disabled={index === words.length - 1}
+          disabled={!canGoForward && index === words.length - 1}
           className="flex items-center gap-1 rounded-xl bg-cn-surface px-3 py-2.5 text-sm font-bold text-cn-ink shadow-sm transition-all hover:shadow-md disabled:opacity-30 dark:bg-cn-surface-dark dark:text-cn-cream sm:px-6 sm:py-3 sm:text-base"
         >
           <span className="hidden sm:inline">Next</span>
