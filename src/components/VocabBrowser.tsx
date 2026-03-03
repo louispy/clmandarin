@@ -56,11 +56,21 @@ export function VocabBrowser({
   const PAGE_SIZE = 50;
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Reset visible count when words change (filter/search)
   useEffect(() => {
     setVisibleCount(PAGE_SIZE);
   }, [words]);
+
+  // Show scroll-to-top button after scrolling down
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Intersection Observer for infinite scroll
   const loadMore = useCallback(() => {
@@ -315,6 +325,19 @@ export function VocabBrowser({
       )}
       {/* Infinite scroll sentinel */}
       {hasMore && <div ref={sentinelRef} className="h-1" />}
+
+      {/* Scroll to top */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-50 rounded-full bg-cn-red p-3 text-white shadow-lg shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-xl active:scale-95"
+          title="Scroll to top"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+            <path fillRule="evenodd" d="M9.47 6.47a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 1 1-1.06 1.06L10 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06l4.25-4.25Z" clipRule="evenodd" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }
