@@ -26,6 +26,10 @@ export async function getWordsByLevel(level: number): Promise<VocabWord[]> {
   return db.vocab.where('hskLevel').equals(level).sortBy('number');
 }
 
+export async function getWordsByLevels(levels: number[]): Promise<VocabWord[]> {
+  return db.vocab.where('hskLevel').anyOf(levels).sortBy('id');
+}
+
 export async function getWordsByIds(ids: string[]): Promise<VocabWord[]> {
   const words = await db.vocab.bulkGet(ids);
   return words.filter((w): w is VocabWord => w !== undefined);

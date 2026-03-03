@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import type { VocabWord, FlashcardList } from '../types';
 import type { VisibilityState } from '../hooks/useVisibility';
 import { WordCard, WordCardSquare } from './WordCard';
@@ -8,16 +8,16 @@ const HSK_LEVELS = [1, 2, 3, 4, 5, 6];
 export function VocabBrowser({
   words,
   dataLoading,
-  selectedLevel,
-  onSelectLevel,
+  selectedLevels,
+  onToggleLevel,
   searchQuery,
   onSearch,
   isSearching,
   lists,
   onAddToList,
   onCreateListAndAdd,
-  onAddLevel,
-  onCreateListAndAddLevel,
+  onAddFiltered,
+  onCreateListAndAddFiltered,
   isFavorite,
   onToggleFavorite,
   visibility,
@@ -25,20 +25,20 @@ export function VocabBrowser({
   viewMode,
   onToggleViewMode,
   onStudyWord,
-  onStudyLevel,
+  onStudyFiltered,
 }: {
   words: VocabWord[];
   dataLoading?: boolean;
-  selectedLevel: number;
-  onSelectLevel: (level: number) => void;
+  selectedLevels: number[];
+  onToggleLevel: (level: number) => void;
   searchQuery: string;
   onSearch: (query: string) => void;
   isSearching: boolean;
   lists: FlashcardList[];
   onAddToList: (listId: string, wordId: string) => void;
   onCreateListAndAdd: (name: string, wordId: string) => void;
-  onAddLevel: (listId: string, level: number) => void;
-  onCreateListAndAddLevel: (name: string, level: number) => void;
+  onAddFiltered: (listId: string) => void;
+  onCreateListAndAddFiltered: (name: string) => void;
   isFavorite: (wordId: string) => boolean;
   onToggleFavorite: (wordId: string) => void;
   visibility: VisibilityState;
@@ -46,24 +46,58 @@ export function VocabBrowser({
   viewMode: 'list' | 'grid';
   onToggleViewMode: () => void;
   onStudyWord: (wordId: string) => void;
-  onStudyLevel: (level: number) => void;
+  onStudyFiltered: () => void;
 }) {
-  const [addLevelMenu, setAddLevelMenu] = useState(false);
-  const [addLevelCreate, setAddLevelCreate] = useState(false);
-  const [addLevelNewName, setAddLevelNewName] = useState('');
-  const addLevelRef = useRef<HTMLDivElement>(null);
+  const [addMenu, setAddMenu] = useState(false);
+  const [addCreate, setAddCreate] = useState(false);
+  const [addNewName, setAddNewName] = useState('');
+  const addRef = useRef<HTMLDivElement>(null);
+
+  const PAGE_SIZE = 50;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  // Reset visible count when words change (filter/search)
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [words]);
+
+  // Intersection Observer for infinite scroll
+  const loadMore = useCallback(() => {
+    setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, words.length));
+  }, [words.length]);
 
   useEffect(() => {
-    if (!addLevelMenu) return;
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) loadMore();
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [loadMore]);
+
+  const visibleWords = words.slice(0, visibleCount);
+  const hasMore = visibleCount < words.length;
+
+  const filterLabel = selectedLevels.length === 0
+    ? 'All'
+    : `HSK ${selectedLevels.join(', ')}`;
+
+  useEffect(() => {
+    if (!addMenu) return;
     const handler = (e: MouseEvent) => {
-      if (addLevelRef.current && !addLevelRef.current.contains(e.target as Node)) {
-        setAddLevelMenu(false);
-        setAddLevelCreate(false);
+      if (addRef.current && !addRef.current.contains(e.target as Node)) {
+        setAddMenu(false);
+        setAddCreate(false);
       }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
-  }, [addLevelMenu]);
+  }, [addMenu]);
 
   return (
     <div className="flex flex-col gap-5">
@@ -84,22 +118,12 @@ export function VocabBrowser({
       {/* HSK Level Tabs */}
       {!isSearching && (
         <div className="flex flex-wrap items-center gap-2">
-          <button
-            onClick={() => onSelectLevel(0)}
-            className={`rounded-xl px-4 py-2 text-sm font-bold transition-all ${
-              selectedLevel === 0
-                ? 'bg-cn-red text-white shadow-md shadow-cn-red/30'
-                : 'bg-cn-surface text-cn-muted hover:bg-cn-red/10 hover:text-cn-red dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-red/10 dark:hover:text-cn-red-light'
-            }`}
-          >
-            All
-          </button>
           {HSK_LEVELS.map((level) => (
             <button
               key={level}
-              onClick={() => onSelectLevel(level)}
+              onClick={() => onToggleLevel(level)}
               className={`rounded-xl px-4 py-2 text-sm font-bold transition-all ${
-                selectedLevel === level
+                selectedLevels.includes(level)
                   ? 'bg-cn-red text-white shadow-md shadow-cn-red/30'
                   : 'bg-cn-surface text-cn-muted hover:bg-cn-red/10 hover:text-cn-red dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-red/10 dark:hover:text-cn-red-light'
               }`}
@@ -108,34 +132,36 @@ export function VocabBrowser({
             </button>
           ))}
 
-          {/* Study this level */}
-          <button
-            onClick={() => onStudyLevel(selectedLevel)}
-            className="ml-auto rounded-xl bg-cn-red px-4 py-2 text-sm font-bold text-white shadow-md shadow-cn-red/20 transition-all hover:bg-cn-red-dark hover:shadow-lg"
-          >
-            Study
-          </button>
-
-          {/* Add entire level to a flashcard list */}
-          {selectedLevel > 0 && (
-          <div ref={addLevelRef} className="relative">
+          {/* Study filtered words */}
+          {words.length > 0 && (
             <button
-              onClick={() => setAddLevelMenu(!addLevelMenu)}
+              onClick={onStudyFiltered}
+              className="ml-auto rounded-xl bg-cn-red px-4 py-2 text-sm font-bold text-white shadow-md shadow-cn-red/20 transition-all hover:bg-cn-red-dark hover:shadow-lg"
+            >
+              Study
+            </button>
+          )}
+
+          {/* Add filtered words to a flashcard list */}
+          {words.length > 0 && (
+          <div ref={addRef} className="relative">
+            <button
+              onClick={() => setAddMenu(!addMenu)}
               className="rounded-xl bg-cn-gold/10 px-4 py-2 text-sm font-bold text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:text-cn-gold-light"
             >
-              + Add all HSK {selectedLevel}
+              + Add {filterLabel}
             </button>
-            {addLevelMenu && (
+            {addMenu && (
               <div className="absolute right-0 top-full z-30 mt-1 w-56 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:max-w-none">
                 <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
-                  Add HSK {selectedLevel} to...
+                  Add {words.length} words to...
                 </p>
                 {lists.map((list) => (
                   <button
                     key={list.id}
                     onClick={() => {
-                      onAddLevel(list.id, selectedLevel);
-                      setAddLevelMenu(false);
+                      onAddFiltered(list.id);
+                      setAddMenu(false);
                     }}
                     className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
                   >
@@ -155,34 +181,34 @@ export function VocabBrowser({
                   </button>
                 ))}
                 <div className="my-1 border-t border-cn-border dark:border-cn-border-dark" />
-                {addLevelCreate ? (
+                {addCreate ? (
                   <div className="flex gap-1 px-2 py-1">
                     <input
                       autoFocus
-                      value={addLevelNewName}
-                      onChange={(e) => setAddLevelNewName(e.target.value)}
+                      value={addNewName}
+                      onChange={(e) => setAddNewName(e.target.value)}
                       onKeyDown={(e) => {
-                        if (e.key === 'Enter' && addLevelNewName.trim()) {
-                          onCreateListAndAddLevel(addLevelNewName.trim(), selectedLevel);
-                          setAddLevelNewName('');
-                          setAddLevelCreate(false);
-                          setAddLevelMenu(false);
+                        if (e.key === 'Enter' && addNewName.trim()) {
+                          onCreateListAndAddFiltered(addNewName.trim());
+                          setAddNewName('');
+                          setAddCreate(false);
+                          setAddMenu(false);
                         }
                         if (e.key === 'Escape') {
-                          setAddLevelCreate(false);
-                          setAddLevelNewName('');
+                          setAddCreate(false);
+                          setAddNewName('');
                         }
                       }}
                       placeholder="List name..."
-                      className="flex-1 rounded-lg border border-cn-border bg-transparent px-2 py-1 text-sm text-cn-ink outline-none focus:border-cn-red dark:border-cn-border-dark dark:text-cn-cream"
+                      className="min-w-0 flex-1 rounded-lg border border-cn-border bg-transparent px-2 py-1 text-sm text-cn-ink outline-none focus:border-cn-red dark:border-cn-border-dark dark:text-cn-cream"
                     />
                     <button
                       onClick={() => {
-                        if (addLevelNewName.trim()) {
-                          onCreateListAndAddLevel(addLevelNewName.trim(), selectedLevel);
-                          setAddLevelNewName('');
-                          setAddLevelCreate(false);
-                          setAddLevelMenu(false);
+                        if (addNewName.trim()) {
+                          onCreateListAndAddFiltered(addNewName.trim());
+                          setAddNewName('');
+                          setAddCreate(false);
+                          setAddMenu(false);
                         }
                       }}
                       className="rounded-lg bg-cn-red px-2 py-1 text-xs font-medium text-white"
@@ -192,7 +218,7 @@ export function VocabBrowser({
                   </div>
                 ) : (
                   <button
-                    onClick={() => setAddLevelCreate(true)}
+                    onClick={() => setAddCreate(true)}
                     className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium text-cn-red transition-colors hover:bg-cn-red/10 dark:text-cn-red-light"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
@@ -259,7 +285,7 @@ export function VocabBrowser({
         </div>
       ) : viewMode === 'list' ? (
         <div className="flex flex-col gap-2">
-          {words.map((word) => (
+          {visibleWords.map((word) => (
             <WordCard
               key={word.id}
               word={word}
@@ -275,7 +301,7 @@ export function VocabBrowser({
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {words.map((word) => (
+          {visibleWords.map((word) => (
             <WordCardSquare
               key={word.id}
               word={word}
@@ -287,6 +313,8 @@ export function VocabBrowser({
           ))}
         </div>
       )}
+      {/* Infinite scroll sentinel */}
+      {hasMore && <div ref={sentinelRef} className="h-1" />}
     </div>
   );
 }

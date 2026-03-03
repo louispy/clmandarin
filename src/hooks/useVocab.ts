@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { db } from '../db';
 import type { VocabWord } from '../types';
-import { loadVocabIntoDb, getAllWords, getWordsByLevel, searchWords } from '../utils/vocab-loader';
+import { loadVocabIntoDb, getAllWords, getWordsByLevels, searchWords } from '../utils/vocab-loader';
 
 export function useVocab() {
   const [loading, setLoading] = useState(true);
   const [words, setWords] = useState<VocabWord[]>([]);
-  const [selectedLevel, setSelectedLevel] = useState<number>(0); // 0 = all
+  const [selectedLevels, setSelectedLevels] = useState<number[]>([]); // empty = all
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [dbReady, setDbReady] = useState(false);
@@ -16,13 +16,11 @@ export function useVocab() {
     let cancelled = false;
     (async () => {
       try {
-        // Fast path: check if data already exists
         const count = await db.vocab.count();
         if (count > 0) {
           if (!cancelled) { setDbReady(true); setLoading(false); }
           return;
         }
-        // First visit: load in background, show app shell immediately
         if (!cancelled) setLoading(false);
         await loadVocabIntoDb();
         if (!cancelled) setDbReady(true);
@@ -34,11 +32,24 @@ export function useVocab() {
     return () => { cancelled = true; };
   }, []);
 
-  // Load words when level changes, search clears, or DB becomes ready
+  // Load words when levels change, search clears, or DB becomes ready
   useEffect(() => {
     if (!dbReady || isSearching) return;
-    (selectedLevel === 0 ? getAllWords() : getWordsByLevel(selectedLevel)).then(setWords);
-  }, [dbReady, selectedLevel, isSearching]);
+    if (selectedLevels.length === 0) {
+      getAllWords().then(setWords);
+    } else {
+      getWordsByLevels(selectedLevels).then(setWords);
+    }
+  }, [dbReady, selectedLevels, isSearching]);
+
+  const toggleLevel = useCallback((level: number) => {
+    setSelectedLevels((prev) => {
+      if (prev.includes(level)) {
+        return prev.filter((l) => l !== level);
+      }
+      return [...prev, level].sort();
+    });
+  }, []);
 
   // Search
   const handleSearch = useCallback(
@@ -59,8 +70,8 @@ export function useVocab() {
     loading,
     words,
     dbReady,
-    selectedLevel,
-    setSelectedLevel,
+    selectedLevels,
+    toggleLevel,
     searchQuery,
     isSearching,
     handleSearch,

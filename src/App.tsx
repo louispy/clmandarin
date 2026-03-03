@@ -9,7 +9,7 @@ import { SortableWordList } from './components/SortableWordList';
 import { FlashcardViewer } from './components/FlashcardViewer';
 import { FileImport } from './components/FileImport';
 import { exportList } from './utils/import-export';
-import { getAllWords, getWordsByLevel, getWordsByIds } from './utils/vocab-loader';
+import { getWordsByIds } from './utils/vocab-loader';
 import type { VocabWord } from './types';
 
 type View = 'browse' | 'flashcards';
@@ -40,21 +40,21 @@ export function App() {
     [listsHook]
   );
 
-  const handleAddLevel = useCallback(
-    async (listId: string, level: number) => {
-      const words = await getWordsByLevel(level);
-      listsHook.addWordsToList(listId, words.map((w) => w.id));
+  // Add currently filtered/displayed words to an existing list
+  const handleAddFiltered = useCallback(
+    (listId: string) => {
+      listsHook.addWordsToList(listId, vocab.words.map((w) => w.id));
     },
-    [listsHook]
+    [listsHook, vocab.words]
   );
 
-  const handleCreateListAndAddLevel = useCallback(
-    async (name: string, level: number) => {
+  // Create a new list and add currently filtered/displayed words
+  const handleCreateListAndAddFiltered = useCallback(
+    async (name: string) => {
       const list = await listsHook.createList(name);
-      const words = await getWordsByLevel(level);
-      await listsHook.addWordsToList(list.id, words.map((w) => w.id));
+      await listsHook.addWordsToList(list.id, vocab.words.map((w) => w.id));
     },
-    [listsHook]
+    [listsHook, vocab.words]
   );
 
   const handleStudy = useCallback(async () => {
@@ -70,7 +70,7 @@ export function App() {
   }, [listsHook.activeList]);
 
   const handleStudyFromWord = useCallback(
-    async (wordId: string, allWords: VocabWord[], label: string) => {
+    (wordId: string, allWords: VocabWord[], label: string) => {
       const idx = allWords.findIndex((w) => w.id === wordId);
       setStudyWords(allWords);
       setStudyListName(label);
@@ -79,12 +79,23 @@ export function App() {
     []
   );
 
-  const handleStudyLevel = useCallback(async (level: number) => {
-    const words = level === 0 ? await getAllWords() : await getWordsByLevel(level);
-    setStudyWords(words);
-    setStudyListName(level === 0 ? 'All HSK' : `HSK ${level}`);
+  // Study currently filtered words
+  const handleStudyFiltered = useCallback(() => {
+    if (vocab.words.length === 0) return;
+    const levels = vocab.selectedLevels;
+    const label = levels.length === 0
+      ? 'All HSK'
+      : `HSK ${levels.join(', ')}`;
+    setStudyWords(vocab.words);
+    setStudyListName(label);
     setStudyStartIndex(undefined);
-  }, []);
+  }, [vocab.words, vocab.selectedLevels]);
+
+  const filterLabel = vocab.selectedLevels.length === 0
+    ? 'All HSK'
+    : vocab.isSearching
+      ? 'Search results'
+      : `HSK ${vocab.selectedLevels.join(', ')}`;
 
   const handleStudyListWord = useCallback(
     async (wordId: string) => {
@@ -193,24 +204,24 @@ export function App() {
             <VocabBrowser
               words={vocab.words}
               dataLoading={!vocab.dbReady}
-              selectedLevel={vocab.selectedLevel}
-              onSelectLevel={vocab.setSelectedLevel}
+              selectedLevels={vocab.selectedLevels}
+              onToggleLevel={vocab.toggleLevel}
               searchQuery={vocab.searchQuery}
               onSearch={vocab.handleSearch}
               isSearching={vocab.isSearching}
               lists={listsHook.lists}
               onAddToList={handleAddToList}
               onCreateListAndAdd={handleCreateListAndAdd}
-              onAddLevel={handleAddLevel}
-              onCreateListAndAddLevel={handleCreateListAndAddLevel}
+              onAddFiltered={handleAddFiltered}
+              onCreateListAndAddFiltered={handleCreateListAndAddFiltered}
               isFavorite={listsHook.isFavorite}
               onToggleFavorite={listsHook.toggleFavorite}
               visibility={visibility}
               onToggleVisibility={toggleVisibility}
               viewMode={viewMode}
               onToggleViewMode={() => setViewMode((v) => (v === 'list' ? 'grid' : 'list'))}
-              onStudyWord={(wordId) => handleStudyFromWord(wordId, vocab.words, vocab.isSearching ? 'Search results' : vocab.selectedLevel === 0 ? 'All HSK' : `HSK ${vocab.selectedLevel}`)}
-              onStudyLevel={handleStudyLevel}
+              onStudyWord={(wordId) => handleStudyFromWord(wordId, vocab.words, vocab.isSearching ? 'Search results' : filterLabel)}
+              onStudyFiltered={handleStudyFiltered}
             />
           )}
 
