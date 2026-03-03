@@ -84,6 +84,16 @@ export function VocabBrowser({
       {/* HSK Level Tabs */}
       {!isSearching && (
         <div className="flex flex-wrap items-center gap-2">
+          <button
+            onClick={() => onSelectLevel(0)}
+            className={`rounded-xl px-4 py-2 text-sm font-bold transition-all ${
+              selectedLevel === 0
+                ? 'bg-cn-red text-white shadow-md shadow-cn-red/30'
+                : 'bg-cn-surface text-cn-muted hover:bg-cn-red/10 hover:text-cn-red dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-red/10 dark:hover:text-cn-red-light'
+            }`}
+          >
+            All
+          </button>
           {HSK_LEVELS.map((level) => (
             <button
               key={level}
@@ -107,6 +117,7 @@ export function VocabBrowser({
           </button>
 
           {/* Add entire level to a flashcard list */}
+          {selectedLevel > 0 && (
           <div ref={addLevelRef} className="relative">
             <button
               onClick={() => setAddLevelMenu(!addLevelMenu)}
@@ -193,6 +204,7 @@ export function VocabBrowser({
               </div>
             )}
           </div>
+          )}
         </div>
       )}
 

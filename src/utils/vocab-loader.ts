@@ -18,6 +18,10 @@ export async function loadVocabIntoDb(): Promise<void> {
   await db.vocab.bulkAdd(allWords);
 }
 
+export async function getAllWords(): Promise<VocabWord[]> {
+  return db.vocab.orderBy('id').toArray();
+}
+
 export async function getWordsByLevel(level: number): Promise<VocabWord[]> {
   return db.vocab.where('hskLevel').equals(level).sortBy('number');
 }

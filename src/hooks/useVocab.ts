@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { db } from '../db';
 import type { VocabWord } from '../types';
-import { loadVocabIntoDb, getWordsByLevel, searchWords } from '../utils/vocab-loader';
+import { loadVocabIntoDb, getAllWords, getWordsByLevel, searchWords } from '../utils/vocab-loader';
 
 export function useVocab() {
   const [loading, setLoading] = useState(true);
   const [words, setWords] = useState<VocabWord[]>([]);
-  const [selectedLevel, setSelectedLevel] = useState<number>(1);
+  const [selectedLevel, setSelectedLevel] = useState<number>(0); // 0 = all
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [dbReady, setDbReady] = useState(false);
@@ -37,7 +37,7 @@ export function useVocab() {
   // Load words when level changes, search clears, or DB becomes ready
   useEffect(() => {
     if (!dbReady || isSearching) return;
-    getWordsByLevel(selectedLevel).then(setWords);
+    (selectedLevel === 0 ? getAllWords() : getWordsByLevel(selectedLevel)).then(setWords);
   }, [dbReady, selectedLevel, isSearching]);
 
   // Search

@@ -9,7 +9,7 @@ import { SortableWordList } from './components/SortableWordList';
 import { FlashcardViewer } from './components/FlashcardViewer';
 import { FileImport } from './components/FileImport';
 import { exportList } from './utils/import-export';
-import { getWordsByLevel, getWordsByIds } from './utils/vocab-loader';
+import { getAllWords, getWordsByLevel, getWordsByIds } from './utils/vocab-loader';
 import type { VocabWord } from './types';
 
 type View = 'browse' | 'flashcards';
@@ -80,9 +80,9 @@ export function App() {
   );
 
   const handleStudyLevel = useCallback(async (level: number) => {
-    const words = await getWordsByLevel(level);
+    const words = level === 0 ? await getAllWords() : await getWordsByLevel(level);
     setStudyWords(words);
-    setStudyListName(`HSK ${level}`);
+    setStudyListName(level === 0 ? 'All HSK' : `HSK ${level}`);
     setStudyStartIndex(undefined);
   }, []);
 
@@ -209,7 +209,7 @@ export function App() {
               onToggleVisibility={toggleVisibility}
               viewMode={viewMode}
               onToggleViewMode={() => setViewMode((v) => (v === 'list' ? 'grid' : 'list'))}
-              onStudyWord={(wordId) => handleStudyFromWord(wordId, vocab.words, vocab.isSearching ? 'Search results' : `HSK ${vocab.selectedLevel}`)}
+              onStudyWord={(wordId) => handleStudyFromWord(wordId, vocab.words, vocab.isSearching ? 'Search results' : vocab.selectedLevel === 0 ? 'All HSK' : `HSK ${vocab.selectedLevel}`)}
               onStudyLevel={handleStudyLevel}
             />
           )}
