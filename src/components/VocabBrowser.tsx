@@ -245,7 +245,7 @@ export function VocabBrowser({
       )}
 
       {/* Toolbar: visibility toggles + view mode */}
-      <div className="flex items-center justify-between">
+      <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between bg-cn-paper/95 px-4 py-2 backdrop-blur dark:bg-cn-paper-dark/95">
         <div className="flex items-center gap-1">
           <span className="mr-2 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
             Show:
