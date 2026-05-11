@@ -180,11 +180,14 @@ export function App() {
                 }`}
               >
                 Flashcards
-                {listsHook.lists.length > 1 && (
-                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-cn-gold text-[10px] font-black text-white">
-                    {listsHook.lists.length}
-                  </span>
-                )}
+                {(() => {
+                  const customCount = listsHook.lists.filter((l) => l.id !== '__favorites__').length;
+                  return customCount > 0 ? (
+                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-cn-gold text-[10px] font-black text-white">
+                      {customCount}
+                    </span>
+                  ) : null;
+                })()}
               </button>
 
               {/* Dark mode toggle */}

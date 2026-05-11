@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import type { VocabWord, FlashcardList } from '../types';
 import type { VisibilityState } from '../hooks/useVisibility';
+import { speak } from '../utils/speech';
+import { NoAudioModal } from './NoAudioModal';
 
 export function WordCard({
   word,
@@ -26,7 +28,16 @@ export function WordCard({
   const [menuOpen, setMenuOpen] = useState(false);
   const [showCreate, setShowCreate] = useState(false);
   const [newListName, setNewListName] = useState('');
+  const [showNoAudio, setShowNoAudio] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const handleSpeak = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const ok = await speak(word.hanzi);
+    if (!ok) setShowNoAudio(true);
+  };
+
+  const selectableLists = lists.filter((l) => l.id !== '__favorites__');
 
   // Close menu on outside click
   useEffect(() => {
@@ -101,6 +112,19 @@ export function WordCard({
           </span>
 
           <div className="flex items-center gap-1">
+            {/* Speaker / Audio */}
+            <button
+              onClick={handleSpeak}
+              className="rounded-lg p-1.5 text-cn-muted/40 transition-colors hover:text-cn-red dark:text-cn-muted-dark/40 dark:hover:text-cn-red-light"
+              title="Play pronunciation"
+              aria-label="Play pronunciation"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                <path d="M10 3.75a.75.75 0 0 0-1.264-.546L4.703 7H3.167a.75.75 0 0 0-.7.48A6.985 6.985 0 0 0 2 10c0 .887.165 1.737.468 2.52.111.29.39.48.7.48h1.535l4.033 3.796A.75.75 0 0 0 10 16.25V3.75ZM15.95 5.05a.75.75 0 0 0-1.06 1.061 5.5 5.5 0 0 1 0 7.778.75.75 0 1 0 1.06 1.06 7 7 0 0 0 0-9.899Z" />
+                <path d="M13.829 7.172a.75.75 0 0 0-1.061 1.06 2.5 2.5 0 0 1 0 3.536.75.75 0 1 0 1.06 1.06 4 4 0 0 0 0-5.656Z" />
+              </svg>
+            </button>
+
             {/* Star / Favorite */}
             <button
               onClick={() => onToggleFavorite(word.id)}
@@ -139,7 +163,7 @@ export function WordCard({
                   <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
                     Add to flashcard
                   </p>
-                  {lists.map((list) => (
+                  {selectableLists.map((list) => (
                     <button
                       key={list.id}
                       onClick={() => {
@@ -148,15 +172,9 @@ export function WordCard({
                       }}
                       className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
                     >
-                      {list.id === '__favorites__' ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-gold">
-                          <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clipRule="evenodd" />
-                        </svg>
-                      ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
-                          <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
-                        </svg>
-                      )}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
+                        <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                      </svg>
                       <span className="truncate">{list.name}</span>
                       <span className="ml-auto text-xs text-cn-muted dark:text-cn-muted-dark">
                         {list.wordIds.length}
@@ -164,7 +182,9 @@ export function WordCard({
                     </button>
                   ))}
 
-                  <div className="my-1 border-t border-cn-border dark:border-cn-border-dark" />
+                  {selectableLists.length > 0 && (
+                    <div className="my-1 border-t border-cn-border dark:border-cn-border-dark" />
+                  )}
 
                   {showCreate ? (
                     <div className="flex gap-1 px-2 py-1">
@@ -206,6 +226,8 @@ export function WordCard({
           </div>
         </div>
       </div>
+
+      {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
     </div>
   );
 }
@@ -224,6 +246,14 @@ export function WordCardSquare({
   visibility: VisibilityState;
   onClick?: () => void;
 }) {
+  const [showNoAudio, setShowNoAudio] = useState(false);
+
+  const handleSpeak = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const ok = await speak(word.hanzi);
+    if (!ok) setShowNoAudio(true);
+  };
+
   return (
     <div
       onClick={onClick}
@@ -257,6 +287,19 @@ export function WordCardSquare({
         {word.hskLevel}
       </span>
 
+      {/* Speaker */}
+      <button
+        onClick={handleSpeak}
+        className="absolute bottom-2 right-2 rounded-lg p-1 text-cn-muted/40 transition-colors hover:text-cn-red dark:text-cn-muted-dark/40 dark:hover:text-cn-red-light"
+        title="Play pronunciation"
+        aria-label="Play pronunciation"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+          <path d="M10 3.75a.75.75 0 0 0-1.264-.546L4.703 7H3.167a.75.75 0 0 0-.7.48A6.985 6.985 0 0 0 2 10c0 .887.165 1.737.468 2.52.111.29.39.48.7.48h1.535l4.033 3.796A.75.75 0 0 0 10 16.25V3.75ZM15.95 5.05a.75.75 0 0 0-1.06 1.061 5.5 5.5 0 0 1 0 7.778.75.75 0 1 0 1.06 1.06 7 7 0 0 0 0-9.899Z" />
+          <path d="M13.829 7.172a.75.75 0 0 0-1.061 1.06 2.5 2.5 0 0 1 0 3.536.75.75 0 1 0 1.06 1.06 4 4 0 0 0 0-5.656Z" />
+        </svg>
+      </button>
+
       {/* Content */}
       {visibility.hanzi ? (
         <p className="text-5xl font-black text-cn-ink dark:text-cn-cream">{word.hanzi}</p>
@@ -277,6 +320,8 @@ export function WordCardSquare({
       ) : (
         <p className="mt-1 text-xs text-cn-muted/20 dark:text-cn-muted-dark/20">· · ·</p>
       )}
+
+      {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
     </div>
   );
 }

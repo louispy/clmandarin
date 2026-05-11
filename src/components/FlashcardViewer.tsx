@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { VocabWord } from '../types';
+import { speak } from '../utils/speech';
+import { NoAudioModal } from './NoAudioModal';
 
 export function FlashcardViewer({
   words,
@@ -24,8 +26,16 @@ export function FlashcardViewer({
   const [showHints, setShowHints] = useState(false);
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(false);
+  const [showNoAudio, setShowNoAudio] = useState(false);
 
   const word = words[index];
+
+  const handleSpeak = useCallback(async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!word) return;
+    const ok = await speak(word.hanzi);
+    if (!ok) setShowNoAudio(true);
+  }, [word]);
 
   const navigate = useCallback((newIdx: number, clearForward: boolean) => {
     if (clearForward) {
@@ -170,6 +180,17 @@ export function FlashcardViewer({
             className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border-2 border-cn-border bg-cn-surface shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark"
             style={{ backfaceVisibility: 'hidden' }}
           >
+            <button
+              onClick={handleSpeak}
+              className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-cn-red text-white shadow-md shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-lg"
+              title="Play pronunciation"
+              aria-label="Play pronunciation"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                <path d="M10 3.75a.75.75 0 0 0-1.264-.546L4.703 7H3.167a.75.75 0 0 0-.7.48A6.985 6.985 0 0 0 2 10c0 .887.165 1.737.468 2.52.111.29.39.48.7.48h1.535l4.033 3.796A.75.75 0 0 0 10 16.25V3.75ZM15.95 5.05a.75.75 0 0 0-1.06 1.061 5.5 5.5 0 0 1 0 7.778.75.75 0 1 0 1.06 1.06 7 7 0 0 0 0-9.899Z" />
+                <path d="M13.829 7.172a.75.75 0 0 0-1.061 1.06 2.5 2.5 0 0 1 0 3.536.75.75 0 1 0 1.06 1.06 4 4 0 0 0 0-5.656Z" />
+              </svg>
+            </button>
             <p className="text-8xl font-black text-cn-ink dark:text-cn-cream sm:text-9xl">
               {word.hanzi}
             </p>
@@ -273,6 +294,8 @@ export function FlashcardViewer({
           </svg>
         </button>
       </div>
+
+      {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
     </div>
   );
 }
