@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useVocab } from './hooks/useVocab';
 import { useLists } from './hooks/useLists';
 import { useDarkMode } from './hooks/useDarkMode';
@@ -24,6 +24,7 @@ export function App() {
   const [studyWords, setStudyWords] = useState<VocabWord[] | null>(null);
   const [studyListName, setStudyListName] = useState('');
   const [studyStartIndex, setStudyStartIndex] = useState<number | undefined>(undefined);
+  const scrollPosRef = useRef(0);
 
   const handleAddToList = useCallback(
     (listId: string, wordId: string) => {
@@ -59,6 +60,7 @@ export function App() {
 
   const handleStudy = useCallback(async () => {
     if (!listsHook.activeList) return;
+    scrollPosRef.current = window.scrollY;
     const words = await getWordsByIds(listsHook.activeList.wordIds);
     const map = new Map(words.map((w) => [w.id, w]));
     const ordered = listsHook.activeList.wordIds
@@ -71,6 +73,7 @@ export function App() {
 
   const handleStudyFromWord = useCallback(
     (wordId: string, allWords: VocabWord[], label: string) => {
+      scrollPosRef.current = window.scrollY;
       const idx = allWords.findIndex((w) => w.id === wordId);
       setStudyWords(allWords);
       setStudyListName(label);
@@ -82,6 +85,7 @@ export function App() {
   // Study currently filtered words
   const handleStudyFiltered = useCallback(() => {
     if (vocab.words.length === 0) return;
+    scrollPosRef.current = window.scrollY;
     const levels = vocab.selectedLevels;
     const label = levels.length === 0
       ? 'All HSK'
@@ -100,6 +104,7 @@ export function App() {
   const handleStudyListWord = useCallback(
     async (wordId: string) => {
       if (!listsHook.activeList) return;
+      scrollPosRef.current = window.scrollY;
       const words = await getWordsByIds(listsHook.activeList.wordIds);
       const map = new Map(words.map((w) => [w.id, w]));
       const ordered = listsHook.activeList.wordIds
@@ -132,7 +137,11 @@ export function App() {
         <FlashcardViewer
           words={studyWords}
           listName={studyListName}
-          onClose={() => { setStudyWords(null); setStudyStartIndex(undefined); }}
+          onClose={() => {
+            setStudyWords(null);
+            setStudyStartIndex(undefined);
+            requestAnimationFrame(() => window.scrollTo(0, scrollPosRef.current));
+          }}
           dark={dark}
           onToggleDark={toggleDark}
           startIndex={studyStartIndex}
