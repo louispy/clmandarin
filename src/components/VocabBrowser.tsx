@@ -93,9 +93,7 @@ export function VocabBrowser({
   const visibleWords = words.slice(0, visibleCount);
   const hasMore = visibleCount < words.length;
 
-  const filterLabel = selectedLevels.length === 0
-    ? 'All'
-    : `HSK ${selectedLevels.join(', ')}`;
+  const filterLabel = `HSK ${selectedLevels.join(', ')}`;
 
   useEffect(() => {
     if (!addMenu) return;
@@ -127,44 +125,43 @@ export function VocabBrowser({
 
       {/* HSK Level Tabs */}
       {!isSearching && (
-        <div className="flex flex-wrap items-center gap-2">
-          {HSK_LEVELS.map((level) => (
-            <button
-              key={level}
-              onClick={() => onToggleLevel(level)}
-              className={`rounded-xl px-4 py-2 text-sm font-bold transition-all ${
-                selectedLevels.includes(level)
-                  ? 'bg-cn-red text-white shadow-md shadow-cn-red/30'
-                  : 'bg-cn-surface text-cn-muted hover:bg-cn-red/10 hover:text-cn-red dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-red/10 dark:hover:text-cn-red-light'
-              }`}
-            >
-              HSK {level}
-            </button>
-          ))}
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-1">
+            <span className="mr-1 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark sm:hidden">
+              HSK:
+            </span>
+            {HSK_LEVELS.map((level) => (
+              <button
+                key={level}
+                onClick={() => onToggleLevel(level)}
+                className={`rounded-lg px-2.5 py-1.5 text-sm font-bold transition-all sm:px-3 ${
+                  selectedLevels.includes(level)
+                    ? 'bg-cn-red text-white shadow-md shadow-cn-red/30'
+                    : 'bg-cn-surface text-cn-muted hover:bg-cn-red/10 hover:text-cn-red dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-red/10 dark:hover:text-cn-red-light'
+                }`}
+                title={`HSK ${level}`}
+              >
+                <span className="sm:hidden">{level}</span>
+                <span className="hidden sm:inline">HSK {level}</span>
+              </button>
+            ))}
 
-          {/* Study filtered words */}
-          {words.length > 0 && (
-            <button
-              onClick={onStudyFiltered}
-              className="ml-auto rounded-xl bg-cn-red px-4 py-2 text-sm font-bold text-white shadow-md shadow-cn-red/20 transition-all hover:bg-cn-red-dark hover:shadow-lg"
-            >
-              Study
-            </button>
-          )}
-
-          {/* Add filtered words to a flashcard list */}
-          {words.length > 0 && (
-          <div ref={addRef} className="relative">
-            <button
-              onClick={() => setAddMenu(!addMenu)}
-              className="rounded-xl bg-cn-gold/10 px-4 py-2 text-sm font-bold text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:text-cn-gold-light"
-            >
-              + Add {filterLabel}
-            </button>
-            {addMenu && (
-              <div className="absolute right-0 top-full z-30 mt-1 w-56 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:max-w-none">
+            {/* Inline + button — adds currently filtered words to a list */}
+            {words.length > 0 && selectedLevels.length > 0 && (
+              <div ref={addRef} className="relative">
+                <button
+                  onClick={() => setAddMenu(!addMenu)}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-cn-gold/10 text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:text-cn-gold-light"
+                  title={`Add ${filterLabel} to list`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+                    <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                  </svg>
+                </button>
+                {addMenu && (
+                  <div className="absolute right-0 top-full z-40 mt-1 w-56 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:left-0 sm:right-auto">
                 <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
-                  Add {words.length} words to...
+                  Add {filterLabel} to...
                 </p>
                 {lists.map((list) => (
                   <button
@@ -240,6 +237,21 @@ export function VocabBrowser({
               </div>
             )}
           </div>
+          )}
+          </div>
+
+          {/* Study filtered words */}
+          {words.length > 0 && (
+            <button
+              onClick={onStudyFiltered}
+              className="flex items-center justify-center rounded-xl bg-cn-red text-sm font-bold text-white shadow-md shadow-cn-red/20 transition-all hover:bg-cn-red-dark hover:shadow-lg h-8 w-8 sm:h-auto sm:w-auto sm:px-4 sm:py-2"
+              title="Study"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 sm:hidden">
+                <path d="M6.3 2.841A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.269l9.344-5.89a1.5 1.5 0 0 0 0-2.538L6.3 2.84Z" />
+              </svg>
+              <span className="hidden sm:inline">Study</span>
+            </button>
           )}
         </div>
       )}
