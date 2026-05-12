@@ -12,6 +12,27 @@ export function stripTones(s: string): string {
 const DATA_VERSION = 2;
 const DATA_VERSION_KEY = 'clmandarin-data-version';
 
+// On a fresh device the service worker is still installing and precaching
+// hsk-all.json at the same moment the app first fetches it. If the SW
+// activates mid-fetch (clientsClaim) the in-flight request can fail before
+// the precache is ready. Retry with backoff so we don't strand the user
+// on the loading screen.
+async function fetchJsonWithRetry(url: string, attempts = 4): Promise<Response> {
+  let lastErr: unknown;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res;
+    } catch (err) {
+      lastErr = err;
+      if (i === attempts - 1) break;
+      await new Promise((r) => setTimeout(r, 250 * 2 ** i));
+    }
+  }
+  throw lastErr;
+}
+
 export async function loadVocabIntoDb(): Promise<void> {
   const storedVersion = localStorage.getItem(DATA_VERSION_KEY);
   const upToDate = storedVersion === String(DATA_VERSION);
@@ -19,11 +40,13 @@ export async function loadVocabIntoDb(): Promise<void> {
 
   if (count > 0 && upToDate) return;
 
-  const response = await fetch(`${import.meta.env.BASE_URL}data/hsk-all.json`);
+  const response = await fetchJsonWithRetry(`${import.meta.env.BASE_URL}data/hsk-all.json`);
   const allWords = (await response.json()) as VocabWord[];
 
   if (count === 0) {
-    await db.vocab.bulkAdd(allWords);
+    // bulkPut is idempotent — if the effect retries after a partial write
+    // we won't trip ConstraintError on duplicate ids.
+    await db.vocab.bulkPut(allWords);
   } else {
     // Merge in new canonical fields while preserving user edits (englishOriginal, userNote, custom english)
     const existing = await db.vocab.bulkGet(allWords.map((w) => w.id));

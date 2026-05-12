@@ -5,8 +5,11 @@ import type { FlashcardList } from '../types';
 const FAVORITES_ID = '__favorites__';
 
 async function ensureFavorites(): Promise<void> {
-  const existing = await db.lists.get(FAVORITES_ID);
-  if (!existing) {
+  // Wrap the read + add so concurrent callers (StrictMode double-mount,
+  // overlapping refresh()s) can't both see "missing" and race on add().
+  await db.transaction('rw', db.lists, async () => {
+    const existing = await db.lists.get(FAVORITES_ID);
+    if (existing) return;
     await db.lists.add({
       id: FAVORITES_ID,
       name: 'Favorites',
@@ -14,7 +17,7 @@ async function ensureFavorites(): Promise<void> {
       updatedAt: Date.now(),
       wordIds: [],
     });
-  }
+  });
 }
 
 export function useLists() {

@@ -132,6 +132,28 @@ export function App() {
     );
   }
 
+  // First-load failure (e.g. service-worker / fetch race on a fresh device).
+  // Without this branch the user gets stuck on the inline VocabBrowser spinner.
+  if (vocab.error && !vocab.dbReady) {
+    return (
+      <div className={dark ? 'dark' : ''}>
+        <div className="flex min-h-screen items-center justify-center bg-cn-paper px-6 dark:bg-cn-paper-dark">
+          <div className="flex max-w-sm flex-col items-center gap-4 text-center">
+            <p className="text-5xl">&#23398;</p>
+            <p className="font-bold text-cn-ink dark:text-cn-cream">Couldn&rsquo;t load vocabulary</p>
+            <p className="text-sm text-cn-muted dark:text-cn-muted-dark">{vocab.error}</p>
+            <button
+              onClick={vocab.retry}
+              className="rounded-xl bg-cn-red px-6 py-2.5 font-bold text-white shadow-lg shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-xl"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (studyWords) {
     return (
       <div className={dark ? 'dark' : ''}>

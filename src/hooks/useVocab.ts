@@ -11,6 +11,7 @@ import {
 
 export function useVocab() {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [words, setWords] = useState<VocabWord[]>([]);
   const [selectedLevels, setSelectedLevels] = useState<number[]>([]); // empty = all HSK + custom
   const [showCustom, setShowCustom] = useState(false);
@@ -18,6 +19,7 @@ export function useVocab() {
   const [isSearching, setIsSearching] = useState(false);
   const [dbReady, setDbReady] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
+  const [retryKey, setRetryKey] = useState(0);
 
   // Initialize DB on first mount
   useEffect(() => {
@@ -25,20 +27,35 @@ export function useVocab() {
     (async () => {
       try {
         const count = await db.vocab.count();
-        // Show full loading screen only on a true first-time load (empty DB).
-        // Migrations on subsequent loads run quickly and silently.
-        if (count === 0 && !cancelled) setLoading(false);
+        // If the DB already has data, dismiss the loading screen immediately
+        // and run any migrations silently in the background. On a true first
+        // load (empty DB) we keep the spinner up until the fetch + bulkPut
+        // finish, otherwise the user lands on an empty word list.
+        if (count > 0 && !cancelled) {
+          setDbReady(true);
+          setLoading(false);
+        }
         await loadVocabIntoDb();
         if (!cancelled) {
           setDbReady(true);
           setLoading(false);
+          setError(null);
         }
       } catch (err) {
         console.error('Failed to load vocab:', err);
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : 'Failed to load vocabulary');
+          setLoading(false);
+        }
       }
     })();
     return () => { cancelled = true; };
+  }, [retryKey]);
+
+  const retry = useCallback(() => {
+    setError(null);
+    setLoading(true);
+    setRetryKey((k) => k + 1);
   }, []);
 
   // Load words when filters change, search clears, or DB becomes ready
@@ -94,6 +111,8 @@ export function useVocab() {
 
   return {
     loading,
+    error,
+    retry,
     words,
     dbReady,
     selectedLevels,
