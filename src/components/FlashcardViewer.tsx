@@ -179,7 +179,7 @@ export function FlashcardViewer({
           {/* Front face — Hanzi (+ optional hints) */}
           <div
             className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border-2 border-cn-border bg-cn-surface shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark"
-            style={{ backfaceVisibility: 'hidden' }}
+            style={{ backfaceVisibility: 'hidden', pointerEvents: flipped ? 'none' : 'auto' }}
           >
             <button
               onClick={handleSpeak}
@@ -192,6 +192,21 @@ export function FlashcardViewer({
                 <path d="M13.829 7.172a.75.75 0 0 0-1.061 1.06 2.5 2.5 0 0 1 0 3.536.75.75 0 1 0 1.06 1.06 4 4 0 0 0 0-5.656Z" />
               </svg>
             </button>
+            {word.userNote && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowNote(true);
+                }}
+                className="absolute left-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-cn-gold text-white shadow-md shadow-cn-gold/30 transition-all hover:bg-cn-gold-dark hover:shadow-lg"
+                title="View note"
+                aria-label="View note"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                  <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4 5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-2 4.25a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm.75 2.75a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7Z" clipRule="evenodd" />
+                </svg>
+              </button>
+            )}
             <p className="text-8xl font-black text-cn-ink dark:text-cn-cream sm:text-9xl">
               {word.hanzi}
             </p>
@@ -218,15 +233,27 @@ export function FlashcardViewer({
             style={{
               backfaceVisibility: 'hidden',
               transform: 'rotateY(180deg)',
+              pointerEvents: flipped ? 'auto' : 'none',
             }}
           >
+            <button
+              onClick={handleSpeak}
+              className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-cn-red text-white shadow-md shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-lg"
+              title="Play pronunciation"
+              aria-label="Play pronunciation"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                <path d="M10 3.75a.75.75 0 0 0-1.264-.546L4.703 7H3.167a.75.75 0 0 0-.7.48A6.985 6.985 0 0 0 2 10c0 .887.165 1.737.468 2.52.111.29.39.48.7.48h1.535l4.033 3.796A.75.75 0 0 0 10 16.25V3.75ZM15.95 5.05a.75.75 0 0 0-1.06 1.061 5.5 5.5 0 0 1 0 7.778.75.75 0 1 0 1.06 1.06 7 7 0 0 0 0-9.899Z" />
+                <path d="M13.829 7.172a.75.75 0 0 0-1.061 1.06 2.5 2.5 0 0 1 0 3.536.75.75 0 1 0 1.06 1.06 4 4 0 0 0 0-5.656Z" />
+              </svg>
+            </button>
             {word.userNote && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setShowNote(true);
                 }}
-                className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-cn-gold text-white shadow-md shadow-cn-gold/30 transition-all hover:bg-cn-gold-dark hover:shadow-lg"
+                className="absolute left-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-cn-gold text-white shadow-md shadow-cn-gold/30 transition-all hover:bg-cn-gold-dark hover:shadow-lg"
                 title="View note"
                 aria-label="View note"
               >
