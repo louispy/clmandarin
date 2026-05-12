@@ -19,6 +19,8 @@ import { CSS } from '@dnd-kit/utilities';
 import type { VocabWord } from '../types';
 import { displayHanzi, type Script } from '../hooks/useScript';
 import { getWordsByIds, stripTones } from '../utils/vocab-loader';
+import { speak } from '../utils/speech';
+import { NoAudioModal } from './NoAudioModal';
 
 function SortableItem({
   word,
@@ -33,10 +35,17 @@ function SortableItem({
 }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: word.id });
+  const [showNoAudio, setShowNoAudio] = useState(false);
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+  };
+
+  const handleSpeak = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const ok = await speak(word.hanzi);
+    if (!ok) setShowNoAudio(true);
   };
 
   return (
@@ -62,6 +71,17 @@ function SortableItem({
         )}
       </div>
       <button
+        onClick={handleSpeak}
+        className="shrink-0 rounded-lg p-2 text-cn-muted/40 transition-colors hover:text-cn-red dark:text-cn-muted-dark/40 dark:hover:text-cn-red-light"
+        title="Play pronunciation"
+        aria-label="Play pronunciation"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+          <path d="M10 3.75a.75.75 0 0 0-1.264-.546L4.703 7H3.167a.75.75 0 0 0-.7.48A6.985 6.985 0 0 0 2 10c0 .887.165 1.737.468 2.52.111.29.39.48.7.48h1.535l4.033 3.796A.75.75 0 0 0 10 16.25V3.75ZM15.95 5.05a.75.75 0 0 0-1.06 1.061 5.5 5.5 0 0 1 0 7.778.75.75 0 1 0 1.06 1.06 7 7 0 0 0 0-9.899Z" />
+          <path d="M13.829 7.172a.75.75 0 0 0-1.061 1.06 2.5 2.5 0 0 1 0 3.536.75.75 0 1 0 1.06 1.06 4 4 0 0 0 0-5.656Z" />
+        </svg>
+      </button>
+      <button
         onClick={() => onRemove(word.id)}
         className="shrink-0 rounded-lg p-2 text-cn-muted/40 transition-colors hover:text-cn-red dark:text-cn-muted-dark/40 dark:hover:text-cn-red-light"
       >
@@ -69,6 +89,7 @@ function SortableItem({
           <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
         </svg>
       </button>
+      {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
     </div>
   );
 }
