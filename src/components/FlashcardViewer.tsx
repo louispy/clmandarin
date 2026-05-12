@@ -27,6 +27,7 @@ export function FlashcardViewer({
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(false);
   const [showNoAudio, setShowNoAudio] = useState(false);
+  const [showNote, setShowNote] = useState(false);
 
   const word = words[index];
 
@@ -219,6 +220,21 @@ export function FlashcardViewer({
               transform: 'rotateY(180deg)',
             }}
           >
+            {word.userNote && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowNote(true);
+                }}
+                className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-cn-gold text-white shadow-md shadow-cn-gold/30 transition-all hover:bg-cn-gold-dark hover:shadow-lg"
+                title="View note"
+                aria-label="View note"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                  <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4 5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-2 4.25a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm.75 2.75a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7Z" clipRule="evenodd" />
+                </svg>
+              </button>
+            )}
             <p className="text-5xl font-bold text-cn-red dark:text-cn-red-light sm:text-6xl">
               {word.pinyin}
             </p>
@@ -296,6 +312,37 @@ export function FlashcardViewer({
       </div>
 
       {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
+
+      {showNote && word.userNote && (
+        <div
+          onClick={() => setShowNote(false)}
+          className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50 px-4 py-8 backdrop-blur-sm sm:items-center"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-md rounded-2xl border border-cn-border bg-cn-surface p-6 shadow-2xl dark:border-cn-border-dark dark:bg-cn-surface-dark"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <h2 className="text-2xl font-bold text-cn-red dark:text-cn-red-light">{word.hanzi}</h2>
+                <p className="text-sm text-cn-muted dark:text-cn-muted-dark">{word.pinyin}</p>
+              </div>
+              <button
+                onClick={() => setShowNote(false)}
+                className="rounded-lg p-1 text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                  <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                </svg>
+              </button>
+            </div>
+            <div className="mt-4 whitespace-pre-wrap rounded-xl bg-cn-paper p-4 text-sm text-cn-ink dark:bg-cn-paper-dark dark:text-cn-cream">
+              {word.userNote}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
