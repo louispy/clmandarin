@@ -107,9 +107,18 @@ export function WordCard({
 
         {/* HSK badge + actions */}
         <div className="flex shrink-0 flex-col items-end gap-2">
-          <span className="rounded-full bg-cn-red/10 px-2 py-0.5 text-xs font-semibold text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light">
-            HSK {word.hskLevel}
-          </span>
+          {word.source === 'custom' ? (
+            <span className="flex items-center gap-1 rounded-full bg-cn-gold/10 px-2 py-0.5 text-xs font-semibold text-cn-gold-dark dark:bg-cn-gold/20 dark:text-cn-gold-light">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3">
+                <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
+              </svg>
+              {word.hskLevel > 0 ? `HSK ${word.hskLevel}` : 'Custom'}
+            </span>
+          ) : (
+            <span className="rounded-full bg-cn-red/10 px-2 py-0.5 text-xs font-semibold text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light">
+              HSK {word.hskLevel}
+            </span>
+          )}
 
           <div className="flex items-center gap-1">
             {/* Speaker / Audio */}
@@ -283,9 +292,18 @@ export function WordCardSquare({
       </button>
 
       {/* HSK badge */}
-      <span className="absolute left-2 top-2 rounded-full bg-cn-red/10 px-1.5 py-0.5 text-[10px] font-bold text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light">
-        {word.hskLevel}
-      </span>
+      {word.source === 'custom' ? (
+        <span className="absolute left-2 top-2 flex items-center gap-0.5 rounded-full bg-cn-gold/10 px-1.5 py-0.5 text-[10px] font-bold text-cn-gold-dark dark:bg-cn-gold/20 dark:text-cn-gold-light">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-2.5 w-2.5">
+            <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
+          </svg>
+          {word.hskLevel > 0 ? word.hskLevel : 'C'}
+        </span>
+      ) : (
+        <span className="absolute left-2 top-2 rounded-full bg-cn-red/10 px-1.5 py-0.5 text-[10px] font-bold text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light">
+          {word.hskLevel}
+        </span>
+      )}
 
       {/* Speaker */}
       <button

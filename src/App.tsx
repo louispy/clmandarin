@@ -218,6 +218,9 @@ export function App() {
               dataLoading={!vocab.dbReady}
               selectedLevels={vocab.selectedLevels}
               onToggleLevel={vocab.toggleLevel}
+              showCustom={vocab.showCustom}
+              onToggleCustom={vocab.toggleCustom}
+              onAddCustomWord={vocab.addCustomWord}
               searchQuery={vocab.searchQuery}
               onSearch={vocab.handleSearch}
               isSearching={vocab.isSearching}

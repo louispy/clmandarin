@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import type { VocabWord, FlashcardList } from '../types';
 import type { VisibilityState } from '../hooks/useVisibility';
 import { WordCard, WordCardSquare } from './WordCard';
+import { AddCustomWordModal } from './AddCustomWordModal';
 
 const HSK_LEVELS = [1, 2, 3, 4, 5, 6];
 
@@ -10,6 +11,9 @@ export function VocabBrowser({
   dataLoading,
   selectedLevels,
   onToggleLevel,
+  showCustom,
+  onToggleCustom,
+  onAddCustomWord,
   searchQuery,
   onSearch,
   isSearching,
@@ -31,6 +35,9 @@ export function VocabBrowser({
   dataLoading?: boolean;
   selectedLevels: number[];
   onToggleLevel: (level: number) => void;
+  showCustom: boolean;
+  onToggleCustom: () => void;
+  onAddCustomWord: (input: { hanzi: string; pinyin: string; english: string; hskLevel: number }) => Promise<unknown>;
   searchQuery: string;
   onSearch: (query: string) => void;
   isSearching: boolean;
@@ -51,7 +58,11 @@ export function VocabBrowser({
   const [addMenu, setAddMenu] = useState(false);
   const [addCreate, setAddCreate] = useState(false);
   const [addNewName, setAddNewName] = useState('');
+  const [addCustomOpen, setAddCustomOpen] = useState(false);
   const addRef = useRef<HTMLDivElement>(null);
+
+  // Default Level in the custom-word modal: the single selected HSK level, or 0 (None) otherwise.
+  const defaultCustomLevel = selectedLevels.length === 1 ? selectedLevels[0] : 0;
 
   const PAGE_SIZE = 50;
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
@@ -145,6 +156,20 @@ export function VocabBrowser({
                 <span className="hidden sm:inline">HSK {level}</span>
               </button>
             ))}
+
+            {/* Custom words filter */}
+            <button
+              onClick={onToggleCustom}
+              className={`rounded-lg px-2.5 py-1.5 text-sm font-bold transition-all sm:px-3 ${
+                showCustom
+                  ? 'bg-cn-gold text-white shadow-md shadow-cn-gold/30'
+                  : 'bg-cn-surface text-cn-muted hover:bg-cn-gold/10 hover:text-cn-gold-dark dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-gold/10 dark:hover:text-cn-gold-light'
+              }`}
+              title="Custom words"
+            >
+              <span className="sm:hidden">C</span>
+              <span className="hidden sm:inline">Custom</span>
+            </button>
 
             {/* Inline + button — adds currently filtered words to a list */}
             {words.length > 0 && selectedLevels.length > 0 && (
@@ -282,6 +307,17 @@ export function VocabBrowser({
             {isSearching ? `${words.length} result${words.length !== 1 ? 's' : ''}` : `${words.length} words`}
           </span>
           <button
+            onClick={() => setAddCustomOpen(true)}
+            className="rounded-lg p-1.5 text-cn-muted transition-colors hover:text-cn-gold-dark dark:text-cn-muted-dark dark:hover:text-cn-gold-light"
+            title="Add custom word"
+            aria-label="Add custom word"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+              <path d="M5.433 13.917l1.262-3.155A4 4 0 0 1 7.58 9.42l6.92-6.918a2.121 2.121 0 0 1 3 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 0 1-.65-.65Z" />
+              <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0 0 10 3H4.75A2.75 2.75 0 0 0 2 5.75v9.5A2.75 2.75 0 0 0 4.75 18h9.5A2.75 2.75 0 0 0 17 15.25V10a.75.75 0 0 0-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5Z" />
+            </svg>
+          </button>
+          <button
             onClick={onToggleViewMode}
             className="rounded-lg p-1.5 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
             title={viewMode === 'list' ? 'Card view' : 'List view'}
@@ -349,6 +385,14 @@ export function VocabBrowser({
             <path fillRule="evenodd" d="M9.47 6.47a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 1 1-1.06 1.06L10 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06l4.25-4.25Z" clipRule="evenodd" />
           </svg>
         </button>
+      )}
+
+      {addCustomOpen && (
+        <AddCustomWordModal
+          defaultLevel={defaultCustomLevel}
+          onClose={() => setAddCustomOpen(false)}
+          onAdd={onAddCustomWord}
+        />
       )}
     </div>
   );
