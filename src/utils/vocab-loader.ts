@@ -30,6 +30,45 @@ export async function getWordsByLevels(levels: number[]): Promise<VocabWord[]> {
   return db.vocab.where('hskLevel').anyOf(levels).sortBy('id');
 }
 
+export async function getFilteredWords(opts: {
+  levels: number[];
+  showCustom: boolean;
+}): Promise<VocabWord[]> {
+  if (opts.levels.length === 0 && !opts.showCustom) {
+    return getAllWords();
+  }
+  const results = new Map<string, VocabWord>();
+  if (opts.levels.length > 0) {
+    const byLevel = await db.vocab.where('hskLevel').anyOf(opts.levels).toArray();
+    byLevel.forEach((w) => results.set(w.id, w));
+  }
+  if (opts.showCustom) {
+    const customs = await db.vocab.filter((w) => w.source === 'custom').toArray();
+    customs.forEach((w) => results.set(w.id, w));
+  }
+  return Array.from(results.values()).sort((a, b) => a.id.localeCompare(b.id));
+}
+
+export async function addCustomWord(input: {
+  hanzi: string;
+  pinyin: string;
+  english: string;
+  hskLevel: number;
+}): Promise<VocabWord> {
+  const word: VocabWord = {
+    id: `custom-${crypto.randomUUID()}`,
+    hskLevel: input.hskLevel,
+    number: 0,
+    hanzi: input.hanzi.trim(),
+    pinyin: input.pinyin.trim(),
+    english: input.english.trim(),
+    source: 'custom',
+    createdAt: Date.now(),
+  };
+  await db.vocab.add(word);
+  return word;
+}
+
 export async function getWordsByIds(ids: string[]): Promise<VocabWord[]> {
   const words = await db.vocab.bulkGet(ids);
   return words.filter((w): w is VocabWord => w !== undefined);

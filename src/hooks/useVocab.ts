@@ -1,15 +1,22 @@
 import { useState, useEffect, useCallback } from 'react';
 import { db } from '../db';
 import type { VocabWord } from '../types';
-import { loadVocabIntoDb, getAllWords, getWordsByLevels, searchWords } from '../utils/vocab-loader';
+import {
+  loadVocabIntoDb,
+  getFilteredWords,
+  searchWords,
+  addCustomWord as addCustomWordToDb,
+} from '../utils/vocab-loader';
 
 export function useVocab() {
   const [loading, setLoading] = useState(true);
   const [words, setWords] = useState<VocabWord[]>([]);
-  const [selectedLevels, setSelectedLevels] = useState<number[]>([]); // empty = all
+  const [selectedLevels, setSelectedLevels] = useState<number[]>([]); // empty = all HSK + custom
+  const [showCustom, setShowCustom] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [dbReady, setDbReady] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   // Initialize DB on first mount
   useEffect(() => {
@@ -32,15 +39,11 @@ export function useVocab() {
     return () => { cancelled = true; };
   }, []);
 
-  // Load words when levels change, search clears, or DB becomes ready
+  // Load words when filters change, search clears, or DB becomes ready
   useEffect(() => {
     if (!dbReady || isSearching) return;
-    if (selectedLevels.length === 0) {
-      getAllWords().then(setWords);
-    } else {
-      getWordsByLevels(selectedLevels).then(setWords);
-    }
-  }, [dbReady, selectedLevels, isSearching]);
+    getFilteredWords({ levels: selectedLevels, showCustom }).then(setWords);
+  }, [dbReady, selectedLevels, showCustom, isSearching, refreshKey]);
 
   const toggleLevel = useCallback((level: number) => {
     setSelectedLevels((prev) => {
@@ -49,6 +52,10 @@ export function useVocab() {
       }
       return [...prev, level].sort();
     });
+  }, []);
+
+  const toggleCustom = useCallback(() => {
+    setShowCustom((c) => !c);
   }, []);
 
   // Search
@@ -66,14 +73,26 @@ export function useVocab() {
     []
   );
 
+  const addCustomWord = useCallback(
+    async (input: { hanzi: string; pinyin: string; english: string; hskLevel: number }) => {
+      const word = await addCustomWordToDb(input);
+      setRefreshKey((k) => k + 1);
+      return word;
+    },
+    []
+  );
+
   return {
     loading,
     words,
     dbReady,
     selectedLevels,
     toggleLevel,
+    showCustom,
+    toggleCustom,
     searchQuery,
     isSearching,
     handleSearch,
+    addCustomWord,
   };
 }

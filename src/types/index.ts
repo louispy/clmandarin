@@ -1,10 +1,12 @@
 export interface VocabWord {
   id: string;
-  hskLevel: number;
+  hskLevel: number;   // 0 = untagged custom, 1-6 = HSK level
   number: number;
   hanzi: string;
   pinyin: string;
   english: string;
+  source?: 'custom';
+  createdAt?: number;
 }
 
 export interface FlashcardList {
