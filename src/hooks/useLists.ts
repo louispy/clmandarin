@@ -62,6 +62,14 @@ export function useLists() {
     [refresh]
   );
 
+  const clearFavorites = useCallback(async () => {
+    await db.lists.update(FAVORITES_ID, {
+      wordIds: [],
+      updatedAt: Date.now(),
+    });
+    await refresh();
+  }, [refresh]);
+
   const createList = useCallback(
     async (name: string) => {
       const now = Date.now();
@@ -143,6 +151,7 @@ export function useLists() {
     favorites,
     isFavorite,
     toggleFavorite,
+    clearFavorites,
     createList,
     deleteList,
     renameList,
