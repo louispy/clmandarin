@@ -146,6 +146,7 @@ export function App() {
           dark={dark}
           onToggleDark={toggleDark}
           script={script}
+          onToggleScript={toggleScript}
           startIndex={studyStartIndex}
         />
       </div>
@@ -192,10 +193,24 @@ export function App() {
                 })()}
               </button>
 
+              {/* Script toggle */}
+              <button
+                onClick={toggleScript}
+                className={`ml-2 rounded-xl px-2 py-1 text-sm font-bold transition-colors ${
+                  script === 'tw'
+                    ? 'text-cn-red dark:text-cn-red-light'
+                    : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+                }`}
+                title={script === 'cn' ? 'Show traditional (繁)' : 'Show simplified (简)'}
+                aria-label="Toggle script"
+              >
+                {script === 'cn' ? '简' : '繁'}
+              </button>
+
               {/* Dark mode toggle */}
               <button
                 onClick={toggleDark}
-                className="ml-2 rounded-xl p-2 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
+                className="rounded-xl p-2 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
                 title={dark ? 'Light mode' : 'Dark mode'}
               >
                 {dark ? (
@@ -233,7 +248,6 @@ export function App() {
               onCreateListAndAddFiltered={handleCreateListAndAddFiltered}
               onUpdateWord={vocab.updateWord}
               script={script}
-              onToggleScript={toggleScript}
               isFavorite={listsHook.isFavorite}
               onToggleFavorite={listsHook.toggleFavorite}
               visibility={visibility}
@@ -297,6 +311,7 @@ export function App() {
                   </div>
                   <SortableWordList
                     wordIds={listsHook.activeList.wordIds}
+                    script={script}
                     onReorder={(ids) =>
                       listsHook.reorderList(listsHook.activeList!.id, ids)
                     }

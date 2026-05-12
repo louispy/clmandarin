@@ -25,7 +25,6 @@ export function VocabBrowser({
   onCreateListAndAddFiltered,
   onUpdateWord,
   script,
-  onToggleScript,
   isFavorite,
   onToggleFavorite,
   visibility,
@@ -50,7 +49,6 @@ export function VocabBrowser({
   onCreateListAndAddFiltered: (name: string) => void;
   onUpdateWord: (id: string, updates: { english?: string; userNote?: string; englishOriginal?: string }) => Promise<void>;
   script: Script;
-  onToggleScript: () => void;
   isFavorite: (wordId: string) => boolean;
   onToggleFavorite: (wordId: string) => void;
   visibility: VisibilityState;
@@ -305,18 +303,6 @@ export function VocabBrowser({
           <span className="text-xs text-cn-muted dark:text-cn-muted-dark">
             {isSearching ? `${words.length} result${words.length !== 1 ? 's' : ''}` : `${words.length} words`}
           </span>
-          <button
-            onClick={onToggleScript}
-            className={`rounded-lg px-2 py-1 text-xs font-bold transition-colors ${
-              script === 'tw'
-                ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
-                : 'bg-cn-surface text-cn-muted hover:text-cn-ink dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:text-cn-cream'
-            }`}
-            title={script === 'cn' ? 'Show traditional (繁)' : 'Show simplified (简)'}
-            aria-label="Toggle script"
-          >
-            {script === 'cn' ? '简' : '繁'}
-          </button>
           <button
             onClick={() => setAddCustomOpen(true)}
             className="rounded-lg p-1.5 text-cn-muted transition-colors hover:text-cn-gold-dark dark:text-cn-muted-dark dark:hover:text-cn-gold-light"

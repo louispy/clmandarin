@@ -11,6 +11,7 @@ export function FlashcardViewer({
   dark,
   onToggleDark,
   script = 'cn',
+  onToggleScript,
   startIndex,
 }: {
   words: VocabWord[];
@@ -19,6 +20,7 @@ export function FlashcardViewer({
   dark: boolean;
   onToggleDark: () => void;
   script?: Script;
+  onToggleScript?: () => void;
   startIndex?: number;
 }) {
   const initialIndex = startIndex ?? Math.floor(Math.random() * words.length);
@@ -145,6 +147,20 @@ export function FlashcardViewer({
           <span className="rounded-full bg-cn-red/10 px-3 py-1 text-sm font-bold text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light">
             {index + 1} / {words.length}
           </span>
+          {onToggleScript && (
+            <button
+              onClick={onToggleScript}
+              className={`rounded-xl px-2 py-1 text-sm font-bold transition-colors ${
+                script === 'tw'
+                  ? 'text-cn-red dark:text-cn-red-light'
+                  : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+              }`}
+              title={script === 'cn' ? 'Show traditional (繁)' : 'Show simplified (简)'}
+              aria-label="Toggle script"
+            >
+              {script === 'cn' ? '简' : '繁'}
+            </button>
+          )}
           <button
             onClick={onToggleDark}
             className="rounded-xl p-2 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"

@@ -17,14 +17,17 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import type { VocabWord } from '../types';
+import { displayHanzi, type Script } from '../hooks/useScript';
 import { getWordsByIds, stripTones } from '../utils/vocab-loader';
 
 function SortableItem({
   word,
+  script,
   onRemove,
   onStudy,
 }: {
   word: VocabWord;
+  script: Script;
   onRemove: (id: string) => void;
   onStudy?: (id: string) => void;
 }) {
@@ -52,7 +55,7 @@ function SortableItem({
         </svg>
       </button>
       <div className="min-w-0 flex-1 cursor-pointer" onClick={() => onStudy?.(word.id)}>
-        <span className="text-2xl font-bold text-cn-ink dark:text-cn-cream">{word.hanzi}</span>
+        <span className="text-2xl font-bold text-cn-ink dark:text-cn-cream">{displayHanzi(word, script)}</span>
         <span className="ml-3 text-lg text-cn-red dark:text-cn-red-light">{word.pinyin}</span>
         {word.english && (
           <span className="ml-3 text-base text-cn-muted dark:text-cn-muted-dark">{word.english}</span>
@@ -72,11 +75,13 @@ function SortableItem({
 
 export function SortableWordList({
   wordIds,
+  script = 'cn',
   onReorder,
   onRemove,
   onStudyWord,
 }: {
   wordIds: string[];
+  script?: Script;
   onReorder: (newIds: string[]) => void;
   onRemove: (wordId: string) => void;
   onStudyWord?: (wordId: string) => void;
@@ -110,6 +115,7 @@ export function SortableWordList({
     ? words.filter(
         (w) =>
           w.hanzi.includes(q) ||
+          (w.traditional?.includes(q) ?? false) ||
           w.pinyin.toLowerCase().includes(q) ||
           stripTones(w.pinyin.toLowerCase()).includes(qPlain) ||
           w.english.toLowerCase().includes(q)
@@ -154,7 +160,7 @@ export function SortableWordList({
         /* When searching, show flat list (no drag) */
         <div className="flex flex-col gap-2">
           {filtered.map((word) => (
-            <SortableItem key={word.id} word={word} onRemove={onRemove} onStudy={onStudyWord} />
+            <SortableItem key={word.id} word={word} script={script} onRemove={onRemove} onStudy={onStudyWord} />
           ))}
           {filtered.length === 0 && (
             <p className="py-6 text-center text-cn-muted dark:text-cn-muted-dark">
@@ -167,7 +173,7 @@ export function SortableWordList({
           <SortableContext items={wordIds} strategy={verticalListSortingStrategy}>
             <div className="flex flex-col gap-2">
               {words.map((word) => (
-                <SortableItem key={word.id} word={word} onRemove={onRemove} onStudy={onStudyWord} />
+                <SortableItem key={word.id} word={word} script={script} onRemove={onRemove} onStudy={onStudyWord} />
               ))}
             </div>
           </SortableContext>
