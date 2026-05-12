@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { VocabWord } from '../types';
+import { displayHanzi, type Script } from '../hooks/useScript';
 import { speak } from '../utils/speech';
 import { NoAudioModal } from './NoAudioModal';
 
@@ -9,6 +10,7 @@ export function FlashcardViewer({
   onClose,
   dark,
   onToggleDark,
+  script = 'cn',
   startIndex,
 }: {
   words: VocabWord[];
@@ -16,6 +18,7 @@ export function FlashcardViewer({
   onClose: () => void;
   dark: boolean;
   onToggleDark: () => void;
+  script?: Script;
   startIndex?: number;
 }) {
   const initialIndex = startIndex ?? Math.floor(Math.random() * words.length);
@@ -215,16 +218,16 @@ export function FlashcardViewer({
             )}
             <p
               className={`px-6 text-center font-black text-cn-ink dark:text-cn-cream ${
-                Array.from(word.hanzi).length <= 2
+                Array.from(displayHanzi(word, script)).length <= 2
                   ? 'text-8xl sm:text-9xl'
-                  : Array.from(word.hanzi).length <= 4
+                  : Array.from(displayHanzi(word, script)).length <= 4
                     ? 'text-6xl sm:text-7xl'
-                    : Array.from(word.hanzi).length <= 7
+                    : Array.from(displayHanzi(word, script)).length <= 7
                       ? 'text-4xl sm:text-5xl'
                       : 'text-3xl sm:text-4xl'
               }`}
             >
-              {word.hanzi}
+              {displayHanzi(word, script)}
             </p>
 
             {showHints && (
@@ -384,7 +387,7 @@ export function FlashcardViewer({
           >
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
-                <h2 className="text-2xl font-bold text-cn-red dark:text-cn-red-light">{word.hanzi}</h2>
+                <h2 className="text-2xl font-bold text-cn-red dark:text-cn-red-light">{displayHanzi(word, script)}</h2>
                 <p className="text-sm text-cn-muted dark:text-cn-muted-dark">{word.pinyin}</p>
               </div>
               <button

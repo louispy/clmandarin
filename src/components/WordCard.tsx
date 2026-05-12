@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import type { VocabWord, FlashcardList } from '../types';
 import type { VisibilityState } from '../hooks/useVisibility';
+import { displayHanzi, type Script } from '../hooks/useScript';
 import { speak } from '../utils/speech';
 import { NoAudioModal } from './NoAudioModal';
 import { EditWordModal } from './EditWordModal';
@@ -15,6 +16,7 @@ export function WordCard({
   onAddToList,
   onCreateListAndAdd,
   onUpdateWord,
+  script = 'cn',
   visibility,
   compact,
   onClick,
@@ -26,6 +28,7 @@ export function WordCard({
   onAddToList: (listId: string, wordId: string) => void;
   onCreateListAndAdd: (name: string, wordId: string) => void;
   onUpdateWord: (id: string, updates: WordUpdates) => Promise<void>;
+  script?: Script;
   visibility: VisibilityState;
   compact?: boolean;
   onClick?: () => void;
@@ -80,7 +83,7 @@ export function WordCard({
           {/* Hanzi */}
           {visibility.hanzi ? (
             <p className={`font-bold text-cn-ink dark:text-cn-cream ${compact ? 'text-2xl' : 'text-4xl'}`}>
-              {word.hanzi}
+              {displayHanzi(word, script)}
             </p>
           ) : (
             <p className={`font-bold text-cn-muted/30 dark:text-cn-muted-dark/30 ${compact ? 'text-2xl' : 'text-4xl'}`}>
@@ -301,6 +304,7 @@ export function WordCardSquare({
   isFavorite,
   onToggleFavorite,
   onUpdateWord,
+  script = 'cn',
   visibility,
   onClick,
 }: {
@@ -308,6 +312,7 @@ export function WordCardSquare({
   isFavorite: boolean;
   onToggleFavorite: (wordId: string) => void;
   onUpdateWord: (id: string, updates: WordUpdates) => Promise<void>;
+  script?: Script;
   visibility: VisibilityState;
   onClick?: () => void;
 }) {
@@ -396,14 +401,14 @@ export function WordCardSquare({
       {visibility.hanzi ? (
         <p
           className={`px-2 text-center font-black text-cn-ink dark:text-cn-cream ${
-            Array.from(word.hanzi).length <= 2
+            Array.from(displayHanzi(word, script)).length <= 2
               ? 'text-5xl'
-              : Array.from(word.hanzi).length <= 4
+              : Array.from(displayHanzi(word, script)).length <= 4
                 ? 'text-3xl'
                 : 'text-xl'
           }`}
         >
-          {word.hanzi}
+          {displayHanzi(word, script)}
         </p>
       ) : (
         <p className="text-5xl font-black text-cn-muted/20 dark:text-cn-muted-dark/20">?</p>

@@ -3,6 +3,7 @@ import { useVocab } from './hooks/useVocab';
 import { useLists } from './hooks/useLists';
 import { useDarkMode } from './hooks/useDarkMode';
 import { useVisibility } from './hooks/useVisibility';
+import { useScript } from './hooks/useScript';
 import { VocabBrowser } from './components/VocabBrowser';
 import { FlashcardManager } from './components/FlashcardManager';
 import { SortableWordList } from './components/SortableWordList';
@@ -19,6 +20,7 @@ export function App() {
   const listsHook = useLists();
   const { dark, toggle: toggleDark } = useDarkMode();
   const { visibility, toggle: toggleVisibility } = useVisibility();
+  const { script, toggle: toggleScript } = useScript();
   const [view, setView] = useState<View>('browse');
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [studyWords, setStudyWords] = useState<VocabWord[] | null>(null);
@@ -144,6 +146,7 @@ export function App() {
           }}
           dark={dark}
           onToggleDark={toggleDark}
+          script={script}
           startIndex={studyStartIndex}
         />
       </div>
@@ -230,6 +233,8 @@ export function App() {
               onAddFiltered={handleAddFiltered}
               onCreateListAndAddFiltered={handleCreateListAndAddFiltered}
               onUpdateWord={vocab.updateWord}
+              script={script}
+              onToggleScript={toggleScript}
               isFavorite={listsHook.isFavorite}
               onToggleFavorite={listsHook.toggleFavorite}
               visibility={visibility}
