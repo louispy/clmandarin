@@ -172,6 +172,7 @@ export function FlashcardViewer({
             aspectRatio: '3 / 4',
             maxHeight: 'calc(100vh - 200px)',
             transformStyle: 'preserve-3d',
+            WebkitTransformStyle: 'preserve-3d',
             transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
             transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
           }}
@@ -179,7 +180,12 @@ export function FlashcardViewer({
           {/* Front face — Hanzi (+ optional hints) */}
           <div
             className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border-2 border-cn-border bg-cn-surface shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark"
-            style={{ backfaceVisibility: 'hidden', pointerEvents: flipped ? 'none' : 'auto' }}
+            style={{
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
+              transform: 'translateZ(1px)',
+              pointerEvents: flipped ? 'none' : 'auto',
+            }}
           >
             <button
               onClick={handleSpeak}
@@ -232,7 +238,8 @@ export function FlashcardViewer({
             className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border-2 border-cn-gold/30 bg-cn-surface shadow-xl dark:border-cn-gold-dark/30 dark:bg-cn-surface-dark"
             style={{
               backfaceVisibility: 'hidden',
-              transform: 'rotateY(180deg)',
+              WebkitBackfaceVisibility: 'hidden',
+              transform: 'rotateY(180deg) translateZ(1px)',
               pointerEvents: flipped ? 'auto' : 'none',
             }}
           >
