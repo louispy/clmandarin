@@ -137,6 +137,7 @@ export async function searchWords(query: string): Promise<VocabWord[]> {
     .filter(
       (w) =>
         w.hanzi.includes(q) ||
+        (w.traditional?.includes(q) ?? false) ||
         w.pinyin.toLowerCase().includes(q) ||
         stripTones(w.pinyin.toLowerCase()).includes(qPlain) ||
         w.english.toLowerCase().includes(q)
