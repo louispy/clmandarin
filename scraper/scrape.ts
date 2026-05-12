@@ -2,15 +2,19 @@ import * as cheerio from 'cheerio';
 import { writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { Converter } from 'opencc-js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = join(__dirname, '..', 'public', 'data');
+
+const toTraditional = Converter({ from: 'cn', to: 'tw' });
 
 interface ScrapedWord {
   id: string;
   hskLevel: number;
   number: number;
   hanzi: string;
+  traditional?: string;
   pinyin: string;
   english: string;
 }
@@ -53,15 +57,19 @@ async function scrapeLevel(level: number): Promise<ScrapedWord[]> {
     const hanzi = $(cells[1]).text().trim();
     const pinyin = $(cells[2]).text().trim().replace(/\u00a0/g, ' ').trim();
     const english = $(cells[3]).text().trim().replace(/\u2019/g, "'");
+    const traditional = toTraditional(hanzi);
 
-    words.push({
+    const entry: ScrapedWord = {
       id: `hsk${level}-${String(num).padStart(3, '0')}`,
       hskLevel: level,
       number: num,
       hanzi,
       pinyin,
       english,
-    });
+    };
+    if (traditional !== hanzi) entry.traditional = traditional;
+
+    words.push(entry);
   });
 
   return words;
@@ -70,7 +78,7 @@ async function scrapeLevel(level: number): Promise<ScrapedWord[]> {
 async function main() {
   mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  let totalWords = 0;
+  const allWords: ScrapedWord[] = [];
 
   for (let level = 1; level <= 6; level++) {
     const words = await scrapeLevel(level);
@@ -83,13 +91,12 @@ async function main() {
     } else {
       console.log(`✓ HSK ${level}: ${words.length} words`);
     }
-
-    const outPath = join(OUTPUT_DIR, `hsk-${level}.json`);
-    writeFileSync(outPath, JSON.stringify(words, null, 2));
-    totalWords += words.length;
+    allWords.push(...words);
   }
 
-  console.log(`\nDone! ${totalWords} total words written to ${OUTPUT_DIR}`);
+  const outPath = join(OUTPUT_DIR, 'hsk-all.json');
+  writeFileSync(outPath, JSON.stringify(allWords));
+  console.log(`\nDone! ${allWords.length} total words written to ${outPath}`);
 }
 
 main().catch((err) => {

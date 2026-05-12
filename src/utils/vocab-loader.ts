@@ -9,13 +9,40 @@ export function stripTones(s: string): string {
     .replace(/ü/g, 'u');
 }
 
+const DATA_VERSION = 2;
+const DATA_VERSION_KEY = 'clmandarin-data-version';
+
 export async function loadVocabIntoDb(): Promise<void> {
+  const storedVersion = localStorage.getItem(DATA_VERSION_KEY);
+  const upToDate = storedVersion === String(DATA_VERSION);
   const count = await db.vocab.count();
-  if (count > 0) return; // already loaded
+
+  if (count > 0 && upToDate) return;
 
   const response = await fetch(`${import.meta.env.BASE_URL}data/hsk-all.json`);
   const allWords = (await response.json()) as VocabWord[];
-  await db.vocab.bulkAdd(allWords);
+
+  if (count === 0) {
+    await db.vocab.bulkAdd(allWords);
+  } else {
+    // Merge in new canonical fields while preserving user edits (englishOriginal, userNote, custom english)
+    const existing = await db.vocab.bulkGet(allWords.map((w) => w.id));
+    const merged: VocabWord[] = allWords.map((next, i) => {
+      const old = existing[i];
+      if (!old || old.source === 'custom') return old ?? next;
+      const result: VocabWord = { ...next };
+      if (old.englishOriginal) {
+        // User has edited english — keep their version, refresh the canonical
+        result.english = old.english;
+        result.englishOriginal = next.english;
+      }
+      if (old.userNote) result.userNote = old.userNote;
+      return result;
+    });
+    await db.vocab.bulkPut(merged);
+  }
+
+  localStorage.setItem(DATA_VERSION_KEY, String(DATA_VERSION));
 }
 
 export async function getAllWords(): Promise<VocabWord[]> {

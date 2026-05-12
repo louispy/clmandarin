@@ -25,13 +25,14 @@ export function useVocab() {
     (async () => {
       try {
         const count = await db.vocab.count();
-        if (count > 0) {
-          if (!cancelled) { setDbReady(true); setLoading(false); }
-          return;
-        }
-        if (!cancelled) setLoading(false);
+        // Show full loading screen only on a true first-time load (empty DB).
+        // Migrations on subsequent loads run quickly and silently.
+        if (count === 0 && !cancelled) setLoading(false);
         await loadVocabIntoDb();
-        if (!cancelled) setDbReady(true);
+        if (!cancelled) {
+          setDbReady(true);
+          setLoading(false);
+        }
       } catch (err) {
         console.error('Failed to load vocab:', err);
         if (!cancelled) setLoading(false);
