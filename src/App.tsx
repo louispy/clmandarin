@@ -229,6 +229,7 @@ export function App() {
               onCreateListAndAdd={handleCreateListAndAdd}
               onAddFiltered={handleAddFiltered}
               onCreateListAndAddFiltered={handleCreateListAndAddFiltered}
+              onUpdateWord={vocab.updateWord}
               isFavorite={listsHook.isFavorite}
               onToggleFavorite={listsHook.toggleFavorite}
               visibility={visibility}

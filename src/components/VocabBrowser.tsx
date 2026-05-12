@@ -22,6 +22,7 @@ export function VocabBrowser({
   onCreateListAndAdd,
   onAddFiltered,
   onCreateListAndAddFiltered,
+  onUpdateWord,
   isFavorite,
   onToggleFavorite,
   visibility,
@@ -46,6 +47,7 @@ export function VocabBrowser({
   onCreateListAndAdd: (name: string, wordId: string) => void;
   onAddFiltered: (listId: string) => void;
   onCreateListAndAddFiltered: (name: string) => void;
+  onUpdateWord: (id: string, updates: { english?: string; userNote?: string; englishOriginal?: string }) => Promise<void>;
   isFavorite: (wordId: string) => boolean;
   onToggleFavorite: (wordId: string) => void;
   visibility: VisibilityState;
@@ -352,6 +354,7 @@ export function VocabBrowser({
               lists={lists}
               onAddToList={onAddToList}
               onCreateListAndAdd={onCreateListAndAdd}
+              onUpdateWord={onUpdateWord}
               visibility={visibility}
               onClick={() => onStudyWord(word.id)}
             />
@@ -365,6 +368,7 @@ export function VocabBrowser({
               word={word}
               isFavorite={isFavorite(word.id)}
               onToggleFavorite={onToggleFavorite}
+              onUpdateWord={onUpdateWord}
               visibility={visibility}
               onClick={() => onStudyWord(word.id)}
             />

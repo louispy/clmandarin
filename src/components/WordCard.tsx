@@ -3,6 +3,9 @@ import type { VocabWord, FlashcardList } from '../types';
 import type { VisibilityState } from '../hooks/useVisibility';
 import { speak } from '../utils/speech';
 import { NoAudioModal } from './NoAudioModal';
+import { EditWordModal } from './EditWordModal';
+
+type WordUpdates = { english?: string; userNote?: string; englishOriginal?: string };
 
 export function WordCard({
   word,
@@ -11,6 +14,7 @@ export function WordCard({
   lists,
   onAddToList,
   onCreateListAndAdd,
+  onUpdateWord,
   visibility,
   compact,
   onClick,
@@ -21,6 +25,7 @@ export function WordCard({
   lists: FlashcardList[];
   onAddToList: (listId: string, wordId: string) => void;
   onCreateListAndAdd: (name: string, wordId: string) => void;
+  onUpdateWord: (id: string, updates: WordUpdates) => Promise<void>;
   visibility: VisibilityState;
   compact?: boolean;
   onClick?: () => void;
@@ -29,6 +34,7 @@ export function WordCard({
   const [showCreate, setShowCreate] = useState(false);
   const [newListName, setNewListName] = useState('');
   const [showNoAudio, setShowNoAudio] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleSpeak = async (e: React.MouseEvent) => {
@@ -95,8 +101,23 @@ export function WordCard({
 
           {/* English */}
           {visibility.english ? (
-            <p className={`mt-0.5 text-cn-muted dark:text-cn-muted-dark ${compact ? 'text-sm' : 'text-base'}`}>
-              {word.english || '—'}
+            <p className={`mt-0.5 flex items-center gap-1.5 text-cn-muted dark:text-cn-muted-dark ${compact ? 'text-sm' : 'text-base'}`}>
+              <span>{word.english || '—'}</span>
+              {word.userNote && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowEdit(true);
+                  }}
+                  className="rounded-full p-0.5 text-cn-gold-dark hover:bg-cn-gold/10 dark:text-cn-gold-light"
+                  title="View note"
+                  aria-label="View note"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
+                    <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4 5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-2 4.25a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm.75 2.75a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7Z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              )}
             </p>
           ) : (
             <p className={`mt-0.5 text-cn-muted/30 dark:text-cn-muted-dark/30 ${compact ? 'text-sm' : 'text-base'}`}>
@@ -195,6 +216,19 @@ export function WordCard({
                     <div className="my-1 border-t border-cn-border dark:border-cn-border-dark" />
                   )}
 
+                  <button
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setShowEdit(true);
+                    }}
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
+                      <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
+                    </svg>
+                    Edit word…
+                  </button>
+
                   {showCreate ? (
                     <div className="flex gap-1 px-2 py-1">
                       <input
@@ -237,6 +271,13 @@ export function WordCard({
       </div>
 
       {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
+      {showEdit && (
+        <EditWordModal
+          word={word}
+          onClose={() => setShowEdit(false)}
+          onSave={(updates) => onUpdateWord(word.id, updates)}
+        />
+      )}
     </div>
   );
 }
@@ -246,16 +287,19 @@ export function WordCardSquare({
   word,
   isFavorite,
   onToggleFavorite,
+  onUpdateWord,
   visibility,
   onClick,
 }: {
   word: VocabWord;
   isFavorite: boolean;
   onToggleFavorite: (wordId: string) => void;
+  onUpdateWord: (id: string, updates: WordUpdates) => Promise<void>;
   visibility: VisibilityState;
   onClick?: () => void;
 }) {
   const [showNoAudio, setShowNoAudio] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   const handleSpeak = async (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -305,6 +349,23 @@ export function WordCardSquare({
         </span>
       )}
 
+      {/* Note indicator */}
+      {word.userNote && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowEdit(true);
+          }}
+          className="absolute bottom-2 left-2 rounded-lg p-1 text-cn-gold-dark transition-colors hover:bg-cn-gold/10 dark:text-cn-gold-light"
+          title="View note"
+          aria-label="View note"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+            <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4 5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-2 4.25a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm.75 2.75a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7Z" clipRule="evenodd" />
+          </svg>
+        </button>
+      )}
+
       {/* Speaker */}
       <button
         onClick={handleSpeak}
@@ -340,6 +401,13 @@ export function WordCardSquare({
       )}
 
       {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
+      {showEdit && (
+        <EditWordModal
+          word={word}
+          onClose={() => setShowEdit(false)}
+          onSave={(updates) => onUpdateWord(word.id, updates)}
+        />
+      )}
     </div>
   );
 }
