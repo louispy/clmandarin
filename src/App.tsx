@@ -267,26 +267,29 @@ export function App() {
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
-                      {listsHook.activeList.id === '__favorites__' &&
-                        listsHook.activeList.wordIds.length > 0 && (
+                      {listsHook.activeList.wordIds.length > 0 && (
+                        <>
                           <button
                             onClick={() => {
-                              if (confirm('Clear all favorites? This cannot be undone.')) {
-                                listsHook.clearFavorites();
+                              const name =
+                                listsHook.activeList!.id === '__favorites__'
+                                  ? 'all favorites'
+                                  : `all words from "${listsHook.activeList!.name}"`;
+                              if (confirm(`Clear ${name}? This cannot be undone.`)) {
+                                listsHook.clearList(listsHook.activeList!.id);
                               }
                             }}
                             className="rounded-xl border border-cn-border px-4 py-2.5 text-sm font-bold text-cn-muted transition-colors hover:border-cn-red hover:text-cn-red dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:border-cn-red-light dark:hover:text-cn-red-light"
                           >
                             Reset
                           </button>
-                        )}
-                      {listsHook.activeList.wordIds.length > 0 && (
-                        <button
-                          onClick={handleStudy}
-                          className="rounded-xl bg-cn-red px-6 py-2.5 font-bold text-white shadow-lg shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-xl"
-                        >
-                          Study
-                        </button>
+                          <button
+                            onClick={handleStudy}
+                            className="rounded-xl bg-cn-red px-6 py-2.5 font-bold text-white shadow-lg shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-xl"
+                          >
+                            Study
+                          </button>
+                        </>
                       )}
                     </div>
                   </div>

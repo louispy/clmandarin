@@ -62,13 +62,16 @@ export function useLists() {
     [refresh]
   );
 
-  const clearFavorites = useCallback(async () => {
-    await db.lists.update(FAVORITES_ID, {
-      wordIds: [],
-      updatedAt: Date.now(),
-    });
-    await refresh();
-  }, [refresh]);
+  const clearList = useCallback(
+    async (id: string) => {
+      await db.lists.update(id, {
+        wordIds: [],
+        updatedAt: Date.now(),
+      });
+      await refresh();
+    },
+    [refresh]
+  );
 
   const createList = useCallback(
     async (name: string) => {
@@ -151,7 +154,7 @@ export function useLists() {
     favorites,
     isFavorite,
     toggleFavorite,
-    clearFavorites,
+    clearList,
     createList,
     deleteList,
     renameList,
