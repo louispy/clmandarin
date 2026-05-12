@@ -22,7 +22,6 @@ export function App() {
   const { visibility, toggle: toggleVisibility } = useVisibility();
   const { script, toggle: toggleScript } = useScript();
   const [view, setView] = useState<View>('browse');
-  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [studyWords, setStudyWords] = useState<VocabWord[] | null>(null);
   const [studyListName, setStudyListName] = useState('');
   const [studyStartIndex, setStudyStartIndex] = useState<number | undefined>(undefined);
@@ -239,8 +238,6 @@ export function App() {
               onToggleFavorite={listsHook.toggleFavorite}
               visibility={visibility}
               onToggleVisibility={toggleVisibility}
-              viewMode={viewMode}
-              onToggleViewMode={() => setViewMode((v) => (v === 'list' ? 'grid' : 'list'))}
               onStudyWord={(wordId) => handleStudyFromWord(wordId, vocab.words, vocab.isSearching ? 'Search results' : filterLabel)}
               onStudyFiltered={handleStudyFiltered}
             />
