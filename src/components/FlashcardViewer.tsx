@@ -213,7 +213,17 @@ export function FlashcardViewer({
                 </svg>
               </button>
             )}
-            <p className="text-8xl font-black text-cn-ink dark:text-cn-cream sm:text-9xl">
+            <p
+              className={`px-6 text-center font-black text-cn-ink dark:text-cn-cream ${
+                Array.from(word.hanzi).length <= 2
+                  ? 'text-8xl sm:text-9xl'
+                  : Array.from(word.hanzi).length <= 4
+                    ? 'text-6xl sm:text-7xl'
+                    : Array.from(word.hanzi).length <= 7
+                      ? 'text-4xl sm:text-5xl'
+                      : 'text-3xl sm:text-4xl'
+              }`}
+            >
               {word.hanzi}
             </p>
 
@@ -269,11 +279,27 @@ export function FlashcardViewer({
                 </svg>
               </button>
             )}
-            <p className="text-5xl font-bold text-cn-red dark:text-cn-red-light sm:text-6xl">
+            <p
+              className={`px-6 text-center font-bold text-cn-red dark:text-cn-red-light ${
+                word.pinyin.length <= 12
+                  ? 'text-5xl sm:text-6xl'
+                  : word.pinyin.length <= 24
+                    ? 'text-3xl sm:text-4xl'
+                    : 'text-2xl sm:text-3xl'
+              }`}
+            >
               {word.pinyin}
             </p>
             <div className="mt-5 h-px w-20 bg-cn-gold/30" />
-            <p className="mt-5 px-8 text-center text-3xl text-cn-ink dark:text-cn-cream sm:text-4xl">
+            <p
+              className={`mt-5 px-8 text-center text-cn-ink dark:text-cn-cream ${
+                (word.english || '').length <= 40
+                  ? 'text-3xl sm:text-4xl'
+                  : (word.english || '').length <= 80
+                    ? 'text-2xl sm:text-3xl'
+                    : 'text-xl sm:text-2xl'
+              }`}
+            >
               {word.english || '—'}
             </p>
             <p className="mt-8 text-base text-cn-muted/30 dark:text-cn-muted-dark/30">

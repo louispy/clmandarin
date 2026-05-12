@@ -394,7 +394,17 @@ export function WordCardSquare({
 
       {/* Content */}
       {visibility.hanzi ? (
-        <p className="text-5xl font-black text-cn-ink dark:text-cn-cream">{word.hanzi}</p>
+        <p
+          className={`px-2 text-center font-black text-cn-ink dark:text-cn-cream ${
+            Array.from(word.hanzi).length <= 2
+              ? 'text-5xl'
+              : Array.from(word.hanzi).length <= 4
+                ? 'text-3xl'
+                : 'text-xl'
+          }`}
+        >
+          {word.hanzi}
+        </p>
       ) : (
         <p className="text-5xl font-black text-cn-muted/20 dark:text-cn-muted-dark/20">?</p>
       )}
