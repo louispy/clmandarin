@@ -355,6 +355,7 @@ export function App() {
                       listsHook.removeWordFromList(listsHook.activeList!.id, wordId)
                     }
                     onStudyWord={handleStudyListWord}
+                    onBrowse={() => setView('browse')}
                   />
                 </div>
               )}

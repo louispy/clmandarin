@@ -119,6 +119,7 @@ export function SortableWordList({
   onReorder,
   onRemove,
   onStudyWord,
+  onBrowse,
 }: {
   wordIds: string[];
   script?: Script;
@@ -127,6 +128,7 @@ export function SortableWordList({
   onReorder: (newIds: string[]) => void;
   onRemove: (wordId: string) => void;
   onStudyWord?: (wordId: string) => void;
+  onBrowse?: () => void;
 }) {
   const [words, setWords] = useState<VocabWord[]>([]);
   const [search, setSearch] = useState('');
@@ -166,13 +168,24 @@ export function SortableWordList({
 
   if (words.length === 0) {
     return (
-      <div className="flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-cn-border py-12 dark:border-cn-border-dark">
+      <div className="flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-cn-border py-12 dark:border-cn-border-dark">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="h-12 w-12 text-cn-muted/30 dark:text-cn-muted-dark/30">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
         </svg>
         <p className="text-cn-muted dark:text-cn-muted-dark">
-          No words yet. Browse vocab and add some!
+          No words yet
         </p>
+        {onBrowse && (
+          <button
+            onClick={onBrowse}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-cn-red px-4 py-2 text-sm font-bold text-white shadow-md shadow-cn-red/20 transition-all hover:bg-cn-red-dark hover:shadow-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+              <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clipRule="evenodd" />
+            </svg>
+            Browse vocab to add
+          </button>
+        )}
       </div>
     );
   }
