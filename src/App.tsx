@@ -211,7 +211,7 @@ export function App() {
         </header>
 
         {/* Content */}
-        <main className="mx-auto max-w-3xl px-4 py-6">
+        <main className="mx-auto max-w-3xl px-4 pb-4 pt-2">
           {view === 'browse' && (
             <VocabBrowser
               words={vocab.words}
