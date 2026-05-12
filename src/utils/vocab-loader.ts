@@ -49,6 +49,34 @@ export async function getFilteredWords(opts: {
   return Array.from(results.values()).sort((a, b) => a.id.localeCompare(b.id));
 }
 
+export async function updateWord(
+  id: string,
+  updates: Partial<Pick<VocabWord, 'english' | 'userNote' | 'englishOriginal'>>
+): Promise<void> {
+  const word = await db.vocab.get(id);
+  if (!word) return;
+
+  const next: VocabWord = { ...word, ...updates };
+
+  // Auto-stash original english on first user edit of an HSK word
+  const isExplicitOriginalChange = 'englishOriginal' in updates;
+  if (
+    !isExplicitOriginalChange &&
+    updates.english !== undefined &&
+    word.source !== 'custom' &&
+    !word.englishOriginal &&
+    updates.english !== word.english
+  ) {
+    next.englishOriginal = word.english;
+  }
+
+  // Clean up empty optional fields so they don't litter the record
+  if (!next.englishOriginal) delete next.englishOriginal;
+  if (!next.userNote || !next.userNote.trim()) delete next.userNote;
+
+  await db.vocab.put(next);
+}
+
 export async function addCustomWord(input: {
   hanzi: string;
   pinyin: string;

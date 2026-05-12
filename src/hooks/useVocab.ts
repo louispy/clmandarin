@@ -6,6 +6,7 @@ import {
   getFilteredWords,
   searchWords,
   addCustomWord as addCustomWordToDb,
+  updateWord as updateWordInDb,
 } from '../utils/vocab-loader';
 
 export function useVocab() {
@@ -82,6 +83,14 @@ export function useVocab() {
     []
   );
 
+  const updateWord = useCallback(
+    async (id: string, updates: { english?: string; userNote?: string; englishOriginal?: string }) => {
+      await updateWordInDb(id, updates);
+      setRefreshKey((k) => k + 1);
+    },
+    []
+  );
+
   return {
     loading,
     words,
@@ -94,5 +103,6 @@ export function useVocab() {
     isSearching,
     handleSearch,
     addCustomWord,
+    updateWord,
   };
 }

@@ -4,7 +4,9 @@ export interface VocabWord {
   number: number;
   hanzi: string;
   pinyin: string;
-  english: string;
+  english: string;             // displayed (canonical or user-edited)
+  englishOriginal?: string;    // canonical backup, set only when user has edited an HSK word
+  userNote?: string;           // user's personal note / disambiguation / examples
   source?: 'custom';
   createdAt?: number;
 }
