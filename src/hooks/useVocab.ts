@@ -104,7 +104,18 @@ export function useVocab() {
   const updateWord = useCallback(
     async (id: string, updates: { english?: string; userNote?: string; englishOriginal?: string }) => {
       await updateWordInDb(id, updates);
-      setRefreshKey((k) => k + 1);
+      // Patch the in-memory list directly so the change is visible the moment
+      // the modal closes — works in search mode too, where the refreshKey
+      // effect is gated off.
+      const fresh = await db.vocab.get(id);
+      if (!fresh) return;
+      setWords((prev) => {
+        const idx = prev.findIndex((w) => w.id === id);
+        if (idx === -1) return prev;
+        const next = [...prev];
+        next[idx] = fresh;
+        return next;
+      });
     },
     []
   );
