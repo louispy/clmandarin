@@ -34,7 +34,7 @@ export function WordCard({
   const [showCreate, setShowCreate] = useState(false);
   const [newListName, setNewListName] = useState('');
   const [showNoAudio, setShowNoAudio] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
+  const [editMode, setEditMode] = useState<'translation' | 'note' | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleSpeak = async (e: React.MouseEvent) => {
@@ -107,7 +107,7 @@ export function WordCard({
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    setShowEdit(true);
+                    setEditMode('note');
                   }}
                   className="rounded-full p-0.5 text-cn-gold-dark hover:bg-cn-gold/10 dark:text-cn-gold-light"
                   title="View note"
@@ -219,14 +219,26 @@ export function WordCard({
                   <button
                     onClick={() => {
                       setMenuOpen(false);
-                      setShowEdit(true);
+                      setEditMode('translation');
                     }}
                     className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
                       <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
                     </svg>
-                    Edit word…
+                    Edit translation
+                  </button>
+                  <button
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setEditMode('note');
+                    }}
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
+                      <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4 5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-2 4.25a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm.75 2.75a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7Z" clipRule="evenodd" />
+                    </svg>
+                    {word.userNote ? 'Edit note' : 'Add note'}
                   </button>
 
                   {showCreate ? (
@@ -271,10 +283,11 @@ export function WordCard({
       </div>
 
       {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
-      {showEdit && (
+      {editMode && (
         <EditWordModal
           word={word}
-          onClose={() => setShowEdit(false)}
+          mode={editMode}
+          onClose={() => setEditMode(null)}
           onSave={(updates) => onUpdateWord(word.id, updates)}
         />
       )}
@@ -299,7 +312,7 @@ export function WordCardSquare({
   onClick?: () => void;
 }) {
   const [showNoAudio, setShowNoAudio] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
+  const [editMode, setEditMode] = useState<'translation' | 'note' | null>(null);
 
   const handleSpeak = async (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -354,7 +367,7 @@ export function WordCardSquare({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            setShowEdit(true);
+            setEditMode('note');
           }}
           className="absolute bottom-2 left-2 rounded-lg p-1 text-cn-gold-dark transition-colors hover:bg-cn-gold/10 dark:text-cn-gold-light"
           title="View note"
@@ -401,10 +414,11 @@ export function WordCardSquare({
       )}
 
       {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
-      {showEdit && (
+      {editMode && (
         <EditWordModal
           word={word}
-          onClose={() => setShowEdit(false)}
+          mode={editMode}
+          onClose={() => setEditMode(null)}
           onSave={(updates) => onUpdateWord(word.id, updates)}
         />
       )}
