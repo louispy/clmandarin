@@ -160,43 +160,45 @@ export function App() {
         <header className="sticky top-0 z-40 border-b border-cn-border bg-cn-paper/95 backdrop-blur dark:border-cn-border-dark dark:bg-cn-paper-dark/95">
           <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
             <h1 className="text-xl font-black tracking-tight text-cn-red dark:text-cn-red-light">
-              CL<span className="text-cn-gold">&#20013;</span>Mandarin
+              CL<span className="text-cn-gold">&#20013;</span>M
             </h1>
 
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => setView('browse')}
-                className={`rounded-xl px-4 py-2 text-sm font-bold transition-all ${
-                  view === 'browse'
-                    ? 'bg-cn-red text-white shadow-md shadow-cn-red/20'
-                    : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                }`}
-              >
-                Browse
-              </button>
-              <button
-                onClick={() => setView('flashcards')}
-                className={`relative rounded-xl px-4 py-2 text-sm font-bold transition-all ${
-                  view === 'flashcards'
-                    ? 'bg-cn-red text-white shadow-md shadow-cn-red/20'
-                    : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                }`}
-              >
-                Flashcards
-                {(() => {
-                  const customCount = listsHook.lists.filter((l) => l.id !== '__favorites__').length;
-                  return customCount > 0 ? (
-                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-cn-gold text-[10px] font-black text-white">
-                      {customCount}
-                    </span>
-                  ) : null;
-                })()}
-              </button>
+            <div className="flex items-center gap-2">
+              <div className="grid grid-cols-2 gap-0.5 rounded-xl border border-cn-border bg-cn-surface p-0.5 dark:border-cn-border-dark dark:bg-cn-surface-dark">
+                <button
+                  onClick={() => setView('browse')}
+                  className={`rounded-lg px-3 py-1.5 text-sm font-bold transition-all ${
+                    view === 'browse'
+                      ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
+                      : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+                  }`}
+                >
+                  Home
+                </button>
+                <button
+                  onClick={() => setView('flashcards')}
+                  className={`relative rounded-lg px-3 py-1.5 text-sm font-bold transition-all ${
+                    view === 'flashcards'
+                      ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
+                      : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+                  }`}
+                >
+                  Flashcards
+                  {(() => {
+                    const customCount = listsHook.lists.filter((l) => l.id !== '__favorites__').length;
+                    return customCount > 0 ? (
+                      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-cn-gold text-[10px] font-black text-white">
+                        {customCount}
+                      </span>
+                    ) : null;
+                  })()}
+                </button>
+              </div>
 
               {/* Script toggle */}
               <button
                 onClick={toggleScript}
-                className={`ml-2 rounded-xl px-2 py-1 text-sm font-bold transition-colors ${
+                className={`rounded-xl px-2 py-1 text-sm font-bold transition-colors ${
                   script === 'tw'
                     ? 'text-cn-red dark:text-cn-red-light'
                     : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
