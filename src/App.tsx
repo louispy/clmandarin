@@ -8,7 +8,6 @@ import { VocabBrowser } from './components/VocabBrowser';
 import { FlashcardManager } from './components/FlashcardManager';
 import { SortableWordList } from './components/SortableWordList';
 import { FlashcardViewer } from './components/FlashcardViewer';
-import { FileImport } from './components/FileImport';
 import { exportList } from './utils/import-export';
 import { getWordsByIds } from './utils/vocab-loader';
 import type { VocabWord } from './types';
@@ -291,51 +290,64 @@ export function App() {
                 onDelete={listsHook.deleteList}
                 onRename={listsHook.renameList}
                 onExport={exportList}
+                onImportDone={listsHook.refresh}
               />
 
-              <FileImport onDone={listsHook.refresh} />
+              {!listsHook.activeList && (() => {
+                const customCount = listsHook.lists.filter((l) => l.id !== '__favorites__').length;
+                return (
+                  <div className="flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-cn-border px-6 py-16 text-center dark:border-cn-border-dark sm:py-24">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10 text-cn-muted/40 dark:text-cn-muted-dark/40">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                    </svg>
+                    <p className="font-bold text-cn-ink dark:text-cn-cream">
+                      Pick a flashcard list
+                    </p>
+                    <p className="max-w-sm text-sm text-cn-muted dark:text-cn-muted-dark">
+                      {customCount > 0
+                        ? 'Tap the selector above to choose one of your lists.'
+                        : 'Tap + above to create your first list, or favorite words from Home to fill your Favorites list.'}
+                    </p>
+                  </div>
+                );
+              })()}
 
               {listsHook.activeList && (
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold text-cn-ink dark:text-cn-cream">
-                        {listsHook.activeList.name}
-                      </h3>
-                      <p className="text-sm text-cn-muted dark:text-cn-muted-dark">
-                        {listsHook.activeList.wordIds.length} word{listsHook.activeList.wordIds.length !== 1 ? 's' : ''} — drag to reorder
-                      </p>
+                <div className="flex flex-col gap-3">
+                  {listsHook.activeList.wordIds.length > 0 && (
+                    <div className="flex items-center justify-between">
+                      <span className="px-1 text-xs text-cn-muted dark:text-cn-muted-dark">
+                        Drag to reorder
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            const name =
+                              listsHook.activeList!.id === '__favorites__'
+                                ? 'all favorites'
+                                : `all words from "${listsHook.activeList!.name}"`;
+                            if (confirm(`Clear ${name}? This cannot be undone.`)) {
+                              listsHook.clearList(listsHook.activeList!.id);
+                            }
+                          }}
+                          className="rounded-xl border border-cn-border px-4 py-2 text-sm font-bold text-cn-muted transition-colors hover:border-cn-red hover:text-cn-red dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:border-cn-red-light dark:hover:text-cn-red-light"
+                        >
+                          Reset
+                        </button>
+                        <button
+                          onClick={handleStudy}
+                          className="rounded-xl bg-cn-red px-5 py-2 font-bold text-white shadow-md shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-lg"
+                        >
+                          Study
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      {listsHook.activeList.wordIds.length > 0 && (
-                        <>
-                          <button
-                            onClick={() => {
-                              const name =
-                                listsHook.activeList!.id === '__favorites__'
-                                  ? 'all favorites'
-                                  : `all words from "${listsHook.activeList!.name}"`;
-                              if (confirm(`Clear ${name}? This cannot be undone.`)) {
-                                listsHook.clearList(listsHook.activeList!.id);
-                              }
-                            }}
-                            className="rounded-xl border border-cn-border px-4 py-2.5 text-sm font-bold text-cn-muted transition-colors hover:border-cn-red hover:text-cn-red dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:border-cn-red-light dark:hover:text-cn-red-light"
-                          >
-                            Reset
-                          </button>
-                          <button
-                            onClick={handleStudy}
-                            className="rounded-xl bg-cn-red px-6 py-2.5 font-bold text-white shadow-lg shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-xl"
-                          >
-                            Study
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  </div>
+                  )}
                   <SortableWordList
                     wordIds={listsHook.activeList.wordIds}
                     script={script}
+                    visibility={visibility}
+                    onToggleVisibility={toggleVisibility}
                     onReorder={(ids) =>
                       listsHook.reorderList(listsHook.activeList!.id, ids)
                     }
