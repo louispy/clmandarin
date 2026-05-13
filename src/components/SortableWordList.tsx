@@ -36,11 +36,11 @@ function SortableWordCard(props: {
   visibility: VisibilityState;
   onRemove: (wordId: string) => void;
   onStudy?: (wordId: string) => void;
-  sortable: boolean;
+  editMode: boolean;
 }) {
-  const { sortable, onStudy, ...rest } = props;
+  const { editMode, onStudy, onRemove, ...rest } = props;
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
-    useSortable({ id: props.word.id, disabled: !sortable });
+    useSortable({ id: props.word.id, disabled: !editMode });
 
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
@@ -49,11 +49,14 @@ function SortableWordCard(props: {
   };
 
   return (
-    <div ref={setNodeRef} style={style}>
+    <div ref={setNodeRef} style={style} {...attributes}>
       <WordCard
         {...rest}
-        dragHandleProps={sortable ? { ...attributes, ...listeners } : undefined}
-        onClick={onStudy ? () => onStudy(props.word.id) : undefined}
+        compact
+        editMode={editMode}
+        dragHandleProps={editMode ? listeners : undefined}
+        onRemove={editMode ? onRemove : undefined}
+        onClick={!editMode && onStudy ? () => onStudy(props.word.id) : undefined}
       />
     </div>
   );
@@ -74,6 +77,7 @@ export function SortableWordList({
   onRemove,
   onStudyWord,
   onBrowse,
+  actions,
 }: {
   wordIds: string[];
   script?: Script;
@@ -89,9 +93,11 @@ export function SortableWordList({
   onRemove: (wordId: string) => void;
   onStudyWord?: (wordId: string) => void;
   onBrowse?: () => void;
+  actions?: React.ReactNode;
 }) {
   const [words, setWords] = useState<VocabWord[]>([]);
   const [search, setSearch] = useState('');
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     getWordsByIds(wordIds).then((fetched) => {
@@ -150,7 +156,7 @@ export function SortableWordList({
     );
   }
 
-  const renderCard = (word: VocabWord, sortable: boolean) => (
+  const renderCard = (word: VocabWord, enableSort: boolean) => (
     <SortableWordCard
       key={word.id}
       word={word}
@@ -164,7 +170,7 @@ export function SortableWordList({
       visibility={visibility}
       onRemove={onRemove}
       onStudy={onStudyWord}
-      sortable={sortable}
+      editMode={enableSort && editMode}
     />
   );
 
@@ -189,24 +195,54 @@ export function SortableWordList({
         )}
       </div>
 
-      {/* Visibility toggle */}
-      <div className="flex items-center gap-1 px-1">
-        <span className="mr-2 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
-          Show:
-        </span>
-        {(['hanzi', 'pinyin', 'english'] as const).map((field) => (
-          <button
-            key={field}
-            onClick={() => onToggleVisibility(field)}
-            className={`rounded-lg px-3 py-1 text-xs font-bold transition-colors ${
-              visibility[field]
-                ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
-                : 'bg-cn-surface text-cn-muted/40 dark:bg-cn-surface-dark dark:text-cn-muted-dark/40'
-            }`}
-          >
-            {field === 'hanzi' ? '字' : field === 'pinyin' ? 'Pīn' : 'Eng'}
-          </button>
-        ))}
+      {/* Sticky toolbar: Show toggles + Edit/Done + Study */}
+      <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between gap-2 bg-cn-paper/95 px-4 pb-2 pt-4 backdrop-blur dark:bg-cn-paper-dark/95">
+        {editMode ? (
+          <span className="text-xs text-cn-muted dark:text-cn-muted-dark">
+            Drag to reorder · tap <span className="font-bold text-cn-red dark:text-cn-red-light">Done</span> to exit
+          </span>
+        ) : (
+          <div className="flex items-center gap-1">
+            <span className="mr-2 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
+              Show:
+            </span>
+            {(['hanzi', 'pinyin', 'english'] as const).map((field) => (
+              <button
+                key={field}
+                onClick={() => onToggleVisibility(field)}
+                className={`rounded-lg px-3 py-1 text-xs font-bold transition-colors ${
+                  visibility[field]
+                    ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
+                    : 'bg-cn-surface text-cn-muted/40 dark:bg-cn-surface-dark dark:text-cn-muted-dark/40'
+                }`}
+              >
+                {field === 'hanzi' ? '字' : field === 'pinyin' ? 'Pīn' : 'Eng'}
+              </button>
+            ))}
+          </div>
+        )}
+        <div className="flex items-center gap-2">
+          {!q && (
+            <button
+              onClick={() => setEditMode((e) => !e)}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-bold transition-colors sm:py-2 ${
+                editMode
+                  ? 'bg-cn-red text-white shadow-md shadow-cn-red/20'
+                  : 'bg-cn-surface text-cn-muted hover:text-cn-ink dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:text-cn-cream'
+              }`}
+              title={editMode ? 'Done' : 'Edit list'}
+            >
+              {!editMode && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+                  <path d="M5.433 13.917l1.262-3.155A4 4 0 0 1 7.58 9.42l6.92-6.918a2.121 2.121 0 0 1 3 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 0 1-.65-.65Z" />
+                  <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0 0 10 3H4.75A2.75 2.75 0 0 0 2 5.75v9.5A2.75 2.75 0 0 0 4.75 18h9.5A2.75 2.75 0 0 0 17 15.25V10a.75.75 0 0 0-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5Z" />
+                </svg>
+              )}
+              {editMode ? 'Done' : 'Edit'}
+            </button>
+          )}
+          {!editMode && actions}
+        </div>
       </div>
 
       {q ? (

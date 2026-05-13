@@ -13,6 +13,7 @@ export function FlashcardManager({
   onDelete,
   onRename,
   onExport,
+  onClear,
   onImportDone,
 }: {
   lists: FlashcardList[];
@@ -22,6 +23,7 @@ export function FlashcardManager({
   onDelete: (id: string) => void;
   onRename: (id: string, name: string) => void;
   onExport: (list: FlashcardList) => void;
+  onClear: (id: string) => void;
   onImportDone: () => void;
 }) {
   const [createOpen, setCreateOpen] = useState(false);
@@ -212,6 +214,23 @@ export function FlashcardManager({
                             <path d="M3.5 9.75a.75.75 0 0 0-1.5 0v1.5A2.75 2.75 0 0 0 4.75 14h6.5A2.75 2.75 0 0 0 14 11.25v-1.5a.75.75 0 0 0-1.5 0v1.5c0 .69-.56 1.25-1.25 1.25h-6.5c-.69 0-1.25-.56-1.25-1.25v-1.5Z" />
                           </svg>
                         </button>
+                        {list.wordIds.length > 0 && (
+                          <button
+                            onClick={() => {
+                              const label = fav ? 'all favorites' : `all words from "${list.name}"`;
+                              if (confirm(`Clear ${label}? This cannot be undone.`)) {
+                                onClear(list.id);
+                              }
+                            }}
+                            className="rounded-md p-1.5 text-cn-muted/60 transition-colors hover:text-cn-red dark:text-cn-muted-dark/60 dark:hover:text-cn-red-light"
+                            title="Empty list"
+                            aria-label="Empty list"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5">
+                              <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM5.97 5.97a.75.75 0 0 1 1.06 0L8 6.94l.97-.97a.75.75 0 1 1 1.06 1.06L9.06 8l.97.97a.75.75 0 1 1-1.06 1.06L8 9.06l-.97.97a.75.75 0 1 1-1.06-1.06L6.94 8l-.97-.97a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                            </svg>
+                          </button>
+                        )}
                         {!fav && (
                           <button
                             onClick={() => {

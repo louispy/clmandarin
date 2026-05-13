@@ -281,7 +281,7 @@ export function App() {
           )}
 
           {view === 'flashcards' && (
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-3">
               <FlashcardManager
                 lists={listsHook.lists}
                 activeListId={listsHook.activeListId}
@@ -290,6 +290,7 @@ export function App() {
                 onDelete={listsHook.deleteList}
                 onRename={listsHook.renameList}
                 onExport={exportList}
+                onClear={listsHook.clearList}
                 onImportDone={listsHook.refresh}
               />
 
@@ -314,35 +315,6 @@ export function App() {
 
               {listsHook.activeList && (
                 <div className="flex flex-col gap-3">
-                  {listsHook.activeList.wordIds.length > 0 && (
-                    <div className="flex items-center justify-between">
-                      <span className="px-1 text-xs text-cn-muted dark:text-cn-muted-dark">
-                        Drag to reorder
-                      </span>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => {
-                            const name =
-                              listsHook.activeList!.id === '__favorites__'
-                                ? 'all favorites'
-                                : `all words from "${listsHook.activeList!.name}"`;
-                            if (confirm(`Clear ${name}? This cannot be undone.`)) {
-                              listsHook.clearList(listsHook.activeList!.id);
-                            }
-                          }}
-                          className="rounded-xl border border-cn-border px-4 py-2 text-sm font-bold text-cn-muted transition-colors hover:border-cn-red hover:text-cn-red dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:border-cn-red-light dark:hover:text-cn-red-light"
-                        >
-                          Reset
-                        </button>
-                        <button
-                          onClick={handleStudy}
-                          className="rounded-xl bg-cn-red px-5 py-2 font-bold text-white shadow-md shadow-cn-red/30 transition-all hover:bg-cn-red-dark hover:shadow-lg"
-                        >
-                          Study
-                        </button>
-                      </div>
-                    </div>
-                  )}
                   <SortableWordList
                     wordIds={listsHook.activeList.wordIds}
                     script={script}
@@ -362,6 +334,20 @@ export function App() {
                     }
                     onStudyWord={handleStudyListWord}
                     onBrowse={() => setView('browse')}
+                    actions={
+                      listsHook.activeList.wordIds.length > 0 ? (
+                        <button
+                          onClick={handleStudy}
+                          className="flex h-8 w-8 items-center justify-center rounded-xl bg-cn-red text-sm font-bold text-white shadow-md shadow-cn-red/20 transition-all hover:bg-cn-red-dark hover:shadow-lg sm:h-auto sm:w-auto sm:px-4 sm:py-2"
+                          title="Study"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 sm:hidden">
+                            <path d="M6.3 2.841A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.269l9.344-5.89a1.5 1.5 0 0 0 0-2.538L6.3 2.84Z" />
+                          </svg>
+                          <span className="hidden sm:inline">Study</span>
+                        </button>
+                      ) : null
+                    }
                   />
                 </div>
               )}
