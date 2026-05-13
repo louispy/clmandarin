@@ -40,11 +40,31 @@ export function WordCard({
   onRemove?: (wordId: string) => void;
 }) {
   const [openMenu, setOpenMenu] = useState<'add' | 'edit' | null>(null);
+  const [openUp, setOpenUp] = useState(false);
   const [showCreate, setShowCreate] = useState(false);
   const [newListName, setNewListName] = useState('');
   const [showNoAudio, setShowNoAudio] = useState(false);
   const [editTarget, setEditTarget] = useState<'translation' | 'note' | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const addBtnRef = useRef<HTMLButtonElement>(null);
+  const editBtnRef = useRef<HTMLButtonElement>(null);
+
+  // Flip the dropdown above the button when there isn't room below — without
+  // this the absolutely-positioned panel extends the page height past the
+  // viewport when the card is near the bottom.
+  const toggleMenu = (which: 'add' | 'edit') => {
+    if (openMenu === which) {
+      setOpenMenu(null);
+      return;
+    }
+    const btn = which === 'add' ? addBtnRef.current : editBtnRef.current;
+    if (btn) {
+      const rect = btn.getBoundingClientRect();
+      const estHeight = which === 'add' ? 320 : 120;
+      setOpenUp(window.innerHeight - rect.bottom < estHeight);
+    }
+    setOpenMenu(which);
+  };
 
   const handleSpeak = async (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -218,7 +238,8 @@ export function WordCard({
             {/* Add to list */}
             <div className="relative">
               <button
-                onClick={() => setOpenMenu(openMenu === 'add' ? null : 'add')}
+                ref={addBtnRef}
+                onClick={() => toggleMenu('add')}
                 className="rounded p-1 text-cn-muted/40 transition-colors hover:text-cn-gold-dark dark:text-cn-muted-dark/40 dark:hover:text-cn-gold-light"
                 title="Add to flashcard list"
                 aria-label="Add to flashcard list"
@@ -228,7 +249,7 @@ export function WordCard({
                 </svg>
               </button>
                 {openMenu === 'add' && (
-                  <div className="absolute right-0 top-full z-30 mt-1 w-56 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:max-w-none">
+                  <div className={`absolute right-0 z-30 max-h-[60vh] w-56 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:max-w-none ${openUp ? 'bottom-full mb-1' : 'top-full mt-1'}`}>
                     <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
                       Add to flashcard
                     </p>
@@ -294,7 +315,8 @@ export function WordCard({
             {/* Edit */}
             <div className="relative">
               <button
-                onClick={() => setOpenMenu(openMenu === 'edit' ? null : 'edit')}
+                ref={editBtnRef}
+                onClick={() => toggleMenu('edit')}
                 className="rounded p-1 text-cn-muted/40 transition-colors hover:text-cn-ink dark:text-cn-muted-dark/40 dark:hover:text-cn-cream"
                 title="Edit word"
                 aria-label="Edit word"
@@ -304,7 +326,7 @@ export function WordCard({
                 </svg>
               </button>
               {openMenu === 'edit' && (
-                <div className="absolute right-0 top-full z-30 mt-1 w-48 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark">
+                <div className={`absolute right-0 z-30 w-48 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark ${openUp ? 'bottom-full mb-1' : 'top-full mt-1'}`}>
                   <button
                     onClick={() => {
                       setOpenMenu(null);

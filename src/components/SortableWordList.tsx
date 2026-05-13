@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import {
   DndContext,
   closestCenter,
@@ -106,6 +106,25 @@ export function SortableWordList({
     });
   }, [wordIds]);
 
+  // Patch the local snapshot in-place so edits show up the moment the modal
+  // closes — wordIds doesn't change on edit, so the fetch effect above never
+  // re-runs.
+  const handleUpdateWord = useCallback(
+    async (id: string, updates: WordUpdates) => {
+      await onUpdateWord(id, updates);
+      const [fresh] = await getWordsByIds([id]);
+      if (!fresh) return;
+      setWords((prev) => {
+        const idx = prev.findIndex((w) => w.id === id);
+        if (idx === -1) return prev;
+        const next = [...prev];
+        next[idx] = fresh;
+        return next;
+      });
+    },
+    [onUpdateWord]
+  );
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
@@ -165,7 +184,7 @@ export function SortableWordList({
       lists={lists}
       onAddToList={onAddToList}
       onCreateListAndAdd={onCreateListAndAdd}
-      onUpdateWord={onUpdateWord}
+      onUpdateWord={handleUpdateWord}
       script={script}
       visibility={visibility}
       onRemove={onRemove}
