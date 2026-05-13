@@ -16,97 +16,45 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import type { VocabWord } from '../types';
+import type { VocabWord, FlashcardList } from '../types';
 import type { VisibilityState } from '../hooks/useVisibility';
-import { displayHanzi, type Script } from '../hooks/useScript';
+import { type Script } from '../hooks/useScript';
 import { getWordsByIds, stripTones } from '../utils/vocab-loader';
-import { speak } from '../utils/speech';
-import { NoAudioModal } from './NoAudioModal';
+import { WordCard } from './WordCard';
 
-function SortableItem({
-  word,
-  script,
-  visibility,
-  onRemove,
-  onStudy,
-}: {
+type WordUpdates = { english?: string; userNote?: string; englishOriginal?: string };
+
+function SortableWordCard(props: {
   word: VocabWord;
+  isFavorite: boolean;
+  onToggleFavorite: (wordId: string) => void;
+  lists: FlashcardList[];
+  onAddToList: (listId: string, wordId: string) => void;
+  onCreateListAndAdd: (name: string, wordId: string) => void;
+  onUpdateWord: (id: string, updates: WordUpdates) => Promise<void>;
   script: Script;
   visibility: VisibilityState;
-  onRemove: (id: string) => void;
-  onStudy?: (id: string) => void;
+  onRemove: (wordId: string) => void;
+  onStudy?: (wordId: string) => void;
+  sortable: boolean;
 }) {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: word.id });
-  const [showNoAudio, setShowNoAudio] = useState(false);
+  const { sortable, onStudy, ...rest } = props;
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+    useSortable({ id: props.word.id, disabled: !sortable });
 
-  const style = {
+  const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
-  };
-
-  const handleSpeak = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const ok = await speak(word.hanzi);
-    if (!ok) setShowNoAudio(true);
+    opacity: isDragging ? 0.5 : 1,
   };
 
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      className="flex items-start gap-3 rounded-xl border border-cn-border bg-cn-surface px-4 py-3 dark:border-cn-border-dark dark:bg-cn-surface-dark"
-    >
-      <button
-        {...attributes}
-        {...listeners}
-        className="mt-1.5 cursor-grab touch-none text-cn-muted/40 hover:text-cn-muted dark:text-cn-muted-dark/40 dark:hover:text-cn-muted-dark"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-5 w-5">
-          <path fillRule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75ZM2 8a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8Zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-        </svg>
-      </button>
-      <div className="min-w-0 flex-1 cursor-pointer" onClick={() => onStudy?.(word.id)}>
-        {visibility.hanzi ? (
-          <p className="text-2xl font-bold text-cn-ink dark:text-cn-cream">{displayHanzi(word, script)}</p>
-        ) : (
-          <p className="text-2xl font-bold text-cn-muted/30 dark:text-cn-muted-dark/30">· · ·</p>
-        )}
-        {visibility.pinyin ? (
-          <p className="mt-0.5 text-base font-medium text-cn-red dark:text-cn-red-light">{word.pinyin}</p>
-        ) : (
-          <p className="mt-0.5 text-base text-cn-muted/30 dark:text-cn-muted-dark/30">· · ·</p>
-        )}
-        {visibility.english ? (
-          <p className="mt-0.5 text-sm text-cn-muted dark:text-cn-muted-dark">{word.english || '—'}</p>
-        ) : (
-          <p className="mt-0.5 text-sm text-cn-muted/30 dark:text-cn-muted-dark/30">· · ·</p>
-        )}
-      </div>
-      <div className="flex shrink-0 items-center gap-1">
-        <button
-          onClick={handleSpeak}
-          className="rounded-lg p-1.5 text-cn-muted/40 transition-colors hover:text-cn-red dark:text-cn-muted-dark/40 dark:hover:text-cn-red-light"
-          title="Play pronunciation"
-          aria-label="Play pronunciation"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
-            <path d="M10 3.75a.75.75 0 0 0-1.264-.546L4.703 7H3.167a.75.75 0 0 0-.7.48A6.985 6.985 0 0 0 2 10c0 .887.165 1.737.468 2.52.111.29.39.48.7.48h1.535l4.033 3.796A.75.75 0 0 0 10 16.25V3.75ZM15.95 5.05a.75.75 0 0 0-1.06 1.061 5.5 5.5 0 0 1 0 7.778.75.75 0 1 0 1.06 1.06 7 7 0 0 0 0-9.899Z" />
-            <path d="M13.829 7.172a.75.75 0 0 0-1.061 1.06 2.5 2.5 0 0 1 0 3.536.75.75 0 1 0 1.06 1.06 4 4 0 0 0 0-5.656Z" />
-          </svg>
-        </button>
-        <button
-          onClick={() => onRemove(word.id)}
-          className="rounded-lg p-1.5 text-cn-muted/40 transition-colors hover:text-cn-red dark:text-cn-muted-dark/40 dark:hover:text-cn-red-light"
-          title="Remove from list"
-          aria-label="Remove from list"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
-            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
-          </svg>
-        </button>
-      </div>
-      {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
+    <div ref={setNodeRef} style={style}>
+      <WordCard
+        {...rest}
+        dragHandleProps={sortable ? { ...attributes, ...listeners } : undefined}
+        onClick={onStudy ? () => onStudy(props.word.id) : undefined}
+      />
     </div>
   );
 }
@@ -116,6 +64,12 @@ export function SortableWordList({
   script = 'cn',
   visibility,
   onToggleVisibility,
+  lists,
+  isFavorite,
+  onToggleFavorite,
+  onAddToList,
+  onCreateListAndAdd,
+  onUpdateWord,
   onReorder,
   onRemove,
   onStudyWord,
@@ -125,6 +79,12 @@ export function SortableWordList({
   script?: Script;
   visibility: VisibilityState;
   onToggleVisibility: (field: keyof VisibilityState) => void;
+  lists: FlashcardList[];
+  isFavorite: (wordId: string) => boolean;
+  onToggleFavorite: (wordId: string) => void;
+  onAddToList: (listId: string, wordId: string) => void;
+  onCreateListAndAdd: (name: string, wordId: string) => void;
+  onUpdateWord: (id: string, updates: WordUpdates) => Promise<void>;
   onReorder: (newIds: string[]) => void;
   onRemove: (wordId: string) => void;
   onStudyWord?: (wordId: string) => void;
@@ -190,6 +150,24 @@ export function SortableWordList({
     );
   }
 
+  const renderCard = (word: VocabWord, sortable: boolean) => (
+    <SortableWordCard
+      key={word.id}
+      word={word}
+      isFavorite={isFavorite(word.id)}
+      onToggleFavorite={onToggleFavorite}
+      lists={lists}
+      onAddToList={onAddToList}
+      onCreateListAndAdd={onCreateListAndAdd}
+      onUpdateWord={onUpdateWord}
+      script={script}
+      visibility={visibility}
+      onRemove={onRemove}
+      onStudy={onStudyWord}
+      sortable={sortable}
+    />
+  );
+
   return (
     <div className="flex flex-col gap-3">
       {/* Search within list */}
@@ -234,9 +212,7 @@ export function SortableWordList({
       {q ? (
         /* When searching, show flat list (no drag) */
         <div className="flex flex-col gap-2">
-          {filtered.map((word) => (
-            <SortableItem key={word.id} word={word} script={script} visibility={visibility} onRemove={onRemove} onStudy={onStudyWord} />
-          ))}
+          {filtered.map((word) => renderCard(word, false))}
           {filtered.length === 0 && (
             <p className="py-6 text-center text-cn-muted dark:text-cn-muted-dark">
               No matches in this list
@@ -247,9 +223,7 @@ export function SortableWordList({
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
           <SortableContext items={wordIds} strategy={verticalListSortingStrategy}>
             <div className="flex flex-col gap-2">
-              {words.map((word) => (
-                <SortableItem key={word.id} word={word} script={script} visibility={visibility} onRemove={onRemove} onStudy={onStudyWord} />
-              ))}
+              {words.map((word) => renderCard(word, true))}
             </div>
           </SortableContext>
         </DndContext>

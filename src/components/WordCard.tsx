@@ -20,6 +20,8 @@ export function WordCard({
   visibility,
   compact,
   onClick,
+  dragHandleProps,
+  onRemove,
 }: {
   word: VocabWord;
   isFavorite: boolean;
@@ -32,8 +34,10 @@ export function WordCard({
   visibility: VisibilityState;
   compact?: boolean;
   onClick?: () => void;
+  dragHandleProps?: React.HTMLAttributes<HTMLButtonElement>;
+  onRemove?: (wordId: string) => void;
 }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<'add' | 'edit' | null>(null);
   const [showCreate, setShowCreate] = useState(false);
   const [newListName, setNewListName] = useState('');
   const [showNoAudio, setShowNoAudio] = useState(false);
@@ -50,16 +54,16 @@ export function WordCard({
 
   // Close menu on outside click
   useEffect(() => {
-    if (!menuOpen) return;
+    if (!openMenu) return;
     const handler = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
+        setOpenMenu(null);
         setShowCreate(false);
       }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
-  }, [menuOpen]);
+  }, [openMenu]);
 
   const handleCreate = () => {
     const name = newListName.trim();
@@ -67,7 +71,7 @@ export function WordCard({
     onCreateListAndAdd(name, word.id);
     setNewListName('');
     setShowCreate(false);
-    setMenuOpen(false);
+    setOpenMenu(null);
   };
 
   return (
@@ -77,7 +81,20 @@ export function WordCard({
         dark:border-cn-border-dark dark:bg-cn-surface-dark dark:hover:border-cn-gold-dark/50
         ${compact ? 'px-4 py-2' : 'px-5 py-2.5'}`}
     >
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-3">
+        {/* Drag handle (only when sortable) */}
+        {dragHandleProps && (
+          <button
+            {...dragHandleProps}
+            className="mt-1 cursor-grab touch-none text-cn-muted/40 hover:text-cn-muted dark:text-cn-muted-dark/40 dark:hover:text-cn-muted-dark"
+            aria-label="Drag to reorder"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-5 w-5">
+              <path fillRule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75ZM2 8a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8Zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
+            </svg>
+          </button>
+        )}
+
         {/* Main content */}
         <div className="min-w-0 flex-1 cursor-pointer" onClick={onClick}>
           {/* Hanzi */}
@@ -179,108 +196,140 @@ export function WordCard({
               )}
             </button>
 
-            {/* Triple-dot menu */}
-            <div ref={menuRef} className="relative">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="rounded-lg p-1.5 text-cn-muted/40 transition-colors hover:text-cn-ink dark:text-cn-muted-dark/40 dark:hover:text-cn-cream"
-                title="Add to flashcard list"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-                  <path fillRule="evenodd" d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clipRule="evenodd" />
-                </svg>
-              </button>
+            {/* Add-to-list + Edit menus */}
+            <div ref={menuRef} className="flex items-center gap-1">
+              {/* Add to list */}
+              <div className="relative">
+                <button
+                  onClick={() => setOpenMenu(openMenu === 'add' ? null : 'add')}
+                  className="rounded-lg p-1.5 text-cn-muted/40 transition-colors hover:text-cn-gold-dark dark:text-cn-muted-dark/40 dark:hover:text-cn-gold-light"
+                  title="Add to flashcard list"
+                  aria-label="Add to flashcard list"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                    <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                  </svg>
+                </button>
+                {openMenu === 'add' && (
+                  <div className="absolute right-0 top-full z-30 mt-1 w-56 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:max-w-none">
+                    <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
+                      Add to flashcard
+                    </p>
+                    {selectableLists.map((list) => (
+                      <button
+                        key={list.id}
+                        onClick={() => {
+                          onAddToList(list.id, word.id);
+                          setOpenMenu(null);
+                        }}
+                        className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
+                          <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                        </svg>
+                        <span className="truncate">{list.name}</span>
+                        <span className="ml-auto text-xs text-cn-muted dark:text-cn-muted-dark">
+                          {list.wordIds.length}
+                        </span>
+                      </button>
+                    ))}
+                    {selectableLists.length > 0 && (
+                      <div className="my-1 border-t border-cn-border dark:border-cn-border-dark" />
+                    )}
+                    {showCreate ? (
+                      <div className="flex gap-1 px-2 py-1">
+                        <input
+                          autoFocus
+                          value={newListName}
+                          onChange={(e) => setNewListName(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') handleCreate();
+                            if (e.key === 'Escape') {
+                              setShowCreate(false);
+                              setNewListName('');
+                            }
+                          }}
+                          placeholder="List name..."
+                          className="min-w-0 flex-1 rounded-lg border border-cn-border bg-transparent px-2 py-1 text-sm text-cn-ink outline-none focus:border-cn-red dark:border-cn-border-dark dark:text-cn-cream"
+                        />
+                        <button
+                          onClick={handleCreate}
+                          className="rounded-lg bg-cn-red px-2 py-1 text-xs font-medium text-white"
+                        >
+                          Add
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => setShowCreate(true)}
+                        className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium text-cn-red transition-colors hover:bg-cn-red/10 dark:text-cn-red-light"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+                          <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                        </svg>
+                        Create new flashcard list
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
 
-              {menuOpen && (
-                <div className="absolute right-0 top-full z-30 mt-1 w-56 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:max-w-none">
-                  <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
-                    Add to flashcard
-                  </p>
-                  {selectableLists.map((list) => (
+              {/* Edit */}
+              <div className="relative">
+                <button
+                  onClick={() => setOpenMenu(openMenu === 'edit' ? null : 'edit')}
+                  className="rounded-lg p-1.5 text-cn-muted/40 transition-colors hover:text-cn-ink dark:text-cn-muted-dark/40 dark:hover:text-cn-cream"
+                  title="Edit word"
+                  aria-label="Edit word"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                    <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
+                  </svg>
+                </button>
+                {openMenu === 'edit' && (
+                  <div className="absolute right-0 top-full z-30 mt-1 w-48 max-w-[calc(100vw-2rem)] rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark">
                     <button
-                      key={list.id}
                       onClick={() => {
-                        onAddToList(list.id, word.id);
-                        setMenuOpen(false);
+                        setOpenMenu(null);
+                        setEditMode('translation');
                       }}
                       className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
-                        <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                        <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
                       </svg>
-                      <span className="truncate">{list.name}</span>
-                      <span className="ml-auto text-xs text-cn-muted dark:text-cn-muted-dark">
-                        {list.wordIds.length}
-                      </span>
+                      Edit translation
                     </button>
-                  ))}
-
-                  {selectableLists.length > 0 && (
-                    <div className="my-1 border-t border-cn-border dark:border-cn-border-dark" />
-                  )}
-
-                  <button
-                    onClick={() => {
-                      setMenuOpen(false);
-                      setEditMode('translation');
-                    }}
-                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
-                      <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
-                    </svg>
-                    Edit translation
-                  </button>
-                  <button
-                    onClick={() => {
-                      setMenuOpen(false);
-                      setEditMode('note');
-                    }}
-                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
-                      <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4 5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-2 4.25a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm.75 2.75a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7Z" clipRule="evenodd" />
-                    </svg>
-                    {word.userNote ? 'Edit note' : 'Add note'}
-                  </button>
-
-                  {showCreate ? (
-                    <div className="flex gap-1 px-2 py-1">
-                      <input
-                        autoFocus
-                        value={newListName}
-                        onChange={(e) => setNewListName(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter') handleCreate();
-                          if (e.key === 'Escape') {
-                            setShowCreate(false);
-                            setNewListName('');
-                          }
-                        }}
-                        placeholder="List name..."
-                        className="min-w-0 flex-1 rounded-lg border border-cn-border bg-transparent px-2 py-1 text-sm text-cn-ink outline-none focus:border-cn-red dark:border-cn-border-dark dark:text-cn-cream"
-                      />
-                      <button
-                        onClick={handleCreate}
-                        className="rounded-lg bg-cn-red px-2 py-1 text-xs font-medium text-white"
-                      >
-                        Add
-                      </button>
-                    </div>
-                  ) : (
                     <button
-                      onClick={() => setShowCreate(true)}
-                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium text-cn-red transition-colors hover:bg-cn-red/10 dark:text-cn-red-light"
+                      onClick={() => {
+                        setOpenMenu(null);
+                        setEditMode('note');
+                      }}
+                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
-                        <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
+                        <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4 5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-2 4.25a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm.75 2.75a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7Z" clipRule="evenodd" />
                       </svg>
-                      Create new flashcard list
+                      {word.userNote ? 'Edit note' : 'Add note'}
                     </button>
-                  )}
-                </div>
-              )}
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Remove (only when in a sortable list) */}
+            {onRemove && (
+              <button
+                onClick={() => onRemove(word.id)}
+                className="rounded-lg p-1.5 text-cn-muted/40 transition-colors hover:text-cn-red dark:text-cn-muted-dark/40 dark:hover:text-cn-red-light"
+                title="Remove from list"
+                aria-label="Remove from list"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                  <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
       </div>

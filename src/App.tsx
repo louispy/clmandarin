@@ -348,6 +348,12 @@ export function App() {
                     script={script}
                     visibility={visibility}
                     onToggleVisibility={toggleVisibility}
+                    lists={listsHook.lists}
+                    isFavorite={listsHook.isFavorite}
+                    onToggleFavorite={listsHook.toggleFavorite}
+                    onAddToList={handleAddToList}
+                    onCreateListAndAdd={handleCreateListAndAdd}
+                    onUpdateWord={vocab.updateWord}
                     onReorder={(ids) =>
                       listsHook.reorderList(listsHook.activeList!.id, ids)
                     }
