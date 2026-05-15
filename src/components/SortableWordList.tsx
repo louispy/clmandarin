@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import {
   DndContext,
   closestCenter,
@@ -99,6 +99,10 @@ export function SortableWordList({
   const [search, setSearch] = useState('');
   const [editMode, setEditMode] = useState(false);
 
+  const PAGE_SIZE = 50;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     getWordsByIds(wordIds).then((fetched) => {
       const map = new Map(fetched.map((w) => [w.id, w]));
@@ -124,6 +128,23 @@ export function SortableWordList({
     },
     [onUpdateWord]
   );
+
+  const loadMore = useCallback(() => {
+    setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, words.length));
+  }, [words.length]);
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) loadMore();
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [loadMore]);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -267,7 +288,7 @@ export function SortableWordList({
       {q ? (
         /* When searching, show flat list (no drag) */
         <div className="flex flex-col gap-2">
-          {filtered.map((word) => renderCard(word, false))}
+          {filtered.slice(0, visibleCount).map((word) => renderCard(word, false))}
           {filtered.length === 0 && (
             <p className="py-6 text-center text-cn-muted dark:text-cn-muted-dark">
               No matches in this list
@@ -276,12 +297,19 @@ export function SortableWordList({
         </div>
       ) : (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-          <SortableContext items={wordIds} strategy={verticalListSortingStrategy}>
+          <SortableContext
+            items={words.slice(0, visibleCount).map((w) => w.id)}
+            strategy={verticalListSortingStrategy}
+          >
             <div className="flex flex-col gap-2">
-              {words.map((word) => renderCard(word, true))}
+              {words.slice(0, visibleCount).map((word) => renderCard(word, true))}
             </div>
           </SortableContext>
         </DndContext>
+      )}
+
+      {(q ? filtered.length : words.length) > visibleCount && (
+        <div ref={sentinelRef} className="h-1" />
       )}
     </div>
   );

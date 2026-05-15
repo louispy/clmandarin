@@ -323,6 +323,7 @@ export function App() {
               {listsHook.activeList && (
                 <div className="flex flex-col gap-3">
                   <SortableWordList
+                    key={listsHook.activeList.id}
                     wordIds={listsHook.activeList.wordIds}
                     script={script}
                     visibility={visibility}
