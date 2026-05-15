@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
+import { useKeyboardInset } from '../hooks/useKeyboardInset';
 
 export function CreateListModal({
   onClose,
@@ -7,6 +9,8 @@ export function CreateListModal({
   onClose: () => void;
   onCreate: (name: string) => void;
 }) {
+  useBodyScrollLock();
+  const keyboardInset = useKeyboardInset();
   const [name, setName] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,6 +29,7 @@ export function CreateListModal({
   return (
     <div
       onClick={onClose}
+      style={{ paddingBottom: keyboardInset }}
       className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50 px-4 backdrop-blur-sm sm:items-center"
     >
       <div

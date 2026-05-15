@@ -1,5 +1,6 @@
 import { db } from '../db';
 import type { VocabWord } from '../types';
+import { uuid } from './uuid';
 
 /** Strip tone marks: ǐ → i, ā → a, ü → u, etc. */
 export function stripTones(s: string): string {
@@ -134,7 +135,7 @@ export async function addCustomWord(input: {
   hskLevel: number;
 }): Promise<VocabWord> {
   const word: VocabWord = {
-    id: `custom-${crypto.randomUUID()}`,
+    id: `custom-${uuid()}`,
     hskLevel: input.hskLevel,
     number: 0,
     hanzi: input.hanzi.trim(),

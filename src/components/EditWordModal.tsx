@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { VocabWord } from '../types';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
+import { useKeyboardInset } from '../hooks/useKeyboardInset';
 
 export function EditWordModal({
   word,
@@ -12,6 +14,8 @@ export function EditWordModal({
   onClose: () => void;
   onSave: (updates: { english?: string; userNote?: string; englishOriginal?: string }) => Promise<void>;
 }) {
+  useBodyScrollLock();
+  const keyboardInset = useKeyboardInset();
   const [english, setEnglish] = useState(word.english);
   const [userNote, setUserNote] = useState(word.userNote ?? '');
   const [saving, setSaving] = useState(false);
@@ -68,6 +72,7 @@ export function EditWordModal({
   return (
     <div
       onClick={onClose}
+      style={{ paddingBottom: keyboardInset }}
       className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50 px-4 backdrop-blur-sm sm:items-center"
     >
       <div

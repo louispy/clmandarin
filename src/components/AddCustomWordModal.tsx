@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { hanziToPinyin, numberedToMarked } from '../utils/pinyin';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
+import { useKeyboardInset } from '../hooks/useKeyboardInset';
 
 const LEVEL_OPTIONS = [
   { value: 0, label: 'None (Custom)' },
@@ -20,6 +22,8 @@ export function AddCustomWordModal({
   onClose: () => void;
   onAdd: (input: { hanzi: string; pinyin: string; english: string; hskLevel: number }) => Promise<unknown>;
 }) {
+  useBodyScrollLock();
+  const keyboardInset = useKeyboardInset();
   const [hanzi, setHanzi] = useState('');
   const [pinyin, setPinyin] = useState('');
   const [pinyinTouched, setPinyinTouched] = useState(false);
@@ -83,6 +87,7 @@ export function AddCustomWordModal({
   return (
     <div
       onClick={onClose}
+      style={{ paddingBottom: keyboardInset }}
       className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50 px-4 backdrop-blur-sm sm:items-center"
     >
       <div
