@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { db } from '../db';
 import type { FlashcardList } from '../types';
+import { uuid } from '../utils/uuid';
 
 const FAVORITES_ID = '__favorites__';
 
@@ -22,7 +23,7 @@ async function ensureFavorites(): Promise<void> {
 
 export function useLists() {
   const [lists, setLists] = useState<FlashcardList[]>([]);
-  const [activeListId, setActiveListId] = useState<string | null>(null);
+  const [selectedListId, setSelectedListId] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
     await ensureFavorites();
@@ -39,6 +40,20 @@ export function useLists() {
   useEffect(() => {
     refresh();
   }, [refresh]);
+
+  // Default selection (derived): favorites if it has words, otherwise the
+  // most recent custom list — so an empty Favorites doesn't shadow a list
+  // the user actually built. User selection in `selectedListId` always wins.
+  let activeListId = selectedListId;
+  if (activeListId === null && lists.length > 0) {
+    const favorites = lists.find((l) => l.id === FAVORITES_ID);
+    if (favorites && favorites.wordIds.length > 0) {
+      activeListId = FAVORITES_ID;
+    } else {
+      const firstCustom = lists.find((l) => l.id !== FAVORITES_ID);
+      activeListId = firstCustom?.id ?? favorites?.id ?? null;
+    }
+  }
 
   const activeList = lists.find((l) => l.id === activeListId) ?? null;
   const favorites = lists.find((l) => l.id === FAVORITES_ID) ?? null;
@@ -80,7 +95,7 @@ export function useLists() {
     async (name: string) => {
       const now = Date.now();
       const list: FlashcardList = {
-        id: crypto.randomUUID(),
+        id: uuid(),
         name,
         createdAt: now,
         updatedAt: now,
@@ -97,10 +112,10 @@ export function useLists() {
     async (id: string) => {
       if (id === FAVORITES_ID) return; // Can't delete Favorites
       await db.lists.delete(id);
-      if (activeListId === id) setActiveListId(null);
+      setSelectedListId((curr) => (curr === id ? null : curr));
       await refresh();
     },
-    [activeListId, refresh]
+    [refresh]
   );
 
   const renameList = useCallback(
@@ -153,7 +168,7 @@ export function useLists() {
     lists,
     activeList,
     activeListId,
-    setActiveListId,
+    setActiveListId: setSelectedListId,
     favorites,
     isFavorite,
     toggleFavorite,

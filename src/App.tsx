@@ -26,6 +26,13 @@ export function App() {
   const [studyStartIndex, setStudyStartIndex] = useState<number | undefined>(undefined);
   const scrollPosRef = useRef(0);
 
+  // Switching tabs reuses the same scroll container, so the previous view's
+  // scroll position leaks through. Force the top after the new view mounts.
+  const navigateTo = useCallback((next: View) => {
+    setView(next);
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+  }, []);
+
   const handleAddToList = useCallback(
     (listId: string, wordId: string) => {
       listsHook.addWordsToList(listId, [wordId]);
@@ -187,7 +194,7 @@ export function App() {
             <div className="flex items-center gap-2">
               <div className="grid grid-cols-2 gap-0.5 rounded-xl border border-cn-border bg-cn-surface p-0.5 dark:border-cn-border-dark dark:bg-cn-surface-dark">
                 <button
-                  onClick={() => setView('browse')}
+                  onClick={() => navigateTo('browse')}
                   className={`rounded-lg px-3 py-1.5 text-sm font-bold transition-all ${
                     view === 'browse'
                       ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
@@ -197,7 +204,7 @@ export function App() {
                   Home
                 </button>
                 <button
-                  onClick={() => setView('flashcards')}
+                  onClick={() => navigateTo('flashcards')}
                   className={`relative rounded-lg px-3 py-1.5 text-sm font-bold transition-all ${
                     view === 'flashcards'
                       ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
@@ -333,7 +340,7 @@ export function App() {
                       listsHook.removeWordFromList(listsHook.activeList!.id, wordId)
                     }
                     onStudyWord={handleStudyListWord}
-                    onBrowse={() => setView('browse')}
+                    onBrowse={() => navigateTo('browse')}
                     actions={
                       listsHook.activeList.wordIds.length > 0 ? (
                         <button
