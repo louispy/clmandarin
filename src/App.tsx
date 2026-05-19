@@ -186,16 +186,16 @@ export function App() {
       <div className="min-h-screen bg-cn-paper dark:bg-cn-paper-dark">
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-cn-border bg-cn-paper/95 backdrop-blur dark:border-cn-border-dark dark:bg-cn-paper-dark/95">
-          <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
-            <h1 className="text-xl font-black tracking-tight text-cn-red dark:text-cn-red-light">
+          <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-3 py-3 sm:px-4">
+            <h1 className="shrink-0 whitespace-nowrap text-2xl font-black tracking-tight text-cn-red dark:text-cn-red-light sm:text-3xl">
               CL<span className="text-cn-gold">&#20013;</span>M
             </h1>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               <div className="grid grid-cols-2 gap-0.5 rounded-xl border border-cn-border bg-cn-surface p-0.5 dark:border-cn-border-dark dark:bg-cn-surface-dark">
                 <button
                   onClick={() => navigateTo('browse')}
-                  className={`rounded-lg px-3 py-1.5 text-sm font-bold transition-all ${
+                  className={`rounded-lg px-2 py-1.5 text-xs font-bold transition-all sm:px-3 sm:text-sm ${
                     view === 'browse'
                       ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
                       : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
@@ -205,7 +205,7 @@ export function App() {
                 </button>
                 <button
                   onClick={() => navigateTo('flashcards')}
-                  className={`relative rounded-lg px-3 py-1.5 text-sm font-bold transition-all ${
+                  className={`relative rounded-lg px-2 py-1.5 text-xs font-bold transition-all sm:px-3 sm:text-sm ${
                     view === 'flashcards'
                       ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
                       : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
@@ -240,7 +240,7 @@ export function App() {
               {/* Dark mode toggle */}
               <button
                 onClick={toggleDark}
-                className="rounded-xl p-2 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
+                className="rounded-xl p-1.5 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream sm:p-2"
                 title={dark ? 'Light mode' : 'Dark mode'}
               >
                 {dark ? (
@@ -267,6 +267,7 @@ export function App() {
               onToggleLevel={vocab.toggleLevel}
               showCustom={vocab.showCustom}
               onToggleCustom={vocab.toggleCustom}
+              hasCustomWords={vocab.hasCustomWords}
               onAddCustomWord={vocab.addCustomWord}
               searchQuery={vocab.searchQuery}
               onSearch={vocab.handleSearch}

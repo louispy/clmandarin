@@ -20,6 +20,7 @@ export function useVocab() {
   const [dbReady, setDbReady] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
   const [retryKey, setRetryKey] = useState(0);
+  const [hasCustomWords, setHasCustomWords] = useState(false);
 
   // Initialize DB on first mount
   useEffect(() => {
@@ -63,6 +64,17 @@ export function useVocab() {
     if (!dbReady || isSearching) return;
     getFilteredWords({ levels: selectedLevels, showCustom }).then(setWords);
   }, [dbReady, selectedLevels, showCustom, isSearching, refreshKey]);
+
+  // Track whether any custom words exist so the UI can hide the Custom filter
+  // chip when there's nothing to filter on.
+  useEffect(() => {
+    if (!dbReady) return;
+    db.vocab.filter((w) => w.source === 'custom').count().then((n) => {
+      setHasCustomWords(n > 0);
+      // Drop the toggle if the user just deleted their last custom word.
+      if (n === 0 && showCustom) setShowCustom(false);
+    });
+  }, [dbReady, refreshKey, showCustom]);
 
   const toggleLevel = useCallback((level: number) => {
     setSelectedLevels((prev) => {
@@ -135,5 +147,6 @@ export function useVocab() {
     handleSearch,
     addCustomWord,
     updateWord,
+    hasCustomWords,
   };
 }

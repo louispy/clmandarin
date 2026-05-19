@@ -14,6 +14,7 @@ export function VocabBrowser({
   onToggleLevel,
   showCustom,
   onToggleCustom,
+  hasCustomWords,
   onAddCustomWord,
   searchQuery,
   onSearch,
@@ -38,6 +39,7 @@ export function VocabBrowser({
   onToggleLevel: (level: number) => void;
   showCustom: boolean;
   onToggleCustom: () => void;
+  hasCustomWords: boolean;
   onAddCustomWord: (input: { hanzi: string; pinyin: string; english: string; hskLevel: number }) => Promise<unknown>;
   searchQuery: string;
   onSearch: (query: string) => void;
@@ -137,16 +139,16 @@ export function VocabBrowser({
 
       {/* HSK Level Tabs */}
       {!isSearching && (
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-1">
-            <span className="mr-1 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark sm:hidden">
+        <div className="flex flex-nowrap items-center justify-between gap-2">
+          <div className="flex min-w-0 items-center gap-1 sm:gap-2">
+            <span className="mr-1 shrink-0 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark sm:hidden">
               HSK:
             </span>
             {HSK_LEVELS.map((level) => (
               <button
                 key={level}
                 onClick={() => onToggleLevel(level)}
-                className={`rounded-lg px-2.5 py-1.5 text-sm font-bold transition-all sm:px-3 ${
+                className={`shrink-0 rounded-lg px-2 py-1.5 text-sm font-bold transition-all sm:px-3 ${
                   selectedLevels.includes(level)
                     ? 'bg-cn-red text-white shadow-md shadow-cn-red/30'
                     : 'bg-cn-surface text-cn-muted hover:bg-cn-red/10 hover:text-cn-red dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-red/10 dark:hover:text-cn-red-light'
@@ -158,23 +160,25 @@ export function VocabBrowser({
               </button>
             ))}
 
-            {/* Custom words filter */}
-            <button
-              onClick={onToggleCustom}
-              className={`rounded-lg px-2.5 py-1.5 text-sm font-bold transition-all sm:px-3 ${
-                showCustom
-                  ? 'bg-cn-gold text-white shadow-md shadow-cn-gold/30'
-                  : 'bg-cn-surface text-cn-muted hover:bg-cn-gold/10 hover:text-cn-gold-dark dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-gold/10 dark:hover:text-cn-gold-light'
-              }`}
-              title="Custom words"
-            >
-              <span className="sm:hidden">C</span>
-              <span className="hidden sm:inline">Custom</span>
-            </button>
+            {/* Custom words filter — only when the user actually has some */}
+            {hasCustomWords && (
+              <button
+                onClick={onToggleCustom}
+                className={`shrink-0 rounded-lg px-2 py-1.5 text-sm font-bold transition-all sm:px-3 ${
+                  showCustom
+                    ? 'bg-cn-gold text-white shadow-md shadow-cn-gold/30'
+                    : 'bg-cn-surface text-cn-muted hover:bg-cn-gold/10 hover:text-cn-gold-dark dark:bg-cn-surface-dark dark:text-cn-muted-dark dark:hover:bg-cn-gold/10 dark:hover:text-cn-gold-light'
+                }`}
+                title="Custom words"
+              >
+                <span className="sm:hidden">C</span>
+                <span className="hidden sm:inline">Custom</span>
+              </button>
+            )}
 
             {/* Inline + button — adds currently filtered words to a list */}
             {words.length > 0 && selectedLevels.length > 0 && (
-              <div ref={addRef} className="relative">
+              <div ref={addRef} className="relative shrink-0">
                 <button
                   onClick={() => setAddMenu(!addMenu)}
                   className="flex h-8 w-8 items-center justify-center rounded-lg bg-cn-gold/10 text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:text-cn-gold-light"
