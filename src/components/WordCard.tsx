@@ -135,7 +135,7 @@ export function WordCard({
 
           {/* Pinyin */}
           {visibility.pinyin ? (
-            <p className={`mt-1 font-medium text-cn-red dark:text-cn-red-light ${compact ? 'text-base' : 'text-xl'}`}>
+            <p className={`mt-1 font-pinyin font-medium text-cn-red dark:text-cn-red-light ${compact ? 'text-base' : 'text-xl'}`}>
               {word.pinyin}
             </p>
           ) : (

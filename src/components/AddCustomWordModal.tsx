@@ -137,11 +137,11 @@ export function AddCustomWordModal({
                 setPinyinTouched(true);
               }}
               placeholder="nǐ hǎo (or ni3 hao3)"
-              className="rounded-xl border border-cn-border bg-transparent px-3 py-2 text-lg text-cn-red outline-none focus:border-cn-red dark:border-cn-border-dark dark:text-cn-red-light"
+              className="rounded-xl border border-cn-border bg-transparent px-3 py-2 font-pinyin text-lg text-cn-red outline-none focus:border-cn-red dark:border-cn-border-dark dark:text-cn-red-light"
             />
             {showPreview && (
               <span className="text-xs text-cn-muted dark:text-cn-muted-dark">
-                Preview: <span className="font-medium text-cn-red dark:text-cn-red-light">{markedPreview}</span>
+                Preview: <span className="font-pinyin font-medium text-cn-red dark:text-cn-red-light">{markedPreview}</span>
               </span>
             )}
             {pinyinTouched && (

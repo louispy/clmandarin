@@ -248,7 +248,7 @@ export function FlashcardViewer({
 
             {showHints && (
               <div className="mt-6 flex flex-col items-center gap-3">
-                <p className="text-4xl font-bold text-cn-red/60 dark:text-cn-red-light/60 sm:text-5xl">
+                <p className="font-pinyin text-4xl font-bold text-cn-red/60 dark:text-cn-red-light/60 sm:text-5xl">
                   {word.pinyin}
                 </p>
                 <p className="text-2xl text-cn-muted/50 dark:text-cn-muted-dark/50 sm:text-3xl">
@@ -299,7 +299,7 @@ export function FlashcardViewer({
               </button>
             )}
             <p
-              className={`px-6 text-center font-bold text-cn-red dark:text-cn-red-light ${
+              className={`px-6 text-center font-pinyin font-bold text-cn-red dark:text-cn-red-light ${
                 word.pinyin.length <= 12
                   ? 'text-5xl sm:text-6xl'
                   : word.pinyin.length <= 24
@@ -404,7 +404,7 @@ export function FlashcardViewer({
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
                 <h2 className="text-2xl font-bold text-cn-red dark:text-cn-red-light">{displayHanzi(word, script)}</h2>
-                <p className="text-sm text-cn-muted dark:text-cn-muted-dark">{word.pinyin}</p>
+                <p className="font-pinyin text-sm text-cn-muted dark:text-cn-muted-dark">{word.pinyin}</p>
               </div>
               <button
                 onClick={() => setShowNote(false)}

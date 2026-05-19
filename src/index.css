@@ -20,6 +20,12 @@
   --color-cn-border-dark: #3D2B24;
   --color-cn-muted: #8B7355;
   --color-cn-muted-dark: #A69080;
+
+  /* Pinyin needs a Latin-first stack: CJK fonts position the macron over the
+     full-width em-box center, so first-tone marks (ā, ē, ī, ō, ū) drift right
+     of the base letter. */
+  --font-pinyin: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 body {

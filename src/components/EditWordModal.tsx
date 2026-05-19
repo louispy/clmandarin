@@ -84,7 +84,7 @@ export function EditWordModal({
             <h2 className="text-lg font-bold text-cn-ink dark:text-cn-cream">
               {title} · <span className="text-cn-red dark:text-cn-red-light">{word.hanzi}</span>
             </h2>
-            <p className="text-sm text-cn-muted dark:text-cn-muted-dark">{word.pinyin}</p>
+            <p className="font-pinyin text-sm text-cn-muted dark:text-cn-muted-dark">{word.pinyin}</p>
           </div>
           <button
             onClick={onClose}
