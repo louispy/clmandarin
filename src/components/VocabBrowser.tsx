@@ -141,7 +141,7 @@ export function VocabBrowser({
       {!isSearching && (
         <div className="flex flex-nowrap items-center justify-between gap-2">
           <div className="flex min-w-0 items-center gap-1 sm:gap-2">
-            <span className="mr-1 shrink-0 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark sm:hidden">
+            <span className="shrink-0 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark sm:hidden">
               HSK:
             </span>
             {HSK_LEVELS.map((level) => (
@@ -283,7 +283,7 @@ export function VocabBrowser({
       )}
 
       {/* Toolbar: visibility toggles + view mode */}
-      <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between bg-cn-paper/95 px-4 pb-2 pt-4 backdrop-blur dark:bg-cn-paper-dark/95">
+      <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between bg-cn-paper/95 px-4 pb-2 pt-2 backdrop-blur dark:bg-cn-paper-dark/95">
         <div className="flex items-center gap-1">
           <span className="mr-2 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
             Show:
