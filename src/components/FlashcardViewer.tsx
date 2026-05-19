@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { VocabWord } from '../types';
 import { displayHanzi, type Script } from '../hooks/useScript';
+import { useBackButton } from '../hooks/useBackButton';
 import { speak } from '../utils/speech';
 import { NoAudioModal } from './NoAudioModal';
 
@@ -33,6 +34,8 @@ export function FlashcardViewer({
   const [canGoForward, setCanGoForward] = useState(false);
   const [showNoAudio, setShowNoAudio] = useState(false);
   const [showNote, setShowNote] = useState(false);
+
+  useBackButton(onClose);
 
   const word = words[index];
 

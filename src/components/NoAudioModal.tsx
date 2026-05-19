@@ -1,4 +1,5 @@
 import { detectPlatform, type Platform } from '../utils/speech';
+import { useBackButton } from '../hooks/useBackButton';
 
 const INSTRUCTIONS: Record<Platform, { title: string; steps: string[] }> = {
   macos: {
@@ -48,6 +49,7 @@ const INSTRUCTIONS: Record<Platform, { title: string; steps: string[] }> = {
 };
 
 export function NoAudioModal({ onClose }: { onClose: () => void }) {
+  useBackButton(onClose);
   const info = INSTRUCTIONS[detectPlatform()];
 
   return (

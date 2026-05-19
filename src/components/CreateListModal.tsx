@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useBackButton } from '../hooks/useBackButton';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import { useKeyboardInset } from '../hooks/useKeyboardInset';
 
@@ -10,6 +11,7 @@ export function CreateListModal({
   onCreate: (name: string) => void;
 }) {
   useBodyScrollLock();
+  useBackButton(onClose);
   const keyboardInset = useKeyboardInset();
   const [name, setName] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);

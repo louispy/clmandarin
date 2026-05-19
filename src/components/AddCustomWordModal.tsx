@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { hanziToPinyin, numberedToMarked } from '../utils/pinyin';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import { useKeyboardInset } from '../hooks/useKeyboardInset';
+import { useBackButton } from '../hooks/useBackButton';
 
 const LEVEL_OPTIONS = [
   { value: 0, label: 'None (Custom)' },
@@ -23,6 +24,7 @@ export function AddCustomWordModal({
   onAdd: (input: { hanzi: string; pinyin: string; english: string; hskLevel: number }) => Promise<unknown>;
 }) {
   useBodyScrollLock();
+  useBackButton(onClose);
   const keyboardInset = useKeyboardInset();
   const [hanzi, setHanzi] = useState('');
   const [pinyin, setPinyin] = useState('');
