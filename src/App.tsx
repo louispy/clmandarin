@@ -11,6 +11,7 @@ import { SortableWordList } from './components/SortableWordList';
 import { FlashcardViewer } from './components/FlashcardViewer';
 import { exportList } from './utils/import-export';
 import { getWordsByIds } from './utils/vocab-loader';
+import { db } from './db';
 import type { VocabWord } from './types';
 
 type View = 'browse' | 'flashcards';
@@ -127,6 +128,18 @@ export function App() {
     [listsHook.activeList]
   );
 
+  // Update a word and immediately reflect the change in the active study set
+  // so the flashcard re-renders without needing to exit and re-enter.
+  const handleStudyWordUpdate = useCallback(
+    async (id: string, updates: { english?: string; userNote?: string; englishOriginal?: string }) => {
+      await vocab.updateWord(id, updates);
+      const fresh = await db.vocab.get(id);
+      if (!fresh) return;
+      setStudyWords((prev) => prev?.map((w) => (w.id === id ? fresh : w)) ?? null);
+    },
+    [vocab]
+  );
+
   if (vocab.loading) {
     return (
       <div className={dark ? 'dark' : ''}>
@@ -179,6 +192,7 @@ export function App() {
           onToggleScript={toggleScript}
           reverse={reverse}
           onToggleReverse={toggleReverse}
+          onUpdateWord={handleStudyWordUpdate}
           startIndex={studyStartIndex}
         />
       </div>

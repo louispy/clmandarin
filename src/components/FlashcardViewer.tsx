@@ -4,6 +4,9 @@ import { displayHanzi, type Script } from '../hooks/useScript';
 import { useBackButton } from '../hooks/useBackButton';
 import { speak } from '../utils/speech';
 import { NoAudioModal } from './NoAudioModal';
+import { EditWordModal } from './EditWordModal';
+
+type WordUpdates = { english?: string; userNote?: string; englishOriginal?: string };
 
 export function FlashcardViewer({
   words,
@@ -15,6 +18,7 @@ export function FlashcardViewer({
   onToggleScript,
   reverse = false,
   onToggleReverse,
+  onUpdateWord,
   startIndex,
 }: {
   words: VocabWord[];
@@ -26,6 +30,7 @@ export function FlashcardViewer({
   onToggleScript?: () => void;
   reverse?: boolean;
   onToggleReverse?: () => void;
+  onUpdateWord?: (id: string, updates: WordUpdates) => Promise<void>;
   startIndex?: number;
 }) {
   const initialIndex = startIndex ?? Math.floor(Math.random() * words.length);
@@ -38,6 +43,9 @@ export function FlashcardViewer({
   const [canGoForward, setCanGoForward] = useState(false);
   const [showNoAudio, setShowNoAudio] = useState(false);
   const [showNote, setShowNote] = useState(false);
+  const [editTarget, setEditTarget] = useState<'translation' | 'note' | null>(null);
+  const [editMenuOpen, setEditMenuOpen] = useState(false);
+  const editMenuRef = useRef<HTMLDivElement>(null);
   // When navigating while the card is showing the back face, snap to the front
   // without the 500ms rotateY animation — otherwise the user catches a glimpse
   // of the *new* card's back face spinning around.
@@ -50,6 +58,22 @@ export function FlashcardViewer({
     const id = requestAnimationFrame(() => setSkipFlipAnim(false));
     return () => cancelAnimationFrame(id);
   }, [skipFlipAnim]);
+
+  useEffect(() => {
+    if (!editMenuOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (editMenuRef.current && !editMenuRef.current.contains(e.target as Node)) {
+        setEditMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [editMenuOpen]);
+
+  // Close the edit menu when navigating between cards
+  useEffect(() => {
+    setEditMenuOpen(false);
+  }, [index]);
 
   const word = words[index];
 
@@ -113,6 +137,16 @@ export function FlashcardViewer({
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      // Ignore keys when the user is typing in an input (e.g. the edit modal)
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
       if (e.key === 'ArrowRight') {
         e.preventDefault();
         next();
@@ -220,7 +254,7 @@ export function FlashcardViewer({
         style={{ perspective: '1200px' }}
       >
         <div
-          onClick={() => setFlipped((f) => !f)}
+          onClick={() => { setFlipped((f) => !f); setEditMenuOpen(false); }}
           className="relative w-full max-w-lg cursor-pointer"
           style={{
             aspectRatio: '3 / 4',
@@ -481,6 +515,54 @@ export function FlashcardViewer({
           )}
         </button>
 
+        {/* Edit word (translation/note) */}
+        {onUpdateWord && (
+          <div ref={editMenuRef} className="relative">
+            <button
+              onClick={() => setEditMenuOpen((o) => !o)}
+              className={`flex items-center gap-1 rounded-xl px-3 py-2.5 text-sm font-bold shadow-sm transition-all hover:shadow-md sm:px-4 sm:py-3 sm:text-base ${
+                editMenuOpen
+                  ? 'bg-cn-gold/20 text-cn-gold-dark dark:text-cn-gold-light'
+                  : 'bg-cn-surface text-cn-muted dark:bg-cn-surface-dark dark:text-cn-muted-dark'
+              }`}
+              title="Edit word"
+              aria-label="Edit word"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
+              </svg>
+            </button>
+            {editMenuOpen && (
+              <div className="absolute bottom-full right-1/2 z-30 mb-2 w-44 translate-x-1/2 rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark">
+                <button
+                  onClick={() => {
+                    setEditMenuOpen(false);
+                    setEditTarget('translation');
+                  }}
+                  className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
+                    <path d="M2.695 14.762l-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
+                  </svg>
+                  Edit translation
+                </button>
+                <button
+                  onClick={() => {
+                    setEditMenuOpen(false);
+                    setEditTarget('note');
+                  }}
+                  className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream dark:hover:bg-cn-gold/10"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
+                    <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4 5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Zm-2 4.25a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm.75 2.75a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5H7Z" clipRule="evenodd" />
+                  </svg>
+                  {word.userNote ? 'Edit note' : 'Add note'}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Next */}
         <button
           onClick={next}
@@ -495,6 +577,15 @@ export function FlashcardViewer({
       </div>
 
       {showNoAudio && <NoAudioModal onClose={() => setShowNoAudio(false)} />}
+
+      {editTarget && onUpdateWord && (
+        <EditWordModal
+          word={word}
+          mode={editTarget}
+          onClose={() => setEditTarget(null)}
+          onSave={(updates) => onUpdateWord(word.id, updates)}
+        />
+      )}
 
       {showNote && word.userNote && (
         <div

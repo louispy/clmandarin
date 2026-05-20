@@ -26,8 +26,11 @@ export function EditWordModal({
 
   useEffect(() => {
     if (mode === 'translation') {
-      englishRef.current?.focus();
-      englishRef.current?.select();
+      const el = englishRef.current;
+      if (!el) return;
+      el.focus();
+      const end = el.value.length;
+      el.setSelectionRange(end, end);
     } else {
       noteRef.current?.focus();
     }
