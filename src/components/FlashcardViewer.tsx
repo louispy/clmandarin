@@ -13,6 +13,8 @@ export function FlashcardViewer({
   onToggleDark,
   script = 'cn',
   onToggleScript,
+  reverse = false,
+  onToggleReverse,
   startIndex,
 }: {
   words: VocabWord[];
@@ -22,6 +24,8 @@ export function FlashcardViewer({
   onToggleDark: () => void;
   script?: Script;
   onToggleScript?: () => void;
+  reverse?: boolean;
+  onToggleReverse?: () => void;
   startIndex?: number;
 }) {
   const initialIndex = startIndex ?? Math.floor(Math.random() * words.length);
@@ -164,6 +168,20 @@ export function FlashcardViewer({
               {script === 'cn' ? '简' : '繁'}
             </button>
           )}
+          {onToggleReverse && (
+            <button
+              onClick={onToggleReverse}
+              className={`rounded-xl px-2 py-1 text-xs font-bold transition-colors sm:text-sm ${
+                reverse
+                  ? 'text-cn-red dark:text-cn-red-light'
+                  : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+              }`}
+              title={reverse ? 'Studying English → Hanzi (tap to switch)' : 'Studying Hanzi → English (tap to switch)'}
+              aria-label="Toggle reverse mode"
+            >
+              {reverse ? 'EN→中' : '中→EN'}
+            </button>
+          )}
           <button
             onClick={onToggleDark}
             className="rounded-xl p-2 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
@@ -235,29 +253,66 @@ export function FlashcardViewer({
                 </svg>
               </button>
             )}
-            <p
-              className={`px-6 text-center font-black text-cn-ink dark:text-cn-cream ${
-                Array.from(displayHanzi(word, script)).length <= 2
-                  ? 'text-8xl sm:text-9xl'
-                  : Array.from(displayHanzi(word, script)).length <= 4
-                    ? 'text-6xl sm:text-7xl'
-                    : Array.from(displayHanzi(word, script)).length <= 7
+            {reverse ? (
+              <>
+                <p
+                  className={`px-6 text-center font-bold text-cn-ink dark:text-cn-cream ${
+                    (word.english || '').length <= 40
                       ? 'text-4xl sm:text-5xl'
-                      : 'text-3xl sm:text-4xl'
-              }`}
-            >
-              {displayHanzi(word, script)}
-            </p>
+                      : (word.english || '').length <= 80
+                        ? 'text-3xl sm:text-4xl'
+                        : 'text-2xl sm:text-3xl'
+                  }`}
+                >
+                  {word.english || '—'}
+                </p>
 
-            {showHints && (
-              <div className="mt-6 flex flex-col items-center gap-3">
-                <p className="font-pinyin text-4xl font-bold text-cn-red/60 dark:text-cn-red-light/60 sm:text-5xl">
-                  {word.pinyin}
+                {showHints && (
+                  <div className="mt-6 flex flex-col items-center gap-3">
+                    <p
+                      className={`text-center font-black text-cn-ink/40 dark:text-cn-cream/40 ${
+                        Array.from(displayHanzi(word, script)).length <= 2
+                          ? 'text-6xl sm:text-7xl'
+                          : Array.from(displayHanzi(word, script)).length <= 4
+                            ? 'text-4xl sm:text-5xl'
+                            : 'text-3xl sm:text-4xl'
+                      }`}
+                    >
+                      {displayHanzi(word, script)}
+                    </p>
+                    <p className="font-pinyin text-2xl font-bold text-cn-red/40 dark:text-cn-red-light/40 sm:text-3xl">
+                      {word.pinyin}
+                    </p>
+                  </div>
+                )}
+              </>
+            ) : (
+              <>
+                <p
+                  className={`px-6 text-center font-black text-cn-ink dark:text-cn-cream ${
+                    Array.from(displayHanzi(word, script)).length <= 2
+                      ? 'text-8xl sm:text-9xl'
+                      : Array.from(displayHanzi(word, script)).length <= 4
+                        ? 'text-6xl sm:text-7xl'
+                        : Array.from(displayHanzi(word, script)).length <= 7
+                          ? 'text-4xl sm:text-5xl'
+                          : 'text-3xl sm:text-4xl'
+                  }`}
+                >
+                  {displayHanzi(word, script)}
                 </p>
-                <p className="text-2xl text-cn-muted/50 dark:text-cn-muted-dark/50 sm:text-3xl">
-                  {word.english}
-                </p>
-              </div>
+
+                {showHints && (
+                  <div className="mt-6 flex flex-col items-center gap-3">
+                    <p className="font-pinyin text-4xl font-bold text-cn-red/60 dark:text-cn-red-light/60 sm:text-5xl">
+                      {word.pinyin}
+                    </p>
+                    <p className="text-2xl text-cn-muted/50 dark:text-cn-muted-dark/50 sm:text-3xl">
+                      {word.english}
+                    </p>
+                  </div>
+                )}
+              </>
             )}
 
             <p className="mt-8 text-base text-cn-muted/30 dark:text-cn-muted-dark/30">
@@ -265,7 +320,7 @@ export function FlashcardViewer({
             </p>
           </div>
 
-          {/* Back face — Pinyin + Translation */}
+          {/* Back face — answer */}
           <div
             className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border-2 border-cn-gold/30 bg-cn-surface shadow-xl dark:border-cn-gold-dark/30 dark:bg-cn-surface-dark"
             style={{
@@ -301,29 +356,61 @@ export function FlashcardViewer({
                 </svg>
               </button>
             )}
-            <p
-              className={`px-6 text-center font-pinyin font-bold text-cn-red dark:text-cn-red-light ${
-                word.pinyin.length <= 12
-                  ? 'text-5xl sm:text-6xl'
-                  : word.pinyin.length <= 24
-                    ? 'text-3xl sm:text-4xl'
-                    : 'text-2xl sm:text-3xl'
-              }`}
-            >
-              {word.pinyin}
-            </p>
-            <div className="mt-5 h-px w-20 bg-cn-gold/30" />
-            <p
-              className={`mt-5 px-8 text-center text-cn-ink dark:text-cn-cream ${
-                (word.english || '').length <= 40
-                  ? 'text-3xl sm:text-4xl'
-                  : (word.english || '').length <= 80
-                    ? 'text-2xl sm:text-3xl'
-                    : 'text-xl sm:text-2xl'
-              }`}
-            >
-              {word.english || '—'}
-            </p>
+            {reverse ? (
+              <>
+                <p
+                  className={`px-6 text-center font-black text-cn-ink dark:text-cn-cream ${
+                    Array.from(displayHanzi(word, script)).length <= 2
+                      ? 'text-7xl sm:text-8xl'
+                      : Array.from(displayHanzi(word, script)).length <= 4
+                        ? 'text-5xl sm:text-6xl'
+                        : Array.from(displayHanzi(word, script)).length <= 7
+                          ? 'text-4xl sm:text-5xl'
+                          : 'text-3xl sm:text-4xl'
+                  }`}
+                >
+                  {displayHanzi(word, script)}
+                </p>
+                <div className="mt-5 h-px w-20 bg-cn-gold/30" />
+                <p
+                  className={`mt-5 px-6 text-center font-pinyin font-bold text-cn-red dark:text-cn-red-light ${
+                    word.pinyin.length <= 12
+                      ? 'text-3xl sm:text-4xl'
+                      : word.pinyin.length <= 24
+                        ? 'text-2xl sm:text-3xl'
+                        : 'text-xl sm:text-2xl'
+                  }`}
+                >
+                  {word.pinyin}
+                </p>
+              </>
+            ) : (
+              <>
+                <p
+                  className={`px-6 text-center font-pinyin font-bold text-cn-red dark:text-cn-red-light ${
+                    word.pinyin.length <= 12
+                      ? 'text-5xl sm:text-6xl'
+                      : word.pinyin.length <= 24
+                        ? 'text-3xl sm:text-4xl'
+                        : 'text-2xl sm:text-3xl'
+                  }`}
+                >
+                  {word.pinyin}
+                </p>
+                <div className="mt-5 h-px w-20 bg-cn-gold/30" />
+                <p
+                  className={`mt-5 px-8 text-center text-cn-ink dark:text-cn-cream ${
+                    (word.english || '').length <= 40
+                      ? 'text-3xl sm:text-4xl'
+                      : (word.english || '').length <= 80
+                        ? 'text-2xl sm:text-3xl'
+                        : 'text-xl sm:text-2xl'
+                  }`}
+                >
+                  {word.english || '—'}
+                </p>
+              </>
+            )}
             <p className="mt-8 text-base text-cn-muted/30 dark:text-cn-muted-dark/30">
               tap to flip
             </p>

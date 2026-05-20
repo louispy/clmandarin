@@ -4,6 +4,7 @@ import { useLists } from './hooks/useLists';
 import { useDarkMode } from './hooks/useDarkMode';
 import { useVisibility } from './hooks/useVisibility';
 import { useScript } from './hooks/useScript';
+import { useReverse } from './hooks/useReverse';
 import { VocabBrowser } from './components/VocabBrowser';
 import { FlashcardManager } from './components/FlashcardManager';
 import { SortableWordList } from './components/SortableWordList';
@@ -20,6 +21,7 @@ export function App() {
   const { dark, toggle: toggleDark } = useDarkMode();
   const { visibility, toggle: toggleVisibility } = useVisibility();
   const { script, toggle: toggleScript } = useScript();
+  const { reverse, toggle: toggleReverse } = useReverse();
   const [view, setView] = useState<View>('browse');
   const [studyWords, setStudyWords] = useState<VocabWord[] | null>(null);
   const [studyListName, setStudyListName] = useState('');
@@ -175,6 +177,8 @@ export function App() {
           onToggleDark={toggleDark}
           script={script}
           onToggleScript={toggleScript}
+          reverse={reverse}
+          onToggleReverse={toggleReverse}
           startIndex={studyStartIndex}
         />
       </div>
