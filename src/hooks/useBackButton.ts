@@ -41,6 +41,11 @@ export function useBackButton(onClose: () => void) {
       const idx = stack.indexOf(closer);
       if (idx === -1) return; // popstate already removed us
       stack.splice(idx, 1);
+      // Only pop the synthetic entry if the browser is actually still on one of
+      // our overlay entries. Without this guard, an unmount that happens while
+      // the position has already moved off the synthetic entry would call back()
+      // anyway and pop a real browser entry, kicking the user out of the app.
+      if (window.history.state?.overlay !== true) return;
       swallow++;
       window.history.back();
     };
