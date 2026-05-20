@@ -38,8 +38,18 @@ export function FlashcardViewer({
   const [canGoForward, setCanGoForward] = useState(false);
   const [showNoAudio, setShowNoAudio] = useState(false);
   const [showNote, setShowNote] = useState(false);
+  // When navigating while the card is showing the back face, snap to the front
+  // without the 500ms rotateY animation — otherwise the user catches a glimpse
+  // of the *new* card's back face spinning around.
+  const [skipFlipAnim, setSkipFlipAnim] = useState(false);
 
   useBackButton(onClose);
+
+  useEffect(() => {
+    if (!skipFlipAnim) return;
+    const id = requestAnimationFrame(() => setSkipFlipAnim(false));
+    return () => cancelAnimationFrame(id);
+  }, [skipFlipAnim]);
 
   const word = words[index];
 
@@ -58,16 +68,18 @@ export function FlashcardViewer({
     historyRef.current.push(newIdx);
     historyPosRef.current = historyRef.current.length - 1;
     setIndex(newIdx);
+    if (flipped) setSkipFlipAnim(true);
     setFlipped(false);
     setCanGoBack(historyPosRef.current > 0);
     setCanGoForward(false);
-  }, []);
+  }, [flipped]);
 
   const next = useCallback(() => {
     // Forward through history if available
     if (historyPosRef.current < historyRef.current.length - 1) {
       historyPosRef.current++;
       setIndex(historyRef.current[historyPosRef.current]);
+      if (flipped) setSkipFlipAnim(true);
       setFlipped(false);
       setCanGoBack(historyPosRef.current > 0);
       setCanGoForward(historyPosRef.current < historyRef.current.length - 1);
@@ -77,17 +89,18 @@ export function FlashcardViewer({
     if (index < words.length - 1) {
       navigate(index + 1, true);
     }
-  }, [index, words.length, navigate]);
+  }, [index, words.length, navigate, flipped]);
 
   const prev = useCallback(() => {
     if (historyPosRef.current > 0) {
       historyPosRef.current--;
       setIndex(historyRef.current[historyPosRef.current]);
+      if (flipped) setSkipFlipAnim(true);
       setFlipped(false);
       setCanGoBack(historyPosRef.current > 0);
       setCanGoForward(true);
     }
-  }, []);
+  }, [flipped]);
 
   const random = useCallback(() => {
     if (words.length <= 1) return;
@@ -213,7 +226,7 @@ export function FlashcardViewer({
             maxHeight: 'calc(100vh - 200px)',
             transformStyle: 'preserve-3d',
             WebkitTransformStyle: 'preserve-3d',
-            transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+            transition: skipFlipAnim ? 'none' : 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
             transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
           }}
         >
