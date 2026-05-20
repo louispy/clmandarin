@@ -190,12 +190,12 @@ export function App() {
       <div className="min-h-screen bg-cn-paper dark:bg-cn-paper-dark">
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-cn-border bg-cn-paper/95 backdrop-blur dark:border-cn-border-dark dark:bg-cn-paper-dark/95">
-          <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-3 py-3 sm:px-4">
+          <div className="mx-auto flex max-w-3xl items-center justify-between gap-1 px-2 py-3 sm:gap-2 sm:px-4">
             <h1 className="shrink-0 whitespace-nowrap text-2xl font-black tracking-tight text-cn-red dark:text-cn-red-light sm:text-3xl">
               CL<span className="text-cn-gold">&#20013;</span>M
             </h1>
 
-            <div className="flex items-center gap-1 sm:gap-2">
+            <div className="flex items-center gap-0.5 sm:gap-2">
               <div className="grid grid-cols-2 gap-0.5 rounded-xl border border-cn-border bg-cn-surface p-0.5 dark:border-cn-border-dark dark:bg-cn-surface-dark">
                 <button
                   onClick={() => navigateTo('browse')}
@@ -219,7 +219,7 @@ export function App() {
                   {(() => {
                     const customCount = listsHook.lists.filter((l) => l.id !== '__favorites__').length;
                     return customCount > 0 ? (
-                      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-cn-gold text-[10px] font-black text-white">
+                      <span className="absolute -right-2 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cn-gold text-[9px] font-black text-white">
                         {customCount}
                       </span>
                     ) : null;
@@ -230,7 +230,7 @@ export function App() {
               {/* Script toggle */}
               <button
                 onClick={toggleScript}
-                className={`rounded-xl px-2 py-1 text-sm font-bold transition-colors ${
+                className={`rounded-xl px-1.5 py-1 text-xs font-bold transition-colors sm:px-2 sm:text-sm ${
                   script === 'tw'
                     ? 'text-cn-red dark:text-cn-red-light'
                     : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
@@ -239,6 +239,20 @@ export function App() {
                 aria-label="Toggle script"
               >
                 {script === 'cn' ? '简' : '繁'}
+              </button>
+
+              {/* Reverse mode toggle (flashcards study direction) */}
+              <button
+                onClick={toggleReverse}
+                className={`shrink-0 whitespace-nowrap rounded-xl px-1.5 py-1 text-[10px] font-bold transition-colors sm:px-2 sm:text-sm ${
+                  reverse
+                    ? 'text-cn-red dark:text-cn-red-light'
+                    : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+                }`}
+                title={reverse ? 'Flashcards: English → Hanzi (tap to switch)' : 'Flashcards: Hanzi → English (tap to switch)'}
+                aria-label="Toggle reverse mode"
+              >
+                {reverse ? 'EN→中' : '中→EN'}
               </button>
 
               {/* Dark mode toggle */}

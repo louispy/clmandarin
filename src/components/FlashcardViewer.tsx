@@ -150,27 +150,28 @@ export function FlashcardViewer({
       </div>
 
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-4">
+      <div className="flex items-center justify-between gap-2 px-3 py-3 sm:gap-3 sm:px-5 sm:py-4">
         <button
           onClick={onClose}
-          className="flex items-center gap-1 text-sm font-medium text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
+          className="flex shrink-0 items-center gap-1 text-sm font-medium text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
+          aria-label="Back"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
             <path fillRule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clipRule="evenodd" />
           </svg>
-          Back
+          <span className="hidden sm:inline">Back</span>
         </button>
-        <span className="text-sm font-bold text-cn-red dark:text-cn-red-light">
+        <span className="min-w-0 flex-1 truncate text-center text-sm font-bold text-cn-red dark:text-cn-red-light">
           {listName}
         </span>
-        <div className="flex items-center gap-2">
-          <span className="rounded-full bg-cn-red/10 px-3 py-1 text-sm font-bold text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+          <span className="rounded-full bg-cn-red/10 px-2 py-0.5 text-xs font-bold text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light sm:px-3 sm:py-1 sm:text-sm">
             {index + 1} / {words.length}
           </span>
           {onToggleScript && (
             <button
               onClick={onToggleScript}
-              className={`rounded-xl px-2 py-1 text-sm font-bold transition-colors ${
+              className={`rounded-xl px-1.5 py-1 text-xs font-bold transition-colors sm:px-2 sm:text-sm ${
                 script === 'tw'
                   ? 'text-cn-red dark:text-cn-red-light'
                   : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
@@ -184,7 +185,7 @@ export function FlashcardViewer({
           {onToggleReverse && (
             <button
               onClick={onToggleReverse}
-              className={`rounded-xl px-2 py-1 text-xs font-bold transition-colors sm:text-sm ${
+              className={`rounded-xl px-1.5 py-1 text-xs font-bold transition-colors sm:px-2 sm:text-sm ${
                 reverse
                   ? 'text-cn-red dark:text-cn-red-light'
                   : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
@@ -197,7 +198,7 @@ export function FlashcardViewer({
           )}
           <button
             onClick={onToggleDark}
-            className="rounded-xl p-2 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
+            className="rounded-xl p-1.5 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream sm:p-2"
             title={dark ? 'Light mode' : 'Dark mode'}
           >
             {dark ? (
