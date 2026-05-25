@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Worker — config and secrets stay local
+worker/wrangler.toml
+worker/.dev.vars
+worker/.wrangler/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

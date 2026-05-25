@@ -1,0 +1,18 @@
+# Copy this file to `wrangler.toml` and fill in the placeholders.
+# The real `wrangler.toml` is gitignored to keep account-specific config out
+# of the repo.
+
+name = "REPLACE-with-your-worker-name"   # becomes <name>.<your-handle>.workers.dev
+main = "src/index.ts"
+compatibility_date = "2026-05-21"
+
+# KV namespace binding. Create the namespace once with:
+#   npx wrangler kv namespace create LISTS
+# Then paste the printed `id` value below.
+[[kv_namespaces]]
+binding = "LISTS"
+id = "REPLACE-with-kv-namespace-id"
+
+# Secrets are NOT defined here. Set them with:
+#   npx wrangler secret put ALLOWED_ORIGIN
+# The Worker reads them via env.ALLOWED_ORIGIN at runtime.

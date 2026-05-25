@@ -1,0 +1,3 @@
+# Copy to `.dev.vars` for local `wrangler dev` runs.
+# `.dev.vars` is gitignored. Wrangler reads it automatically.
+ALLOWED_ORIGIN=http://localhost:5173
