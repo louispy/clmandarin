@@ -1,3 +1,9 @@
 # Copy to `.dev.vars` for local `wrangler dev` runs.
 # `.dev.vars` is gitignored. Wrangler reads it automatically.
+
+# Allowed origin for write requests. Match your dev frontend's origin.
 ALLOWED_ORIGIN=http://localhost:5173
+
+# Optional: TTL for shared lists in seconds. Defaults to 86400 (24h) when
+# unset or invalid. Min 60.
+# SHARE_TTL_SECONDS=86400

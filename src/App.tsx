@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { useVocab } from './hooks/useVocab';
 import { useLists } from './hooks/useLists';
 import { useDarkMode } from './hooks/useDarkMode';
@@ -9,6 +9,7 @@ import { VocabBrowser } from './components/VocabBrowser';
 import { FlashcardManager } from './components/FlashcardManager';
 import { SortableWordList } from './components/SortableWordList';
 import { FlashcardViewer } from './components/FlashcardViewer';
+import { ImportShareModal } from './components/ImportShareModal';
 import { exportList } from './utils/import-export';
 import { getWordsByIds } from './utils/vocab-loader';
 import { db } from './db';
@@ -27,7 +28,23 @@ export function App() {
   const [studyWords, setStudyWords] = useState<VocabWord[] | null>(null);
   const [studyListName, setStudyListName] = useState('');
   const [studyStartIndex, setStudyStartIndex] = useState<number | undefined>(undefined);
+  const [shareCode, setShareCode] = useState<string | null>(() => {
+    if (typeof window === 'undefined') return null;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('share');
+  });
   const scrollPosRef = useRef(0);
+
+  // Strip the ?share= from the URL once we've captured it so a refresh doesn't
+  // re-trigger the import prompt, but keep everything else (e.g. PWA scope).
+  useEffect(() => {
+    if (!shareCode) return;
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('share')) {
+      url.searchParams.delete('share');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [shareCode]);
 
   // Switching tabs reuses the same scroll container, so the previous view's
   // scroll position leaks through. Force the top after the new view mounts.
@@ -396,6 +413,17 @@ export function App() {
           )}
         </main>
       </div>
+
+      {shareCode && (
+        <ImportShareModal
+          code={shareCode}
+          onClose={() => setShareCode(null)}
+          onImported={() => {
+            listsHook.refresh();
+            vocab.refresh();
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -15,4 +15,5 @@ id = "REPLACE-with-kv-namespace-id"
 
 # Secrets are NOT defined here. Set them with:
 #   npx wrangler secret put ALLOWED_ORIGIN
-# The Worker reads them via env.ALLOWED_ORIGIN at runtime.
+#   npx wrangler secret put SHARE_TTL_SECONDS  # optional; defaults to 86400 (24h)
+# The Worker reads them via env.<NAME> at runtime.

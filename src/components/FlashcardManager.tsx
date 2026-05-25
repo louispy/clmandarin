@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FlashcardList } from '../types';
 import { CreateListModal } from './CreateListModal';
+import { ShareLinkModal } from './ShareLinkModal';
 import { importMultipleFiles } from '../utils/import-export';
+import { buildShareUrl, createShare, isSharingConfigured } from '../utils/share';
 
 const FAVORITES_ID = '__favorites__';
 
@@ -31,8 +33,11 @@ export function FlashcardManager({
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState('');
   const [importStatus, setImportStatus] = useState<string | null>(null);
+  const [shareInfo, setShareInfo] = useState<{ url: string; listName: string; expiresAt: string } | null>(null);
+  const [sharingId, setSharingId] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const sharingEnabled = isSharingConfigured();
 
   const activeList = lists.find((l) => l.id === activeListId) ?? null;
   const isFavorites = (id: string) => id === FAVORITES_ID;
@@ -65,6 +70,19 @@ export function FlashcardManager({
       onRename(editingId, editName.trim());
     }
     setEditingId(null);
+  };
+
+  const handleShare = async (list: FlashcardList) => {
+    if (sharingId) return;
+    setSharingId(list.id);
+    try {
+      const { code, expiresAt } = await createShare(list);
+      setShareInfo({ url: buildShareUrl(code), listName: list.name, expiresAt });
+    } catch (err) {
+      setImportStatus(err instanceof Error ? err.message : 'Failed to create share link.');
+    } finally {
+      setSharingId(null);
+    }
   };
 
   const handleImportFiles = async (files: FileList | null) => {
@@ -143,7 +161,7 @@ export function FlashcardManager({
           </button>
 
           {dropdownOpen && (
-            <div className="absolute left-0 right-0 top-full z-40 mt-1 max-h-96 overflow-y-auto rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark">
+            <div className="absolute left-0 top-full z-40 mt-1 max-h-96 w-[calc(100vw-2rem)] overflow-y-auto rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark sm:right-0 sm:w-auto">
               {lists.map((list) => {
                 const isActive = activeListId === list.id;
                 const fav = isFavorites(list.id);
@@ -256,9 +274,23 @@ export function FlashcardManager({
           )}
         </div>
 
+        {sharingEnabled && (
+          <button
+            onClick={() => activeList && handleShare(activeList)}
+            disabled={!activeList || activeList.wordIds.length === 0 || sharingId === activeList?.id}
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 bg-cn-red/10 text-cn-red transition-colors hover:bg-cn-red/20 disabled:cursor-not-allowed disabled:opacity-30 dark:bg-cn-red/20 dark:text-cn-red-light"
+            title={activeList ? `Share "${activeList.name}"` : 'Pick a list to share'}
+            aria-label="Share list link"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+              <path d="M13 4.5a2.5 2.5 0 1 1 .702 1.737L6.97 9.604a2.518 2.518 0 0 1 0 .792l6.733 3.367a2.5 2.5 0 1 1-.671 1.341l-6.733-3.367a2.5 2.5 0 1 1 0-3.475l6.733-3.367A2.52 2.52 0 0 1 13 4.5Z" />
+            </svg>
+          </button>
+        )}
+
         <button
           onClick={() => setCreateOpen(true)}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cn-red/10 text-cn-red transition-colors hover:bg-cn-red/20 dark:bg-cn-red/20 dark:text-cn-red-light"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 bg-cn-red/10 text-cn-red transition-colors hover:bg-cn-red/20 dark:bg-cn-red/20 dark:text-cn-red-light"
           title="New flashcard list"
           aria-label="New flashcard list"
         >
@@ -269,7 +301,7 @@ export function FlashcardManager({
 
         <button
           onClick={() => fileRef.current?.click()}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cn-gold/10 text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:bg-cn-gold/20 dark:text-cn-gold-light"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 bg-cn-gold/10 text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:bg-cn-gold/20 dark:text-cn-gold-light"
           title="Import flashcard list(s)"
           aria-label="Import flashcard list(s)"
         >
@@ -302,6 +334,15 @@ export function FlashcardManager({
             const list = await onCreate(name);
             onSelect(list.id);
           }}
+        />
+      )}
+
+      {shareInfo && (
+        <ShareLinkModal
+          url={shareInfo.url}
+          listName={shareInfo.listName}
+          expiresAt={shareInfo.expiresAt}
+          onClose={() => setShareInfo(null)}
         />
       )}
     </div>

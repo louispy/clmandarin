@@ -59,6 +59,13 @@ export function useVocab() {
     setRetryKey((k) => k + 1);
   }, []);
 
+  // Force a re-query against IndexedDB without restarting the loader pipeline.
+  // Use this when something outside the hook (e.g. a shared-list import) has
+  // written new words to the vocab table.
+  const refresh = useCallback(() => {
+    setRefreshKey((k) => k + 1);
+  }, []);
+
   // Load words when filters change, search clears, or DB becomes ready
   useEffect(() => {
     if (!dbReady || isSearching) return;
@@ -136,6 +143,7 @@ export function useVocab() {
     loading,
     error,
     retry,
+    refresh,
     words,
     dbReady,
     selectedLevels,
