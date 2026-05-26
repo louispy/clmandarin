@@ -17,6 +17,7 @@ export function FlashcardManager({
   onExport,
   onClear,
   onImportDone,
+  onImportFromCode,
 }: {
   lists: FlashcardList[];
   activeListId: string | null;
@@ -27,6 +28,7 @@ export function FlashcardManager({
   onExport: (list: FlashcardList) => void;
   onClear: (id: string) => void;
   onImportDone: () => void;
+  onImportFromCode?: (code: string) => void;
 }) {
   const [createOpen, setCreateOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -35,8 +37,11 @@ export function FlashcardManager({
   const [importStatus, setImportStatus] = useState<string | null>(null);
   const [shareInfo, setShareInfo] = useState<{ url: string; listName: string; expiresAt: string } | null>(null);
   const [sharingId, setSharingId] = useState<string | null>(null);
+  const [importMenuOpen, setImportMenuOpen] = useState(false);
+  const [linkInput, setLinkInput] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const importMenuRef = useRef<HTMLDivElement>(null);
   const sharingEnabled = isSharingConfigured();
 
   const activeList = lists.find((l) => l.id === activeListId) ?? null;
@@ -53,6 +58,18 @@ export function FlashcardManager({
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, [dropdownOpen]);
+
+  useEffect(() => {
+    if (!importMenuOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (importMenuRef.current && !importMenuRef.current.contains(e.target as Node)) {
+        setImportMenuOpen(false);
+        setLinkInput('');
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [importMenuOpen]);
 
   useEffect(() => {
     if (!importStatus) return;
@@ -83,6 +100,33 @@ export function FlashcardManager({
     } finally {
       setSharingId(null);
     }
+  };
+
+  // Extract a share code from either a full share URL (?share=CODE) or a raw
+  // code pasted directly. Returns null on anything we don't recognize.
+  const parseShareInput = (raw: string): string | null => {
+    const trimmed = raw.trim();
+    if (!trimmed) return null;
+    let candidate = trimmed;
+    try {
+      const url = new URL(trimmed);
+      const fromQuery = url.searchParams.get('share');
+      if (fromQuery) candidate = fromQuery;
+    } catch {
+      // not a URL — treat as raw code
+    }
+    return /^[a-f0-9]{8,16}$/i.test(candidate) ? candidate.toLowerCase() : null;
+  };
+
+  const handleImportFromLink = () => {
+    const code = parseShareInput(linkInput);
+    if (!code) {
+      setImportStatus("That doesn't look like a share link or code.");
+      return;
+    }
+    setImportMenuOpen(false);
+    setLinkInput('');
+    onImportFromCode?.(code);
   };
 
   const handleImportFiles = async (files: FileList | null) => {
@@ -282,8 +326,8 @@ export function FlashcardManager({
             title={activeList ? `Share "${activeList.name}"` : 'Pick a list to share'}
             aria-label="Share list link"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
-              <path d="M13 4.5a2.5 2.5 0 1 1 .702 1.737L6.97 9.604a2.518 2.518 0 0 1 0 .792l6.733 3.367a2.5 2.5 0 1 1-.671 1.341l-6.733-3.367a2.5 2.5 0 1 1 0-3.475l6.733-3.367A2.52 2.52 0 0 1 13 4.5Z" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+              <path d="M14 9V5l7 7-7 7v-4.1c-5 0-8.5 1.6-11 5.1 1-5 4-10 11-11z" />
             </svg>
           </button>
         )}
@@ -299,17 +343,62 @@ export function FlashcardManager({
           </svg>
         </button>
 
-        <button
-          onClick={() => fileRef.current?.click()}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 bg-cn-gold/10 text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:bg-cn-gold/20 dark:text-cn-gold-light"
-          title="Import flashcard list(s)"
-          aria-label="Import flashcard list(s)"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
-            <path d="M9.25 13.25a.75.75 0 0 0 1.5 0V4.636l2.955 3.129a.75.75 0 0 0 1.09-1.03l-4.25-4.5a.75.75 0 0 0-1.09 0l-4.25 4.5a.75.75 0 1 0 1.09 1.03L9.25 4.636v8.614Z" />
-            <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
-          </svg>
-        </button>
+        <div ref={importMenuRef} className="relative">
+          <button
+            onClick={() => setImportMenuOpen((o) => !o)}
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 bg-cn-gold/10 text-cn-gold-dark transition-colors hover:bg-cn-gold/20 dark:bg-cn-gold/20 dark:text-cn-gold-light"
+            title="Import flashcard list(s)"
+            aria-label="Import flashcard list(s)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+              <path d="M9.25 13.25a.75.75 0 0 0 1.5 0V4.636l2.955 3.129a.75.75 0 0 0 1.09-1.03l-4.25-4.5a.75.75 0 0 0-1.09 0l-4.25 4.5a.75.75 0 1 0 1.09 1.03L9.25 4.636v8.614Z" />
+              <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
+            </svg>
+          </button>
+          {importMenuOpen && (
+            <div className="absolute right-0 top-full z-40 mt-1 w-64 rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark">
+              <button
+                onClick={() => {
+                  setImportMenuOpen(false);
+                  fileRef.current?.click();
+                }}
+                className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cn-ink transition-colors hover:bg-cn-gold/10 dark:text-cn-cream"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-cn-muted dark:text-cn-muted-dark">
+                  <path d="M9.25 13.25a.75.75 0 0 0 1.5 0V4.636l2.955 3.129a.75.75 0 0 0 1.09-1.03l-4.25-4.5a.75.75 0 0 0-1.09 0l-4.25 4.5a.75.75 0 1 0 1.09 1.03L9.25 4.636v8.614Z" />
+                  <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
+                </svg>
+                Upload file
+              </button>
+              {onImportFromCode && (
+                <>
+                  <div className="my-1 h-px bg-cn-border dark:bg-cn-border-dark" />
+                  <div className="flex flex-col gap-2 p-2">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
+                      From share link
+                    </span>
+                    <input
+                      value={linkInput}
+                      onChange={(e) => setLinkInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleImportFromLink();
+                      }}
+                      placeholder="Paste link or code…"
+                      className="rounded-lg border border-cn-border bg-transparent px-2 py-1.5 text-sm text-cn-ink outline-none focus:border-cn-red dark:border-cn-border-dark dark:text-cn-cream"
+                    />
+                    <button
+                      onClick={handleImportFromLink}
+                      disabled={!linkInput.trim()}
+                      className="rounded-lg bg-cn-red px-3 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-cn-red-dark disabled:opacity-40"
+                    >
+                      Import
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </div>
         <input
           ref={fileRef}
           type="file"

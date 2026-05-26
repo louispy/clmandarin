@@ -17,8 +17,7 @@ type State =
       existing: FlashcardList | null;
       availableName: string; // disambiguated against existing names
     }
-  | { kind: 'error'; message: string }
-  | { kind: 'imported'; listName: string; mode: 'new' | 'replace' | 'copy' };
+  | { kind: 'error'; message: string };
 
 export function ImportShareModal({
   code,
@@ -27,7 +26,7 @@ export function ImportShareModal({
 }: {
   code: string;
   onClose: () => void;
-  onImported: () => void;
+  onImported: (listId: string) => void;
 }) {
   useBodyScrollLock();
   useBackButton(onClose);
@@ -77,14 +76,14 @@ export function ImportShareModal({
         replaceLocalId: mode === 'replace' ? state.existing?.id : undefined,
         nameOverride: chosenName,
       });
-      onImported();
-      setState({ kind: 'imported', listName: list.name, mode });
+      // Hand off to the parent — it refreshes data, navigates to Flashcards,
+      // selects the imported list, and closes this modal. No success step.
+      onImported(list.id);
     } catch (err) {
       setState({
         kind: 'error',
         message: err instanceof Error ? err.message : 'Failed to import shared list.',
       });
-    } finally {
       setWorking(false);
     }
   };
@@ -100,7 +99,7 @@ export function ImportShareModal({
       >
         <div className="flex items-start justify-between gap-3">
           <h2 className="text-lg font-bold text-cn-ink dark:text-cn-cream">
-            {state.kind === 'imported' ? 'Imported' : 'Shared flashcard list'}
+            Shared flashcard list
           </h2>
           <button
             onClick={onClose}
@@ -170,23 +169,6 @@ export function ImportShareModal({
             </>
           )}
 
-          {state.kind === 'imported' && (
-            <p className="text-sm text-cn-muted dark:text-cn-muted-dark">
-              {state.mode === 'replace' ? (
-                <>
-                  Replaced your existing copy with the latest version of &ldquo;
-                  <span className="font-bold text-cn-ink dark:text-cn-cream">{state.listName}</span>
-                  &rdquo;.
-                </>
-              ) : (
-                <>
-                  Added &ldquo;
-                  <span className="font-bold text-cn-ink dark:text-cn-cream">{state.listName}</span>
-                  &rdquo; to your flashcards.
-                </>
-              )}
-            </p>
-          )}
         </div>
 
         <div className="mt-5 flex items-center justify-end gap-2">
@@ -194,7 +176,7 @@ export function ImportShareModal({
             onClick={onClose}
             className="whitespace-nowrap rounded-xl px-3 py-2.5 text-sm font-bold text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream sm:px-4"
           >
-            {state.kind === 'imported' ? 'Close' : 'Cancel'}
+            Cancel
           </button>
           {state.kind === 'ready' && state.existing && (
             <>

@@ -11,6 +11,7 @@ import { SortableWordList } from './components/SortableWordList';
 import { FlashcardViewer } from './components/FlashcardViewer';
 import { ImportShareModal } from './components/ImportShareModal';
 import { exportList } from './utils/import-export';
+import { isSharingConfigured } from './utils/share';
 import { getWordsByIds } from './utils/vocab-loader';
 import { db } from './db';
 import type { VocabWord } from './types';
@@ -349,6 +350,7 @@ export function App() {
                 onExport={exportList}
                 onClear={listsHook.clearList}
                 onImportDone={listsHook.refresh}
+                onImportFromCode={isSharingConfigured() ? setShareCode : undefined}
               />
 
               {!listsHook.activeList && (() => {
@@ -418,9 +420,12 @@ export function App() {
         <ImportShareModal
           code={shareCode}
           onClose={() => setShareCode(null)}
-          onImported={() => {
+          onImported={(listId) => {
             listsHook.refresh();
             vocab.refresh();
+            listsHook.setActiveListId(listId);
+            navigateTo('flashcards');
+            setShareCode(null);
           }}
         />
       )}

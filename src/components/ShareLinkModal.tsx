@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useBackButton } from '../hooks/useBackButton';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 
@@ -27,11 +27,6 @@ export function ShareLinkModal({
   useBodyScrollLock();
   useBackButton(onClose);
   const [copied, setCopied] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    inputRef.current?.select();
-  }, []);
 
   const handleCopy = async () => {
     try {
@@ -39,10 +34,8 @@ export function ShareLinkModal({
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      inputRef.current?.select();
-      document.execCommand('copy');
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
+      // clipboard API can fail on insecure contexts / older mobile browsers;
+      // the URL is still selectable in the display field above as a fallback.
     }
   };
 
@@ -76,13 +69,11 @@ export function ShareLinkModal({
         </div>
 
         <div className="mt-4 flex gap-2">
-          <input
-            ref={inputRef}
-            readOnly
-            value={url}
-            onFocus={(e) => e.currentTarget.select()}
-            className="min-w-0 flex-1 rounded-xl border border-cn-border bg-transparent px-3 py-2 font-mono text-xs text-cn-ink outline-none focus:border-cn-red dark:border-cn-border-dark dark:text-cn-cream"
-          />
+          <div
+            className="min-w-0 flex-1 select-all break-all rounded-xl border border-cn-border bg-cn-paper px-3 py-2 font-mono text-xs text-cn-ink dark:border-cn-border-dark dark:bg-cn-paper-dark dark:text-cn-cream"
+          >
+            {url}
+          </div>
           <button
             onClick={handleCopy}
             className={`shrink-0 rounded-xl px-4 py-2 text-sm font-bold transition-all ${
