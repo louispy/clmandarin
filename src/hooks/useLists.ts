@@ -156,6 +156,25 @@ export function useLists() {
     [refresh]
   );
 
+  const removeWordFromAllLists = useCallback(
+    async (wordId: string) => {
+      const all = await db.lists.toArray();
+      const now = Date.now();
+      await Promise.all(
+        all
+          .filter((l) => l.wordIds.includes(wordId))
+          .map((l) =>
+            db.lists.update(l.id, {
+              wordIds: l.wordIds.filter((id) => id !== wordId),
+              updatedAt: now,
+            })
+          )
+      );
+      await refresh();
+    },
+    [refresh]
+  );
+
   const reorderList = useCallback(
     async (listId: string, wordIds: string[]) => {
       await db.lists.update(listId, { wordIds, updatedAt: Date.now() });
@@ -178,6 +197,7 @@ export function useLists() {
     renameList,
     addWordsToList,
     removeWordFromList,
+    removeWordFromAllLists,
     reorderList,
     refresh,
     FAVORITES_ID,

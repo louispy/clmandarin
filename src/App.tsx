@@ -86,6 +86,14 @@ export function App() {
     [listsHook, vocab.words]
   );
 
+  const handleDeleteCustomWord = useCallback(
+    async (wordId: string) => {
+      await vocab.deleteCustomWord(wordId);
+      await listsHook.removeWordFromAllLists(wordId);
+    },
+    [vocab, listsHook]
+  );
+
   const handleStudy = useCallback(async () => {
     if (!listsHook.activeList) return;
     scrollPosRef.current = window.scrollY;
@@ -319,6 +327,7 @@ export function App() {
               onToggleCustom={vocab.toggleCustom}
               hasCustomWords={vocab.hasCustomWords}
               onAddCustomWord={vocab.addCustomWord}
+              onDeleteCustomWord={handleDeleteCustomWord}
               searchQuery={vocab.searchQuery}
               onSearch={vocab.handleSearch}
               isSearching={vocab.isSearching}
@@ -386,6 +395,7 @@ export function App() {
                     onAddToList={handleAddToList}
                     onCreateListAndAdd={handleCreateListAndAdd}
                     onUpdateWord={vocab.updateWord}
+                    onDeleteCustomWord={handleDeleteCustomWord}
                     onReorder={(ids) =>
                       listsHook.reorderList(listsHook.activeList!.id, ids)
                     }

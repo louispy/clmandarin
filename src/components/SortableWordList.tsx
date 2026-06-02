@@ -32,6 +32,7 @@ function SortableWordCard(props: {
   onAddToList: (listId: string, wordId: string) => void;
   onCreateListAndAdd: (name: string, wordId: string) => void;
   onUpdateWord: (id: string, updates: WordUpdates) => Promise<void>;
+  onDeleteCustomWord?: (wordId: string) => Promise<void>;
   script: Script;
   visibility: VisibilityState;
   onRemove: (wordId: string) => void;
@@ -73,6 +74,7 @@ export function SortableWordList({
   onAddToList,
   onCreateListAndAdd,
   onUpdateWord,
+  onDeleteCustomWord,
   onReorder,
   onRemove,
   onStudyWord,
@@ -89,6 +91,7 @@ export function SortableWordList({
   onAddToList: (listId: string, wordId: string) => void;
   onCreateListAndAdd: (name: string, wordId: string) => void;
   onUpdateWord: (id: string, updates: WordUpdates) => Promise<void>;
+  onDeleteCustomWord?: (wordId: string) => Promise<void>;
   onReorder: (newIds: string[]) => void;
   onRemove: (wordId: string) => void;
   onStudyWord?: (wordId: string) => void;
@@ -213,6 +216,7 @@ export function SortableWordList({
       onAddToList={onAddToList}
       onCreateListAndAdd={onCreateListAndAdd}
       onUpdateWord={handleUpdateWord}
+      onDeleteCustomWord={onDeleteCustomWord}
       script={script}
       visibility={visibility}
       onRemove={onRemove}

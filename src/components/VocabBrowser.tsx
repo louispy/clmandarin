@@ -16,6 +16,7 @@ export function VocabBrowser({
   onToggleCustom,
   hasCustomWords,
   onAddCustomWord,
+  onDeleteCustomWord,
   searchQuery,
   onSearch,
   isSearching,
@@ -41,6 +42,7 @@ export function VocabBrowser({
   onToggleCustom: () => void;
   hasCustomWords: boolean;
   onAddCustomWord: (input: { hanzi: string; pinyin: string; english: string; hskLevel: number }) => Promise<unknown>;
+  onDeleteCustomWord: (wordId: string) => Promise<void>;
   searchQuery: string;
   onSearch: (query: string) => void;
   isSearching: boolean;
@@ -338,6 +340,7 @@ export function VocabBrowser({
               onAddToList={onAddToList}
               onCreateListAndAdd={onCreateListAndAdd}
               onUpdateWord={onUpdateWord}
+              onDeleteCustomWord={onDeleteCustomWord}
               script={script}
               visibility={visibility}
               onClick={() => onStudyWord(word.id)}

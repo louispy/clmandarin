@@ -7,6 +7,7 @@ import {
   searchWords,
   addCustomWord as addCustomWordToDb,
   updateWord as updateWordInDb,
+  deleteCustomWord as deleteCustomWordFromDb,
 } from '../utils/vocab-loader';
 
 export function useVocab() {
@@ -120,6 +121,15 @@ export function useVocab() {
     []
   );
 
+  const deleteCustomWord = useCallback(
+    async (id: string) => {
+      await deleteCustomWordFromDb(id);
+      setWords((prev) => prev.filter((w) => w.id !== id));
+      setRefreshKey((k) => k + 1);
+    },
+    []
+  );
+
   const updateWord = useCallback(
     async (id: string, updates: { english?: string; userNote?: string; englishOriginal?: string }) => {
       await updateWordInDb(id, updates);
@@ -154,6 +164,7 @@ export function useVocab() {
     isSearching,
     handleSearch,
     addCustomWord,
+    deleteCustomWord,
     updateWord,
     hasCustomWords,
   };

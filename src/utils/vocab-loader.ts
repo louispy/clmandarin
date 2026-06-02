@@ -148,6 +148,12 @@ export async function addCustomWord(input: {
   return word;
 }
 
+export async function deleteCustomWord(id: string): Promise<void> {
+  const word = await db.vocab.get(id);
+  if (!word || word.source !== 'custom') return;
+  await db.vocab.delete(id);
+}
+
 export async function getWordsByIds(ids: string[]): Promise<VocabWord[]> {
   const words = await db.vocab.bulkGet(ids);
   return words.filter((w): w is VocabWord => w !== undefined);
