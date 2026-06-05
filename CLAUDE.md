@@ -39,6 +39,10 @@ npm run typecheck    # tsc --noEmit
 - **IDs**: Vocab words use `hsk{level}-{number}` format (e.g., `hsk1-042`). Lists use UUIDs.
 - **File format**: Export includes both list metadata and denormalized word data for portability.
 
+## Working Rules
+
+- **Answer first, code second**: any questions or inquiries the user raises (feasibility, design trade-offs, "is this possible?", philosophical framing) must be answered in text BEFORE writing any code.
+
 ## Conventions
 
 - Functional components only, no class components
@@ -67,7 +71,26 @@ interface FlashcardList {
   updatedAt: number;
   wordIds: string[];    // ordered VocabWord ids
 }
+
+interface MandarinText {        // user-authored reading texts ("Texts" tab)
+  id: string;                   // UUID
+  title: string;
+  body: string;                 // raw hanzi; pinyin is derived, never stored
+  translations: Record<number, string>; // sentence index → manual translation
+  createdAt: number;
+  updatedAt: number;
+}
 ```
+
+## Texts Feature
+
+- Third top-level tab alongside Home/Cards. Starts empty — user pastes their own hanzi.
+- Pinyin is auto-generated with `pinyin-pro` (offline) via `utils/text.ts` (`sentenceToTokens`); per-character ruby for the reader.
+- Reader (`TextReader`) renders one block per sentence (`splitSentences`), with independent Pinyin and Translation toggles. Aligning by sentence (not line/char) avoids the EN/中 length mismatch.
+- Translations are manual only (no machine translation) — kept by sentence index in `translations`. Editing the body can shift those indices.
+- Reader toggles (Pinyin / Translation) both default **off**.
+- Stored in IndexedDB `texts` table (Dexie v2); CRUD via `useTexts()`.
+- **Sharing** reuses the same Cloudflare Worker KV as lists (`utils/text-share.ts`), but with a `?text=CODE` URL param and a `{ kind: 'text' }` payload so it never collides with list shares (`?share=`). Codes are derived from `sha256("t:" + id + token)`. Clash handling mirrors lists: same-source re-imports are recognized via `MandarinText.sourceId` (Replace / Add-as-copy), ids are always fresh on import, and `getAvailableTitle` auto-suffixes "(copy)" so unrelated same-title imports don't collide. Pinyin is never shared (regenerated locally); translations are.
 
 ## Scraper Notes
 

@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useVocab } from './hooks/useVocab';
 import { useLists } from './hooks/useLists';
+import { useTexts } from './hooks/useTexts';
 import { useDarkMode } from './hooks/useDarkMode';
 import { useVisibility } from './hooks/useVisibility';
 import { useScript } from './hooks/useScript';
@@ -9,23 +10,29 @@ import { VocabBrowser } from './components/VocabBrowser';
 import { FlashcardManager } from './components/FlashcardManager';
 import { SortableWordList } from './components/SortableWordList';
 import { FlashcardViewer } from './components/FlashcardViewer';
+import { TextManager } from './components/TextManager';
+import { TextReader } from './components/TextReader';
 import { ImportShareModal } from './components/ImportShareModal';
+import { ImportTextShareModal } from './components/ImportTextShareModal';
 import { exportList } from './utils/import-export';
 import { isSharingConfigured } from './utils/share';
 import { getWordsByIds } from './utils/vocab-loader';
 import { db } from './db';
 import type { VocabWord } from './types';
 
-type View = 'browse' | 'flashcards';
+type View = 'browse' | 'flashcards' | 'texts';
 
 export function App() {
   const vocab = useVocab();
   const listsHook = useLists();
+  const textsHook = useTexts();
   const { dark, toggle: toggleDark } = useDarkMode();
   const { visibility, toggle: toggleVisibility } = useVisibility();
   const { script, toggle: toggleScript } = useScript();
   const { reverse, toggle: toggleReverse } = useReverse();
   const [view, setView] = useState<View>('browse');
+  const [textShowPinyin, setTextShowPinyin] = useState(false);
+  const [textShowTranslation, setTextShowTranslation] = useState(false);
   const [studyWords, setStudyWords] = useState<VocabWord[] | null>(null);
   const [studyListName, setStudyListName] = useState('');
   const [studyStartIndex, setStudyStartIndex] = useState<number | undefined>(undefined);
@@ -33,6 +40,11 @@ export function App() {
     if (typeof window === 'undefined') return null;
     const params = new URLSearchParams(window.location.search);
     return params.get('share');
+  });
+  const [textShareCode, setTextShareCode] = useState<string | null>(() => {
+    if (typeof window === 'undefined') return null;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('text');
   });
   const scrollPosRef = useRef(0);
 
@@ -46,6 +58,16 @@ export function App() {
       window.history.replaceState({}, '', url.toString());
     }
   }, [shareCode]);
+
+  // Same for ?text= (shared reading texts).
+  useEffect(() => {
+    if (!textShareCode) return;
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('text')) {
+      url.searchParams.delete('text');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [textShareCode]);
 
   // Switching tabs reuses the same scroll container, so the previous view's
   // scroll position leaks through. Force the top after the new view mounts.
@@ -236,7 +258,7 @@ export function App() {
             </h1>
 
             <div className="flex items-center gap-0.5 sm:gap-2">
-              <div className="grid grid-cols-2 gap-0.5 rounded-xl border border-cn-border bg-cn-surface p-0.5 dark:border-cn-border-dark dark:bg-cn-surface-dark">
+              <div className="grid grid-cols-3 gap-0.5 rounded-xl border border-cn-border bg-cn-surface p-0.5 dark:border-cn-border-dark dark:bg-cn-surface-dark">
                 <button
                   onClick={() => navigateTo('browse')}
                   className={`rounded-lg px-2 py-1.5 text-xs font-bold transition-all sm:px-3 sm:text-sm ${
@@ -255,7 +277,7 @@ export function App() {
                       : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
                   }`}
                 >
-                  Flashcards
+                  Cards
                   {(() => {
                     const customCount = listsHook.lists.filter((l) => l.id !== '__favorites__').length;
                     return customCount > 0 ? (
@@ -264,6 +286,21 @@ export function App() {
                       </span>
                     ) : null;
                   })()}
+                </button>
+                <button
+                  onClick={() => navigateTo('texts')}
+                  className={`relative rounded-lg px-2 py-1.5 text-xs font-bold transition-all sm:px-3 sm:text-sm ${
+                    view === 'texts'
+                      ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
+                      : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+                  }`}
+                >
+                  Texts
+                  {textsHook.texts.length > 0 && (
+                    <span className="absolute -right-2 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cn-gold text-[9px] font-black text-white">
+                      {textsHook.texts.length}
+                    </span>
+                  )}
                 </button>
               </div>
 
@@ -423,6 +460,66 @@ export function App() {
               )}
             </div>
           )}
+
+          {view === 'texts' && (
+            <div className="flex flex-col gap-3">
+              <TextManager
+                texts={textsHook.texts}
+                activeTextId={textsHook.activeTextId}
+                onSelect={textsHook.setActiveTextId}
+                onCreate={textsHook.createText}
+                onUpdate={textsHook.updateText}
+                onDelete={textsHook.deleteText}
+                onImportFromCode={isSharingConfigured() ? setTextShareCode : undefined}
+              />
+
+              {!textsHook.activeText ? (
+                <div className="flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-cn-border px-6 py-16 text-center dark:border-cn-border-dark sm:py-24">
+                  <span className="text-4xl">&#25991;</span>
+                  <p className="font-bold text-cn-ink dark:text-cn-cream">No text selected</p>
+                  <p className="max-w-sm text-sm text-cn-muted dark:text-cn-muted-dark">
+                    Tap + above to paste your own Chinese text. Pinyin is generated automatically, and you can add your own translations sentence by sentence.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Reader toggles — mirror the flashcard show/hide controls */}
+                  <div className="flex items-center gap-2 px-0.5">
+                    <button
+                      onClick={() => setTextShowPinyin((v) => !v)}
+                      className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
+                        textShowPinyin
+                          ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
+                          : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+                      }`}
+                    >
+                      {textShowPinyin ? 'Pinyin on' : 'Pinyin off'}
+                    </button>
+                    <button
+                      onClick={() => setTextShowTranslation((v) => !v)}
+                      className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
+                        textShowTranslation
+                          ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
+                          : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
+                      }`}
+                    >
+                      {textShowTranslation ? 'Translation on' : 'Translation off'}
+                    </button>
+                  </div>
+
+                  <TextReader
+                    key={textsHook.activeText.id}
+                    text={textsHook.activeText}
+                    showPinyin={textShowPinyin}
+                    showTranslation={textShowTranslation}
+                    onChangeTranslation={(idx, value) =>
+                      textsHook.setTranslation(textsHook.activeText!.id, idx, value)
+                    }
+                  />
+                </>
+              )}
+            </div>
+          )}
         </main>
       </div>
 
@@ -436,6 +533,19 @@ export function App() {
             listsHook.setActiveListId(listId);
             navigateTo('flashcards');
             setShareCode(null);
+          }}
+        />
+      )}
+
+      {textShareCode && (
+        <ImportTextShareModal
+          code={textShareCode}
+          onImport={textsHook.importSharedText}
+          onClose={() => setTextShareCode(null)}
+          onImported={(textId) => {
+            textsHook.setActiveTextId(textId);
+            navigateTo('texts');
+            setTextShareCode(null);
           }}
         />
       )}

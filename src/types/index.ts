@@ -36,3 +36,27 @@ export interface FlashcardListFile {
   list: FlashcardList;
   words: VocabWord[];
 }
+
+// A user-authored Mandarin reading text. The body is raw hanzi; pinyin is
+// auto-derived for display (never stored), and translations are the user's own
+// per-sentence notes keyed by sentence index (see splitSentences).
+export interface MandarinText {
+  id: string;                          // UUID
+  title: string;
+  body: string;                        // raw hanzi the user entered
+  translations: Record<number, string>; // sentence index → manual translation
+  createdAt: number;
+  updatedAt: number;
+  // Original creator's text id, set when imported from a share link. Used to
+  // recognize re-imports of the same source (mirrors FlashcardList.sourceId).
+  sourceId?: string;
+  // Per-text secret for deriving a stable share code. Never exported or shared.
+  shareToken?: string;
+}
+
+export interface MandarinTextFile {
+  version: 1;
+  kind: 'text';                        // discriminates from FlashcardListFile
+  exportedAt: string;
+  text: MandarinText;
+}

@@ -18,11 +18,13 @@ export function ShareLinkModal({
   listName,
   expiresAt,
   onClose,
+  noun = 'list',
 }: {
   url: string;
   listName: string;
   expiresAt: string;
   onClose: () => void;
+  noun?: string;
 }) {
   useBodyScrollLock();
   useBackButton(onClose);
@@ -54,7 +56,7 @@ export function ShareLinkModal({
               Share &ldquo;<span className="text-cn-red dark:text-cn-red-light">{listName}</span>&rdquo;
             </h2>
             <p className="mt-1 text-xs text-cn-muted dark:text-cn-muted-dark">
-              Anyone with this link can import the list. Link expires in {formatExpiry(expiresAt)}.
+              Anyone with this link can import the {noun}. Link expires in {formatExpiry(expiresAt)}.
             </p>
           </div>
           <button
