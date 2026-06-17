@@ -431,6 +431,11 @@ export function FlashcardViewer({
                 >
                   {word.pinyin}
                 </p>
+                {showHints && (
+                  <p className="mt-6 px-8 text-center text-xl text-cn-muted/50 dark:text-cn-muted-dark/50 sm:text-2xl">
+                    {word.english || '—'}
+                  </p>
+                )}
               </>
             ) : (
               <>
@@ -457,6 +462,19 @@ export function FlashcardViewer({
                 >
                   {word.english || '—'}
                 </p>
+                {showHints && (
+                  <p
+                    className={`mt-6 px-6 text-center font-black text-cn-ink/40 dark:text-cn-cream/40 ${
+                      Array.from(displayHanzi(word, script)).length <= 2
+                        ? 'text-5xl sm:text-6xl'
+                        : Array.from(displayHanzi(word, script)).length <= 4
+                          ? 'text-4xl sm:text-5xl'
+                          : 'text-3xl sm:text-4xl'
+                    }`}
+                  >
+                    {displayHanzi(word, script)}
+                  </p>
+                )}
               </>
             )}
             <p className="mt-8 text-base text-cn-muted/30 dark:text-cn-muted-dark/30">
@@ -492,7 +510,8 @@ export function FlashcardViewer({
           <span className="hidden sm:inline">Random</span>
         </button>
 
-        {/* Show hints toggle — shows pinyin+meaning on front face */}
+        {/* Show hints toggle — reveals the field each face omits, so the full
+            hanzi+pinyin+meaning is visible on either side of the card. */}
         <button
           onClick={() => setShowHints((h) => !h)}
           className={`flex items-center gap-1 rounded-xl px-3 py-2.5 text-sm font-bold shadow-sm transition-all hover:shadow-md sm:px-5 sm:py-3 sm:text-base ${
@@ -500,7 +519,7 @@ export function FlashcardViewer({
               ? 'bg-cn-gold/20 text-cn-gold-dark dark:text-cn-gold-light'
               : 'bg-cn-surface text-cn-muted dark:bg-cn-surface-dark dark:text-cn-muted-dark'
           }`}
-          title="Show hints on front face"
+          title="Show all fields (front and back)"
         >
           {showHints ? (
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
