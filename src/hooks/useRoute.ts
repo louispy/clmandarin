@@ -5,7 +5,7 @@ import { useState, useCallback } from 'react';
 // without every caller having to change shape.
 export type Route =
   | { tab: 'browse' }
-  | { tab: 'cards' }
+  | { tab: 'cards'; deckId?: string }
   | { tab: 'texts' };
 
 export type Tab = Route['tab'];

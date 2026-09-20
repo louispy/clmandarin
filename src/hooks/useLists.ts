@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { listRepo } from '../data/lists';
+import { isDeckId } from '../utils/decks';
 import type { FlashcardList } from '../types';
 import { uuid } from '../utils/uuid';
 
@@ -22,7 +23,10 @@ export function useLists() {
 
   const refresh = useCallback(async () => {
     await ensureFavorites();
-    const all = await listRepo.all();
+    // Built-in decks share the lists table once edited, but they are not the
+    // user's lists — they must never show up in "add to list" menus or the
+    // list selector. useDecks owns them.
+    const all = (await listRepo.all()).filter((l) => !isDeckId(l.id));
     // Always put Favorites first
     const favIdx = all.findIndex((l) => l.id === FAVORITES_ID);
     if (favIdx > 0) {

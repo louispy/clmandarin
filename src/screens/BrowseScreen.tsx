@@ -12,6 +12,7 @@ export function BrowseScreen({
   script,
   visibility,
   onToggleVisibility,
+  onAddCustomWord,
   onDeleteCustomWord,
   onStartStudy,
 }: {
@@ -20,6 +21,7 @@ export function BrowseScreen({
   script: Script;
   visibility: VisibilityState;
   onToggleVisibility: (field: keyof VisibilityState) => void;
+  onAddCustomWord: ReturnType<typeof useVocab>['addCustomWord'];
   onDeleteCustomWord: (wordId: string) => Promise<void>;
   onStartStudy: (words: VocabWord[], label: string, startIndex?: number) => void;
 }) {
@@ -88,7 +90,7 @@ export function BrowseScreen({
       showCustom={vocab.showCustom}
       onToggleCustom={vocab.toggleCustom}
       hasCustomWords={vocab.hasCustomWords}
-      onAddCustomWord={vocab.addCustomWord}
+      onAddCustomWord={onAddCustomWord}
       onDeleteCustomWord={onDeleteCustomWord}
       searchQuery={vocab.searchQuery}
       onSearch={vocab.handleSearch}

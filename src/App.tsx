@@ -7,6 +7,7 @@ import { useVisibility } from './hooks/useVisibility';
 import { useScript } from './hooks/useScript';
 import { useReverse } from './hooks/useReverse';
 import { useRoute } from './hooks/useRoute';
+import { useDecks } from './hooks/useDecks';
 import { AppHeader } from './components/AppHeader';
 import { FlashcardViewer } from './components/FlashcardViewer';
 import { ImportShareModal } from './components/ImportShareModal';
@@ -34,6 +35,7 @@ export function App() {
   const { script, toggle: toggleScript } = useScript();
   const { reverse, toggle: toggleReverse } = useReverse();
   const { route, navigate } = useRoute();
+  const decks = useDecks({ dbReady: vocab.dbReady });
 
   // Reader toggles live here rather than in TextsScreen: that screen unmounts
   // on every tab switch, and resetting the reader each time would be a
@@ -76,12 +78,22 @@ export function App() {
     []
   );
 
+  const handleAddCustomWord = useCallback(
+    async (input: { hanzi: string; pinyin: string; english: string; hskLevel: number }) => {
+      const word = await vocab.addCustomWord(input);
+      await decks.refresh();
+      return word;
+    },
+    [vocab, decks]
+  );
+
   const handleDeleteCustomWord = useCallback(
     async (wordId: string) => {
       await vocab.deleteCustomWord(wordId);
       await lists.removeWordFromAllLists(wordId);
+      await decks.refresh();
     },
-    [vocab, lists]
+    [vocab, lists, decks]
   );
 
   // Update a word and immediately reflect the change in the active study set
@@ -181,6 +193,7 @@ export function App() {
               script={script}
               visibility={visibility}
               onToggleVisibility={toggleVisibility}
+              onAddCustomWord={handleAddCustomWord}
               onDeleteCustomWord={handleDeleteCustomWord}
               onStartStudy={startStudy}
             />
@@ -190,6 +203,10 @@ export function App() {
             <CardsScreen
               vocab={vocab}
               lists={lists}
+              decks={decks}
+              openDeckId={route.deckId ?? null}
+              onOpenDeck={(deckId) => navigate({ tab: 'cards', deckId })}
+              onCloseDeck={() => navigate({ tab: 'cards' })}
               script={script}
               visibility={visibility}
               onToggleVisibility={toggleVisibility}
@@ -220,6 +237,7 @@ export function App() {
           onImported={(listId) => {
             lists.refresh();
             vocab.refresh();
+            decks.refresh();
             lists.setActiveListId(listId);
             navigate({ tab: 'cards' });
             setShareCode(null);

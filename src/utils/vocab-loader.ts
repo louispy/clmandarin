@@ -175,3 +175,23 @@ export async function searchWords(query: string): Promise<VocabWord[]> {
     .limit(50)
     .toArray();
 }
+
+/**
+ * Word ids for a built-in HSK deck, in HSK numbering order.
+ *
+ * Custom words are excluded even when the user tagged them with a level — a
+ * built-in deck is the canonical HSK list, and the user's own words live in
+ * the "My words" deck instead.
+ */
+export async function getCanonicalWordIdsByLevel(level: number): Promise<string[]> {
+  const words = await db.vocab.where('hskLevel').equals(level).sortBy('number');
+  return words.filter((w) => w.source !== 'custom').map((w) => w.id);
+}
+
+/** Word ids for the "My words" deck — everything the user added themselves. */
+export async function getCustomWordIds(): Promise<string[]> {
+  const words = await db.vocab.filter((w) => w.source === 'custom').toArray();
+  return words
+    .sort((a, b) => (a.createdAt ?? 0) - (b.createdAt ?? 0))
+    .map((w) => w.id);
+}
