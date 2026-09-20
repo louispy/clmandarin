@@ -1,0 +1,2662 @@
+[
+  {
+    "hanzi": "画蛇添足",
+    "pinyin": "huà shé tiān zú",
+    "literal": "draw a snake, add feet",
+    "meaning": "To ruin something by overdoing it. The extra effort isn't just wasted — it spoils what was already finished.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "马马虎虎",
+    "pinyin": "mǎ mǎ hū hū",
+    "literal": "horse horse, tiger tiger",
+    "meaning": "So-so, careless, not great but not terrible. Also the standard modest answer when someone praises your Chinese.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "入乡随俗",
+    "pinyin": "rù xiāng suí sú",
+    "literal": "enter the village, follow its customs",
+    "meaning": "When in Rome, do as the Romans do.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一举两得",
+    "pinyin": "yī jǔ liǎng dé",
+    "literal": "one action, two gains",
+    "meaning": "To kill two birds with one stone.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "自相矛盾",
+    "pinyin": "zì xiāng máo dùn",
+    "literal": "spear against one's own shield",
+    "meaning": "To contradict yourself. From a merchant selling an unstoppable spear and an unbreakable shield — a customer asked what would happen if he used one on the other.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "井底之蛙",
+    "pinyin": "jǐng dǐ zhī wā",
+    "literal": "a frog at the bottom of a well",
+    "meaning": "Someone whose view of the world is limited to their own small corner of it.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "守株待兔",
+    "pinyin": "shǒu zhū dài tù",
+    "literal": "guard the tree stump, wait for a rabbit",
+    "meaning": "To wait for luck to strike twice instead of working. A farmer saw a rabbit run into a stump and die, so he stopped farming and watched the stump.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "亡羊补牢",
+    "pinyin": "wáng yáng bǔ láo",
+    "literal": "mend the pen after the sheep are lost",
+    "meaning": "Better late than never — fixing the problem after the damage is still worth doing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "对牛弹琴",
+    "pinyin": "duì niú tán qín",
+    "literal": "play the zither to a cow",
+    "meaning": "To waste good material on an audience that can't appreciate it. Casting pearls before swine.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "半途而废",
+    "pinyin": "bàn tú ér fèi",
+    "literal": "give up halfway down the road",
+    "meaning": "To abandon something before finishing it.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "三心二意",
+    "pinyin": "sān xīn èr yì",
+    "literal": "three hearts, two minds",
+    "meaning": "Half-hearted, unable to commit. Used for someone who can't decide or whose attention keeps wandering.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "十全十美",
+    "pinyin": "shí quán shí měi",
+    "literal": "ten complete, ten beautiful",
+    "meaning": "Absolutely perfect, flawless in every respect. Often used in the negative — nothing is 十全十美.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "千方百计",
+    "pinyin": "qiān fāng bǎi jì",
+    "literal": "a thousand methods, a hundred schemes",
+    "meaning": "By every possible means; trying absolutely everything.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "名副其实",
+    "pinyin": "míng fù qí shí",
+    "literal": "the name matches the reality",
+    "meaning": "Living up to the name — genuinely as good as it's called.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一帆风顺",
+    "pinyin": "yī fān fēng shùn",
+    "literal": "one sail, favourable wind",
+    "meaning": "Smooth sailing all the way. A standard well-wish for a new job, journey or venture.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不可思议",
+    "pinyin": "bù kě sī yì",
+    "literal": "cannot be thought or discussed",
+    "meaning": "Inconceivable, unbelievable — for things too strange or too impressive to take in.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心花怒放",
+    "pinyin": "xīn huā nù fàng",
+    "literal": "the heart's flowers burst into bloom",
+    "meaning": "Bursting with joy.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "熟能生巧",
+    "pinyin": "shú néng shēng qiǎo",
+    "literal": "familiarity gives rise to skill",
+    "meaning": "Practice makes perfect.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "温故知新",
+    "pinyin": "wēn gù zhī xīn",
+    "literal": "review the old, know the new",
+    "meaning": "Revisiting what you already learned turns up something new. From the Analects — and a decent argument for reviewing your flashcards.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "画龙点睛",
+    "pinyin": "huà lóng diǎn jīng",
+    "literal": "paint the dragon, dot the eyes",
+    "meaning": "The final touch that brings the whole thing to life. A painter added pupils to his dragons and they flew off the wall.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "塞翁失马",
+    "pinyin": "sài wēng shī mǎ",
+    "literal": "the old man at the fort loses his horse",
+    "meaning": "A blessing in disguise. His horse ran off, then returned with another; his son broke a leg riding it, which then kept him out of the army.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "好事多磨",
+    "pinyin": "hǎo shì duō mó",
+    "literal": "good things grind slowly",
+    "meaning": "The road to anything worthwhile is full of setbacks.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "慢慢来",
+    "pinyin": "màn màn lái",
+    "literal": "come slowly",
+    "meaning": "Take your time, no rush. What you say to someone who's struggling and starting to panic.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "活到老学到老",
+    "pinyin": "huó dào lǎo xué dào lǎo",
+    "literal": "live until old, study until old",
+    "meaning": "You're never too old to learn — keep studying as long as you live.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "一分钱一分货",
+    "pinyin": "yī fēn qián yī fēn huò",
+    "literal": "one cent, one cent's worth of goods",
+    "meaning": "You get what you pay for.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "百闻不如一见",
+    "pinyin": "bǎi wén bù rú yī jiàn",
+    "literal": "hearing a hundred times is not like seeing once",
+    "meaning": "Seeing is believing.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "一心一意",
+    "pinyin": "yī xīn yī yì",
+    "literal": "one heart, one mind",
+    "meaning": "Wholeheartedly, with undivided attention.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "全力以赴",
+    "pinyin": "quán lì yǐ fù",
+    "literal": "go with all your strength",
+    "meaning": "To give something everything you have.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不知不觉",
+    "pinyin": "bù zhī bù jué",
+    "literal": "without knowing, without feeling",
+    "meaning": "Before you realise it — for time that slipped past unnoticed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "理所当然",
+    "pinyin": "lǐ suǒ dāng rán",
+    "literal": "as reason dictates",
+    "meaning": "Of course, naturally. Also for things taken for granted a little too easily.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一模一样",
+    "pinyin": "yī mú yī yàng",
+    "literal": "one mould, one shape",
+    "meaning": "Exactly alike, identical.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "乱七八糟",
+    "pinyin": "luàn qī bā zāo",
+    "literal": "chaotic seven, messy eight",
+    "meaning": "A complete mess. Works for rooms, schedules and situations alike.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "莫名其妙",
+    "pinyin": "mò míng qí miào",
+    "literal": "unable to name its mystery",
+    "meaning": "Baffling. Often said of someone behaving oddly for no clear reason.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "迫不及待",
+    "pinyin": "pò bù jí dài",
+    "literal": "pressed, unable to wait",
+    "meaning": "Unable to wait a moment longer.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "三言两语",
+    "pinyin": "sān yán liǎng yǔ",
+    "literal": "three words, two phrases",
+    "meaning": "In a few words — usually to say something can't be explained that briefly.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "千言万语",
+    "pinyin": "qiān yán wàn yǔ",
+    "literal": "a thousand words, ten thousand phrases",
+    "meaning": "So much to say you don't know where to start.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一言为定",
+    "pinyin": "yī yán wéi dìng",
+    "literal": "one word settles it",
+    "meaning": "It's a deal. Said to seal an agreement on the spot.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "自言自语",
+    "pinyin": "zì yán zì yǔ",
+    "literal": "speak to oneself",
+    "meaning": "To mutter to yourself.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "异口同声",
+    "pinyin": "yì kǒu tóng shēng",
+    "literal": "different mouths, same voice",
+    "meaning": "All saying the same thing; in unison.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "目瞪口呆",
+    "pinyin": "mù dèng kǒu dāi",
+    "literal": "eyes staring, mouth dumb",
+    "meaning": "Stunned speechless.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "说来话长",
+    "pinyin": "shuō lái huà cháng",
+    "literal": "to tell it is a long tale",
+    "meaning": "It's a long story.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "名不虚传",
+    "pinyin": "míng bù xū chuán",
+    "literal": "the name is not falsely spread",
+    "meaning": "It lives up to its reputation.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "众所周知",
+    "pinyin": "zhòng suǒ zhōu zhī",
+    "literal": "known to all",
+    "meaning": "As everybody knows.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "家喻户晓",
+    "pinyin": "jiā yù hù xiǎo",
+    "literal": "understood in every home",
+    "meaning": "A household name; known to everyone.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "举世闻名",
+    "pinyin": "jǔ shì wén míng",
+    "literal": "heard of by the whole world",
+    "meaning": "World-famous.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "默默无闻",
+    "pinyin": "mò mò wú wén",
+    "literal": "silent and unheard of",
+    "meaning": "Unknown, working away with no recognition.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一鸣惊人",
+    "pinyin": "yī míng jīng rén",
+    "literal": "one cry startles everyone",
+    "meaning": "To be unremarkable for years, then astonish everyone at once.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "脱颖而出",
+    "pinyin": "tuō yǐng ér chū",
+    "literal": "the tip emerges from the bag",
+    "meaning": "To stand out from the crowd. From an awl that can't stay hidden in a sack.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "出类拔萃",
+    "pinyin": "chū lèi bá cuì",
+    "literal": "rise above the category",
+    "meaning": "Head and shoulders above the rest.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "独一无二",
+    "pinyin": "dú yī wú èr",
+    "literal": "only one, no second",
+    "meaning": "One of a kind.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "与众不同",
+    "pinyin": "yǔ zhòng bù tóng",
+    "literal": "different from the crowd",
+    "meaning": "Distinctive, unlike everyone else.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "别具一格",
+    "pinyin": "bié jù yī gé",
+    "literal": "possessing its own style",
+    "meaning": "Having a style all of its own.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "各有千秋",
+    "pinyin": "gè yǒu qiān qiū",
+    "literal": "each has a thousand autumns",
+    "meaning": "Each has its own merits — no need to pick a winner.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "半斤八两",
+    "pinyin": "bàn jīn bā liǎng",
+    "literal": "half a catty, eight taels",
+    "meaning": "Six of one, half a dozen of the other. Eight taels was half a catty.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不相上下",
+    "pinyin": "bù xiāng shàng xià",
+    "literal": "neither above nor below",
+    "meaning": "Evenly matched.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "天壤之别",
+    "pinyin": "tiān rǎng zhī bié",
+    "literal": "the difference of sky and earth",
+    "meaning": "Worlds apart.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "截然不同",
+    "pinyin": "jié rán bù tóng",
+    "literal": "cut clean, not the same",
+    "meaning": "Completely different.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "大同小异",
+    "pinyin": "dà tóng xiǎo yì",
+    "literal": "largely same, slightly different",
+    "meaning": "Much of a muchness; alike but for details.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "五花八门",
+    "pinyin": "wǔ huā bā mén",
+    "literal": "five flowers, eight gates",
+    "meaning": "Every kind under the sun; a wild variety.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "应有尽有",
+    "pinyin": "yīng yǒu jìn yǒu",
+    "literal": "whatever should be, is",
+    "meaning": "Everything you could want is there.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "琳琅满目",
+    "pinyin": "lín láng mǎn mù",
+    "literal": "fine jade fills the eye",
+    "meaning": "A dazzling array — for a shop or display full of good things.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "数不胜数",
+    "pinyin": "shǔ bù shèng shǔ",
+    "literal": "counting cannot finish counting",
+    "meaning": "Too many to count.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "寥寥无几",
+    "pinyin": "liáo liáo wú jǐ",
+    "literal": "sparse, barely any",
+    "meaning": "Very few indeed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "屈指可数",
+    "pinyin": "qū zhǐ kě shǔ",
+    "literal": "countable on bent fingers",
+    "meaning": "So few you can count them on one hand.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "凤毛麟角",
+    "pinyin": "fèng máo lín jiǎo",
+    "literal": "phoenix feather, unicorn horn",
+    "meaning": "Exceedingly rare and precious.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "千载难逢",
+    "pinyin": "qiān zǎi nán féng",
+    "literal": "hard to meet in a thousand years",
+    "meaning": "A once-in-a-lifetime opportunity.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "机不可失",
+    "pinyin": "jī bù kě shī",
+    "literal": "the chance must not be lost",
+    "meaning": "Don't let this opportunity slip.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "当机立断",
+    "pinyin": "dāng jī lì duàn",
+    "literal": "at the moment, decide at once",
+    "meaning": "To make the call decisively when it matters.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "当务之急",
+    "pinyin": "dāng wù zhī jí",
+    "literal": "the urgency of the present task",
+    "meaning": "The most pressing thing right now.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "迫在眉睫",
+    "pinyin": "pò zài méi jié",
+    "literal": "pressing at the eyebrows and lashes",
+    "meaning": "Extremely urgent; right in front of you.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "刻不容缓",
+    "pinyin": "kè bù róng huǎn",
+    "literal": "not a moment may be delayed",
+    "meaning": "Admitting of no delay whatsoever.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "争分夺秒",
+    "pinyin": "zhēng fēn duó miǎo",
+    "literal": "fight for minutes, seize seconds",
+    "meaning": "Racing against the clock.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "日新月异",
+    "pinyin": "rì xīn yuè yì",
+    "literal": "new by the day, different by the month",
+    "meaning": "Changing fast — for technology, cities, fields that move quickly.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "蒸蒸日上",
+    "pinyin": "zhēng zhēng rì shàng",
+    "literal": "rising like steam, day by day",
+    "meaning": "Going from strength to strength.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "突飞猛进",
+    "pinyin": "tū fēi měng jìn",
+    "literal": "sudden flight, fierce advance",
+    "meaning": "Making rapid progress by leaps and bounds.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一日千里",
+    "pinyin": "yī rì qiān lǐ",
+    "literal": "a thousand li in a day",
+    "meaning": "Advancing at enormous speed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "水到渠成",
+    "pinyin": "shuǐ dào qú chéng",
+    "literal": "when the water comes, a channel forms",
+    "meaning": "Do the groundwork and the result follows naturally.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "顺理成章",
+    "pinyin": "shùn lǐ chéng zhāng",
+    "literal": "follow the logic, the essay writes itself",
+    "meaning": "Following naturally from what came before.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "理直气壮",
+    "pinyin": "lǐ zhí qì zhuàng",
+    "literal": "reason straight, spirit strong",
+    "meaning": "Speaking with the confidence of someone who knows they're right.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "问心无愧",
+    "pinyin": "wèn xīn wú kuì",
+    "literal": "ask your heart, feel no shame",
+    "meaning": "With a clear conscience.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心安理得",
+    "pinyin": "xīn ān lǐ dé",
+    "literal": "heart at ease, reason satisfied",
+    "meaning": "Feeling entirely justified and untroubled about it.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "将心比心",
+    "pinyin": "jiāng xīn bǐ xīn",
+    "literal": "measure their heart against yours",
+    "meaning": "Put yourself in their shoes.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "设身处地",
+    "pinyin": "shè shēn chǔ dì",
+    "literal": "place yourself in their position",
+    "meaning": "To see it from the other person's side.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "感同身受",
+    "pinyin": "gǎn tóng shēn shòu",
+    "literal": "feel it as if it happened to you",
+    "meaning": "Deeply sympathetic, as though you'd been through it yourself.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "废寝忘食",
+    "pinyin": "fèi qǐn wàng shí",
+    "literal": "skip sleep, forget meals",
+    "meaning": "So absorbed in work you forget to eat or sleep.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "夜以继日",
+    "pinyin": "yè yǐ jì rì",
+    "literal": "night carrying on into day",
+    "meaning": "Round the clock, without stopping.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "孜孜不倦",
+    "pinyin": "zī zī bù juàn",
+    "literal": "diligent and untiring",
+    "meaning": "Working away tirelessly.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "持之以恒",
+    "pinyin": "chí zhī yǐ héng",
+    "literal": "hold to it with constancy",
+    "meaning": "To keep at something over the long haul.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "锲而不舍",
+    "pinyin": "qiè ér bù shě",
+    "literal": "keep carving, never let go",
+    "meaning": "Persevering however slow the progress.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "坚持不懈",
+    "pinyin": "jiān chí bù xiè",
+    "literal": "persist without slacking",
+    "meaning": "Unrelenting persistence.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "有始有终",
+    "pinyin": "yǒu shǐ yǒu zhōng",
+    "literal": "have a start, have an end",
+    "meaning": "To see things through to the finish.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "有条不紊",
+    "pinyin": "yǒu tiáo bù wěn",
+    "literal": "orderly, not tangled",
+    "meaning": "Methodical and well organised.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "循序渐进",
+    "pinyin": "xún xù jiàn jìn",
+    "literal": "follow the order, advance gradually",
+    "meaning": "Step by step, in the proper sequence.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "脚踏实地",
+    "pinyin": "jiǎo tà shí dì",
+    "literal": "feet planted on solid ground",
+    "meaning": "Down-to-earth; doing the unglamorous work properly.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一步登天",
+    "pinyin": "yī bù dēng tiān",
+    "literal": "reach heaven in one step",
+    "meaning": "To expect instant success without the climb.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "急功近利",
+    "pinyin": "jí gōng jìn lì",
+    "literal": "hungry for merit, close to profit",
+    "meaning": "Chasing quick wins at the expense of what lasts.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "拔苗助长",
+    "pinyin": "bá miáo zhù zhǎng",
+    "literal": "pull the shoots to help them grow",
+    "meaning": "Ruining something by forcing it. A farmer tugged his seedlings taller; they died.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "欲速不达",
+    "pinyin": "yù sù bù dá",
+    "literal": "wanting speed, you arrive at nothing",
+    "meaning": "More haste, less speed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一曝十寒",
+    "pinyin": "yī pù shí hán",
+    "literal": "one day of sun, ten days of cold",
+    "meaning": "Working in bursts with long gaps — the opposite of steady practice.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "半信半疑",
+    "pinyin": "bàn xìn bàn yí",
+    "literal": "half believing, half doubting",
+    "meaning": "Not sure whether to buy it.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "深信不疑",
+    "pinyin": "shēn xìn bù yí",
+    "literal": "deep belief, no doubt",
+    "meaning": "Utterly convinced.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "毫无疑问",
+    "pinyin": "háo wú yí wèn",
+    "literal": "not a hair of doubt",
+    "meaning": "Without question.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "千真万确",
+    "pinyin": "qiān zhēn wàn què",
+    "literal": "a thousand true, ten thousand certain",
+    "meaning": "Absolutely true — said when someone doubts you.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "空穴来风",
+    "pinyin": "kōng xué lái fēng",
+    "literal": "wind comes from an empty cave",
+    "meaning": "Rumours usually start somewhere. Now often used to mean the opposite — baseless.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "道听途说",
+    "pinyin": "dào tīng tú shuō",
+    "literal": "heard on the road, told on the way",
+    "meaning": "Hearsay, picked up second-hand.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "三人成虎",
+    "pinyin": "sān rén chéng hǔ",
+    "literal": "three people make a tiger",
+    "meaning": "Repeat a lie often enough and it gets believed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "人言可畏",
+    "pinyin": "rén yán kě wèi",
+    "literal": "what people say is to be feared",
+    "meaning": "Gossip does real damage.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "有目共睹",
+    "pinyin": "yǒu mù gòng dǔ",
+    "literal": "all with eyes can see it",
+    "meaning": "Plain for everyone to see.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "显而易见",
+    "pinyin": "xiǎn ér yì jiàn",
+    "literal": "obvious and easily seen",
+    "meaning": "Self-evident.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一目了然",
+    "pinyin": "yī mù liǎo rán",
+    "literal": "one glance, all clear",
+    "meaning": "Clear at a glance.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "了如指掌",
+    "pinyin": "liǎo rú zhǐ zhǎng",
+    "literal": "know it like your own palm",
+    "meaning": "To know something inside out.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "胸有成竹",
+    "pinyin": "xiōng yǒu chéng zhú",
+    "literal": "a finished bamboo in the chest",
+    "meaning": "To have a fully formed plan before starting. From painters who pictured the bamboo before lifting the brush.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心中有数",
+    "pinyin": "xīn zhōng yǒu shù",
+    "literal": "a number in the heart",
+    "meaning": "To have a fair idea of where things stand.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心知肚明",
+    "pinyin": "xīn zhī dù míng",
+    "literal": "heart knows, belly understands",
+    "meaning": "Knowing perfectly well without saying so.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不言而喻",
+    "pinyin": "bù yán ér yù",
+    "literal": "understood without being said",
+    "meaning": "It goes without saying.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心照不宣",
+    "pinyin": "xīn zhào bù xuān",
+    "literal": "hearts lit, nothing announced",
+    "meaning": "A shared understanding nobody needs to state aloud.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心领神会",
+    "pinyin": "xīn lǐng shén huì",
+    "literal": "the heart receives, the spirit grasps",
+    "meaning": "To catch someone's meaning without explanation.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "举一反三",
+    "pinyin": "jǔ yī fǎn sān",
+    "literal": "raise one, infer three",
+    "meaning": "To take one example and work out the rest yourself.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "触类旁通",
+    "pinyin": "chù lèi páng tōng",
+    "literal": "touch one kind, understand the neighbours",
+    "meaning": "Understanding one thing opens up related ones.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "融会贯通",
+    "pinyin": "róng huì guàn tōng",
+    "literal": "melt together and run through",
+    "meaning": "To integrate everything you've learned into one working whole.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "博古通今",
+    "pinyin": "bó gǔ tōng jīn",
+    "literal": "broad in the old, fluent in the new",
+    "meaning": "Deeply read in both history and the present day.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "学富五车",
+    "pinyin": "xué fù wǔ chē",
+    "literal": "learning enough to fill five carts",
+    "meaning": "Enormously well read. Five cartloads of bamboo scrolls.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "才高八斗",
+    "pinyin": "cái gāo bā dǒu",
+    "literal": "talent measuring eight dou",
+    "meaning": "Exceptionally gifted.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "德才兼备",
+    "pinyin": "dé cái jiān bèi",
+    "literal": "virtue and talent both present",
+    "meaning": "Having character as well as ability.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "多才多艺",
+    "pinyin": "duō cái duō yì",
+    "literal": "many talents, many arts",
+    "meaning": "Multi-talented.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心灵手巧",
+    "pinyin": "xīn líng shǒu qiǎo",
+    "literal": "quick mind, deft hands",
+    "meaning": "Clever and good with their hands.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "得心应手",
+    "pinyin": "dé xīn yìng shǒu",
+    "literal": "the heart gets it, the hand obeys",
+    "meaning": "So practised that it feels effortless.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "驾轻就熟",
+    "pinyin": "jià qīng jiù shú",
+    "literal": "drive a light cart on a known road",
+    "meaning": "Doing something you've done many times before.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "游刃有余",
+    "pinyin": "yóu rèn yǒu yú",
+    "literal": "the blade moves with room to spare",
+    "meaning": "Handling it easily, with capacity left over. From a cook whose knife found the gaps.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "炉火纯青",
+    "pinyin": "lú huǒ chún qīng",
+    "literal": "the furnace burns pure blue",
+    "meaning": "Mastery — the point where the craft is perfected.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "登峰造极",
+    "pinyin": "dēng fēng zào jí",
+    "literal": "climb the peak, reach the summit",
+    "meaning": "The very highest level attainable.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "出神入化",
+    "pinyin": "chū shén rù huà",
+    "literal": "beyond spirit, into transformation",
+    "meaning": "Superb to the point of seeming supernatural.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "栩栩如生",
+    "pinyin": "xǔ xǔ rú shēng",
+    "literal": "vivid as if alive",
+    "meaning": "So lifelike it could breathe. Used of art and writing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "惟妙惟肖",
+    "pinyin": "wéi miào wéi xiào",
+    "literal": "exquisite and exactly alike",
+    "meaning": "A remarkably faithful likeness.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "巧夺天工",
+    "pinyin": "qiǎo duó tiān gōng",
+    "literal": "skill stealing nature's work",
+    "meaning": "Craftsmanship so fine it outdoes nature.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "别出心裁",
+    "pinyin": "bié chū xīn cái",
+    "literal": "cut from a different pattern",
+    "meaning": "Refreshingly original.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "独具匠心",
+    "pinyin": "dú jù jiàng xīn",
+    "literal": "possessing the craftsman's own mind",
+    "meaning": "Showing real ingenuity of design.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "别开生面",
+    "pinyin": "bié kāi shēng miàn",
+    "literal": "open up a fresh face",
+    "meaning": "Breaking new ground; a new take on an old thing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "焕然一新",
+    "pinyin": "huàn rán yī xīn",
+    "literal": "glowing, entirely new",
+    "meaning": "Looking completely refreshed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "面目全非",
+    "pinyin": "miàn mù quán fēi",
+    "literal": "the face is wholly wrong",
+    "meaning": "Changed beyond recognition, usually for the worse.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "改头换面",
+    "pinyin": "gǎi tóu huàn miàn",
+    "literal": "change the head, swap the face",
+    "meaning": "A cosmetic makeover that leaves the substance untouched.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "脱胎换骨",
+    "pinyin": "tuō tāi huàn gǔ",
+    "literal": "shed the womb, swap the bones",
+    "meaning": "A complete transformation, right down to the core.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "洗心革面",
+    "pinyin": "xǐ xīn gé miàn",
+    "literal": "wash the heart, renew the face",
+    "meaning": "To genuinely turn over a new leaf.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "浪子回头",
+    "pinyin": "làng zǐ huí tóu",
+    "literal": "the prodigal turns back",
+    "meaning": "The wayward one comes good at last.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "喜出望外",
+    "pinyin": "xǐ chū wàng wài",
+    "literal": "joy beyond what was hoped",
+    "meaning": "Pleasantly surprised — better news than you dared expect.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "眉开眼笑",
+    "pinyin": "méi kāi yǎn xiào",
+    "literal": "brows lift, eyes smile",
+    "meaning": "Beaming with delight.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "兴高采烈",
+    "pinyin": "xìng gāo cǎi liè",
+    "literal": "spirits high, colour blazing",
+    "meaning": "In high spirits.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "兴致勃勃",
+    "pinyin": "xìng zhì bó bó",
+    "literal": "enthusiasm surging",
+    "meaning": "Full of eager interest.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "津津有味",
+    "pinyin": "jīn jīn yǒu wèi",
+    "literal": "savouring the flavour",
+    "meaning": "With great relish — of eating, reading or listening.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "乐此不疲",
+    "pinyin": "lè cǐ bù pí",
+    "literal": "delight in it, never tire",
+    "meaning": "Never tiring of something you love doing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "苦中作乐",
+    "pinyin": "kǔ zhōng zuò lè",
+    "literal": "make joy inside hardship",
+    "meaning": "Finding something to laugh about in a rough patch.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "苦尽甘来",
+    "pinyin": "kǔ jìn gān lái",
+    "literal": "bitterness ends, sweetness comes",
+    "meaning": "The hard part is over and better days arrive.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "否极泰来",
+    "pinyin": "pǐ jí tài lái",
+    "literal": "when the worst passes, fortune turns",
+    "meaning": "Things improve once they've bottomed out.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "柳暗花明",
+    "pinyin": "liǔ àn huā míng",
+    "literal": "dark willows, bright flowers",
+    "meaning": "A way out appearing just when the path seemed closed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "峰回路转",
+    "pinyin": "fēng huí lù zhuǎn",
+    "literal": "the peak bends, the road turns",
+    "meaning": "An unexpected turn for the better.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "绝处逢生",
+    "pinyin": "jué chù féng shēng",
+    "literal": "find life in a hopeless place",
+    "meaning": "Salvation arriving at the last possible moment.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "死里逃生",
+    "pinyin": "sǐ lǐ táo shēng",
+    "literal": "escape alive out of death",
+    "meaning": "A narrow escape from disaster.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "化险为夷",
+    "pinyin": "huà xiǎn wéi yí",
+    "literal": "turn danger into level ground",
+    "meaning": "To defuse a dangerous situation.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "转危为安",
+    "pinyin": "zhuǎn wēi wéi ān",
+    "literal": "turn peril into safety",
+    "meaning": "To pull through a crisis.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "有惊无险",
+    "pinyin": "yǒu jīng wú xiǎn",
+    "literal": "a fright but no danger",
+    "meaning": "A scare that came to nothing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "虚惊一场",
+    "pinyin": "xū jīng yī chǎng",
+    "literal": "a false alarm",
+    "meaning": "Much panic over nothing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "提心吊胆",
+    "pinyin": "tí xīn diào dǎn",
+    "literal": "heart lifted, gallbladder dangling",
+    "meaning": "On edge, braced for bad news.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心惊胆战",
+    "pinyin": "xīn jīng dǎn zhàn",
+    "literal": "heart startled, gall trembling",
+    "meaning": "Terrified.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "惊慌失措",
+    "pinyin": "jīng huāng shī cuò",
+    "literal": "panicked into losing one's footing",
+    "meaning": "Thrown into a panic and unable to act.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "手足无措",
+    "pinyin": "shǒu zú wú cuò",
+    "literal": "hands and feet with nowhere to go",
+    "meaning": "At a complete loss what to do with yourself.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不知所措",
+    "pinyin": "bù zhī suǒ cuò",
+    "literal": "not knowing what to do",
+    "meaning": "At a loss.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "六神无主",
+    "pinyin": "liù shén wú zhǔ",
+    "literal": "the six spirits have no master",
+    "meaning": "So rattled you can't think straight.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心神不宁",
+    "pinyin": "xīn shén bù níng",
+    "literal": "heart and spirit unsettled",
+    "meaning": "Unable to settle; something is nagging at you.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "忐忑不安",
+    "pinyin": "tǎn tè bù ān",
+    "literal": "up and down, no peace",
+    "meaning": "Anxious and unsettled.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "坐立不安",
+    "pinyin": "zuò lì bù ān",
+    "literal": "no peace sitting or standing",
+    "meaning": "Too restless to keep still.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "望眼欲穿",
+    "pinyin": "wàng yǎn yù chuān",
+    "literal": "watching until the eyes wear through",
+    "meaning": "Waiting and waiting for someone to arrive.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "度日如年",
+    "pinyin": "dù rì rú nián",
+    "literal": "a day passes like a year",
+    "meaning": "Time crawling during a miserable stretch.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "归心似箭",
+    "pinyin": "guī xīn sì jiàn",
+    "literal": "the heart homeward like an arrow",
+    "meaning": "Desperate to get home.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "望子成龙",
+    "pinyin": "wàng zǐ chéng lóng",
+    "literal": "hoping the son becomes a dragon",
+    "meaning": "Parents pinning big hopes on their child.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "含辛茹苦",
+    "pinyin": "hán xīn rú kǔ",
+    "literal": "swallow the bitter, chew the hard",
+    "meaning": "Enduring hardship, usually for family.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "任劳任怨",
+    "pinyin": "rèn láo rèn yuàn",
+    "literal": "take the work, take the blame",
+    "meaning": "Doing the thankless jobs without complaint.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "无微不至",
+    "pinyin": "wú wēi bù zhì",
+    "literal": "no detail left untended",
+    "meaning": "Attentive to every last need.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "体贴入微",
+    "pinyin": "tǐ tiē rù wēi",
+    "literal": "considerate down to the smallest thing",
+    "meaning": "Thoughtful in the smallest ways.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "相濡以沫",
+    "pinyin": "xiāng rú yǐ mò",
+    "literal": "wetting each other with spit",
+    "meaning": "Supporting one another through hard times. From stranded fish keeping each other alive.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "患难与共",
+    "pinyin": "huàn nàn yǔ gòng",
+    "literal": "share the trouble together",
+    "meaning": "Standing together through adversity.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "同甘共苦",
+    "pinyin": "tóng gān gòng kǔ",
+    "literal": "share sweetness, share bitterness",
+    "meaning": "Through thick and thin.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "风雨同舟",
+    "pinyin": "fēng yǔ tóng zhōu",
+    "literal": "one boat through wind and rain",
+    "meaning": "In the same boat, weathering it together.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "齐心协力",
+    "pinyin": "qí xīn xié lì",
+    "literal": "hearts aligned, strength joined",
+    "meaning": "Pulling together.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "众志成城",
+    "pinyin": "zhòng zhì chéng chéng",
+    "literal": "many wills build a city wall",
+    "meaning": "Unity makes a group unbreakable.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一盘散沙",
+    "pinyin": "yī pán sǎn shā",
+    "literal": "a tray of loose sand",
+    "meaning": "A group with no cohesion at all.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "各自为政",
+    "pinyin": "gè zì wéi zhèng",
+    "literal": "each governing on their own",
+    "meaning": "Everyone doing their own thing, nobody coordinating.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一意孤行",
+    "pinyin": "yī yì gū xíng",
+    "literal": "one intention, walking alone",
+    "meaning": "Ploughing ahead regardless of what anyone advises.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "固执己见",
+    "pinyin": "gù zhí jǐ jiàn",
+    "literal": "clinging to one's own view",
+    "meaning": "Stubbornly refusing to reconsider.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "刚愎自用",
+    "pinyin": "gāng bì zì yòng",
+    "literal": "headstrong and self-reliant",
+    "meaning": "Obstinate and deaf to advice — said of someone in charge.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "自以为是",
+    "pinyin": "zì yǐ wéi shì",
+    "literal": "assuming oneself right",
+    "meaning": "Smugly certain you're correct.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "目中无人",
+    "pinyin": "mù zhōng wú rén",
+    "literal": "no one in the eye",
+    "meaning": "Looking down on everybody.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "盛气凌人",
+    "pinyin": "shèng qì líng rén",
+    "literal": "overbearing air crushing others",
+    "meaning": "Throwing your weight around.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "趾高气扬",
+    "pinyin": "zhǐ gāo qì yáng",
+    "literal": "toes high, air swaggering",
+    "meaning": "Strutting about pleased with yourself.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不可一世",
+    "pinyin": "bù kě yī shì",
+    "literal": "not to be matched in an age",
+    "meaning": "Insufferably arrogant.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "夜郎自大",
+    "pinyin": "yè láng zì dà",
+    "literal": "Yelang thinks itself great",
+    "meaning": "A small player convinced it's a major one. Yelang was a tiny kingdom that asked Han China which of them was bigger.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "井井有条",
+    "pinyin": "jǐng jǐng yǒu tiáo",
+    "literal": "neat and in order",
+    "meaning": "Everything in its proper place.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "虚怀若谷",
+    "pinyin": "xū huái ruò gǔ",
+    "literal": "a heart as open as a valley",
+    "meaning": "Genuinely humble and open to others.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "谦虚谨慎",
+    "pinyin": "qiān xū jǐn shèn",
+    "literal": "modest and careful",
+    "meaning": "Modest and prudent.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不耻下问",
+    "pinyin": "bù chǐ xià wèn",
+    "literal": "not ashamed to ask those below",
+    "meaning": "Willing to ask questions of anyone, whatever their rank.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "见贤思齐",
+    "pinyin": "jiàn xián sī qí",
+    "literal": "see the worthy, think of matching them",
+    "meaning": "Meeting someone better than you and resolving to catch up.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "取长补短",
+    "pinyin": "qǔ cháng bǔ duǎn",
+    "literal": "take strengths, patch weaknesses",
+    "meaning": "Learning from others to shore up your own gaps.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "扬长避短",
+    "pinyin": "yáng cháng bì duǎn",
+    "literal": "play to strengths, dodge weaknesses",
+    "meaning": "Leaning on what you're good at.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "因材施教",
+    "pinyin": "yīn cái shī jiào",
+    "literal": "teach according to the material",
+    "meaning": "Teaching each student the way that suits them.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "因地制宜",
+    "pinyin": "yīn dì zhì yí",
+    "literal": "suit the measures to the place",
+    "meaning": "Adapting the approach to local conditions.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "对症下药",
+    "pinyin": "duì zhèng xià yào",
+    "literal": "prescribe for the actual illness",
+    "meaning": "Treating the real problem rather than the symptom.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "量体裁衣",
+    "pinyin": "liàng tǐ cái yī",
+    "literal": "measure the body, cut the cloth",
+    "meaning": "Tailoring something to fit the case exactly.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "风平浪静",
+    "pinyin": "fēng píng làng jìng",
+    "literal": "wind calm, waves still",
+    "meaning": "All quiet; the trouble has passed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "波澜壮阔",
+    "pinyin": "bō lán zhuàng kuò",
+    "literal": "waves vast and magnificent",
+    "meaning": "On a grand, sweeping scale.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "惊涛骇浪",
+    "pinyin": "jīng tāo hài làng",
+    "literal": "startling breakers, terrifying waves",
+    "meaning": "A perilous stretch — of a sea or a period in life.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "排山倒海",
+    "pinyin": "pái shān dǎo hǎi",
+    "literal": "push mountains, overturn seas",
+    "meaning": "With overwhelming force.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "翻天覆地",
+    "pinyin": "fān tiān fù dì",
+    "literal": "sky flipped, earth overturned",
+    "meaning": "An earth-shaking change.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "惊天动地",
+    "pinyin": "jīng tiān dòng dì",
+    "literal": "startling heaven, shaking earth",
+    "meaning": "Momentous, world-shaking.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "震耳欲聋",
+    "pinyin": "zhèn ěr yù lóng",
+    "literal": "shaking the ears to deafness",
+    "meaning": "Deafeningly loud.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "鸦雀无声",
+    "pinyin": "yā què wú shēng",
+    "literal": "not a crow or sparrow sounds",
+    "meaning": "So quiet you could hear a pin drop.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "夜深人静",
+    "pinyin": "yè shēn rén jìng",
+    "literal": "deep night, people still",
+    "meaning": "The small hours, when everything has gone quiet.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "风和日丽",
+    "pinyin": "fēng hé rì lì",
+    "literal": "gentle wind, lovely sun",
+    "meaning": "A beautiful clear day.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "春暖花开",
+    "pinyin": "chūn nuǎn huā kāi",
+    "literal": "spring warms, flowers open",
+    "meaning": "Spring has arrived — also for any long-awaited good turn.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "春风得意",
+    "pinyin": "chūn fēng dé yì",
+    "literal": "riding high on a spring breeze",
+    "meaning": "Flushed with success and enjoying it.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "万紫千红",
+    "pinyin": "wàn zǐ qiān hóng",
+    "literal": "ten thousand purples, a thousand reds",
+    "meaning": "A riot of colour; a flourishing variety.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "鸟语花香",
+    "pinyin": "niǎo yǔ huā xiāng",
+    "literal": "birds talking, flowers scenting",
+    "meaning": "An idyllic spring scene.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "山清水秀",
+    "pinyin": "shān qīng shuǐ xiù",
+    "literal": "clear hills, elegant waters",
+    "meaning": "Beautiful countryside.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "世外桃源",
+    "pinyin": "shì wài táo yuán",
+    "literal": "a peach spring beyond the world",
+    "meaning": "An idyllic retreat far from everything. From a fisherman who stumbled on a hidden valley.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "人山人海",
+    "pinyin": "rén shān rén hǎi",
+    "literal": "mountains of people, seas of people",
+    "meaning": "An enormous crowd.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "车水马龙",
+    "pinyin": "chē shuǐ mǎ lóng",
+    "literal": "carriages like water, horses like dragons",
+    "meaning": "Heavy, bustling traffic.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "熙熙攘攘",
+    "pinyin": "xī xī rǎng rǎng",
+    "literal": "bustling and jostling",
+    "meaning": "Crowded and noisy with people coming and going.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "门庭若市",
+    "pinyin": "mén tíng ruò shì",
+    "literal": "the courtyard like a marketplace",
+    "meaning": "A place thronged with visitors.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "门可罗雀",
+    "pinyin": "mén kě luó què",
+    "literal": "you could net sparrows at the door",
+    "meaning": "So deserted you could catch birds on the doorstep.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "荒无人烟",
+    "pinyin": "huāng wú rén yān",
+    "literal": "desolate, no cooking smoke",
+    "meaning": "Uninhabited wilderness.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "天涯海角",
+    "pinyin": "tiān yá hǎi jiǎo",
+    "literal": "the sky's edge, the sea's corner",
+    "meaning": "The ends of the earth.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "四面八方",
+    "pinyin": "sì miàn bā fāng",
+    "literal": "four faces, eight directions",
+    "meaning": "From all directions.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "五湖四海",
+    "pinyin": "wǔ hú sì hǎi",
+    "literal": "five lakes, four seas",
+    "meaning": "From all over the country; all corners of the world.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "千山万水",
+    "pinyin": "qiān shān wàn shuǐ",
+    "literal": "a thousand mountains, ten thousand rivers",
+    "meaning": "A long and arduous journey.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "跋山涉水",
+    "pinyin": "bá shān shè shuǐ",
+    "literal": "climb mountains, ford rivers",
+    "meaning": "Travelling over rough country to get somewhere.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "风尘仆仆",
+    "pinyin": "fēng chén pú pú",
+    "literal": "dusty and travel-worn",
+    "meaning": "Worn out from the road.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "马不停蹄",
+    "pinyin": "mǎ bù tíng tí",
+    "literal": "the horse never stops its hooves",
+    "meaning": "Without pause, straight on to the next thing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "快马加鞭",
+    "pinyin": "kuài mǎ jiā biān",
+    "literal": "whip a fast horse",
+    "meaning": "To speed up something already moving quickly.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "满载而归",
+    "pinyin": "mǎn zài ér guī",
+    "literal": "return with a full load",
+    "meaning": "To come back with plenty to show for it.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一无所获",
+    "pinyin": "yī wú suǒ huò",
+    "literal": "gaining nothing at all",
+    "meaning": "To come away empty-handed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "徒劳无功",
+    "pinyin": "tú láo wú gōng",
+    "literal": "effort without merit",
+    "meaning": "All that work for nothing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "前功尽弃",
+    "pinyin": "qián gōng jìn qì",
+    "literal": "all earlier work discarded",
+    "meaning": "Everything achieved so far, wasted.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "功亏一篑",
+    "pinyin": "gōng kuī yī kuì",
+    "literal": "the work fails by one basket",
+    "meaning": "To fall at the final step. One last basket of earth would have finished the mound.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "功败垂成",
+    "pinyin": "gōng bài chuí chéng",
+    "literal": "failure on the verge of success",
+    "meaning": "To collapse just as it was about to work.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "大功告成",
+    "pinyin": "dà gōng gào chéng",
+    "literal": "the great work is declared done",
+    "meaning": "Finished at last.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "功成名就",
+    "pinyin": "gōng chéng míng jiù",
+    "literal": "the work done, the name made",
+    "meaning": "Having achieved both success and recognition.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一举成名",
+    "pinyin": "yī jǔ chéng míng",
+    "literal": "famous in one stroke",
+    "meaning": "To make your name overnight.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "平步青云",
+    "pinyin": "píng bù qīng yún",
+    "literal": "step level into the blue clouds",
+    "meaning": "To rise rapidly and smoothly through the ranks.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "飞黄腾达",
+    "pinyin": "fēi huáng téng dá",
+    "literal": "the flying steed soars",
+    "meaning": "To rise fast in the world.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一落千丈",
+    "pinyin": "yī luò qiān zhàng",
+    "literal": "falling a thousand zhang at once",
+    "meaning": "A precipitous decline.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "每况愈下",
+    "pinyin": "měi kuàng yù xià",
+    "literal": "each situation worse than the last",
+    "meaning": "Going steadily downhill.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "日薄西山",
+    "pinyin": "rì bó xī shān",
+    "literal": "the sun pressing on the western hills",
+    "meaning": "Nearing its end; in terminal decline.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "强弩之末",
+    "pinyin": "qiáng nǔ zhī mò",
+    "literal": "the last of a strong crossbow's bolt",
+    "meaning": "Spent force — powerful once, but out of momentum.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "危在旦夕",
+    "pinyin": "wēi zài dàn xī",
+    "literal": "danger within a day and a night",
+    "meaning": "In imminent peril.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "岌岌可危",
+    "pinyin": "jí jí kě wēi",
+    "literal": "teetering and precarious",
+    "meaning": "In a very shaky position.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "摇摇欲坠",
+    "pinyin": "yáo yáo yù zhuì",
+    "literal": "swaying, about to fall",
+    "meaning": "On the verge of collapse.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "千钧一发",
+    "pinyin": "qiān jūn yī fà",
+    "literal": "a thousand jun on one hair",
+    "meaning": "Hanging by a thread; a hair's breadth from disaster.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "背水一战",
+    "pinyin": "bèi shuǐ yī zhàn",
+    "literal": "fight with the river at your back",
+    "meaning": "To commit with no way to retreat. A general drew up his army against a river so nobody could flee.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "破釜沉舟",
+    "pinyin": "pò fǔ chén zhōu",
+    "literal": "smash the cauldrons, sink the boats",
+    "meaning": "To burn your bridges and commit absolutely.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "孤注一掷",
+    "pinyin": "gū zhù yī zhì",
+    "literal": "stake everything on one throw",
+    "meaning": "To risk it all on a single gamble.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "铤而走险",
+    "pinyin": "tǐng ér zǒu xiǎn",
+    "literal": "driven to take a dangerous road",
+    "meaning": "To take a desperate chance with no better option.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "走投无路",
+    "pinyin": "zǒu tóu wú lù",
+    "literal": "nowhere left to walk",
+    "meaning": "Out of options entirely.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "山穷水尽",
+    "pinyin": "shān qióng shuǐ jìn",
+    "literal": "mountains end, water runs out",
+    "meaning": "At the end of your resources.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "进退两难",
+    "pinyin": "jìn tuì liǎng nán",
+    "literal": "hard to advance, hard to retreat",
+    "meaning": "Caught between a rock and a hard place.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "左右为难",
+    "pinyin": "zuǒ yòu wéi nán",
+    "literal": "difficult on the left and the right",
+    "meaning": "In a dilemma whichever way you turn.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "骑虎难下",
+    "pinyin": "qí hǔ nán xià",
+    "literal": "riding a tiger, hard to dismount",
+    "meaning": "Stuck in something you can't safely get out of.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "三思而行",
+    "pinyin": "sān sī ér xíng",
+    "literal": "think three times, then act",
+    "meaning": "Look before you leap.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "深思熟虑",
+    "pinyin": "shēn sī shú lǜ",
+    "literal": "deep thought, ripe consideration",
+    "meaning": "Carefully thought through.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "深谋远虑",
+    "pinyin": "shēn móu yuǎn lǜ",
+    "literal": "deep planning, distant thinking",
+    "meaning": "Thinking several moves ahead.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "未雨绸缪",
+    "pinyin": "wèi yǔ chóu móu",
+    "literal": "bind the thatch before it rains",
+    "meaning": "To prepare well before trouble arrives.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "防患未然",
+    "pinyin": "fáng huàn wèi rán",
+    "literal": "guard against trouble before it forms",
+    "meaning": "Prevention rather than cure.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "有备无患",
+    "pinyin": "yǒu bèi wú huàn",
+    "literal": "prepared means no calamity",
+    "meaning": "Be ready and you have nothing to fear.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "临阵磨枪",
+    "pinyin": "lín zhèn mó qiāng",
+    "literal": "sharpen the spear at the battle line",
+    "meaning": "Last-minute cramming.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "明知故犯",
+    "pinyin": "míng zhī gù fàn",
+    "literal": "knowing full well, doing it anyway",
+    "meaning": "Breaking a rule you knew perfectly well.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "知错就改",
+    "pinyin": "zhī cuò jiù gǎi",
+    "literal": "know the fault, fix it at once",
+    "meaning": "Owning a mistake and correcting it.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "知己知彼",
+    "pinyin": "zhī jǐ zhī bǐ",
+    "literal": "know yourself, know the other",
+    "meaning": "Understand both sides before you act. From Sunzi.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "出奇制胜",
+    "pinyin": "chū qí zhì shèng",
+    "literal": "win by the unexpected",
+    "meaning": "To take victory with a move nobody saw coming.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "声东击西",
+    "pinyin": "shēng dōng jī xī",
+    "literal": "shout east, strike west",
+    "meaning": "A feint in one direction to attack in another.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "打草惊蛇",
+    "pinyin": "dǎ cǎo jīng shé",
+    "literal": "beat the grass, startle the snake",
+    "meaning": "To tip off your target by acting carelessly.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "引狼入室",
+    "pinyin": "yǐn láng rù shì",
+    "literal": "lead the wolf into the house",
+    "meaning": "To invite in the very thing that will harm you.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "养虎为患",
+    "pinyin": "yǎng hǔ wéi huàn",
+    "literal": "raise a tiger, breed a disaster",
+    "meaning": "Tolerating a threat until it grows too big to handle.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "隔岸观火",
+    "pinyin": "gé àn guān huǒ",
+    "literal": "watch the fire from the far bank",
+    "meaning": "To look on at someone else's trouble without helping.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "袖手旁观",
+    "pinyin": "xiù shǒu páng guān",
+    "literal": "hands in sleeves, standing by",
+    "meaning": "To stand back and do nothing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "雪中送炭",
+    "pinyin": "xuě zhōng sòng tàn",
+    "literal": "send charcoal in the snow",
+    "meaning": "Help that arrives exactly when it's needed most.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "锦上添花",
+    "pinyin": "jǐn shàng tiān huā",
+    "literal": "add flowers to the brocade",
+    "meaning": "A nice touch on something already good — pleasant, but not what anyone needed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "落井下石",
+    "pinyin": "luò jǐng xià shí",
+    "literal": "drop stones on someone down a well",
+    "meaning": "To kick a person while they're down.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "趁火打劫",
+    "pinyin": "chèn huǒ dǎ jié",
+    "literal": "loot during the fire",
+    "meaning": "To profit from someone else's crisis.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "恩将仇报",
+    "pinyin": "ēn jiāng chóu bào",
+    "literal": "repay kindness with enmity",
+    "meaning": "To bite the hand that fed you.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "忘恩负义",
+    "pinyin": "wàng ēn fù yì",
+    "literal": "forget kindness, betray duty",
+    "meaning": "Ungrateful and disloyal.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "知恩图报",
+    "pinyin": "zhī ēn tú bào",
+    "literal": "know the kindness, seek to repay",
+    "meaning": "Grateful, and intending to return the favour.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "以德报怨",
+    "pinyin": "yǐ dé bào yuàn",
+    "literal": "repay resentment with virtue",
+    "meaning": "To answer ill-treatment with kindness.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "以牙还牙",
+    "pinyin": "yǐ yá huán yá",
+    "literal": "a tooth for a tooth",
+    "meaning": "Tit for tat.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "针锋相对",
+    "pinyin": "zhēn fēng xiāng duì",
+    "literal": "needle point against needle point",
+    "meaning": "Going head to head, matching every point.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "唇枪舌剑",
+    "pinyin": "chún qiāng shé jiàn",
+    "literal": "lips like spears, tongues like swords",
+    "meaning": "A fierce verbal duel.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "据理力争",
+    "pinyin": "jù lǐ lì zhēng",
+    "literal": "argue hard from reason",
+    "meaning": "Standing your ground on the merits.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "理屈词穷",
+    "pinyin": "lǐ qū cí qióng",
+    "literal": "reason bent, words exhausted",
+    "meaning": "Out of arguments because you were wrong.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "哑口无言",
+    "pinyin": "yǎ kǒu wú yán",
+    "literal": "mute mouth, no words",
+    "meaning": "Struck dumb, with nothing to say back.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "心服口服",
+    "pinyin": "xīn fú kǒu fú",
+    "literal": "convinced in heart and mouth",
+    "meaning": "Genuinely persuaded, not merely silenced.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "甘拜下风",
+    "pinyin": "gān bài xià fēng",
+    "literal": "willingly bow downwind",
+    "meaning": "To concede gracefully that someone is better.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "自愧不如",
+    "pinyin": "zì kuì bù rú",
+    "literal": "ashamed of falling short",
+    "meaning": "Humbled by how much better someone else is.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "望尘莫及",
+    "pinyin": "wàng chén mò jí",
+    "literal": "see their dust, never catch up",
+    "meaning": "So far ahead you can only watch them go.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "相形见绌",
+    "pinyin": "xiāng xíng jiàn chù",
+    "literal": "compared, the flaws show",
+    "meaning": "Looking poor by comparison.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "旗鼓相当",
+    "pinyin": "qí gǔ xiāng dāng",
+    "literal": "flags and drums evenly matched",
+    "meaning": "Well matched opponents.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "棋逢对手",
+    "pinyin": "qí féng duì shǒu",
+    "literal": "the chess player meets their match",
+    "meaning": "Finally facing someone at your own level.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不甘示弱",
+    "pinyin": "bù gān shì ruò",
+    "literal": "unwilling to look weak",
+    "meaning": "Refusing to be outdone.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "奋起直追",
+    "pinyin": "fèn qǐ zhí zhuī",
+    "literal": "rouse yourself and chase",
+    "meaning": "To pull yourself together and close the gap.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "后来居上",
+    "pinyin": "hòu lái jū shàng",
+    "literal": "the latecomer ends up on top",
+    "meaning": "Starting behind and finishing ahead.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "青出于蓝",
+    "pinyin": "qīng chū yú lán",
+    "literal": "blue comes from the indigo plant",
+    "meaning": "The student surpasses the teacher.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "后生可畏",
+    "pinyin": "hòu shēng kě wèi",
+    "literal": "the young are to be reckoned with",
+    "meaning": "Don't underestimate the next generation.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "老当益壮",
+    "pinyin": "lǎo dāng yì zhuàng",
+    "literal": "old and all the stronger for it",
+    "meaning": "Going strong in later life.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "宝刀未老",
+    "pinyin": "bǎo dāo wèi lǎo",
+    "literal": "the fine blade has not aged",
+    "meaning": "Still got it, after all these years.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "白手起家",
+    "pinyin": "bái shǒu qǐ jiā",
+    "literal": "build a household with bare hands",
+    "meaning": "To start from nothing and build something.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "自力更生",
+    "pinyin": "zì lì gēng shēng",
+    "literal": "renew life by your own strength",
+    "meaning": "Standing on your own feet.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "卧薪尝胆",
+    "pinyin": "wò xīn cháng dǎn",
+    "literal": "sleep on brushwood, taste gall",
+    "meaning": "To endure hardship deliberately while biding your time. A defeated king slept rough and licked a bitter gallbladder daily to keep his humiliation fresh.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "忍辱负重",
+    "pinyin": "rěn rǔ fù zhòng",
+    "literal": "bear insult, carry the load",
+    "meaning": "To swallow humiliation for the sake of the larger task.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "忍气吞声",
+    "pinyin": "rěn qì tūn shēng",
+    "literal": "hold the breath, swallow the voice",
+    "meaning": "To put up with it in silence.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "忍无可忍",
+    "pinyin": "rěn wú kě rěn",
+    "literal": "endurance with nothing left to endure",
+    "meaning": "Past breaking point.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "忍痛割爱",
+    "pinyin": "rěn tòng gē ài",
+    "literal": "bear the pain, cut away what you love",
+    "meaning": "To give up something you treasure.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "依依不舍",
+    "pinyin": "yī yī bù shě",
+    "literal": "clinging, unwilling to part",
+    "meaning": "Reluctant to say goodbye.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "念念不忘",
+    "pinyin": "niàn niàn bù wàng",
+    "literal": "thinking of it, never forgetting",
+    "meaning": "Unable to get something out of your mind.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "刻骨铭心",
+    "pinyin": "kè gǔ míng xīn",
+    "literal": "carved in bone, inscribed on the heart",
+    "meaning": "Unforgettable, engraved on you.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "记忆犹新",
+    "pinyin": "jì yì yóu xīn",
+    "literal": "the memory still fresh",
+    "meaning": "As vivid as if it were yesterday.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "历历在目",
+    "pinyin": "lì lì zài mù",
+    "literal": "each one clear before the eyes",
+    "meaning": "Still perfectly clear in the mind's eye.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "物是人非",
+    "pinyin": "wù shì rén fēi",
+    "literal": "the things remain, the people do not",
+    "meaning": "The place is unchanged but everyone has gone.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "时过境迁",
+    "pinyin": "shí guò jìng qiān",
+    "literal": "time passes, circumstances shift",
+    "meaning": "Things have moved on since then.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "光阴似箭",
+    "pinyin": "guāng yīn sì jiàn",
+    "literal": "time like an arrow",
+    "meaning": "Time flies.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "日月如梭",
+    "pinyin": "rì yuè rú suō",
+    "literal": "sun and moon like a weaver's shuttle",
+    "meaning": "The days and months shoot past.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "稍纵即逝",
+    "pinyin": "shāo zòng jí shì",
+    "literal": "loosen slightly and it's gone",
+    "meaning": "A fleeting chance — let go for a moment and you've lost it.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "昙花一现",
+    "pinyin": "tán huā yī xiàn",
+    "literal": "the night-blooming cereus appears once",
+    "meaning": "A brief, brilliant flash that doesn't last.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "来日方长",
+    "pinyin": "lái rì fāng cháng",
+    "literal": "the days ahead are still long",
+    "meaning": "There's plenty of time yet.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "前途无量",
+    "pinyin": "qián tú wú liàng",
+    "literal": "a road ahead without limit",
+    "meaning": "Boundless prospects.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "前程似锦",
+    "pinyin": "qián chéng sì jǐn",
+    "literal": "a future like brocade",
+    "meaning": "A bright future ahead. A standard graduation wish.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "鹏程万里",
+    "pinyin": "péng chéng wàn lǐ",
+    "literal": "the great bird's flight of ten thousand li",
+    "meaning": "Wishing someone a soaring career.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "大有可为",
+    "pinyin": "dà yǒu kě wéi",
+    "literal": "much that can be done",
+    "meaning": "Full of promise, well worth pursuing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "无所事事",
+    "pinyin": "wú suǒ shì shì",
+    "literal": "nothing at all to do",
+    "meaning": "Idling about with no occupation.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "游手好闲",
+    "pinyin": "yóu shǒu hào xián",
+    "literal": "idle hands, fond of leisure",
+    "meaning": "Loafing around avoiding work.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "好逸恶劳",
+    "pinyin": "hào yì wù láo",
+    "literal": "love ease, hate labour",
+    "meaning": "Allergic to hard work.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "不劳而获",
+    "pinyin": "bù láo ér huò",
+    "literal": "gain without labour",
+    "meaning": "Getting something for nothing.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "坐享其成",
+    "pinyin": "zuò xiǎng qí chéng",
+    "literal": "sit and enjoy the result",
+    "meaning": "Reaping what others sowed.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "自食其力",
+    "pinyin": "zì shí qí lì",
+    "literal": "eat by your own strength",
+    "meaning": "Supporting yourself by your own work.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "丰衣足食",
+    "pinyin": "fēng yī zú shí",
+    "literal": "ample clothing, enough food",
+    "meaning": "Comfortably provided for.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "安居乐业",
+    "pinyin": "ān jū lè yè",
+    "literal": "settled home, contented work",
+    "meaning": "Living and working in peace.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "国泰民安",
+    "pinyin": "guó tài mín ān",
+    "literal": "the state at peace, the people secure",
+    "meaning": "A country at peace and its people content.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "画饼充饥",
+    "pinyin": "huà bǐng chōng jī",
+    "literal": "draw a cake to fill the belly",
+    "meaning": "Comforting yourself with something that isn't real.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "望梅止渴",
+    "pinyin": "wàng méi zhǐ kě",
+    "literal": "look at plums to quench thirst",
+    "meaning": "Relief from imagination alone. A general told thirsty troops of plum groves ahead; their mouths watered and they marched on.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "杯水车薪",
+    "pinyin": "bēi shuǐ chē xīn",
+    "literal": "a cup of water on a cartload of burning wood",
+    "meaning": "A gesture far too small to make any difference.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "隔靴搔痒",
+    "pinyin": "gé xuē sāo yǎng",
+    "literal": "scratch an itch through the boot",
+    "meaning": "Addressing something without ever reaching the actual problem.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "南辕北辙",
+    "pinyin": "nán yuán běi zhé",
+    "literal": "shafts south, tracks north",
+    "meaning": "Going in exactly the wrong direction for what you want.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "缘木求鱼",
+    "pinyin": "yuán mù qiú yú",
+    "literal": "climb a tree to look for fish",
+    "meaning": "Going about it in a way that cannot possibly work.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "削足适履",
+    "pinyin": "xuē zú shì lǚ",
+    "literal": "trim the foot to fit the shoe",
+    "meaning": "Mangling the substance to fit the form.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "掩耳盗铃",
+    "pinyin": "yǎn ěr dào líng",
+    "literal": "cover your ears to steal a bell",
+    "meaning": "Fooling nobody but yourself.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "自欺欺人",
+    "pinyin": "zì qī qī rén",
+    "literal": "deceive yourself and others",
+    "meaning": "Kidding yourself, and trying it on everyone else too.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "弄巧成拙",
+    "pinyin": "nòng qiǎo chéng zhuō",
+    "literal": "being clever, ending up clumsy",
+    "meaning": "A clever move that backfires.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "得不偿失",
+    "pinyin": "dé bù cháng shī",
+    "literal": "the gain does not cover the loss",
+    "meaning": "Not worth what it cost.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "因小失大",
+    "pinyin": "yīn xiǎo shī dà",
+    "literal": "lose the big over the small",
+    "meaning": "Penny wise, pound foolish.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "舍本逐末",
+    "pinyin": "shě běn zhú mò",
+    "literal": "abandon the root, chase the branch tip",
+    "meaning": "Fussing over details while ignoring what actually matters.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "本末倒置",
+    "pinyin": "běn mò dào zhì",
+    "literal": "root and tip inverted",
+    "meaning": "Getting the priorities exactly backwards.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "一箭双雕",
+    "pinyin": "yī jiàn shuāng diāo",
+    "literal": "one arrow, two eagles",
+    "meaning": "Two results from a single action.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "事半功倍",
+    "pinyin": "shì bàn gōng bèi",
+    "literal": "half the work, twice the result",
+    "meaning": "Getting far more out of the effort.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "事倍功半",
+    "pinyin": "shì bèi gōng bàn",
+    "literal": "twice the work, half the result",
+    "meaning": "Working twice as hard for half as much.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "轻而易举",
+    "pinyin": "qīng ér yì jǔ",
+    "literal": "light and easily lifted",
+    "meaning": "No trouble at all.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "易如反掌",
+    "pinyin": "yì rú fǎn zhǎng",
+    "literal": "as easy as turning your palm",
+    "meaning": "Dead easy.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "难如登天",
+    "pinyin": "nán rú dēng tiān",
+    "literal": "as hard as climbing to heaven",
+    "meaning": "Next to impossible.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "千辛万苦",
+    "pinyin": "qiān xīn wàn kǔ",
+    "literal": "a thousand pains, ten thousand hardships",
+    "meaning": "Untold difficulty and effort.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "历尽艰辛",
+    "pinyin": "lì jìn jiān xīn",
+    "literal": "having been through every hardship",
+    "meaning": "Having come through a great deal.",
+    "type": "chengyu"
+  },
+  {
+    "hanzi": "临时抱佛脚",
+    "pinyin": "lín shí bào fó jiǎo",
+    "literal": "grab the Buddha's feet at the last minute",
+    "meaning": "Cramming the night before.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "姜还是老的辣",
+    "pinyin": "jiāng hái shì lǎo de là",
+    "literal": "old ginger is the spicier",
+    "meaning": "There's no substitute for experience.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "众人拾柴火焰高",
+    "pinyin": "zhòng rén shí chái huǒ yàn gāo",
+    "literal": "many gathering firewood make a high flame",
+    "meaning": "Many hands make the fire burn bright.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "三人行必有我师",
+    "pinyin": "sān rén xíng bì yǒu wǒ shī",
+    "literal": "among any three walking, one can teach me",
+    "meaning": "There's something to learn from anyone. From the Analects.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "有志者事竟成",
+    "pinyin": "yǒu zhì zhě shì jìng chéng",
+    "literal": "where there is will, the thing gets done",
+    "meaning": "Where there's a will there's a way.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "失败是成功之母",
+    "pinyin": "shī bài shì chéng gōng zhī mǔ",
+    "literal": "failure is the mother of success",
+    "meaning": "You learn more from what goes wrong.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "万事开头难",
+    "pinyin": "wàn shì kāi tóu nán",
+    "literal": "the start is the hard part of everything",
+    "meaning": "Getting going is always the hardest bit.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "隔行如隔山",
+    "pinyin": "gé háng rú gé shān",
+    "literal": "a different trade is a mountain away",
+    "meaning": "Outside your field, you know nothing.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "家家有本难念的经",
+    "pinyin": "jiā jiā yǒu běn nán niàn de jīng",
+    "literal": "every household has a scripture hard to recite",
+    "meaning": "Every family has its own troubles.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "不怕慢就怕站",
+    "pinyin": "bù pà màn jiù pà zhàn",
+    "literal": "fear not slowness, fear standing still",
+    "meaning": "Slow is fine. Stopping is the problem.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "说曹操曹操到",
+    "pinyin": "shuō cáo cāo cáo cāo dào",
+    "literal": "speak of Cao Cao and Cao Cao arrives",
+    "meaning": "Speak of the devil.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "远水救不了近火",
+    "pinyin": "yuǎn shuǐ jiù bù liǎo jìn huǒ",
+    "literal": "distant water won't put out a nearby fire",
+    "meaning": "Help too far away is no help at all.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "车到山前必有路",
+    "pinyin": "chē dào shān qián bì yǒu lù",
+    "literal": "when the cart reaches the mountain there will be a road",
+    "meaning": "It'll work itself out when you get there.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "一寸光阴一寸金",
+    "pinyin": "yī cùn guāng yīn yī cùn jīn",
+    "literal": "an inch of time is an inch of gold",
+    "meaning": "Time is precious — and unlike gold, unbuyable.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "好记性不如烂笔头",
+    "pinyin": "hǎo jì xìng bù rú làn bǐ tóu",
+    "literal": "a good memory is worse than a bad pen",
+    "meaning": "Write it down. You will not remember.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "天下无难事只怕有心人",
+    "pinyin": "tiān xià wú nán shì zhǐ pà yǒu xīn rén",
+    "literal": "nothing under heaven is hard for the determined",
+    "meaning": "Nothing is impossible to a willing mind.",
+    "type": "suyu"
+  },
+  {
+    "hanzi": "台上一分钟台下十年功",
+    "pinyin": "tái shàng yī fēn zhōng tái xià shí nián gōng",
+    "literal": "a minute on stage, ten years of work off it",
+    "meaning": "What looks effortless took years nobody saw.",
+    "type": "suyu"
+  }
+]

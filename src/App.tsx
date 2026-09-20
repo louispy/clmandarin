@@ -12,6 +12,7 @@ import { AppHeader } from './components/AppHeader';
 import { FlashcardViewer } from './components/FlashcardViewer';
 import { ImportShareModal } from './components/ImportShareModal';
 import { ImportTextShareModal } from './components/ImportTextShareModal';
+import { HomeScreen } from './screens/HomeScreen';
 import { BrowseScreen } from './screens/BrowseScreen';
 import { CardsScreen } from './screens/CardsScreen';
 import { TextsScreen } from './screens/TextsScreen';
@@ -186,6 +187,25 @@ export function App() {
         />
 
         <main className="mx-auto max-w-3xl px-4 pb-4 pt-2">
+          {route.tab === 'home' && (
+            <HomeScreen
+              decks={decks}
+              lists={lists}
+              textCount={texts.texts.length}
+              onSearch={(q) => {
+                vocab.handleSearch(q);
+                navigate({ tab: 'browse' });
+              }}
+              onOpenDeck={(deckId) => navigate({ tab: 'cards', deckId })}
+              onOpenLists={(listId) => {
+                if (listId) lists.setActiveListId(listId);
+                navigate({ tab: 'cards' });
+              }}
+              onOpenTexts={() => navigate({ tab: 'texts' })}
+              onBrowse={() => navigate({ tab: 'browse' })}
+            />
+          )}
+
           {route.tab === 'browse' && (
             <BrowseScreen
               vocab={vocab}
@@ -196,6 +216,7 @@ export function App() {
               onAddCustomWord={handleAddCustomWord}
               onDeleteCustomWord={handleDeleteCustomWord}
               onStartStudy={startStudy}
+              onHome={() => navigate({ tab: 'home' })}
             />
           )}
 

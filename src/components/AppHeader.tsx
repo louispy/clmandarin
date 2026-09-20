@@ -2,10 +2,16 @@ import type { Route, Tab } from '../hooks/useRoute';
 import type { Script } from '../hooks/useScript';
 
 const TABS: { tab: Tab; label: string }[] = [
-  { tab: 'browse', label: 'Home' },
+  { tab: 'home', label: 'Home' },
   { tab: 'cards', label: 'Cards' },
   { tab: 'texts', label: 'Texts' },
 ];
+
+/** Browse is reached from Home, so it keeps Home lit rather than lighting nothing. */
+function isActive(route: Route, tab: Tab): boolean {
+  if (tab === 'home') return route.tab === 'home' || route.tab === 'browse';
+  return route.tab === tab;
+}
 
 function TabBadge({ count }: { count: number }) {
   if (count <= 0) return null;
@@ -51,7 +57,7 @@ export function AppHeader({
                 key={tab}
                 onClick={() => onNavigate({ tab } as Route)}
                 className={`relative rounded-lg px-2 py-1.5 text-xs font-bold transition-all sm:px-3 sm:text-sm ${
-                  route.tab === tab
+                  isActive(route, tab)
                     ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
                     : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
                 }`}

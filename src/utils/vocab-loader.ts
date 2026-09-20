@@ -18,7 +18,7 @@ const DATA_VERSION_KEY = 'clmandarin-data-version';
 // activates mid-fetch (clientsClaim) the in-flight request can fail before
 // the precache is ready. Retry with backoff so we don't strand the user
 // on the loading screen.
-async function fetchJsonWithRetry(url: string, attempts = 4): Promise<Response> {
+export async function fetchJsonWithRetry(url: string, attempts = 4): Promise<Response> {
   let lastErr: unknown;
   for (let i = 0; i < attempts; i++) {
     try {

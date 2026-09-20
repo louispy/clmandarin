@@ -16,6 +16,7 @@ export default defineConfig({
         'icon-512.png',
         'icon-maskable-512.png',
         'data/hsk-all.json',
+        'data/chengyu.json',
       ],
       manifest: {
         name: 'CLMandarin',
