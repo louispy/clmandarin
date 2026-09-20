@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import type { VocabWord } from '../types';
 import type { useVocab } from '../hooks/useVocab';
 import type { useLists } from '../hooks/useLists';
@@ -67,7 +67,6 @@ export function CardsScreen({
 }) {
   const { activeList } = lists;
   const openDeck = decks.getDeck(openDeckId);
-  const [duplicating, setDuplicating] = useState(false);
 
   const handleAddToList = useCallback(
     (listId: string, wordId: string) => {
@@ -92,21 +91,6 @@ export function CardsScreen({
     },
     [onStartStudy]
   );
-
-  // Copy a built-in deck into a real, fully-owned list so the user can
-  // rearrange it without touching the canonical deck.
-  const handleDuplicateDeck = useCallback(async () => {
-    if (!openDeck || duplicating) return;
-    setDuplicating(true);
-    try {
-      const list = await lists.createList(`${openDeck.name} (copy)`);
-      await lists.addWordsToList(list.id, openDeck.wordIds);
-      lists.setActiveListId(list.id);
-      onCloseDeck();
-    } finally {
-      setDuplicating(false);
-    }
-  }, [openDeck, duplicating, lists, onCloseDeck]);
 
   const handleResetDeck = useCallback(async () => {
     if (!openDeck) return;
@@ -144,23 +128,14 @@ export function CardsScreen({
           </span>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        {openDeck.edited && (
           <button
-            onClick={handleDuplicateDeck}
-            disabled={duplicating}
-            className="rounded-xl border border-cn-border px-3 py-1.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink disabled:opacity-50 dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
+            onClick={handleResetDeck}
+            className="w-fit rounded-xl border border-cn-border px-3 py-1.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
           >
-            {duplicating ? 'Copying…' : 'Duplicate to my lists'}
+            Reset to original
           </button>
-          {openDeck.edited && (
-            <button
-              onClick={handleResetDeck}
-              className="rounded-xl border border-cn-border px-3 py-1.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
-            >
-              Reset to original
-            </button>
-          )}
-        </div>
+        )}
 
         <SortableWordList
           key={openDeck.id}
@@ -223,7 +198,7 @@ export function CardsScreen({
             <p className="max-w-sm text-sm text-cn-muted dark:text-cn-muted-dark">
               {customCount > 0
                 ? 'Tap the selector above to choose one of your lists.'
-                : 'Tap + above to create your first list, or open a deck above and duplicate it.'}
+                : 'Tap + above to create your first list, then add words to it from the browser.'}
             </p>
           </div>
         )}

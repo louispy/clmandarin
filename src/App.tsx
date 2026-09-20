@@ -201,6 +201,7 @@ export function App() {
               }}
               onOpenTexts={() => navigate({ tab: 'texts' })}
               onBrowse={() => navigate({ tab: 'browse' })}
+              onAddCustomWord={handleAddCustomWord}
             />
           )}
 

@@ -3,6 +3,7 @@ import type { useDecks } from '../hooks/useDecks';
 import type { useLists } from '../hooks/useLists';
 import { useChengyu } from '../hooks/useChengyu';
 import { ChengyuCard } from '../components/ChengyuCard';
+import { AddCustomWordModal } from '../components/AddCustomWordModal';
 import { DECK_GLYPH } from '../utils/decks';
 
 function QuickLink({
@@ -48,6 +49,7 @@ export function HomeScreen({
   onOpenLists,
   onOpenTexts,
   onBrowse,
+  onAddCustomWord,
   textCount,
 }: {
   decks: ReturnType<typeof useDecks>;
@@ -57,10 +59,17 @@ export function HomeScreen({
   onOpenLists: (listId?: string) => void;
   onOpenTexts: () => void;
   onBrowse: () => void;
+  onAddCustomWord: (input: {
+    hanzi: string;
+    pinyin: string;
+    english: string;
+    hskLevel: number;
+  }) => Promise<unknown>;
   textCount: number;
 }) {
   const chengyu = useChengyu();
   const [query, setQuery] = useState('');
+  const [addOpen, setAddOpen] = useState(false);
 
   const favorites = lists.favorites;
   const myListCount = lists.lists.filter((l) => l.id !== lists.FAVORITES_ID).length;
@@ -126,9 +135,18 @@ export function HomeScreen({
           />
           <QuickLink label="My lists" glyph="▤" count={myListCount} onClick={() => onOpenLists()} />
           <QuickLink label="All words" glyph="中" onClick={onBrowse} />
+          <QuickLink label="Add a word" glyph="+" onClick={() => setAddOpen(true)} />
           <QuickLink label="Texts" glyph="文" count={textCount} onClick={onOpenTexts} />
         </div>
       </div>
+
+      {addOpen && (
+        <AddCustomWordModal
+          defaultLevel={0}
+          onAdd={onAddCustomWord}
+          onClose={() => setAddOpen(false)}
+        />
+      )}
     </div>
   );
 }
