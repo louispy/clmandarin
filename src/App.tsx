@@ -6,174 +6,82 @@ import { useDarkMode } from './hooks/useDarkMode';
 import { useVisibility } from './hooks/useVisibility';
 import { useScript } from './hooks/useScript';
 import { useReverse } from './hooks/useReverse';
-import { VocabBrowser } from './components/VocabBrowser';
-import { FlashcardManager } from './components/FlashcardManager';
-import { SortableWordList } from './components/SortableWordList';
+import { useRoute } from './hooks/useRoute';
+import { AppHeader } from './components/AppHeader';
 import { FlashcardViewer } from './components/FlashcardViewer';
-import { TextManager } from './components/TextManager';
-import { TextReader } from './components/TextReader';
 import { ImportShareModal } from './components/ImportShareModal';
 import { ImportTextShareModal } from './components/ImportTextShareModal';
-import { exportList } from './utils/import-export';
-import { isSharingConfigured } from './utils/share';
-import { getWordsByIds } from './utils/vocab-loader';
+import { BrowseScreen } from './screens/BrowseScreen';
+import { CardsScreen } from './screens/CardsScreen';
+import { TextsScreen } from './screens/TextsScreen';
 import { db } from './db';
 import type { VocabWord } from './types';
 
-type View = 'browse' | 'flashcards' | 'texts';
+const FAVORITES_ID = '__favorites__';
+
+/** Capture a share param before the URL is cleaned up, so a refresh can't re-trigger the import. */
+function readShareParam(name: string): string | null {
+  if (typeof window === 'undefined') return null;
+  return new URLSearchParams(window.location.search).get(name);
+}
 
 export function App() {
   const vocab = useVocab();
-  const listsHook = useLists();
-  const textsHook = useTexts();
+  const lists = useLists();
+  const texts = useTexts();
   const { dark, toggle: toggleDark } = useDarkMode();
   const { visibility, toggle: toggleVisibility } = useVisibility();
   const { script, toggle: toggleScript } = useScript();
   const { reverse, toggle: toggleReverse } = useReverse();
-  const [view, setView] = useState<View>('browse');
+  const { route, navigate } = useRoute();
+
+  // Reader toggles live here rather than in TextsScreen: that screen unmounts
+  // on every tab switch, and resetting the reader each time would be a
+  // regression. Both default off.
   const [textShowPinyin, setTextShowPinyin] = useState(false);
   const [textShowTranslation, setTextShowTranslation] = useState(false);
+
   const [studyWords, setStudyWords] = useState<VocabWord[] | null>(null);
   const [studyListName, setStudyListName] = useState('');
   const [studyStartIndex, setStudyStartIndex] = useState<number | undefined>(undefined);
-  const [shareCode, setShareCode] = useState<string | null>(() => {
-    if (typeof window === 'undefined') return null;
-    const params = new URLSearchParams(window.location.search);
-    return params.get('share');
-  });
-  const [textShareCode, setTextShareCode] = useState<string | null>(() => {
-    if (typeof window === 'undefined') return null;
-    const params = new URLSearchParams(window.location.search);
-    return params.get('text');
-  });
+  const [shareCode, setShareCode] = useState<string | null>(() => readShareParam('share'));
+  const [textShareCode, setTextShareCode] = useState<string | null>(() => readShareParam('text'));
   const scrollPosRef = useRef(0);
 
-  // Strip the ?share= from the URL once we've captured it so a refresh doesn't
-  // re-trigger the import prompt, but keep everything else (e.g. PWA scope).
+  // Strip the share param from the URL once we've captured it so a refresh
+  // doesn't re-trigger the import prompt, but keep everything else (e.g. PWA
+  // scope). `share` is a list, `text` is a reading text.
   useEffect(() => {
-    if (!shareCode) return;
+    if (!shareCode && !textShareCode) return;
     const url = new URL(window.location.href);
-    if (url.searchParams.has('share')) {
-      url.searchParams.delete('share');
-      window.history.replaceState({}, '', url.toString());
+    let changed = false;
+    for (const param of ['share', 'text'] as const) {
+      if (url.searchParams.has(param)) {
+        url.searchParams.delete(param);
+        changed = true;
+      }
     }
-  }, [shareCode]);
+    if (changed) window.history.replaceState({}, '', url.toString());
+  }, [shareCode, textShareCode]);
 
-  // Same for ?text= (shared reading texts).
-  useEffect(() => {
-    if (!textShareCode) return;
-    const url = new URL(window.location.href);
-    if (url.searchParams.has('text')) {
-      url.searchParams.delete('text');
-      window.history.replaceState({}, '', url.toString());
-    }
-  }, [textShareCode]);
-
-  // Switching tabs reuses the same scroll container, so the previous view's
-  // scroll position leaks through. Force the top after the new view mounts.
-  const navigateTo = useCallback((next: View) => {
-    setView(next);
-    requestAnimationFrame(() => window.scrollTo(0, 0));
-  }, []);
-
-  const handleAddToList = useCallback(
-    (listId: string, wordId: string) => {
-      listsHook.addWordsToList(listId, [wordId]);
+  // Enter the flashcard overlay. Remembers the scroll position so closing the
+  // overlay puts the user back where they were.
+  const startStudy = useCallback(
+    (words: VocabWord[], label: string, startIndex?: number) => {
+      scrollPosRef.current = window.scrollY;
+      setStudyWords(words);
+      setStudyListName(label);
+      setStudyStartIndex(startIndex);
     },
-    [listsHook]
-  );
-
-  const handleCreateListAndAdd = useCallback(
-    async (name: string, wordId: string) => {
-      const list = await listsHook.createList(name);
-      await listsHook.addWordsToList(list.id, [wordId]);
-    },
-    [listsHook]
-  );
-
-  // Add currently filtered/displayed words to an existing list
-  const handleAddFiltered = useCallback(
-    (listId: string) => {
-      listsHook.addWordsToList(listId, vocab.words.map((w) => w.id));
-    },
-    [listsHook, vocab.words]
-  );
-
-  // Create a new list and add currently filtered/displayed words
-  const handleCreateListAndAddFiltered = useCallback(
-    async (name: string) => {
-      const list = await listsHook.createList(name);
-      await listsHook.addWordsToList(list.id, vocab.words.map((w) => w.id));
-    },
-    [listsHook, vocab.words]
+    []
   );
 
   const handleDeleteCustomWord = useCallback(
     async (wordId: string) => {
       await vocab.deleteCustomWord(wordId);
-      await listsHook.removeWordFromAllLists(wordId);
+      await lists.removeWordFromAllLists(wordId);
     },
-    [vocab, listsHook]
-  );
-
-  const handleStudy = useCallback(async () => {
-    if (!listsHook.activeList) return;
-    scrollPosRef.current = window.scrollY;
-    const words = await getWordsByIds(listsHook.activeList.wordIds);
-    const map = new Map(words.map((w) => [w.id, w]));
-    const ordered = listsHook.activeList.wordIds
-      .map((id) => map.get(id))
-      .filter((w): w is VocabWord => !!w);
-    setStudyWords(ordered);
-    setStudyListName(listsHook.activeList.name);
-    setStudyStartIndex(undefined);
-  }, [listsHook.activeList]);
-
-  const handleStudyFromWord = useCallback(
-    (wordId: string, allWords: VocabWord[], label: string) => {
-      scrollPosRef.current = window.scrollY;
-      const idx = allWords.findIndex((w) => w.id === wordId);
-      setStudyWords(allWords);
-      setStudyListName(label);
-      setStudyStartIndex(idx >= 0 ? idx : undefined);
-    },
-    []
-  );
-
-  // Study currently filtered words
-  const handleStudyFiltered = useCallback(() => {
-    if (vocab.words.length === 0) return;
-    scrollPosRef.current = window.scrollY;
-    const levels = vocab.selectedLevels;
-    const label = levels.length === 0
-      ? 'All HSK'
-      : `HSK ${levels.join(', ')}`;
-    setStudyWords(vocab.words);
-    setStudyListName(label);
-    setStudyStartIndex(undefined);
-  }, [vocab.words, vocab.selectedLevels]);
-
-  const filterLabel = vocab.selectedLevels.length === 0
-    ? 'All HSK'
-    : vocab.isSearching
-      ? 'Search results'
-      : `HSK ${vocab.selectedLevels.join(', ')}`;
-
-  const handleStudyListWord = useCallback(
-    async (wordId: string) => {
-      if (!listsHook.activeList) return;
-      scrollPosRef.current = window.scrollY;
-      const words = await getWordsByIds(listsHook.activeList.wordIds);
-      const map = new Map(words.map((w) => [w.id, w]));
-      const ordered = listsHook.activeList.wordIds
-        .map((id) => map.get(id))
-        .filter((w): w is VocabWord => !!w);
-      const idx = ordered.findIndex((w) => w.id === wordId);
-      setStudyWords(ordered);
-      setStudyListName(listsHook.activeList.name);
-      setStudyStartIndex(idx >= 0 ? idx : undefined);
-    },
-    [listsHook.activeList]
+    [vocab, lists]
   );
 
   // Update a word and immediately reflect the change in the active study set
@@ -250,275 +158,57 @@ export function App() {
   return (
     <div className={dark ? 'dark' : ''}>
       <div className="min-h-screen bg-cn-paper dark:bg-cn-paper-dark">
-        {/* Header */}
-        <header className="sticky top-0 z-40 border-b border-cn-border bg-cn-paper/95 backdrop-blur dark:border-cn-border-dark dark:bg-cn-paper-dark/95">
-          <div className="mx-auto flex max-w-3xl items-center justify-between gap-1 px-2 py-3 sm:gap-2 sm:px-4">
-            <h1 className="shrink-0 whitespace-nowrap text-2xl font-black tracking-tight text-cn-red dark:text-cn-red-light sm:text-3xl">
-              CL<span className="text-cn-gold">&#20013;</span>M
-            </h1>
+        <AppHeader
+          route={route}
+          onNavigate={navigate}
+          badges={{
+            cards: lists.lists.filter((l) => l.id !== FAVORITES_ID).length,
+            texts: texts.texts.length,
+          }}
+          script={script}
+          onToggleScript={toggleScript}
+          reverse={reverse}
+          onToggleReverse={toggleReverse}
+          dark={dark}
+          onToggleDark={toggleDark}
+        />
 
-            <div className="flex items-center gap-0.5 sm:gap-2">
-              <div className="grid grid-cols-3 gap-0.5 rounded-xl border border-cn-border bg-cn-surface p-0.5 dark:border-cn-border-dark dark:bg-cn-surface-dark">
-                <button
-                  onClick={() => navigateTo('browse')}
-                  className={`rounded-lg px-2 py-1.5 text-xs font-bold transition-all sm:px-3 sm:text-sm ${
-                    view === 'browse'
-                      ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
-                      : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                  }`}
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => navigateTo('flashcards')}
-                  className={`relative rounded-lg px-2 py-1.5 text-xs font-bold transition-all sm:px-3 sm:text-sm ${
-                    view === 'flashcards'
-                      ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
-                      : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                  }`}
-                >
-                  Cards
-                  {(() => {
-                    const customCount = listsHook.lists.filter((l) => l.id !== '__favorites__').length;
-                    return customCount > 0 ? (
-                      <span className="absolute -right-2 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cn-gold text-[9px] font-black text-white">
-                        {customCount}
-                      </span>
-                    ) : null;
-                  })()}
-                </button>
-                <button
-                  onClick={() => navigateTo('texts')}
-                  className={`relative rounded-lg px-2 py-1.5 text-xs font-bold transition-all sm:px-3 sm:text-sm ${
-                    view === 'texts'
-                      ? 'bg-cn-red text-white shadow-sm shadow-cn-red/20'
-                      : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                  }`}
-                >
-                  Texts
-                  {textsHook.texts.length > 0 && (
-                    <span className="absolute -right-2 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cn-gold text-[9px] font-black text-white">
-                      {textsHook.texts.length}
-                    </span>
-                  )}
-                </button>
-              </div>
-
-              {/* Script toggle */}
-              <button
-                onClick={toggleScript}
-                className={`rounded-xl px-1.5 py-1 text-xs font-bold transition-colors sm:px-2 sm:text-sm ${
-                  script === 'tw'
-                    ? 'text-cn-red dark:text-cn-red-light'
-                    : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                }`}
-                title={script === 'cn' ? 'Show traditional (繁)' : 'Show simplified (简)'}
-                aria-label="Toggle script"
-              >
-                {script === 'cn' ? '简' : '繁'}
-              </button>
-
-              {/* Reverse mode toggle (flashcards study direction) */}
-              <button
-                onClick={toggleReverse}
-                className={`shrink-0 whitespace-nowrap rounded-xl px-1.5 py-1 text-[10px] font-bold transition-colors sm:px-2 sm:text-sm ${
-                  reverse
-                    ? 'text-cn-red dark:text-cn-red-light'
-                    : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                }`}
-                title={reverse ? 'Flashcards: English → Hanzi (tap to switch)' : 'Flashcards: Hanzi → English (tap to switch)'}
-                aria-label="Toggle reverse mode"
-              >
-                {reverse ? 'EN→中' : '中→EN'}
-              </button>
-
-              {/* Dark mode toggle */}
-              <button
-                onClick={toggleDark}
-                className="rounded-xl p-1.5 text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream sm:p-2"
-                title={dark ? 'Light mode' : 'Dark mode'}
-              >
-                {dark ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
-                    <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.061l1.061-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.061 1.06l1.06 1.061ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
-                    <path fillRule="evenodd" d="M7.455 2.004a.75.75 0 0 1 .26.77 7 7 0 0 0 9.958 7.967.75.75 0 0 1 1.067.853A8.5 8.5 0 1 1 6.647 1.921a.75.75 0 0 1 .808.083Z" clipRule="evenodd" />
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
-        </header>
-
-        {/* Content */}
         <main className="mx-auto max-w-3xl px-4 pb-4 pt-2">
-          {view === 'browse' && (
-            <VocabBrowser
-              words={vocab.words}
-              dataLoading={!vocab.dbReady}
-              selectedLevels={vocab.selectedLevels}
-              onToggleLevel={vocab.toggleLevel}
-              showCustom={vocab.showCustom}
-              onToggleCustom={vocab.toggleCustom}
-              hasCustomWords={vocab.hasCustomWords}
-              onAddCustomWord={vocab.addCustomWord}
-              onDeleteCustomWord={handleDeleteCustomWord}
-              searchQuery={vocab.searchQuery}
-              onSearch={vocab.handleSearch}
-              isSearching={vocab.isSearching}
-              lists={listsHook.lists}
-              onAddToList={handleAddToList}
-              onCreateListAndAdd={handleCreateListAndAdd}
-              onAddFiltered={handleAddFiltered}
-              onCreateListAndAddFiltered={handleCreateListAndAddFiltered}
-              onUpdateWord={vocab.updateWord}
+          {route.tab === 'browse' && (
+            <BrowseScreen
+              vocab={vocab}
+              lists={lists}
               script={script}
-              isFavorite={listsHook.isFavorite}
-              onToggleFavorite={listsHook.toggleFavorite}
               visibility={visibility}
               onToggleVisibility={toggleVisibility}
-              onStudyWord={(wordId) => handleStudyFromWord(wordId, vocab.words, vocab.isSearching ? 'Search results' : filterLabel)}
-              onStudyFiltered={handleStudyFiltered}
+              onDeleteCustomWord={handleDeleteCustomWord}
+              onStartStudy={startStudy}
             />
           )}
 
-          {view === 'flashcards' && (
-            <div className="flex flex-col gap-3">
-              <FlashcardManager
-                lists={listsHook.lists}
-                activeListId={listsHook.activeListId}
-                onSelect={listsHook.setActiveListId}
-                onCreate={listsHook.createList}
-                onDelete={listsHook.deleteList}
-                onRename={listsHook.renameList}
-                onExport={exportList}
-                onClear={listsHook.clearList}
-                onImportDone={listsHook.refresh}
-                onImportFromCode={isSharingConfigured() ? setShareCode : undefined}
-              />
-
-              {!listsHook.activeList && (() => {
-                const customCount = listsHook.lists.filter((l) => l.id !== '__favorites__').length;
-                return (
-                  <div className="flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-cn-border px-6 py-16 text-center dark:border-cn-border-dark sm:py-24">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10 text-cn-muted/40 dark:text-cn-muted-dark/40">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                    </svg>
-                    <p className="font-bold text-cn-ink dark:text-cn-cream">
-                      Pick a flashcard list
-                    </p>
-                    <p className="max-w-sm text-sm text-cn-muted dark:text-cn-muted-dark">
-                      {customCount > 0
-                        ? 'Tap the selector above to choose one of your lists.'
-                        : 'Tap + above to create your first list, or favorite words from Home to fill your Favorites list.'}
-                    </p>
-                  </div>
-                );
-              })()}
-
-              {listsHook.activeList && (
-                <div className="flex flex-col gap-3">
-                  <SortableWordList
-                    key={listsHook.activeList.id}
-                    wordIds={listsHook.activeList.wordIds}
-                    script={script}
-                    visibility={visibility}
-                    onToggleVisibility={toggleVisibility}
-                    lists={listsHook.lists}
-                    isFavorite={listsHook.isFavorite}
-                    onToggleFavorite={listsHook.toggleFavorite}
-                    onAddToList={handleAddToList}
-                    onCreateListAndAdd={handleCreateListAndAdd}
-                    onUpdateWord={vocab.updateWord}
-                    onDeleteCustomWord={handleDeleteCustomWord}
-                    onReorder={(ids) =>
-                      listsHook.reorderList(listsHook.activeList!.id, ids)
-                    }
-                    onRemove={(wordId) =>
-                      listsHook.removeWordFromList(listsHook.activeList!.id, wordId)
-                    }
-                    onStudyWord={handleStudyListWord}
-                    onBrowse={() => navigateTo('browse')}
-                    actions={
-                      listsHook.activeList.wordIds.length > 0 ? (
-                        <button
-                          onClick={handleStudy}
-                          className="flex h-8 w-8 items-center justify-center rounded-xl bg-cn-red text-sm font-bold text-white shadow-md shadow-cn-red/20 transition-all hover:bg-cn-red-dark hover:shadow-lg sm:h-auto sm:w-auto sm:px-4 sm:py-2"
-                          title="Study"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 sm:hidden">
-                            <path d="M6.3 2.841A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.269l9.344-5.89a1.5 1.5 0 0 0 0-2.538L6.3 2.84Z" />
-                          </svg>
-                          <span className="hidden sm:inline">Study</span>
-                        </button>
-                      ) : null
-                    }
-                  />
-                </div>
-              )}
-            </div>
+          {route.tab === 'cards' && (
+            <CardsScreen
+              vocab={vocab}
+              lists={lists}
+              script={script}
+              visibility={visibility}
+              onToggleVisibility={toggleVisibility}
+              onDeleteCustomWord={handleDeleteCustomWord}
+              onStartStudy={startStudy}
+              onBrowse={() => navigate({ tab: 'browse' })}
+              onImportFromCode={setShareCode}
+            />
           )}
 
-          {view === 'texts' && (
-            <div className="flex flex-col gap-3">
-              <TextManager
-                texts={textsHook.texts}
-                activeTextId={textsHook.activeTextId}
-                onSelect={textsHook.setActiveTextId}
-                onCreate={textsHook.createText}
-                onUpdate={textsHook.updateText}
-                onDelete={textsHook.deleteText}
-                onImportFromCode={isSharingConfigured() ? setTextShareCode : undefined}
-              />
-
-              {!textsHook.activeText ? (
-                <div className="flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-cn-border px-6 py-16 text-center dark:border-cn-border-dark sm:py-24">
-                  <span className="text-4xl">&#25991;</span>
-                  <p className="font-bold text-cn-ink dark:text-cn-cream">No text selected</p>
-                  <p className="max-w-sm text-sm text-cn-muted dark:text-cn-muted-dark">
-                    Tap + above to paste your own Chinese text. Pinyin is generated automatically, and you can add your own translations sentence by sentence.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {/* Reader toggles — mirror the flashcard show/hide controls */}
-                  <div className="flex items-center gap-2 px-0.5">
-                    <button
-                      onClick={() => setTextShowPinyin((v) => !v)}
-                      className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
-                        textShowPinyin
-                          ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
-                          : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                      }`}
-                    >
-                      {textShowPinyin ? 'Pinyin on' : 'Pinyin off'}
-                    </button>
-                    <button
-                      onClick={() => setTextShowTranslation((v) => !v)}
-                      className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
-                        textShowTranslation
-                          ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
-                          : 'text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream'
-                      }`}
-                    >
-                      {textShowTranslation ? 'Translation on' : 'Translation off'}
-                    </button>
-                  </div>
-
-                  <TextReader
-                    key={textsHook.activeText.id}
-                    text={textsHook.activeText}
-                    showPinyin={textShowPinyin}
-                    showTranslation={textShowTranslation}
-                    onChangeTranslation={(idx, value) =>
-                      textsHook.setTranslation(textsHook.activeText!.id, idx, value)
-                    }
-                  />
-                </>
-              )}
-            </div>
+          {route.tab === 'texts' && (
+            <TextsScreen
+              texts={texts}
+              showPinyin={textShowPinyin}
+              onTogglePinyin={() => setTextShowPinyin((v) => !v)}
+              showTranslation={textShowTranslation}
+              onToggleTranslation={() => setTextShowTranslation((v) => !v)}
+              onImportFromCode={setTextShareCode}
+            />
           )}
         </main>
       </div>
@@ -528,10 +218,10 @@ export function App() {
           code={shareCode}
           onClose={() => setShareCode(null)}
           onImported={(listId) => {
-            listsHook.refresh();
+            lists.refresh();
             vocab.refresh();
-            listsHook.setActiveListId(listId);
-            navigateTo('flashcards');
+            lists.setActiveListId(listId);
+            navigate({ tab: 'cards' });
             setShareCode(null);
           }}
         />
@@ -540,11 +230,11 @@ export function App() {
       {textShareCode && (
         <ImportTextShareModal
           code={textShareCode}
-          onImport={textsHook.importSharedText}
+          onImport={texts.importSharedText}
           onClose={() => setTextShareCode(null)}
           onImported={(textId) => {
-            textsHook.setActiveTextId(textId);
-            navigateTo('texts');
+            texts.setActiveTextId(textId);
+            navigate({ tab: 'texts' });
             setTextShareCode(null);
           }}
         />
