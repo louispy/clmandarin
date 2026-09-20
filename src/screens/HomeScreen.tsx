@@ -134,7 +134,7 @@ export function HomeScreen({
             onClick={() => onOpenLists(lists.FAVORITES_ID)}
           />
           <QuickLink label="My lists" glyph="▤" count={myListCount} onClick={() => onOpenLists()} />
-          <QuickLink label="Browse all words" glyph="中" onClick={onBrowse} />
+          <QuickLink label="All words" glyph="中" onClick={onBrowse} />
           <QuickLink label="Texts" glyph="文" count={textCount} onClick={onOpenTexts} />
         </div>
       </div>

@@ -16,6 +16,7 @@ import { HomeScreen } from './screens/HomeScreen';
 import { BrowseScreen } from './screens/BrowseScreen';
 import { CardsScreen } from './screens/CardsScreen';
 import { TextsScreen } from './screens/TextsScreen';
+import { QuizScreen } from './screens/QuizScreen';
 import { db } from './db';
 import type { VocabWord } from './types';
 
@@ -174,10 +175,7 @@ export function App() {
         <AppHeader
           route={route}
           onNavigate={navigate}
-          badges={{
-            cards: lists.lists.filter((l) => l.id !== FAVORITES_ID).length,
-            texts: texts.texts.length,
-          }}
+          badges={{ cards: lists.lists.filter((l) => l.id !== FAVORITES_ID).length }}
           script={script}
           onToggleScript={toggleScript}
           reverse={reverse}
@@ -238,6 +236,10 @@ export function App() {
             />
           )}
 
+          {route.tab === 'quiz' && (
+            <QuizScreen decks={decks} lists={lists} script={script} />
+          )}
+
           {route.tab === 'texts' && (
             <TextsScreen
               texts={texts}
@@ -246,6 +248,7 @@ export function App() {
               showTranslation={textShowTranslation}
               onToggleTranslation={() => setTextShowTranslation((v) => !v)}
               onImportFromCode={setTextShareCode}
+              onHome={() => navigate({ tab: 'home' })}
             />
           )}
         </main>

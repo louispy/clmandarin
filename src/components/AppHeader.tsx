@@ -4,12 +4,15 @@ import type { Script } from '../hooks/useScript';
 const TABS: { tab: Tab; label: string }[] = [
   { tab: 'home', label: 'Home' },
   { tab: 'cards', label: 'Cards' },
-  { tab: 'texts', label: 'Texts' },
+  { tab: 'quiz', label: 'Quiz' },
 ];
 
-/** Browse is reached from Home, so it keeps Home lit rather than lighting nothing. */
+/**
+ * Browse and Texts are reached from Home rather than owning tabs, so they keep
+ * Home lit instead of lighting nothing.
+ */
 function isActive(route: Route, tab: Tab): boolean {
-  if (tab === 'home') return route.tab === 'home' || route.tab === 'browse';
+  if (tab === 'home') return route.tab === 'home' || route.tab === 'browse' || route.tab === 'texts';
   return route.tab === tab;
 }
 

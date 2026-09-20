@@ -9,6 +9,9 @@ export type Route =
   // "Browse all words" tile, and the header treats it as a child of Home.
   | { tab: 'browse' }
   | { tab: 'cards'; deckId?: string }
+  | { tab: 'quiz' }
+  // Texts has no tab either — it is reached from Home's tile. The feature is
+  // unchanged, and outstanding ?text= share links keep working.
   | { tab: 'texts' };
 
 export type Tab = Route['tab'];

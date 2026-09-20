@@ -10,6 +10,7 @@ export function TextsScreen({
   showTranslation,
   onToggleTranslation,
   onImportFromCode,
+  onHome,
 }: {
   texts: ReturnType<typeof useTexts>;
   // Reader toggles are owned by App, not this screen: the screen unmounts on
@@ -20,11 +21,21 @@ export function TextsScreen({
   showTranslation: boolean;
   onToggleTranslation: () => void;
   onImportFromCode: (code: string) => void;
+  onHome: () => void;
 }) {
   const { activeText } = texts;
 
   return (
     <div className="flex flex-col gap-3">
+      <button
+        onClick={onHome}
+        className="flex w-fit items-center gap-1 rounded-xl px-2 py-1.5 text-sm font-bold text-cn-red transition-colors hover:bg-cn-red/10 dark:text-cn-red-light"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+          <path fillRule="evenodd" d="M12.79 5.23a.75.75 0 0 1-.02 1.06L8.832 10l3.938 3.71a.75.75 0 1 1-1.04 1.08l-4.5-4.25a.75.75 0 0 1 0-1.08l4.5-4.25a.75.75 0 0 1 1.06.02Z" clipRule="evenodd" />
+        </svg>
+        Home
+      </button>
       <TextManager
         texts={texts.texts}
         activeTextId={texts.activeTextId}
