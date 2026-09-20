@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "scrape": "tsx scraper/scrape.ts",
     "icons": "tsx scripts/generate-icons.ts",
-    "chengyu": "tsx scripts/validate-chengyu.ts"
+    "chengyu": "tsx scripts/validate-chengyu.ts",
+    "check:quiz": "tsx scripts/check-quiz.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
