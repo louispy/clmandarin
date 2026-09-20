@@ -1,4 +1,5 @@
 import { db } from '../db';
+import { listRepo } from '../data/lists';
 import type { FlashcardList, FlashcardListFile, VocabWord } from '../types';
 import { getWordsByIds } from './vocab-loader';
 import { uuid } from './uuid';
@@ -38,11 +39,11 @@ export async function importListFromBundle(
     await db.vocab.bulkPut(data.words);
   }
 
-  const existing = await db.lists.get(data.list.id);
+  const existing = await listRepo.get(data.list.id);
   const now = Date.now();
   const list: FlashcardList = { ...data.list, updatedAt: now };
 
-  await db.lists.put(list);
+  await listRepo.put(list);
 
   return { list, words: data.words, isNew: !existing };
 }
@@ -54,7 +55,7 @@ export async function importListFromBundle(
 export async function findListBySourceId(
   sourceId: string
 ): Promise<FlashcardList | null> {
-  const all = await db.lists.toArray();
+  const all = await listRepo.all();
   return all.find((l) => l.sourceId === sourceId) ?? null;
 }
 
@@ -64,7 +65,7 @@ export async function findListBySourceId(
  * `baseName (copy 2)`, etc. until something fits.
  */
 export async function getAvailableListName(baseName: string): Promise<string> {
-  const all = await db.lists.toArray();
+  const all = await listRepo.all();
   const names = new Set(all.map((l) => l.name));
   if (!names.has(baseName)) return baseName;
   const copyName = `${baseName} (copy)`;
@@ -102,7 +103,7 @@ export async function importSharedBundle(
     updatedAt: now,
   };
 
-  await db.lists.put(list);
+  await listRepo.put(list);
   return { list, isReplace };
 }
 

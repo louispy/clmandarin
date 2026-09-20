@@ -1,5 +1,5 @@
 import type { MandarinText, MandarinTextFile } from '../types';
-import { db } from '../db';
+import { textRepo } from '../data/texts';
 
 const WORKER_URL = import.meta.env.VITE_WORKER_URL as string | undefined;
 const CODE_HEX_CHARS = 8;
@@ -47,11 +47,11 @@ export async function createTextShare(
   if (!WORKER_URL) throw new Error('Sharing is not configured (VITE_WORKER_URL is missing).');
 
   // Re-read so a token written on a previous share isn't lost to the React cache.
-  const fresh = (await db.texts.get(text.id)) ?? text;
+  const fresh = (await textRepo.get(text.id)) ?? text;
   let token = fresh.shareToken;
   if (!token) {
     token = generateShareToken();
-    await db.texts.update(text.id, { shareToken: token });
+    await textRepo.updateQuiet(text.id, { shareToken: token });
   }
 
   const code = await computeShareCode(text.id, token);

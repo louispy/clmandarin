@@ -1,23 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
-import { db } from '../db';
+import { listRepo } from '../data/lists';
 import type { FlashcardList } from '../types';
 import { uuid } from '../utils/uuid';
 
 const FAVORITES_ID = '__favorites__';
 
 async function ensureFavorites(): Promise<void> {
-  // Wrap the read + add so concurrent callers (StrictMode double-mount,
-  // overlapping refresh()s) can't both see "missing" and race on add().
-  await db.transaction('rw', db.lists, async () => {
-    const existing = await db.lists.get(FAVORITES_ID);
-    if (existing) return;
-    await db.lists.add({
-      id: FAVORITES_ID,
-      name: 'Favorites',
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-      wordIds: [],
-    });
+  const now = Date.now();
+  await listRepo.ensure({
+    id: FAVORITES_ID,
+    name: 'Favorites',
+    createdAt: now,
+    updatedAt: now,
+    wordIds: [],
   });
 }
 
@@ -27,7 +22,7 @@ export function useLists() {
 
   const refresh = useCallback(async () => {
     await ensureFavorites();
-    const all = await db.lists.orderBy('updatedAt').reverse().toArray();
+    const all = await listRepo.all();
     // Always put Favorites first
     const favIdx = all.findIndex((l) => l.id === FAVORITES_ID);
     if (favIdx > 0) {
@@ -66,14 +61,13 @@ export function useLists() {
 
   const toggleFavorite = useCallback(
     async (wordId: string) => {
-      const fav = await db.lists.get(FAVORITES_ID);
+      const fav = await listRepo.get(FAVORITES_ID);
       if (!fav) return;
       const has = fav.wordIds.includes(wordId);
-      await db.lists.update(FAVORITES_ID, {
+      await listRepo.update(FAVORITES_ID, {
         wordIds: has
           ? fav.wordIds.filter((id) => id !== wordId)
           : [...fav.wordIds, wordId],
-        updatedAt: Date.now(),
       });
       await refresh();
     },
@@ -82,10 +76,7 @@ export function useLists() {
 
   const clearList = useCallback(
     async (id: string) => {
-      await db.lists.update(id, {
-        wordIds: [],
-        updatedAt: Date.now(),
-      });
+      await listRepo.update(id, { wordIds: [] });
       await refresh();
     },
     [refresh]
@@ -101,7 +92,7 @@ export function useLists() {
         updatedAt: now,
         wordIds: [],
       };
-      await db.lists.add(list);
+      await listRepo.add(list);
       await refresh();
       return list;
     },
@@ -111,7 +102,7 @@ export function useLists() {
   const deleteList = useCallback(
     async (id: string) => {
       if (id === FAVORITES_ID) return; // Can't delete Favorites
-      await db.lists.delete(id);
+      await listRepo.remove(id);
       setSelectedListId((curr) => (curr === id ? null : curr));
       await refresh();
     },
@@ -121,7 +112,7 @@ export function useLists() {
   const renameList = useCallback(
     async (id: string, name: string) => {
       if (id === FAVORITES_ID) return; // Can't rename Favorites
-      await db.lists.update(id, { name, updatedAt: Date.now() });
+      await listRepo.update(id, { name });
       await refresh();
     },
     [refresh]
@@ -129,15 +120,12 @@ export function useLists() {
 
   const addWordsToList = useCallback(
     async (listId: string, wordIds: string[]) => {
-      const list = await db.lists.get(listId);
+      const list = await listRepo.get(listId);
       if (!list) return;
       const existing = new Set(list.wordIds);
       const newIds = wordIds.filter((id) => !existing.has(id));
       if (newIds.length === 0) return;
-      await db.lists.update(listId, {
-        wordIds: [...list.wordIds, ...newIds],
-        updatedAt: Date.now(),
-      });
+      await listRepo.update(listId, { wordIds: [...list.wordIds, ...newIds] });
       await refresh();
     },
     [refresh]
@@ -145,11 +133,10 @@ export function useLists() {
 
   const removeWordFromList = useCallback(
     async (listId: string, wordId: string) => {
-      const list = await db.lists.get(listId);
+      const list = await listRepo.get(listId);
       if (!list) return;
-      await db.lists.update(listId, {
+      await listRepo.update(listId, {
         wordIds: list.wordIds.filter((id) => id !== wordId),
-        updatedAt: Date.now(),
       });
       await refresh();
     },
@@ -158,17 +145,13 @@ export function useLists() {
 
   const removeWordFromAllLists = useCallback(
     async (wordId: string) => {
-      const all = await db.lists.toArray();
-      const now = Date.now();
+      const affected = await listRepo.withWord(wordId);
       await Promise.all(
-        all
-          .filter((l) => l.wordIds.includes(wordId))
-          .map((l) =>
-            db.lists.update(l.id, {
-              wordIds: l.wordIds.filter((id) => id !== wordId),
-              updatedAt: now,
-            })
-          )
+        affected.map((l) =>
+          listRepo.update(l.id, {
+            wordIds: l.wordIds.filter((id) => id !== wordId),
+          })
+        )
       );
       await refresh();
     },
@@ -177,7 +160,7 @@ export function useLists() {
 
   const reorderList = useCallback(
     async (listId: string, wordIds: string[]) => {
-      await db.lists.update(listId, { wordIds, updatedAt: Date.now() });
+      await listRepo.update(listId, { wordIds });
       await refresh();
     },
     [refresh]

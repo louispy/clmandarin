@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { db } from '../db';
+import { textRepo } from '../data/texts';
 import type { MandarinText, MandarinTextFile } from '../types';
 import { uuid } from '../utils/uuid';
 
 export async function findTextBySourceId(sourceId: string): Promise<MandarinText | null> {
-  const all = await db.texts.toArray();
+  const all = await textRepo.all();
   return all.find((t) => t.sourceId === sourceId) ?? null;
 }
 
@@ -13,7 +13,7 @@ export async function findTextBySourceId(sourceId: string): Promise<MandarinText
 // `ignoreId` excludes the record being replaced so a replace doesn't fight its
 // own title.
 export async function getAvailableTitle(baseTitle: string, ignoreId?: string): Promise<string> {
-  const all = await db.texts.toArray();
+  const all = await textRepo.all();
   const titles = new Set(all.filter((t) => t.id !== ignoreId).map((t) => t.title));
   if (!titles.has(baseTitle)) return baseTitle;
   const copy = `${baseTitle} (copy)`;
@@ -28,7 +28,7 @@ export function useTexts() {
   const [selectedTextId, setSelectedTextId] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
-    const all = await db.texts.orderBy('updatedAt').reverse().toArray();
+    const all = await textRepo.all();
     setTexts(all);
   }, []);
 
@@ -54,7 +54,7 @@ export function useTexts() {
         createdAt: now,
         updatedAt: now,
       };
-      await db.texts.add(text);
+      await textRepo.add(text);
       await refresh();
       return text;
     },
@@ -63,7 +63,7 @@ export function useTexts() {
 
   const updateText = useCallback(
     async (id: string, updates: Partial<Pick<MandarinText, 'title' | 'body'>>) => {
-      await db.texts.update(id, { ...updates, updatedAt: Date.now() });
+      await textRepo.update(id, updates);
       await refresh();
     },
     [refresh]
@@ -71,13 +71,13 @@ export function useTexts() {
 
   const setTranslation = useCallback(
     async (id: string, sentenceIndex: number, value: string) => {
-      const text = await db.texts.get(id);
+      const text = await textRepo.get(id);
       if (!text) return;
       const translations = { ...text.translations };
       const trimmed = value.trim();
       if (trimmed) translations[sentenceIndex] = trimmed;
       else delete translations[sentenceIndex];
-      await db.texts.update(id, { translations, updatedAt: Date.now() });
+      await textRepo.update(id, { translations });
       await refresh();
     },
     [refresh]
@@ -93,7 +93,7 @@ export function useTexts() {
       const now = Date.now();
       const src = file.text;
       const id = opts.replaceLocalId ?? uuid();
-      const existing = opts.replaceLocalId != null ? await db.texts.get(opts.replaceLocalId) : null;
+      const existing = opts.replaceLocalId != null ? await textRepo.get(opts.replaceLocalId) : null;
       const created = existing?.createdAt ?? now;
       // Title resolution mirrors flashcard import: an explicit override wins;
       // a replace preserves the local title (any rename the user made); a new /
@@ -113,7 +113,7 @@ export function useTexts() {
         createdAt: created,
         updatedAt: now,
       };
-      await db.texts.put(text);
+      await textRepo.put(text);
       await refresh();
       return text;
     },
@@ -122,7 +122,7 @@ export function useTexts() {
 
   const deleteText = useCallback(
     async (id: string) => {
-      await db.texts.delete(id);
+      await textRepo.remove(id);
       setSelectedTextId((curr) => (curr === id ? null : curr));
       await refresh();
     },

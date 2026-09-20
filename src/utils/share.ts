@@ -1,6 +1,6 @@
 import type { FlashcardList, FlashcardListFile } from '../types';
 import { getWordsByIds } from './vocab-loader';
-import { db } from '../db';
+import { listRepo } from '../data/lists';
 
 const WORKER_URL = import.meta.env.VITE_WORKER_URL as string | undefined;
 const CODE_HEX_CHARS = 8;
@@ -51,11 +51,11 @@ export async function createShare(
   // Re-read from IndexedDB — the `list` prop comes from the useLists React
   // cache, which doesn't auto-refresh when share.ts writes a new shareToken,
   // so the in-memory token can be stale (undefined on second share, etc.).
-  const fresh = (await db.lists.get(list.id)) ?? list;
+  const fresh = (await listRepo.get(list.id)) ?? list;
   let token = fresh.shareToken;
   if (!token) {
     token = generateShareToken();
-    await db.lists.update(list.id, { shareToken: token });
+    await listRepo.updateQuiet(list.id, { shareToken: token });
   }
 
   const code = await computeShareCode(list.id, token);
