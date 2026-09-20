@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { QuizConfig, QuizDirection, QuizDifficulty } from '../utils/quiz';
 import { DIRECTION_LABELS, MIN_QUIZ_WORDS } from '../utils/quiz';
 
@@ -62,16 +63,28 @@ export function QuizSetup({
   onConfigChange: (c: QuizConfig) => void;
   onStart: () => void;
 }) {
+  // Collapsed by default. Picking a deck and pressing start is the whole job;
+  // four rows of toggles on arrival makes it look like a configuration screen.
+  const [showOptions, setShowOptions] = useState(false);
+
   const source = sources.find((s) => s.id === sourceId) ?? null;
   const tooSmall = !!source && source.count < MIN_QUIZ_WORDS;
   const maxCount = source ? source.count : 0;
+  const effectiveCount = Math.min(config.count, maxCount);
 
   const countOptions = [10, 20, maxCount].filter(
     (n, i, arr) => n >= MIN_QUIZ_WORDS && arr.indexOf(n) === i && n <= maxCount
   );
 
+  const summary = [
+    `${effectiveCount} questions`,
+    DIRECTION_LABELS[config.direction],
+    config.difficulty === 'hard' ? 'Hard' : 'Normal',
+    `${config.seconds}s`,
+  ].join(' · ');
+
   return (
-    <div className="flex flex-col gap-5 pt-1">
+    <div className="flex flex-col gap-4 pt-1">
       <Field label="Deck">
         <select
           value={sourceId ?? ''}
@@ -101,69 +114,96 @@ export function QuizSetup({
         )}
       </Field>
 
-      <Field label="Questions">
-        <Segmented
-          options={countOptions.map((n) => ({
-            value: n,
-            label: n === maxCount && n !== 10 && n !== 20 ? `All ${n}` : String(n),
-          }))}
-          value={Math.min(config.count, maxCount)}
-          onChange={(count) => onConfigChange({ ...config, count })}
-        />
-      </Field>
-
-      <Field label="Direction">
-        <div className="flex flex-col gap-1.5">
-          <Segmented
-            options={(['hanzi-en', 'en-hanzi'] as QuizDirection[]).map((d) => ({
-              value: d,
-              label: DIRECTION_LABELS[d],
-            }))}
-            value={config.direction}
-            onChange={(direction) => onConfigChange({ ...config, direction })}
-          />
-          <Segmented
-            options={(['pinyin-hanzi', 'audio-hanzi'] as QuizDirection[]).map((d) => ({
-              value: d,
-              label: DIRECTION_LABELS[d],
-            }))}
-            value={config.direction}
-            onChange={(direction) => onConfigChange({ ...config, direction })}
-          />
-        </div>
-      </Field>
-
-      <Field label="Distractors">
-        <Segmented
-          options={[
-            { value: 'normal' as QuizDifficulty, label: 'Normal' },
-            { value: 'hard' as QuizDifficulty, label: 'Hard' },
-          ]}
-          value={config.difficulty}
-          onChange={(difficulty) => onConfigChange({ ...config, difficulty })}
-        />
-        <p className="border-l-2 border-cn-gold pl-2.5 text-xs leading-relaxed text-cn-muted dark:text-cn-muted-dark">
-          {config.difficulty === 'hard'
-            ? 'Wrong answers share a character, a pinyin syllable or a similar meaning — the mistakes you would actually make.'
-            : 'Wrong answers are picked at random from the same deck.'}
-        </p>
-      </Field>
-
-      <Field label="Seconds per question">
-        <Segmented
-          options={[5, 10, 20].map((n) => ({ value: n, label: String(n) }))}
-          value={config.seconds}
-          onChange={(seconds) => onConfigChange({ ...config, seconds })}
-        />
-      </Field>
-
       <button
         onClick={onStart}
         disabled={!source || tooSmall}
-        className="rounded-2xl bg-cn-red px-6 py-3.5 text-sm font-black text-white shadow-lg shadow-cn-red/25 transition-all hover:bg-cn-red-dark disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
+        className="rounded-2xl bg-cn-red px-6 py-4 text-sm font-black text-white shadow-lg shadow-cn-red/25 transition-all hover:bg-cn-red-dark disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
       >
-        Start · {Math.min(config.count, maxCount)} questions
+        Start · {effectiveCount} questions
       </button>
+
+      <div className="flex flex-col gap-3">
+        <button
+          onClick={() => setShowOptions((v) => !v)}
+          aria-expanded={showOptions}
+          className="flex items-center gap-2 rounded-xl px-1 py-1.5 text-left text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className={`h-3.5 w-3.5 shrink-0 transition-transform ${showOptions ? 'rotate-90' : ''}`}
+          >
+            <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.168 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.5 4.25a.75.75 0 0 1 0 1.08l-4.5 4.25a.75.75 0 0 1-1.06-.02Z" clipRule="evenodd" />
+          </svg>
+          Options
+          {!showOptions && (
+            <span className="truncate font-normal text-cn-muted dark:text-cn-muted-dark">
+              {summary}
+            </span>
+          )}
+        </button>
+
+        {showOptions && (
+          <div className="flex flex-col gap-5 rounded-2xl border border-cn-border px-3.5 py-4 dark:border-cn-border-dark">
+            <Field label="Questions">
+              <Segmented
+                options={countOptions.map((n) => ({
+                  value: n,
+                  label: n === maxCount && n !== 10 && n !== 20 ? `All ${n}` : String(n),
+                }))}
+                value={effectiveCount}
+                onChange={(count) => onConfigChange({ ...config, count })}
+              />
+            </Field>
+
+            <Field label="Direction">
+              <div className="flex flex-col gap-1.5">
+                <Segmented
+                  options={(['hanzi-en', 'en-hanzi'] as QuizDirection[]).map((d) => ({
+                    value: d,
+                    label: DIRECTION_LABELS[d],
+                  }))}
+                  value={config.direction}
+                  onChange={(direction) => onConfigChange({ ...config, direction })}
+                />
+                <Segmented
+                  options={(['pinyin-hanzi', 'audio-hanzi'] as QuizDirection[]).map((d) => ({
+                    value: d,
+                    label: DIRECTION_LABELS[d],
+                  }))}
+                  value={config.direction}
+                  onChange={(direction) => onConfigChange({ ...config, direction })}
+                />
+              </div>
+            </Field>
+
+            <Field label="Distractors">
+              <Segmented
+                options={[
+                  { value: 'normal' as QuizDifficulty, label: 'Normal' },
+                  { value: 'hard' as QuizDifficulty, label: 'Hard' },
+                ]}
+                value={config.difficulty}
+                onChange={(difficulty) => onConfigChange({ ...config, difficulty })}
+              />
+              <p className="border-l-2 border-cn-gold pl-2.5 text-xs leading-relaxed text-cn-muted dark:text-cn-muted-dark">
+                {config.difficulty === 'hard'
+                  ? 'Wrong answers share a character, a pinyin syllable or a similar meaning — the mistakes you would actually make.'
+                  : 'Wrong answers are picked at random from the same deck.'}
+              </p>
+            </Field>
+
+            <Field label="Seconds per question">
+              <Segmented
+                options={[5, 10, 20].map((n) => ({ value: n, label: String(n) }))}
+                value={config.seconds}
+                onChange={(seconds) => onConfigChange({ ...config, seconds })}
+              />
+            </Field>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

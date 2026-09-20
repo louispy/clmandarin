@@ -1,14 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { loadChengyu, pickForDay, dayNumber, type ChengyuEntry } from '../utils/chengyu';
 
-/**
- * The day's chengyu. Stable for the whole local day; the reroll is a
- * peek at other entries and deliberately does not persist — tomorrow still
- * brings the scheduled one.
- */
+/** The day's chengyu. Every user sees the same entry on the same date. */
 export function useChengyu() {
   const [entries, setEntries] = useState<ChengyuEntry[]>([]);
-  const [offset, setOffset] = useState(0);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -19,9 +14,7 @@ export function useChengyu() {
     return () => { cancelled = true; };
   }, []);
 
-  const entry = pickForDay(entries, dayNumber() + offset);
-  const reroll = useCallback(() => setOffset((o) => o + 1), []);
-  const isToday = offset === 0;
+  const entry = pickForDay(entries, dayNumber());
 
-  return { entry, reroll, isToday, failed, loading: entries.length === 0 && !failed };
+  return { entry, failed, loading: entries.length === 0 && !failed };
 }

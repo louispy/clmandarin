@@ -21,7 +21,7 @@ export interface QuizAnswer {
 }
 
 export const DEFAULT_QUIZ_CONFIG: QuizConfig = {
-  count: 20,
+  count: 10,
   direction: 'hanzi-en',
   difficulty: 'hard',
   seconds: 10,

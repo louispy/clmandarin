@@ -32,11 +32,18 @@ const MS_PER_DAY = 86_400_000;
  */
 const STRIDE = 137;
 
+/**
+ * A stable number for a calendar date, identical in every timezone.
+ *
+ * Built from the local calendar date via Date.UTC rather than a local
+ * timestamp: a local-midnight Date shifts by the zone offset, so Los Angeles
+ * and Tokyo would land on different entries for the same date. Everyone on
+ * the 21st sees the same chengyu, each at their own midnight.
+ */
 export function dayNumber(date = new Date()): number {
-  // Local midnight, so the entry changes when the user's day does rather than
-  // at UTC midnight.
-  const local = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  return Math.floor(local.getTime() / MS_PER_DAY);
+  return Math.floor(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / MS_PER_DAY
+  );
 }
 
 export function pickForDay(entries: ChengyuEntry[], day: number): ChengyuEntry | null {

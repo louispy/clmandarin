@@ -28,6 +28,11 @@ export const DECK_DEFS: DeckDef[] = [
   { id: MY_WORDS_DECK_ID, name: 'My words', level: 0 },
 ];
 
+/** Watermark character for a deck tile, keyed by level. */
+export const DECK_GLYPH: Record<number, string> = {
+  1: '\u4e00', 2: '\u4e8c', 3: '\u4e09', 4: '\u56db', 5: '\u4e94', 6: '\u516d', 0: '\u6211',
+};
+
 const DECK_IDS = new Set(DECK_DEFS.map((d) => d.id));
 
 /**

@@ -3,10 +3,7 @@ import type { useDecks } from '../hooks/useDecks';
 import type { useLists } from '../hooks/useLists';
 import { useChengyu } from '../hooks/useChengyu';
 import { ChengyuCard } from '../components/ChengyuCard';
-
-const TILE_HANZI: Record<number, string> = {
-  1: '一', 2: '二', 3: '三', 4: '四', 5: '五', 6: '六', 0: '我',
-};
+import { DECK_GLYPH } from '../utils/decks';
 
 function QuickLink({
   label,
@@ -71,13 +68,7 @@ export function HomeScreen({
 
   return (
     <div className="flex flex-col gap-4 pt-1">
-      <ChengyuCard
-        entry={chengyu.entry}
-        isToday={chengyu.isToday}
-        onReroll={chengyu.reroll}
-        loading={chengyu.loading}
-        failed={chengyu.failed}
-      />
+      <ChengyuCard entry={chengyu.entry} loading={chengyu.loading} failed={chengyu.failed} />
 
       <form
         onSubmit={(e) => {
@@ -110,7 +101,7 @@ export function HomeScreen({
               className="relative flex flex-col items-start gap-0.5 overflow-hidden rounded-2xl border border-cn-border bg-cn-surface px-3 py-2.5 text-left transition-colors hover:border-cn-red/40 dark:border-cn-border-dark dark:bg-cn-surface-dark"
             >
               <span className="pointer-events-none absolute right-1.5 top-0.5 text-2xl font-bold text-cn-red opacity-[0.09]">
-                {TILE_HANZI[deck.level] ?? ''}
+                {DECK_GLYPH[deck.level] ?? ''}
               </span>
               <span className="text-[13px] font-black text-cn-ink dark:text-cn-cream">{deck.name}</span>
               <span className="font-pinyin text-[11px] tabular-nums text-cn-muted dark:text-cn-muted-dark">
