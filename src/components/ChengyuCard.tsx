@@ -71,8 +71,14 @@ export function ChengyuCard({
           </p>
           {/* Literal and meaning each get their own line, but with tight
               leading and no gap between them, so the pair costs about the
-              same height as one wrapped paragraph. */}
-          <p className="mt-1.5 text-[13px] italic leading-snug text-cn-muted dark:text-cn-muted-dark">
+              same height as one wrapped paragraph.
+
+              The literal needs the Latin-first stack for the same reason
+              pinyin does (see --font-pinyin in index.css): a CJK font renders
+              U+201C as a full-width glyph with its ink in the right half of the
+              em-box, which pushed the quoted line visibly right of the meaning
+              below it. */}
+          <p className="mt-1.5 font-pinyin text-[13px] italic leading-snug text-cn-muted dark:text-cn-muted-dark">
             &ldquo;{entry.literal}&rdquo;
           </p>
           <p className="text-[13px] leading-snug text-cn-ink dark:text-cn-cream">
