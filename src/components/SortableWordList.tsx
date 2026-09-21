@@ -225,10 +225,30 @@ export function SortableWordList({
     />
   );
 
+  const visibilityChips = (
+    <div className="flex shrink-0 items-center gap-1">
+      {(['hanzi', 'pinyin', 'english'] as const).map((field) => (
+        <button
+          key={field}
+          onClick={() => onToggleVisibility(field)}
+          className={`rounded-lg px-2.5 py-1 text-xs font-bold transition-colors ${
+            visibility[field]
+              ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
+              : 'bg-cn-surface text-cn-muted/40 dark:bg-cn-surface-dark dark:text-cn-muted-dark/40'
+          }`}
+          title={`Show ${field}`}
+        >
+          {field === 'hanzi' ? '字' : field === 'pinyin' ? 'Pīn' : 'Eng'}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
-    <div className="flex flex-col gap-3">
-      {/* Search within list */}
-      <div className="relative">
+    <div className="flex flex-col gap-2">
+      {/* Search, with the show/hide chips alongside rather than on their own row */}
+      <div className="flex items-center gap-2">
+      <div className="relative min-w-0 flex-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cn-muted/50 dark:text-cn-muted-dark/50">
           <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clipRule="evenodd" />
         </svg>
@@ -245,32 +265,17 @@ export function SortableWordList({
           </span>
         )}
       </div>
+      {!editMode && visibilityChips}
+      </div>
 
-      {/* Sticky toolbar: Show toggles + Edit/Done + Study */}
-      <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between gap-2 bg-cn-paper/95 px-4 pb-2 pt-4 backdrop-blur dark:bg-cn-paper-dark/95">
+      {/* Sticky toolbar: Edit/Done + Study */}
+      <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between gap-2 bg-cn-paper/95 px-4 pb-2 pt-2 backdrop-blur dark:bg-cn-paper-dark/95">
         {editMode ? (
           <span className="text-xs text-cn-muted dark:text-cn-muted-dark">
             Drag to reorder · tap <span className="font-bold text-cn-red dark:text-cn-red-light">Done</span> to exit
           </span>
         ) : (
-          <div className="flex items-center gap-1">
-            <span className="mr-2 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
-              Show:
-            </span>
-            {(['hanzi', 'pinyin', 'english'] as const).map((field) => (
-              <button
-                key={field}
-                onClick={() => onToggleVisibility(field)}
-                className={`rounded-lg px-3 py-1 text-xs font-bold transition-colors ${
-                  visibility[field]
-                    ? 'bg-cn-red/10 text-cn-red dark:bg-cn-red/20 dark:text-cn-red-light'
-                    : 'bg-cn-surface text-cn-muted/40 dark:bg-cn-surface-dark dark:text-cn-muted-dark/40'
-                }`}
-              >
-                {field === 'hanzi' ? '字' : field === 'pinyin' ? 'Pīn' : 'Eng'}
-              </button>
-            ))}
-          </div>
+          <span />
         )}
         <div className="flex items-center gap-2">
           {!q && (
