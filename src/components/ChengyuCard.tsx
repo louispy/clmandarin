@@ -99,7 +99,6 @@ export function ChengyuCard({
               <dd>An everyday proverb, closer to how people actually speak.</dd>
             </div>
           </dl>
-          <p>A new one every day.</p>
         </InfoModal>
       )}
     </div>
