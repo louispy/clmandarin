@@ -82,21 +82,33 @@ export function ChengyuCard({
       )}
 
       {infoOpen && (
-        <InfoModal title="Chengyu and suyu" onClose={() => setInfoOpen(false)}>
-          <p>
-            A <strong className="text-cn-ink dark:text-cn-cream">chengyu</strong> (成语) is a fixed
-            Chinese idiom, almost always four characters, usually condensed from a classical story
-            or fable. 画蛇添足 — &ldquo;draw a snake, add feet&rdquo; — means to spoil something by
-            overdoing it, and every native speaker knows the tale behind it.
-          </p>
-          <p>
-            A <strong className="text-cn-ink dark:text-cn-cream">suyu</strong> (俗语) is a common
-            saying or proverb. Less fixed, often longer, and closer to everyday speech —
-            一分钱一分货, &ldquo;you get what you pay for&rdquo;.
-          </p>
-          <p>
-            One is shown here each day. Everyone sees the same one on the same date.
-          </p>
+        <InfoModal title="Chengyu 成语, suyu 俗语" onClose={() => setInfoOpen(false)}>
+          {/* A definition list, not paragraphs: the examples carry the
+              explanation, so each term needs one line rather than three. */}
+          <dl className="flex flex-col gap-3.5">
+            <div>
+              <dt className="font-bold text-cn-ink dark:text-cn-cream">
+                成语 <span className="font-normal">chéngyǔ</span>
+              </dt>
+              <dd>A fixed four-character idiom, usually from a classical story.</dd>
+              <dd className="mt-1 text-cn-ink dark:text-cn-cream">
+                画蛇添足 &mdash;{' '}
+                <span className="italic">&ldquo;draw a snake, add feet&rdquo;</span> &mdash; to
+                spoil something by overdoing it.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-bold text-cn-ink dark:text-cn-cream">
+                俗语 <span className="font-normal">súyǔ</span>
+              </dt>
+              <dd>An everyday proverb, closer to how people actually speak.</dd>
+              <dd className="mt-1 text-cn-ink dark:text-cn-cream">
+                一分钱一分货 &mdash;{' '}
+                <span className="italic">&ldquo;you get what you pay for&rdquo;</span>.
+              </dd>
+            </div>
+          </dl>
+          <p className="text-[13px]">A new one every day.</p>
         </InfoModal>
       )}
     </div>
