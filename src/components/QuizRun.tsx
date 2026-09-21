@@ -25,6 +25,7 @@ export function QuizRun({
   streak,
   script,
   onAnswer,
+  onNext,
   onQuit,
   onPauseChange,
 }: {
@@ -38,6 +39,7 @@ export function QuizRun({
   streak: number;
   script: Script;
   onAnswer: (wordId: string) => void;
+  onNext: () => void;
   onQuit: () => void;
   onPauseChange: (paused: boolean) => void;
 }) {
@@ -79,7 +81,10 @@ export function QuizRun({
         />
       </div>
 
-      <div className="flex items-center gap-3 font-pinyin text-xs font-bold tabular-nums text-cn-muted dark:text-cn-muted-dark">
+      {/* Fixed height: the Next button is taller than the countdown it
+          replaces, and without this the row grows and nudges the tiles down
+          the moment you answer. */}
+      <div className="flex h-6 items-center gap-3 font-pinyin text-xs font-bold tabular-nums text-cn-muted dark:text-cn-muted-dark">
         <button
           onClick={() => {
             setConfirmingQuit(true);
@@ -92,9 +97,18 @@ export function QuizRun({
         <span>
           {index + 1} / {total}
         </span>
-        <span className={fraction < 0.3 ? 'text-cn-red dark:text-cn-red-light' : ''}>
-          {(msLeft / 1000).toFixed(1)}s
-        </span>
+        {locked ? (
+          <button
+            onClick={onNext}
+            className="rounded-lg bg-cn-red px-2.5 py-0.5 font-black text-white"
+          >
+            Next &rarr;
+          </button>
+        ) : (
+          <span className={fraction < 0.3 ? 'text-cn-red dark:text-cn-red-light' : ''}>
+            {(msLeft / 1000).toFixed(1)}s
+          </span>
+        )}
         {streak >= 2 && <span className="ml-auto text-cn-gold">&#128293; {streak}</span>}
       </div>
 
@@ -129,22 +143,6 @@ export function QuizRun({
           </button>
         )}
       </div>
-
-      {locked && (
-        <p
-          className={`text-center text-sm font-black ${
-            locked.chosenId === question.word.id
-              ? 'text-[#2E7D52] dark:text-[#6FBF95]'
-              : 'text-cn-red dark:text-cn-red-light'
-          }`}
-        >
-          {locked.chosenId === question.word.id
-            ? '\u2713 Correct'
-            : locked.chosenId === null
-              ? `\u2717 Out of time \u2014 ${optionLabel(question.word)}`
-              : `\u2717 ${optionLabel(question.word)}`}
-        </p>
-      )}
 
       <div className="grid grid-cols-2 gap-2">
         {question.options.map((option, i) => {

@@ -102,6 +102,7 @@ export function QuizScreen({
         streak={quiz.streak}
         script={script}
         onAnswer={quiz.answer}
+        onNext={quiz.next}
         onQuit={quiz.quit}
         onPauseChange={quiz.pause}
       />

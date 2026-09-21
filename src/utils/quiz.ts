@@ -11,6 +11,11 @@ export interface QuizConfig {
   difficulty: QuizDifficulty;
   /** Seconds allowed per question. */
   seconds: number;
+  /**
+   * How long the answer stays on screen before the next question, or null to
+   * wait for the user to press Next.
+   */
+  revealSeconds: number | null;
 }
 
 export interface QuizQuestion {

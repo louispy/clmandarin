@@ -81,6 +81,7 @@ export function QuizSetup({
     DIRECTION_LABELS[config.direction],
     config.difficulty === 'hard' ? 'Hard' : 'Normal',
     `${config.seconds}s`,
+    config.revealSeconds === null ? 'manual next' : `next in ${config.revealSeconds}s`,
   ].join(' · ');
 
   return (
@@ -210,6 +211,18 @@ export function QuizSetup({
                 options={[5, 10, 20].map((n) => ({ value: n, label: String(n) }))}
                 value={config.seconds}
                 onChange={(seconds) => onConfigChange({ ...config, seconds })}
+              />
+            </Field>
+
+            <Field label="After answering">
+              <Segmented
+                options={[
+                  { value: 1, label: 'Next in 1s' },
+                  { value: 3, label: 'Next in 3s' },
+                  { value: 0, label: 'I tap Next' },
+                ]}
+                value={config.revealSeconds ?? 0}
+                onChange={(v) => onConfigChange({ ...config, revealSeconds: v === 0 ? null : v })}
               />
             </Field>
           </div>

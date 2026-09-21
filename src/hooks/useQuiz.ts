@@ -25,10 +25,8 @@ export const DEFAULT_QUIZ_CONFIG: QuizConfig = {
   direction: 'hanzi-en',
   difficulty: 'hard',
   seconds: 10,
+  revealSeconds: 3,
 };
-
-/** How long the right/wrong colours stay up before the next question. */
-const FEEDBACK_MS = 900;
 
 export function useQuiz() {
   const [phase, setPhase] = useState<QuizPhase>('setup');
@@ -53,6 +51,12 @@ export function useQuiz() {
   const pausedRef = useRef(false);
 
   const totalMs = config.seconds * 1000;
+  // Held in a ref so the advance timer set inside commit() reads the value in
+  // force when the answer was given.
+  const revealRef = useRef<number | null>(config.revealSeconds);
+  useEffect(() => {
+    revealRef.current = config.revealSeconds;
+  }, [config.revealSeconds]);
 
   const clearTimers = useCallback(() => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
@@ -77,6 +81,25 @@ export function useQuiz() {
   const indexRef = useRef(0);
   const answersRef = useRef<QuizAnswer[]>([]);
 
+  /** Move to the next question, or finish. Safe to call twice. */
+  const advance = useCallback(() => {
+    if (!lockedRef.current) return;
+    if (advanceRef.current !== null) {
+      clearTimeout(advanceRef.current);
+      advanceRef.current = null;
+    }
+    lockedRef.current = false;
+    setLocked(null);
+    const next = indexRef.current + 1;
+    if (next >= questionsRef.current.length) {
+      setPhase('results');
+      return;
+    }
+    indexRef.current = next;
+    setIndex(next);
+    setLeft(totalMs);
+  }, [totalMs, setLeft]);
+
   // Lock in an answer. `chosenId` is null when the timer expired.
   const commit = useCallback(
     (chosenId: string | null) => {
@@ -100,20 +123,12 @@ export function useQuiz() {
       answersRef.current = [...answersRef.current, entry];
       setAnswers(answersRef.current);
 
-      advanceRef.current = setTimeout(() => {
-        lockedRef.current = false;
-        setLocked(null);
-        const next = indexRef.current + 1;
-        if (next >= questionsRef.current.length) {
-          setPhase('results');
-          return;
-        }
-        indexRef.current = next;
-        setIndex(next);
-        setLeft(totalMs);
-      }, FEEDBACK_MS);
+      // Null reveal means the user decides when to move on.
+      if (revealRef.current !== null) {
+        advanceRef.current = setTimeout(advance, revealRef.current * 1000);
+      }
     },
-    [totalMs, setLeft]
+    [totalMs, advance]
   );
 
   // The timer loop calls commit without depending on it, so the effect below
@@ -215,6 +230,7 @@ export function useQuiz() {
     locked,
     paused,
     pause,
+    next: advance,
     answers,
     totalPoints,
     correctCount,
