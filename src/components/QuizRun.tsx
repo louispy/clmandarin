@@ -112,7 +112,7 @@ export function QuizRun({
             setConfirmingQuit(true);
             onPauseChange(true);
           }}
-          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-cn-border text-cn-muted transition-colors hover:border-cn-red hover:text-cn-red dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-red-light"
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-cn-red text-white shadow-sm shadow-cn-red/30 transition-colors hover:bg-cn-red-dark"
           title="Quit quiz"
           aria-label="Quit quiz"
         >
@@ -126,7 +126,7 @@ export function QuizRun({
         {locked ? (
           <button
             onClick={onNext}
-            className="rounded-lg bg-cn-red px-2 py-0.5 font-black tabular-nums text-white"
+            className="rounded-lg bg-cn-gold px-2 py-0.5 font-black tabular-nums text-cn-ink shadow-sm shadow-cn-gold/30 transition-colors hover:bg-cn-gold-light"
           >
             Next{revealing ? ` (${Math.ceil(revealLeft / 1000)})` : ''}&nbsp;&rarr;
           </button>
