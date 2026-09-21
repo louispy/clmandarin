@@ -25,6 +25,8 @@ export function QuizRun({
   revealTotalMs,
   locked,
   streak,
+  totalPoints,
+  lastPoints,
   script,
   onAnswer,
   onNext,
@@ -41,6 +43,8 @@ export function QuizRun({
   revealTotalMs: number;
   locked: { chosenId: string | null } | null;
   streak: number;
+  totalPoints: number;
+  lastPoints: number;
   script: Script;
   onAnswer: (wordId: string) => void;
   onNext: () => void;
@@ -102,32 +106,46 @@ export function QuizRun({
       {/* Fixed height: the Next button is taller than the countdown it
           replaces, and without this the row grows and nudges the tiles down
           the moment you answer. */}
-      <div className="flex h-6 items-center gap-3 font-pinyin text-xs font-bold tabular-nums text-cn-muted dark:text-cn-muted-dark">
+      <div className="flex h-6 items-center gap-2.5 font-pinyin text-xs font-bold tabular-nums text-cn-muted dark:text-cn-muted-dark">
         <button
           onClick={() => {
             setConfirmingQuit(true);
             onPauseChange(true);
           }}
-          className="text-cn-red hover:underline dark:text-cn-red-light"
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-cn-border text-cn-muted transition-colors hover:border-cn-red hover:text-cn-red dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-red-light"
+          title="Quit quiz"
+          aria-label="Quit quiz"
         >
-          Quit
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
+            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+          </svg>
         </button>
         <span>
-          {index + 1} / {total}
+          {index + 1}/{total}
         </span>
         {locked ? (
           <button
             onClick={onNext}
-            className="rounded-lg bg-cn-red px-2.5 py-0.5 font-black tabular-nums text-white"
+            className="rounded-lg bg-cn-red px-2 py-0.5 font-black tabular-nums text-white"
           >
-            Next {revealing ? `(${Math.ceil(revealLeft / 1000)})` : ''}&nbsp;&rarr;
+            Next{revealing ? ` (${Math.ceil(revealLeft / 1000)})` : ''}&nbsp;&rarr;
           </button>
         ) : (
           <span className={fraction < 0.3 ? 'text-cn-red dark:text-cn-red-light' : ''}>
             {(msLeft / 1000).toFixed(1)}s
           </span>
         )}
-        {streak >= 2 && <span className="ml-auto text-cn-gold">&#128293; {streak}</span>}
+
+        {/* Score on the right, with what the last answer earned beside it. */}
+        <span className="ml-auto flex items-center gap-2">
+          {locked && lastPoints > 0 && (
+            <span className="font-black text-[#2E7D52] dark:text-[#6FBF95]">+{lastPoints}</span>
+          )}
+          {streak >= 2 && <span className="text-cn-gold">&#128293;{streak}</span>}
+          <span className="font-black text-cn-ink dark:text-cn-cream">
+            {totalPoints.toLocaleString()}
+          </span>
+        </span>
       </div>
 
       <div className="flex min-h-[9rem] flex-col items-center justify-center gap-2 rounded-2xl border border-cn-border bg-cn-surface px-4 py-6 text-center dark:border-cn-border-dark dark:bg-cn-surface-dark">

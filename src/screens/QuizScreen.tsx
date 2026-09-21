@@ -102,6 +102,8 @@ export function QuizScreen({
         revealTotalMs={quiz.revealTotalMs}
         locked={quiz.locked}
         streak={quiz.streak}
+        totalPoints={quiz.totalPoints}
+        lastPoints={quiz.lastPoints}
         script={script}
         onAnswer={quiz.answer}
         onNext={quiz.next}

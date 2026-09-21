@@ -237,6 +237,8 @@ export function useQuiz() {
 
   const question = questions[index] ?? null;
   const totalPoints = answers.reduce((sum, a) => sum + a.points, 0);
+  /** What the most recent answer was worth, for the +N on screen. */
+  const lastPoints = answers.length ? answers[answers.length - 1].points : 0;
   const correctCount = answers.filter((a) => a.correct).length;
   const missed = answers.filter((a) => !a.correct);
 
@@ -258,6 +260,7 @@ export function useQuiz() {
     next: advance,
     answers,
     totalPoints,
+    lastPoints,
     correctCount,
     missed,
     streak: countTrailingCorrect(answers),
