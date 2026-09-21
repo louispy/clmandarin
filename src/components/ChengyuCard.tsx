@@ -69,46 +69,37 @@ export function ChengyuCard({
           <p className="font-pinyin text-[13px] leading-snug tracking-wide text-cn-muted dark:text-cn-muted-dark">
             {entry.pinyin}
           </p>
-          {/* Literal reading folded into the meaning as a lead-in: one
-              paragraph instead of two stacked lines. */}
-          <p className="mt-1.5 text-[13px] leading-relaxed text-cn-ink dark:text-cn-cream">
-            <span className="italic text-cn-muted dark:text-cn-muted-dark">
-              &ldquo;{entry.literal}&rdquo;
-            </span>
-            {' — '}
+          {/* Literal and meaning each get their own line, but with tight
+              leading and no gap between them, so the pair costs about the
+              same height as one wrapped paragraph. */}
+          <p className="mt-1.5 text-[13px] italic leading-snug text-cn-muted dark:text-cn-muted-dark">
+            &ldquo;{entry.literal}&rdquo;
+          </p>
+          <p className="text-[13px] leading-snug text-cn-ink dark:text-cn-cream">
             {entry.meaning}
           </p>
         </div>
       )}
 
       {infoOpen && (
-        <InfoModal title="Chengyu 成语, suyu 俗语" onClose={() => setInfoOpen(false)}>
-          {/* A definition list, not paragraphs: the examples carry the
-              explanation, so each term needs one line rather than three. */}
-          <dl className="flex flex-col gap-3.5">
+        <InfoModal title="Chengyu 成语 and Suyu 俗语" onClose={() => setInfoOpen(false)}>
+          {/* A definition list, not paragraphs. No examples: the card itself
+              is the example, sitting right behind this dialog. */}
+          <dl className="flex flex-col gap-3">
             <div>
               <dt className="font-bold text-cn-ink dark:text-cn-cream">
                 成语 <span className="font-normal">chéngyǔ</span>
               </dt>
               <dd>A fixed four-character idiom, usually from a classical story.</dd>
-              <dd className="mt-1 text-cn-ink dark:text-cn-cream">
-                画蛇添足 &mdash;{' '}
-                <span className="italic">&ldquo;draw a snake, add feet&rdquo;</span> &mdash; to
-                spoil something by overdoing it.
-              </dd>
             </div>
             <div>
               <dt className="font-bold text-cn-ink dark:text-cn-cream">
                 俗语 <span className="font-normal">súyǔ</span>
               </dt>
               <dd>An everyday proverb, closer to how people actually speak.</dd>
-              <dd className="mt-1 text-cn-ink dark:text-cn-cream">
-                一分钱一分货 &mdash;{' '}
-                <span className="italic">&ldquo;you get what you pay for&rdquo;</span>.
-              </dd>
             </div>
           </dl>
-          <p className="text-[13px]">A new one every day.</p>
+          <p>A new one every day.</p>
         </InfoModal>
       )}
     </div>

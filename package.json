@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
+    "dev:https": "VITE_HTTPS=1 vite --host",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "typecheck": "tsc -b",
@@ -31,6 +32,7 @@
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-basic-ssl": "^2.3.0",
     "@vitejs/plugin-react": "^5.1.1",
     "cheerio": "^1.2.0",
     "eslint": "^9.39.1",

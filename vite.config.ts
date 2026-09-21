@@ -2,10 +2,20 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import basicSsl from '@vitejs/plugin-basic-ssl'
+
+// navigator.share() with files needs a secure context, and only localhost is
+// exempt — so testing the share sheet on a phone over http://<lan-ip> silently
+// falls back to downloading the PNG. `npm run dev:https` serves the dev server
+// over HTTPS with a self-signed certificate; accept the browser warning once on
+// the phone and sharing works properly.
+const httpsDev = process.env.VITE_HTTPS === '1'
 
 export default defineConfig({
   base: '/clmandarin/',
+  server: httpsDev ? { host: true } : undefined,
   plugins: [
+    ...(httpsDev ? [basicSsl()] : []),
     react(),
     tailwindcss(),
     VitePWA({
