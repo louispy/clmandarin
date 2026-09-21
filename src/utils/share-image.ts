@@ -16,8 +16,13 @@ import type { ChengyuEntry } from './chengyu';
  * This is a few hundred lines with nothing to go wrong at runtime.
  */
 
-/** 9:16 fills a Story; 1:1 suits a feed post or a chat. */
-export type ShareFormat = 'story' | 'square';
+/**
+ * 1:1 is the default. Instagram letterboxes a square onto the Story gradient,
+ * which reads as deliberate, and the same file also works in a feed post, a
+ * chat or a tweet — where a 9:16 image gets cropped or shrunk. 'story' is kept
+ * for the full-bleed variant.
+ */
+export type ShareFormat = 'square' | 'story';
 
 interface Metrics {
   w: number;
@@ -34,10 +39,10 @@ interface Metrics {
 }
 
 const FORMATS: Record<ShareFormat, Metrics> = {
-  story: { w: 1080, h: 1920, air: 1, headline: 200, body: 46, literal: 40, pinyin: 54, footer: 110 },
   // A square has roughly half the vertical room, so the type comes down with
   // it — otherwise a five-line meaning collides with the wordmark.
   square: { w: 1080, h: 1080, air: 0.68, headline: 150, body: 40, literal: 34, pinyin: 44, footer: 84 },
+  story: { w: 1080, h: 1920, air: 1, headline: 200, body: 46, literal: 40, pinyin: 54, footer: 110 },
 };
 
 interface Frame {
@@ -207,7 +212,7 @@ function wordmark({ ctx, m }: Frame) {
 
 export function renderChengyuStory(
   entry: ChengyuEntry,
-  format: ShareFormat = 'story'
+  format: ShareFormat = 'square'
 ): Promise<Blob> {
   const f = frame(format);
   const { ctx, m } = f;
@@ -271,7 +276,7 @@ export interface QuizStoryData {
 
 export function renderQuizStory(
   data: QuizStoryData,
-  format: ShareFormat = 'story'
+  format: ShareFormat = 'square'
 ): Promise<Blob> {
   const f = frame(format);
   const { ctx, m } = f;
