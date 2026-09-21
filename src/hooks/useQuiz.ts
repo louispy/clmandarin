@@ -37,6 +37,8 @@ export function useQuiz() {
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [msLeft, setMsLeft] = useState(0);
   const [locked, setLocked] = useState<{ chosenId: string | null } | null>(null);
+  /** Time left on the pause after answering, so the UI can show it running out. */
+  const [revealLeft, setRevealLeft] = useState(0);
   // The old window.confirm on quit froze the countdown by blocking the thread.
   // An in-app confirmation has to stop it deliberately, or deciding whether to
   // quit costs the user the question.
@@ -44,15 +46,16 @@ export function useQuiz() {
 
   const rafRef = useRef<number | null>(null);
   const lastRef = useRef<number | null>(null);
-  const advanceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // The loop reads these through refs so it never needs re-creating mid-run.
   const msLeftRef = useRef(0);
   const lockedRef = useRef(false);
   const pausedRef = useRef(false);
+  const revealLeftRef = useRef(0);
 
   const totalMs = config.seconds * 1000;
-  // Held in a ref so the advance timer set inside commit() reads the value in
-  // force when the answer was given.
+  const revealTotalMs = (config.revealSeconds ?? 0) * 1000;
+  // Held in a ref so the pause started inside commit() uses the value in force
+  // when the answer was given.
   const revealRef = useRef<number | null>(config.revealSeconds);
   useEffect(() => {
     revealRef.current = config.revealSeconds;
@@ -60,9 +63,7 @@ export function useQuiz() {
 
   const clearTimers = useCallback(() => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
-    if (advanceRef.current !== null) clearTimeout(advanceRef.current);
     rafRef.current = null;
-    advanceRef.current = null;
     lastRef.current = null;
   }, []);
 
@@ -71,6 +72,11 @@ export function useQuiz() {
   const setLeft = useCallback((ms: number) => {
     msLeftRef.current = ms;
     setMsLeft(ms);
+  }, []);
+
+  const setReveal = useCallback((ms: number) => {
+    revealLeftRef.current = ms;
+    setRevealLeft(ms);
   }, []);
 
   // Mirrors of state the timer loop and commit() read. Using refs rather than
@@ -84,12 +90,9 @@ export function useQuiz() {
   /** Move to the next question, or finish. Safe to call twice. */
   const advance = useCallback(() => {
     if (!lockedRef.current) return;
-    if (advanceRef.current !== null) {
-      clearTimeout(advanceRef.current);
-      advanceRef.current = null;
-    }
     lockedRef.current = false;
     setLocked(null);
+    setReveal(0);
     const next = indexRef.current + 1;
     if (next >= questionsRef.current.length) {
       setPhase('results');
@@ -98,7 +101,7 @@ export function useQuiz() {
     indexRef.current = next;
     setIndex(next);
     setLeft(totalMs);
-  }, [totalMs, setLeft]);
+  }, [totalMs, setLeft, setReveal]);
 
   // Lock in an answer. `chosenId` is null when the timer expired.
   const commit = useCallback(
@@ -123,20 +126,24 @@ export function useQuiz() {
       answersRef.current = [...answersRef.current, entry];
       setAnswers(answersRef.current);
 
-      // Null reveal means the user decides when to move on.
-      if (revealRef.current !== null) {
-        advanceRef.current = setTimeout(advance, revealRef.current * 1000);
-      }
+      // Null reveal means the user decides when to move on; otherwise the
+      // countdown below runs it down so the wait is visible rather than a
+      // blind setTimeout.
+      setReveal(revealRef.current === null ? 0 : revealRef.current * 1000);
     },
-    [totalMs, advance]
+    [totalMs, setReveal]
   );
 
-  // The timer loop calls commit without depending on it, so the effect below
-  // keeps the ref pointing at the current closure.
+  // The timer loop calls these without depending on them, so the effects below
+  // keep the refs pointing at the current closures.
   const commitRef = useRef(commit);
   useEffect(() => {
     commitRef.current = commit;
   }, [commit]);
+  const advanceFnRef = useRef<() => void>(() => {});
+  useEffect(() => {
+    advanceFnRef.current = advance;
+  }, [advance]);
 
   // The countdown. Driven from performance.now() deltas rather than
   // accumulating setInterval ticks, which drift. Pauses while the browser tab
@@ -146,7 +153,7 @@ export function useQuiz() {
 
     const tick = (now: number) => {
       rafRef.current = requestAnimationFrame(tick);
-      if (document.hidden || lockedRef.current || pausedRef.current) {
+      if (document.hidden || pausedRef.current) {
         lastRef.current = now;
         return;
       }
@@ -156,6 +163,21 @@ export function useQuiz() {
       }
       const dt = now - lastRef.current;
       lastRef.current = now;
+
+      // While the answer is on screen the question clock is stopped and this
+      // runs the pause down instead. A null reveal waits for the user.
+      if (lockedRef.current) {
+        if (revealRef.current === null) return;
+        const remaining = revealLeftRef.current - dt;
+        if (remaining <= 0) {
+          setReveal(0);
+          advanceFnRef.current();
+          return;
+        }
+        setReveal(remaining);
+        return;
+      }
+
       const next = msLeftRef.current - dt;
       if (next <= 0) {
         setLeft(0);
@@ -171,7 +193,7 @@ export function useQuiz() {
       rafRef.current = null;
       lastRef.current = null;
     };
-  }, [phase, setLeft]);
+  }, [phase, setLeft, setReveal]);
 
   const start = useCallback(
     (words: VocabWord[], nextConfig: QuizConfig, label: string) => {
@@ -190,12 +212,13 @@ export function useQuiz() {
       setLocked(null);
       lockedRef.current = false;
       setLeft(nextConfig.seconds * 1000);
+      setReveal(0);
       pausedRef.current = false;
       setPaused(false);
       setPhase('running');
       return true;
     },
-    [clearTimers, setLeft]
+    [clearTimers, setLeft, setReveal]
   );
 
   const quit = useCallback(() => {
@@ -227,6 +250,8 @@ export function useQuiz() {
     total: questions.length,
     msLeft,
     totalMs,
+    revealLeft,
+    revealTotalMs,
     locked,
     paused,
     pause,

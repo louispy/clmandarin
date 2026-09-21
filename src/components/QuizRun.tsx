@@ -21,6 +21,8 @@ export function QuizRun({
   total,
   msLeft,
   totalMs,
+  revealLeft,
+  revealTotalMs,
   locked,
   streak,
   script,
@@ -35,6 +37,8 @@ export function QuizRun({
   total: number;
   msLeft: number;
   totalMs: number;
+  revealLeft: number;
+  revealTotalMs: number;
   locked: { chosenId: string | null } | null;
   streak: number;
   script: Script;
@@ -56,6 +60,20 @@ export function QuizRun({
     opts === 'hanzi' ? displayHanzi(w, script) : displayGloss(w.english);
 
   const fraction = Math.max(0, Math.min(1, msLeft / totalMs));
+  const wasCorrect = locked?.chosenId === question.word.id;
+  // While the answer is up, the same bar runs the pause down — so the wait is
+  // visible, and its colour doubles as the right/wrong signal.
+  const revealing = locked !== null && revealTotalMs > 0;
+  const barFraction = revealing
+    ? Math.max(0, Math.min(1, revealLeft / revealTotalMs))
+    : fraction;
+  const barColour = locked
+    ? wasCorrect
+      ? 'bg-[#2E7D52]'
+      : 'bg-cn-red'
+    : fraction < 0.3
+      ? 'bg-cn-red'
+      : 'bg-cn-gold';
 
   const cancelQuit = () => {
     setConfirmingQuit(false);
@@ -76,8 +94,8 @@ export function QuizRun({
       )}
       <div className="h-1.5 overflow-hidden rounded-full bg-cn-border dark:bg-cn-border-dark">
         <div
-          className={`h-full rounded-full transition-colors ${fraction < 0.3 ? 'bg-cn-red' : 'bg-cn-gold'}`}
-          style={{ width: `${fraction * 100}%` }}
+          className={`h-full rounded-full transition-colors ${barColour}`}
+          style={{ width: `${(locked && !revealing ? 1 : barFraction) * 100}%` }}
         />
       </div>
 
@@ -100,9 +118,9 @@ export function QuizRun({
         {locked ? (
           <button
             onClick={onNext}
-            className="rounded-lg bg-cn-red px-2.5 py-0.5 font-black text-white"
+            className="rounded-lg bg-cn-red px-2.5 py-0.5 font-black tabular-nums text-white"
           >
-            Next &rarr;
+            Next {revealing ? `(${Math.ceil(revealLeft / 1000)})` : ''}&nbsp;&rarr;
           </button>
         ) : (
           <span className={fraction < 0.3 ? 'text-cn-red dark:text-cn-red-light' : ''}>

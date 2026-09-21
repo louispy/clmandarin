@@ -18,8 +18,11 @@ function isActive(route: Route, tab: Tab): boolean {
 
 function TabBadge({ count }: { count: number }) {
   if (count <= 0) return null;
+  // z-10 because the badge overflows its own tab: the next tab along paints
+  // its background afterwards in DOM order and was clipping the badge in half
+  // whenever that tab was the active one.
   return (
-    <span className="absolute -right-2 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cn-gold text-[9px] font-black text-white">
+    <span className="absolute -right-2 -top-1 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-cn-gold text-[9px] font-black text-white shadow-sm">
       {count}
     </span>
   );

@@ -98,6 +98,8 @@ export function QuizScreen({
         total={quiz.total}
         msLeft={quiz.msLeft}
         totalMs={quiz.totalMs}
+        revealLeft={quiz.revealLeft}
+        revealTotalMs={quiz.revealTotalMs}
         locked={quiz.locked}
         streak={quiz.streak}
         script={script}
