@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { displayHanzi, type Script } from '../hooks/useScript';
 import type { QuizAnswer } from '../hooks/useQuiz';
+import { ShareStoryButton } from './ShareStoryButton';
+import { renderQuizStory } from '../utils/share-image';
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
@@ -47,6 +49,19 @@ export function QuizResults({
     ? answers.reduce((s, a) => s + a.ms, 0) / answers.length
     : 0;
 
+  const renderStory = useCallback(
+    () =>
+      renderQuizStory({
+        deckName: sourceName,
+        points: totalPoints,
+        correct: correctCount,
+        total: answers.length,
+        bestStreak,
+        avgSeconds: avgMs / 1000,
+      }),
+    [sourceName, totalPoints, correctCount, answers.length, bestStreak, avgMs]
+  );
+
   const run = async (key: string, fn: () => Promise<void>) => {
     if (saving) return;
     setSaving(key);
@@ -70,6 +85,14 @@ export function QuizResults({
         <p className="font-pinyin text-[10px] font-bold uppercase tracking-widest text-cn-muted dark:text-cn-muted-dark">
           points
         </p>
+        <div className="mt-3 flex items-center gap-2">
+          <ShareStoryButton
+            render={renderStory}
+            filename="clmandarin-quiz.png"
+            title={`${totalPoints.toLocaleString()} points on ${sourceName}`}
+            label="Share result"
+          />
+        </div>
       </div>
 
       <div className="flex gap-2">
