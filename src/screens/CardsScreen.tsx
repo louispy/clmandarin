@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import type { VocabWord } from '../types';
 import type { useVocab } from '../hooks/useVocab';
 import type { useLists } from '../hooks/useLists';
@@ -92,12 +92,11 @@ export function CardsScreen({
     [onStartStudy]
   );
 
+  const [confirmingReset, setConfirmingReset] = useState(false);
+
   const handleResetDeck = useCallback(async () => {
     if (!openDeck) return;
-    const ok = window.confirm(
-      `Reset ${openDeck.name} to the original word list? Your changes to this deck will be discarded.`
-    );
-    if (!ok) return;
+    setConfirmingReset(false);
     await decks.resetDeck(openDeck.id);
   }, [openDeck, decks]);
 
@@ -128,14 +127,33 @@ export function CardsScreen({
           </span>
         </div>
 
-        {openDeck.edited && (
-          <button
-            onClick={handleResetDeck}
-            className="w-fit rounded-xl border border-cn-border px-3 py-1.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
-          >
-            Reset to original
-          </button>
-        )}
+        {openDeck.edited &&
+          (confirmingReset ? (
+            <div className="flex w-fit items-center gap-2 rounded-xl border border-cn-border px-3 py-1.5 text-xs dark:border-cn-border-dark">
+              <span className="font-bold text-cn-ink dark:text-cn-cream">
+                Discard your changes to {openDeck.name}?
+              </span>
+              <button
+                onClick={handleResetDeck}
+                className="rounded-lg bg-cn-red px-2 py-0.5 font-bold text-white"
+              >
+                Reset
+              </button>
+              <button
+                onClick={() => setConfirmingReset(false)}
+                className="font-bold text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
+              >
+                Cancel
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setConfirmingReset(true)}
+              className="w-fit rounded-xl border border-cn-border px-3 py-1.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
+            >
+              Reset to original
+            </button>
+          ))}
 
         <SortableWordList
           key={openDeck.id}

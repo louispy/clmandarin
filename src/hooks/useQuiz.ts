@@ -39,6 +39,10 @@ export function useQuiz() {
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [msLeft, setMsLeft] = useState(0);
   const [locked, setLocked] = useState<{ chosenId: string | null } | null>(null);
+  // The old window.confirm on quit froze the countdown by blocking the thread.
+  // An in-app confirmation has to stop it deliberately, or deciding whether to
+  // quit costs the user the question.
+  const [paused, setPaused] = useState(false);
 
   const rafRef = useRef<number | null>(null);
   const lastRef = useRef<number | null>(null);
@@ -46,6 +50,7 @@ export function useQuiz() {
   // The loop reads these through refs so it never needs re-creating mid-run.
   const msLeftRef = useRef(0);
   const lockedRef = useRef(false);
+  const pausedRef = useRef(false);
 
   const totalMs = config.seconds * 1000;
 
@@ -126,7 +131,7 @@ export function useQuiz() {
 
     const tick = (now: number) => {
       rafRef.current = requestAnimationFrame(tick);
-      if (document.hidden || lockedRef.current) {
+      if (document.hidden || lockedRef.current || pausedRef.current) {
         lastRef.current = now;
         return;
       }
@@ -170,6 +175,8 @@ export function useQuiz() {
       setLocked(null);
       lockedRef.current = false;
       setLeft(nextConfig.seconds * 1000);
+      pausedRef.current = false;
+      setPaused(false);
       setPhase('running');
       return true;
     },
@@ -184,6 +191,11 @@ export function useQuiz() {
   }, [clearTimers]);
 
   const answer = useCallback((wordId: string) => commitRef.current(wordId), []);
+
+  const pause = useCallback((next: boolean) => {
+    pausedRef.current = next;
+    setPaused(next);
+  }, []);
 
   const question = questions[index] ?? null;
   const totalPoints = answers.reduce((sum, a) => sum + a.points, 0);
@@ -201,6 +213,8 @@ export function useQuiz() {
     msLeft,
     totalMs,
     locked,
+    paused,
+    pause,
     answers,
     totalPoints,
     correctCount,

@@ -35,6 +35,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Keyboard focus in the app's own colour — the browser default is a blue ring
+   that reads as foreign against the red/gold palette. */
+:focus-visible {
+  outline: 2px solid var(--color-cn-red);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
 /* Prevent iOS Safari auto-zoom on input focus by enforcing 16px on touch devices */
 @media (hover: none) and (pointer: coarse) {
   input,

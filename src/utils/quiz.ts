@@ -25,6 +25,38 @@ export const OPTION_COUNT = 4;
 /** A deck smaller than this cannot produce a full set of distractors. */
 export const MIN_QUIZ_WORDS = OPTION_COUNT;
 
+/**
+ * Particles and interjections, which make hopeless multiple-choice questions:
+ * there is no meaning to pick out of four options. Listed by character rather
+ * than detected from the gloss, because a gloss-based rule would also catch
+ * 井 ("well", the noun) along with 嗯 ("Well", the noise).
+ *
+ * The purely grammatical ones (的, 了, 吗, 呢, 得, 着, 过, 吧, 地, 啦, 嘛, 嘿)
+ * already have an empty gloss in the source data and are excluded by that.
+ */
+const UNQUIZZABLE = new Set([
+  '啊', '呀', '哎', '哦', '嗯', '唉', '哇', '哼', '呵', '哈', '喂（叹词）', '之',
+]);
+
+/** Normalised gloss, for comparing two words' meanings. */
+function glossKey(word: VocabWord): string {
+  return String(word.english ?? '').trim().toLowerCase();
+}
+
+/**
+ * Whether a word can carry a question or a distractor.
+ *
+ * Excludes words the scraper left without a gloss — 15 of them, all
+ * grammatical particles — which would otherwise render as a blank answer tile.
+ */
+export function isQuizzable(word: VocabWord): boolean {
+  return glossKey(word).length > 0 && !UNQUIZZABLE.has(word.hanzi);
+}
+
+export function quizzableWords(words: VocabWord[]): VocabWord[] {
+  return words.filter(isQuizzable);
+}
+
 export function canQuiz(wordCount: number): boolean {
   return wordCount >= MIN_QUIZ_WORDS;
 }
@@ -81,8 +113,13 @@ function pickDistractors(
   difficulty: QuizDifficulty
 ): VocabWord[] {
   const need = OPTION_COUNT - 1;
+  // Compare glosses normalised. A third of the vocabulary shares a gloss with
+  // at least one other word (情况 / 形势 / 局面 are all "situation"), and 326
+  // pairs differ only by capitalisation — an exact match would let "How" in as
+  // a distractor for "how", giving the question two right answers.
+  const answerGloss = glossKey(answer);
   const candidates = pool.filter(
-    (w) => w.id !== answer.id && w.english !== answer.english
+    (w) => w.id !== answer.id && glossKey(w) !== answerGloss
   );
   if (candidates.length <= need) return candidates;
 
@@ -105,10 +142,11 @@ function pickDistractors(
  * number of words available.
  */
 export function buildQuestions(words: VocabWord[], config: QuizConfig): QuizQuestion[] {
-  if (!canQuiz(words.length)) return [];
-  const picked = shuffle(words).slice(0, Math.min(config.count, words.length));
+  const pool = quizzableWords(words);
+  if (!canQuiz(pool.length)) return [];
+  const picked = shuffle(pool).slice(0, Math.min(config.count, pool.length));
   return picked.map((word) => {
-    const distractors = pickDistractors(word, words, config.difficulty);
+    const distractors = pickDistractors(word, pool, config.difficulty);
     return { word, options: shuffle([word, ...distractors]) };
   });
 }

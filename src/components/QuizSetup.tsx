@@ -86,26 +86,37 @@ export function QuizSetup({
   return (
     <div className="flex flex-col gap-4 pt-1">
       <Field label="Deck">
-        <select
-          value={sourceId ?? ''}
-          onChange={(e) => onSourceChange(e.target.value)}
-          className="w-full rounded-xl border border-cn-border bg-cn-surface px-3 py-3 text-sm font-bold text-cn-ink outline-none dark:border-cn-border-dark dark:bg-cn-surface-dark dark:text-cn-cream"
-        >
-          {['Built in', 'Your list'].map((group) => {
-            const inGroup = sources.filter((s) => s.sublabel === group);
-            if (inGroup.length === 0) return null;
-            return (
-              <optgroup key={group} label={group === 'Built in' ? 'Built-in decks' : 'Your lists'}>
-                {inGroup.map((s) => (
-                  <option key={s.id} value={s.id} disabled={s.count < MIN_QUIZ_WORDS}>
-                    {s.name} — {s.count.toLocaleString()} words
-                    {s.count < MIN_QUIZ_WORDS ? ' (too few)' : ''}
-                  </option>
-                ))}
-              </optgroup>
-            );
-          })}
-        </select>
+        <div className="relative">
+          <select
+            value={sourceId ?? ''}
+            onChange={(e) => onSourceChange(e.target.value)}
+            className="w-full appearance-none rounded-xl border border-cn-border bg-cn-surface py-3 pl-3.5 pr-10 text-sm font-bold text-cn-ink outline-none dark:border-cn-border-dark dark:bg-cn-surface-dark dark:text-cn-cream"
+          >
+            {['Built in', 'Your list'].map((group) => {
+              const inGroup = sources.filter((s) => s.sublabel === group);
+              if (inGroup.length === 0) return null;
+              return (
+                <optgroup key={group} label={group === 'Built in' ? 'Built-in decks' : 'Your lists'}>
+                  {inGroup.map((s) => (
+                    <option key={s.id} value={s.id} disabled={s.count < MIN_QUIZ_WORDS}>
+                      {s.name} — {s.count.toLocaleString()} words
+                      {s.count < MIN_QUIZ_WORDS ? ' (too few)' : ''}
+                    </option>
+                  ))}
+                </optgroup>
+              );
+            })}
+          </select>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+            className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cn-muted dark:text-cn-muted-dark"
+          >
+            <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+          </svg>
+        </div>
         {tooSmall && (
           <p className="text-xs text-cn-red dark:text-cn-red-light">
             A quiz needs at least {MIN_QUIZ_WORDS} words — there aren&rsquo;t enough here to build

@@ -7,6 +7,7 @@ import { QuizSetup, type QuizSource } from '../components/QuizSetup';
 import { QuizRun } from '../components/QuizRun';
 import { QuizResults } from '../components/QuizResults';
 import { getWordsByIds } from '../utils/vocab-loader';
+import { quizzableWords, MIN_QUIZ_WORDS } from '../utils/quiz';
 
 export function QuizScreen({
   decks,
@@ -19,6 +20,8 @@ export function QuizScreen({
 }) {
   const quiz = useQuiz();
   const [sourceId, setSourceId] = useState<string | null>(null);
+  // Set when a deck turns out to have too few words that work as questions.
+  const [tooFew, setTooFew] = useState(false);
 
   const sources = useMemo<QuizSource[]>(() => {
     const fromDecks = decks.decks
@@ -43,7 +46,16 @@ export function QuizScreen({
   const handleStart = useCallback(async () => {
     if (!selected) return;
     const words = await getWordsByIds(wordIdsFor(selected.id));
-    quiz.start(words, { ...quiz.config, count: Math.min(quiz.config.count, words.length) }, selected.name);
+    // The deck's size counts every word; the quiz can only use the ones that
+    // carry a meaning worth choosing between, so a small deck can still come
+    // up short here.
+    const usable = quizzableWords(words);
+    const started = quiz.start(
+      usable,
+      { ...quiz.config, count: Math.min(quiz.config.count, usable.length) },
+      selected.name
+    );
+    setTooFew(!started);
   }, [selected, wordIdsFor, quiz]);
 
   const missedIds = quiz.missed.map((a) => a.word.id);
@@ -58,10 +70,6 @@ export function QuizScreen({
     await lists.addWordsToList(list.id, missedIds);
   }, [lists, missedIds, quiz.sourceName]);
 
-  const handleQuit = useCallback(() => {
-    if (quiz.index > 0 && !window.confirm('Quit this quiz? Your score will be lost.')) return;
-    quiz.quit();
-  }, [quiz]);
 
   if (sources.length === 0) {
     return (
@@ -89,7 +97,8 @@ export function QuizScreen({
         streak={quiz.streak}
         script={script}
         onAnswer={quiz.answer}
-        onQuit={handleQuit}
+        onQuit={quiz.quit}
+        onPauseChange={quiz.pause}
       />
     );
   }
@@ -113,13 +122,21 @@ export function QuizScreen({
   }
 
   return (
-    <QuizSetup
-      sources={sources}
-      sourceId={selected?.id ?? null}
-      onSourceChange={setSourceId}
-      config={quiz.config}
-      onConfigChange={quiz.setConfig}
-      onStart={handleStart}
-    />
+    <>
+      {tooFew && (
+        <p className="mb-3 rounded-xl border-l-2 border-cn-red bg-cn-red/5 px-3 py-2 text-xs text-cn-red dark:text-cn-red-light">
+          This deck doesn&rsquo;t have {MIN_QUIZ_WORDS} words that work as questions — particles
+          like 的 and 吗 have no meaning to choose between. Pick a bigger deck.
+        </p>
+      )}
+      <QuizSetup
+        sources={sources}
+        sourceId={selected?.id ?? null}
+        onSourceChange={(id) => { setSourceId(id); setTooFew(false); }}
+        config={quiz.config}
+        onConfigChange={quiz.setConfig}
+        onStart={handleStart}
+      />
+    </>
   );
 }

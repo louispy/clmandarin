@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { VocabWord } from '../types';
 import { displayHanzi, type Script } from '../hooks/useScript';
 import { speak } from '../utils/speech';
@@ -25,6 +25,7 @@ export function QuizRun({
   script,
   onAnswer,
   onQuit,
+  onPauseChange,
 }: {
   question: QuizQuestion;
   config: QuizConfig;
@@ -37,7 +38,9 @@ export function QuizRun({
   script: Script;
   onAnswer: (wordId: string) => void;
   onQuit: () => void;
+  onPauseChange: (paused: boolean) => void;
 }) {
+  const [confirmingQuit, setConfirmingQuit] = useState(false);
   const kind = promptKind(config.direction);
   const opts = optionKind(config.direction);
 
@@ -61,9 +64,36 @@ export function QuizRun({
       </div>
 
       <div className="flex items-center gap-3 font-pinyin text-xs font-bold tabular-nums text-cn-muted dark:text-cn-muted-dark">
-        <button onClick={onQuit} className="text-cn-red hover:underline dark:text-cn-red-light">
-          Quit
-        </button>
+        {confirmingQuit ? (
+          <span className="flex items-center gap-2">
+            <span className="text-cn-ink dark:text-cn-cream">Quit?</span>
+            <button
+              onClick={onQuit}
+              className="rounded-lg bg-cn-red px-2 py-0.5 font-bold text-white"
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => {
+                setConfirmingQuit(false);
+                onPauseChange(false);
+              }}
+              className="rounded-lg border border-cn-border px-2 py-0.5 font-bold dark:border-cn-border-dark"
+            >
+              Keep going
+            </button>
+          </span>
+        ) : (
+          <button
+            onClick={() => {
+              setConfirmingQuit(true);
+              onPauseChange(true);
+            }}
+            className="text-cn-red hover:underline dark:text-cn-red-light"
+          >
+            Quit
+          </button>
+        )}
         <span>
           {index + 1} / {total}
         </span>
