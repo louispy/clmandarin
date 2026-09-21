@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { VocabWord } from '../types';
 import { displayHanzi, type Script } from '../hooks/useScript';
 import { speak } from '../utils/speech';
-import { optionKind, promptKind, PROMPT_HINTS, type QuizConfig, type QuizQuestion } from '../utils/quiz';
+import { displayGloss, optionKind, promptKind, PROMPT_HINTS, type QuizConfig, type QuizQuestion } from '../utils/quiz';
 import { ConfirmModal } from './ConfirmModal';
 
 // Kahoot's four shapes. The shape matters as much as the colour: it keeps the
@@ -51,7 +51,7 @@ export function QuizRun({
   }, [kind, question.word.hanzi]);
 
   const optionLabel = (w: VocabWord) =>
-    opts === 'hanzi' ? displayHanzi(w, script) : w.english;
+    opts === 'hanzi' ? displayHanzi(w, script) : displayGloss(w.english);
 
   const fraction = Math.max(0, Math.min(1, msLeft / totalMs));
 
@@ -109,7 +109,7 @@ export function QuizRun({
         )}
         {kind === 'english' && (
           <p className="text-2xl font-bold leading-snug text-cn-ink dark:text-cn-cream">
-            {question.word.english}
+            {displayGloss(question.word.english)}
           </p>
         )}
         {kind === 'pinyin' && (
@@ -130,11 +130,28 @@ export function QuizRun({
         )}
       </div>
 
+      {locked && (
+        <p
+          className={`text-center text-sm font-black ${
+            locked.chosenId === question.word.id
+              ? 'text-[#2E7D52] dark:text-[#6FBF95]'
+              : 'text-cn-red dark:text-cn-red-light'
+          }`}
+        >
+          {locked.chosenId === question.word.id
+            ? '\u2713 Correct'
+            : locked.chosenId === null
+              ? `\u2717 Out of time \u2014 ${optionLabel(question.word)}`
+              : `\u2717 ${optionLabel(question.word)}`}
+        </p>
+      )}
+
       <div className="grid grid-cols-2 gap-2">
         {question.options.map((option, i) => {
           const tile = TILES[i % TILES.length];
           const isAnswer = option.id === question.word.id;
           const revealed = locked !== null;
+          const isChosen = locked?.chosenId === option.id;
           return (
             <button
               key={option.id}
@@ -148,7 +165,9 @@ export function QuizRun({
                   : 'hover:-translate-y-0.5 hover:brightness-110'
               }`}
             >
-              <span className="shrink-0 text-base opacity-85">{tile.shape}</span>
+              <span className="shrink-0 text-base opacity-85">
+                {revealed && isAnswer ? '\u2713' : revealed && isChosen ? '\u2717' : tile.shape}
+              </span>
               <span className={opts === 'hanzi' ? 'text-xl font-bold' : ''}>
                 {optionLabel(option)}
               </span>

@@ -167,6 +167,27 @@ export function scoreAnswer(msRemaining: number, msTotal: number, streak: number
   return Math.round(base * multiplier);
 }
 
+/**
+ * A gloss as it should appear on screen.
+ *
+ * The source data is inconsistent about capitalisation — "If" and "ah" and
+ * "Be quiet" all sit in the same deck — which made four answer tiles look
+ * arbitrary.
+ *
+ * Leading punctuation is skipped so "(for books)" capitalises inside its
+ * bracket, but a leading digit is not, so "100 percent" is left alone. Nothing
+ * past the first letter is touched, which keeps "I, me" and "we, us (pl.)"
+ * intact.
+ */
+export function displayGloss(english: string): string {
+  const text = String(english ?? '').trim();
+  const i = text.search(/\p{L}/u);
+  if (i === -1) return text;
+  // Only a run of punctuation may precede the letter we capitalise.
+  if (/[\p{N}]/u.test(text.slice(0, i))) return text;
+  return text.slice(0, i) + text[i].toUpperCase() + text.slice(i + 1);
+}
+
 /** What the prompt side shows for a direction. */
 export function promptKind(direction: QuizDirection): 'hanzi' | 'english' | 'pinyin' | 'audio' {
   switch (direction) {

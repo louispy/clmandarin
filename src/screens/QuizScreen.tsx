@@ -60,15 +60,20 @@ export function QuizScreen({
 
   const missedIds = quiz.missed.map((a) => a.word.id);
 
-  const handleAddMissedToFavorites = useCallback(async () => {
-    await lists.addWordsToList(lists.FAVORITES_ID, missedIds);
-  }, [lists, missedIds]);
+  const handleAddMissedToList = useCallback(
+    async (listId: string) => {
+      await lists.addWordsToList(listId, missedIds);
+    },
+    [lists, missedIds]
+  );
 
-  const handleSaveMissedAsList = useCallback(async () => {
-    const stamp = new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-    const list = await lists.createList(`${quiz.sourceName} misses · ${stamp}`);
-    await lists.addWordsToList(list.id, missedIds);
-  }, [lists, missedIds, quiz.sourceName]);
+  const handleCreateListWithMissed = useCallback(
+    async (name: string) => {
+      const list = await lists.createList(name);
+      await lists.addWordsToList(list.id, missedIds);
+    },
+    [lists, missedIds]
+  );
 
 
   if (sources.length === 0) {
@@ -113,8 +118,9 @@ export function QuizScreen({
         correctCount={quiz.correctCount}
         bestStreak={quiz.bestStreak}
         script={script}
-        onAddMissedToFavorites={handleAddMissedToFavorites}
-        onSaveMissedAsList={handleSaveMissedAsList}
+        lists={lists.lists}
+        onAddMissedToList={handleAddMissedToList}
+        onCreateListWithMissed={handleCreateListWithMissed}
         onPlayAgain={handleStart}
         onBackToSetup={quiz.quit}
       />
