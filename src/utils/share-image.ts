@@ -16,8 +16,35 @@ import type { ChengyuEntry } from './chengyu';
  * This is a few hundred lines with nothing to go wrong at runtime.
  */
 
-const W = 1080;
-const H = 1920;
+/** 9:16 fills a Story; 1:1 suits a feed post or a chat. */
+export type ShareFormat = 'story' | 'square';
+
+interface Metrics {
+  w: number;
+  h: number;
+  /** Multiplier on the gaps between rows. */
+  air: number;
+  /** Starting size for the headline before it is shrunk to fit. */
+  headline: number;
+  body: number;
+  literal: number;
+  pinyin: number;
+  /** How far the wordmark sits above the bottom edge. */
+  footer: number;
+}
+
+const FORMATS: Record<ShareFormat, Metrics> = {
+  story: { w: 1080, h: 1920, air: 1, headline: 200, body: 46, literal: 40, pinyin: 54, footer: 110 },
+  // A square has roughly half the vertical room, so the type comes down with
+  // it — otherwise a five-line meaning collides with the wordmark.
+  square: { w: 1080, h: 1080, air: 0.68, headline: 150, body: 40, literal: 34, pinyin: 44, footer: 84 },
+};
+
+interface Frame {
+  canvas: HTMLCanvasElement;
+  ctx: CanvasRenderingContext2D;
+  m: Metrics;
+}
 
 const INK = '#FFF8F0';
 const PAPER = '#1C1412';
@@ -29,31 +56,34 @@ const MUTED = 'rgba(255, 248, 240, 0.62)';
 const HANZI_STACK = '"Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif';
 const LATIN_STACK = 'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';
 
-function ctx2d(): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D } {
+function frame(format: ShareFormat): Frame {
+  const m = FORMATS[format];
   const canvas = document.createElement('canvas');
-  canvas.width = W;
-  canvas.height = H;
+  canvas.width = m.w;
+  canvas.height = m.h;
   const ctx = canvas.getContext('2d');
   if (!ctx) throw new Error('Canvas is unavailable on this device.');
-  return { canvas, ctx };
+  return { canvas, ctx, m };
 }
 
 /** Deep warm ground with a red bloom top-left and a gold one bottom-right. */
-function paintBackground(ctx: CanvasRenderingContext2D) {
+function paintBackground({ ctx, m }: Frame) {
+  const { w, h } = m;
   ctx.fillStyle = PAPER;
-  ctx.fillRect(0, 0, W, H);
+  ctx.fillRect(0, 0, w, h);
 
-  const red = ctx.createRadialGradient(140, 200, 0, 140, 200, 1150);
+  const reach = Math.hypot(w, h) * 0.52;
+  const red = ctx.createRadialGradient(140, 200, 0, 140, 200, reach);
   red.addColorStop(0, 'rgba(196, 30, 58, 0.55)');
   red.addColorStop(1, 'rgba(196, 30, 58, 0)');
   ctx.fillStyle = red;
-  ctx.fillRect(0, 0, W, H);
+  ctx.fillRect(0, 0, w, h);
 
-  const gold = ctx.createRadialGradient(W - 80, H - 160, 0, W - 80, H - 160, 900);
+  const gold = ctx.createRadialGradient(w - 80, h - 160, 0, w - 80, h - 160, reach * 0.8);
   gold.addColorStop(0, 'rgba(212, 160, 23, 0.30)');
   gold.addColorStop(1, 'rgba(212, 160, 23, 0)');
   ctx.fillStyle = gold;
-  ctx.fillRect(0, 0, W, H);
+  ctx.fillRect(0, 0, w, h);
 }
 
 /** Split `text` into lines that fit `maxWidth` at the current font. */
@@ -106,7 +136,7 @@ interface Row {
 }
 
 function textRow(
-  ctx: CanvasRenderingContext2D,
+  f: Frame,
   text: string,
   font: string,
   fill: string,
@@ -117,38 +147,41 @@ function textRow(
   return {
     h,
     draw: (y) => {
-      ctx.font = font;
-      ctx.fillStyle = fill;
-      ctx.textAlign = 'center';
-      ctx.fillText(text, W / 2, y + size);
+      f.ctx.font = font;
+      f.ctx.fillStyle = fill;
+      f.ctx.textAlign = 'center';
+      f.ctx.fillText(text, f.m.w / 2, y + size);
     },
   };
 }
 
-function gap(h: number): Row {
-  return { h, draw: () => {} };
+function gap(h: number, air = 1): Row {
+  return { h: h * air, draw: () => {} };
 }
 
 /** Centre the stack vertically, biased up to leave the wordmark room. */
-function drawStack(rows: Row[], bias = -70) {
+function drawStack(f: Frame, rows: Row[]) {
+  const bias = -f.m.footer * 0.6;
   const total = rows.reduce((sum, r) => sum + r.h, 0);
-  let y = (H - total) / 2 + bias;
+  let y = (f.m.h - total) / 2 + bias;
   for (const row of rows) {
     row.draw(y);
     y += row.h;
   }
 }
 
-function wordmark(ctx: CanvasRenderingContext2D) {
-  const y = H - 110;
+function wordmark({ ctx, m }: Frame) {
+  const W = m.w;
+  const H = m.h;
+  const y = H - m.footer;
   ctx.textAlign = 'center';
   ctx.font = `900 46px ${LATIN_STACK}`;
   const cl = 'CL';
   const zhong = '中';
-  const m = 'M';
+  const em = 'M';
   ctx.font = `900 46px ${LATIN_STACK}`;
   const wCl = ctx.measureText(cl).width;
-  const wM = ctx.measureText(m).width;
+  const wM = ctx.measureText(em).width;
   ctx.font = `900 46px ${HANZI_STACK}`;
   const wZh = ctx.measureText(zhong).width;
   const total = wCl + wZh + wM;
@@ -164,34 +197,39 @@ function wordmark(ctx: CanvasRenderingContext2D) {
   x += wZh;
   ctx.fillStyle = INK;
   ctx.font = `900 46px ${LATIN_STACK}`;
-  ctx.fillText(m, x, y);
+  ctx.fillText(em, x, y);
 
   ctx.textAlign = 'center';
   ctx.fillStyle = MUTED;
   ctx.font = `600 26px ${LATIN_STACK}`;
-  ctx.fillText('HSK vocabulary, offline', W / 2, H - 62);
+  ctx.fillText('HSK vocabulary, offline', W / 2, H - m.footer + 48);
 }
 
-export function renderChengyuStory(entry: ChengyuEntry): Promise<Blob> {
-  const { canvas, ctx } = ctx2d();
-  paintBackground(ctx);
+export function renderChengyuStory(
+  entry: ChengyuEntry,
+  format: ShareFormat = 'story'
+): Promise<Blob> {
+  const f = frame(format);
+  const { ctx, m } = f;
+  paintBackground(f);
 
-  const maxWidth = W - 96 * 2;
+  const maxWidth = m.w - 96 * 2;
+  const air = m.air;
   const rows: Row[] = [];
 
-  rows.push(textRow(ctx, entry.type === 'suyu' ? '今日俗语' : '今日成语',
+  rows.push(textRow(f, entry.type === 'suyu' ? '今日俗语' : '今日成语',
     `800 30px ${HANZI_STACK}`, GOLD_SOFT, 30));
-  rows.push(gap(10));
-  rows.push(textRow(ctx, 'SAYING OF THE DAY', `700 26px ${LATIN_STACK}`, MUTED, 26));
-  rows.push(gap(64));
+  rows.push(gap(10, air));
+  rows.push(textRow(f, 'SAYING OF THE DAY', `700 26px ${LATIN_STACK}`, MUTED, 26));
+  rows.push(gap(64, air));
 
-  const hanziSize = fitOneLine(ctx, entry.hanzi, maxWidth, 200, HANZI_STACK);
-  rows.push(textRow(ctx, entry.hanzi, `700 ${hanziSize}px ${HANZI_STACK}`, INK, hanziSize, 1.15));
-  rows.push(gap(18));
+  const hanziSize = fitOneLine(ctx, entry.hanzi, maxWidth, m.headline, HANZI_STACK);
+  rows.push(textRow(f, entry.hanzi, `700 ${hanziSize}px ${HANZI_STACK}`, INK, hanziSize, 1.15));
+  rows.push(gap(18, air));
 
-  const pinyinSize = fitOneLine(ctx, entry.pinyin, maxWidth, 54, LATIN_STACK, '600');
-  rows.push(textRow(ctx, entry.pinyin, `600 ${pinyinSize}px ${LATIN_STACK}`, GOLD_SOFT, pinyinSize));
-  rows.push(gap(52));
+  const pinyinSize = fitOneLine(ctx, entry.pinyin, maxWidth, m.pinyin, LATIN_STACK, '600');
+  rows.push(textRow(f, entry.pinyin, `600 ${pinyinSize}px ${LATIN_STACK}`, GOLD_SOFT, pinyinSize));
+  rows.push(gap(52, air));
 
   rows.push({
     h: 3,
@@ -199,27 +237,27 @@ export function renderChengyuStory(entry: ChengyuEntry): Promise<Blob> {
       ctx.strokeStyle = 'rgba(212, 160, 23, 0.5)';
       ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.moveTo(W / 2 - 70, y);
-      ctx.lineTo(W / 2 + 70, y);
+      ctx.moveTo(m.w / 2 - 70, y);
+      ctx.lineTo(m.w / 2 + 70, y);
       ctx.stroke();
     },
   });
-  rows.push(gap(52));
+  rows.push(gap(52, air));
 
-  ctx.font = `italic 500 40px ${LATIN_STACK}`;
+  ctx.font = `italic 500 ${m.literal}px ${LATIN_STACK}`;
   for (const line of wrap(ctx, `\u201C${entry.literal}\u201D`, maxWidth)) {
-    rows.push(textRow(ctx, line, `italic 500 40px ${LATIN_STACK}`, MUTED, 40, 1.4));
+    rows.push(textRow(f, line, `italic 500 ${m.literal}px ${LATIN_STACK}`, MUTED, m.literal, 1.4));
   }
-  rows.push(gap(28));
+  rows.push(gap(28, air));
 
-  ctx.font = `600 46px ${LATIN_STACK}`;
+  ctx.font = `600 ${m.body}px ${LATIN_STACK}`;
   for (const line of wrap(ctx, entry.meaning, maxWidth)) {
-    rows.push(textRow(ctx, line, `600 46px ${LATIN_STACK}`, INK, 46, 1.38));
+    rows.push(textRow(f, line, `600 ${m.body}px ${LATIN_STACK}`, INK, m.body, 1.38));
   }
 
-  drawStack(rows);
-  wordmark(ctx);
-  return toBlob(canvas);
+  drawStack(f, rows);
+  wordmark(f);
+  return toBlob(f.canvas);
 }
 
 export interface QuizStoryData {
@@ -231,51 +269,59 @@ export interface QuizStoryData {
   avgSeconds: number;
 }
 
-export function renderQuizStory(data: QuizStoryData): Promise<Blob> {
-  const { canvas, ctx } = ctx2d();
-  paintBackground(ctx);
+export function renderQuizStory(
+  data: QuizStoryData,
+  format: ShareFormat = 'story'
+): Promise<Blob> {
+  const f = frame(format);
+  const { ctx, m } = f;
+  paintBackground(f);
 
   const margin = 96;
+  const air = m.air;
   const rows: Row[] = [];
+  const big = format === 'square' ? 150 : 200;
+  const ring = format === 'square' ? 100 : 130;
 
-  rows.push(textRow(ctx, 'QUIZ RESULT', `700 28px ${LATIN_STACK}`, MUTED, 28));
-  rows.push(gap(6));
-  const deckSize = fitOneLine(ctx, data.deckName, W - margin * 2, 60, HANZI_STACK);
-  rows.push(textRow(ctx, data.deckName, `700 ${deckSize}px ${HANZI_STACK}`, INK, deckSize));
-  rows.push(gap(56));
+  rows.push(textRow(f, 'QUIZ RESULT', `700 28px ${LATIN_STACK}`, MUTED, 28));
+  rows.push(gap(6, air));
+  const deckSize = fitOneLine(ctx, data.deckName, m.w - margin * 2, 60, HANZI_STACK);
+  rows.push(textRow(f, data.deckName, `700 ${deckSize}px ${HANZI_STACK}`, INK, deckSize));
+  rows.push(gap(56, air));
 
-  const points = data.points.toLocaleString();
-  rows.push(textRow(ctx, points, `900 200px ${LATIN_STACK}`, GOLD, 200, 1.05));
-  rows.push(gap(4));
-  rows.push(textRow(ctx, 'POINTS', `700 30px ${LATIN_STACK}`, MUTED, 30));
-  rows.push(gap(72));
+  // Leading has to clear the descender: a thousands separator drops about
+  // 0.2em below the baseline, and at 1.05 the comma in "14,820" landed on top
+  // of the POINTS label. Three-digit scores hid this.
+  rows.push(textRow(f, data.points.toLocaleString(), `900 ${big}px ${LATIN_STACK}`, GOLD, big, 1.28));
+  rows.push(gap(10, air));
+  rows.push(textRow(f, 'POINTS', `700 30px ${LATIN_STACK}`, MUTED, 30));
+  rows.push(gap(72, air));
 
   const pct = data.total ? data.correct / data.total : 0;
-  const r = 130;
   rows.push({
-    h: r * 2 + 22,
+    h: ring * 2 + 22,
     draw: (y) => {
-      const cx = W / 2;
-      const cy = y + r + 11;
+      const cx = m.w / 2;
+      const cy = y + ring + 11;
       ctx.lineWidth = 22;
       ctx.strokeStyle = 'rgba(255, 248, 240, 0.16)';
       ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.arc(cx, cy, ring, 0, Math.PI * 2);
       ctx.stroke();
       if (pct > 0) {
         ctx.strokeStyle = RED;
         ctx.lineCap = 'round';
         ctx.beginPath();
-        ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * pct);
+        ctx.arc(cx, cy, ring, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * pct);
         ctx.stroke();
       }
       ctx.fillStyle = INK;
       ctx.textAlign = 'center';
-      ctx.font = `800 74px ${LATIN_STACK}`;
-      ctx.fillText(`${Math.round(pct * 100)}%`, cx, cy + 26);
+      ctx.font = `800 ${Math.round(ring * 0.57)}px ${LATIN_STACK}`;
+      ctx.fillText(`${Math.round(pct * 100)}%`, cx, cy + ring * 0.2);
     },
   });
-  rows.push(gap(76));
+  rows.push(gap(76, air));
 
   const stats: [string, string][] = [
     [`${data.correct}/${data.total}`, 'CORRECT'],
@@ -285,7 +331,7 @@ export function renderQuizStory(data: QuizStoryData): Promise<Blob> {
   rows.push({
     h: 104,
     draw: (y) => {
-      const colWidth = (W - margin * 2) / stats.length;
+      const colWidth = (m.w - margin * 2) / stats.length;
       ctx.textAlign = 'center';
       stats.forEach(([value, label], i) => {
         const x = margin + colWidth * i + colWidth / 2;
@@ -299,9 +345,9 @@ export function renderQuizStory(data: QuizStoryData): Promise<Blob> {
     },
   });
 
-  drawStack(rows);
-  wordmark(ctx);
-  return toBlob(canvas);
+  drawStack(f, rows);
+  wordmark(f);
+  return toBlob(f.canvas);
 }
 
 function toBlob(canvas: HTMLCanvasElement): Promise<Blob> {
@@ -335,16 +381,16 @@ export type ShareOutcome = 'shared' | 'downloaded' | 'cancelled';
  * Must be called straight from a click handler with the blob already in hand:
  * Safari rejects share() if the call is too far from the user's gesture, which
  * is why callers pre-render.
+ *
+ * Deliberately shares the file and nothing else. Passing `title` or `text`
+ * alongside it makes some targets — LINE among them — send two separate
+ * messages, a text one and then the image.
  */
-export async function shareImage(
-  blob: Blob,
-  filename: string,
-  title: string
-): Promise<ShareOutcome> {
+export async function shareImage(blob: Blob, filename: string): Promise<ShareOutcome> {
   const file = fileFrom(blob, filename);
   if (navigator.canShare?.({ files: [file] })) {
     try {
-      await navigator.share({ files: [file], title });
+      await navigator.share({ files: [file] });
       return 'shared';
     } catch (err) {
       // The user backing out of the sheet is not a failure.

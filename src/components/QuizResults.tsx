@@ -89,7 +89,6 @@ export function QuizResults({
           <ShareStoryButton
             render={renderStory}
             filename="clmandarin-quiz.png"
-            title={`${totalPoints.toLocaleString()} points on ${sourceName}`}
             label="Share result"
           />
         </div>

@@ -13,13 +13,11 @@ import { canShareImage, shareImage } from '../utils/share-image';
 export function ShareStoryButton({
   render,
   filename,
-  title,
   label = 'Share',
   className,
 }: {
   render: () => Promise<Blob>;
   filename: string;
-  title: string;
   label?: string;
   className?: string;
 }) {
@@ -57,7 +55,7 @@ export function ShareStoryButton({
     if (!blob || busy) return;
     setBusy(true);
     try {
-      const outcome = await shareImage(blob, filename, title);
+      const outcome = await shareImage(blob, filename);
       if (outcome === 'downloaded') setNote('Saved as an image.');
     } catch {
       setNote('Sharing failed. Try again.');

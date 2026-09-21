@@ -45,7 +45,6 @@ export function ChengyuCard({
             <ShareStoryButton
               render={renderStory}
               filename={`${entry.hanzi}.png`}
-              title={`${entry.hanzi} — ${entry.meaning}`}
             />
           )}
         <button
