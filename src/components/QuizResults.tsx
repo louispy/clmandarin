@@ -78,7 +78,7 @@ function AddToListMenu({
       <button
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="flex w-full items-center justify-center gap-2 rounded-2xl bg-cn-red px-5 py-3 text-sm font-black text-white shadow-lg shadow-cn-red/25 transition-all hover:bg-cn-red-dark"
+        className="flex w-full items-center justify-center gap-2 rounded-2xl border border-cn-border px-5 py-2.5 text-sm font-bold text-cn-ink transition-colors hover:border-cn-red hover:text-cn-red dark:border-cn-border-dark dark:text-cn-cream dark:hover:text-cn-red-light"
       >
         Add {count} missed to a list
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`}>
@@ -87,7 +87,7 @@ function AddToListMenu({
       </button>
 
       {open && (
-        <div className="absolute bottom-full left-0 right-0 z-30 mb-1 max-h-[50vh] overflow-y-auto rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark">
+        <div className="absolute left-0 right-0 top-full z-30 mt-1 max-h-[50vh] overflow-y-auto rounded-xl border border-cn-border bg-cn-surface p-1 shadow-xl dark:border-cn-border-dark dark:bg-cn-surface-dark">
           <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
             Add to
           </p>
@@ -204,6 +204,35 @@ export function QuizResults({
         <Stat label="Best streak" value={String(bestStreak)} />
       </div>
 
+      <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
+          <button
+            onClick={onPlayAgain}
+            className="flex-[2] rounded-2xl bg-cn-red px-5 py-3 text-sm font-black text-white shadow-lg shadow-cn-red/25 transition-all hover:bg-cn-red-dark"
+          >
+            Play again
+          </button>
+          <button
+            onClick={onBackToSetup}
+            className="flex-1 rounded-2xl border border-cn-border px-4 py-3 text-sm font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
+          >
+            Change deck
+          </button>
+        </div>
+        {missed.length > 0 ? (
+          <AddToListMenu
+            count={missed.length}
+            lists={lists}
+            onAddToList={onAddMissedToList}
+            onCreateListAndAdd={onCreateListWithMissed}
+          />
+        ) : (
+          <p className="rounded-2xl border-2 border-dashed border-cn-border px-4 py-3 text-center text-sm font-bold text-cn-ink dark:border-cn-border-dark dark:text-cn-cream">
+            Every one correct. Nothing to review.
+          </p>
+        )}
+      </div>
+
       {/* Every question, in the order they were asked — getting one right is
           worth seeing too, and a wrong answer means more next to the ones
           around it. */}
@@ -238,35 +267,6 @@ export function QuizResults({
               </span>
             </div>
           ))}
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        {missed.length > 0 ? (
-          <AddToListMenu
-            count={missed.length}
-            lists={lists}
-            onAddToList={onAddMissedToList}
-            onCreateListAndAdd={onCreateListWithMissed}
-          />
-        ) : (
-          <p className="rounded-2xl border-2 border-dashed border-cn-border px-4 py-4 text-center text-sm font-bold text-cn-ink dark:border-cn-border-dark dark:text-cn-cream">
-            Every one correct. Nothing to review.
-          </p>
-        )}
-        <div className="flex gap-2">
-          <button
-            onClick={onPlayAgain}
-            className="flex-1 rounded-xl border border-cn-border px-5 py-2.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
-          >
-            Play again
-          </button>
-          <button
-            onClick={onBackToSetup}
-            className="flex-1 rounded-xl border border-cn-border px-5 py-2.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
-          >
-            Change deck
-          </button>
         </div>
       </div>
     </div>
