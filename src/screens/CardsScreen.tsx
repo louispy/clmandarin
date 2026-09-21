@@ -8,6 +8,7 @@ import type { Script } from '../hooks/useScript';
 import { FlashcardManager } from '../components/FlashcardManager';
 import { SortableWordList } from '../components/SortableWordList';
 import { DeckIndex } from '../components/DeckIndex';
+import { ConfirmModal } from '../components/ConfirmModal';
 import { exportList } from '../utils/import-export';
 import { isSharingConfigured } from '../utils/share';
 import { getWordsByIds } from '../utils/vocab-loader';
@@ -127,33 +128,24 @@ export function CardsScreen({
           </span>
         </div>
 
-        {openDeck.edited &&
-          (confirmingReset ? (
-            <div className="flex w-fit items-center gap-2 rounded-xl border border-cn-border px-3 py-1.5 text-xs dark:border-cn-border-dark">
-              <span className="font-bold text-cn-ink dark:text-cn-cream">
-                Discard your changes to {openDeck.name}?
-              </span>
-              <button
-                onClick={handleResetDeck}
-                className="rounded-lg bg-cn-red px-2 py-0.5 font-bold text-white"
-              >
-                Reset
-              </button>
-              <button
-                onClick={() => setConfirmingReset(false)}
-                className="font-bold text-cn-muted hover:text-cn-ink dark:text-cn-muted-dark dark:hover:text-cn-cream"
-              >
-                Cancel
-              </button>
-            </div>
-          ) : (
-            <button
-              onClick={() => setConfirmingReset(true)}
-              className="w-fit rounded-xl border border-cn-border px-3 py-1.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
-            >
-              Reset to original
-            </button>
-          ))}
+        {openDeck.edited && (
+          <button
+            onClick={() => setConfirmingReset(true)}
+            className="w-fit rounded-xl border border-cn-border px-3 py-1.5 text-xs font-bold text-cn-muted transition-colors hover:text-cn-ink dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-cream"
+          >
+            Reset to original
+          </button>
+        )}
+
+        {confirmingReset && (
+          <ConfirmModal
+            title={`Reset ${openDeck.name}?`}
+            message="Your changes to this deck will be discarded and it will go back to the original word list."
+            confirmLabel="Reset"
+            onConfirm={handleResetDeck}
+            onCancel={() => setConfirmingReset(false)}
+          />
+        )}
 
         <SortableWordList
           key={openDeck.id}

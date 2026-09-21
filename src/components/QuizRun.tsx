@@ -3,6 +3,7 @@ import type { VocabWord } from '../types';
 import { displayHanzi, type Script } from '../hooks/useScript';
 import { speak } from '../utils/speech';
 import { optionKind, promptKind, PROMPT_HINTS, type QuizConfig, type QuizQuestion } from '../utils/quiz';
+import { ConfirmModal } from './ConfirmModal';
 
 // Kahoot's four shapes. The shape matters as much as the colour: it keeps the
 // tiles distinguishable for anyone who can't separate red from green.
@@ -54,8 +55,23 @@ export function QuizRun({
 
   const fraction = Math.max(0, Math.min(1, msLeft / totalMs));
 
+  const cancelQuit = () => {
+    setConfirmingQuit(false);
+    onPauseChange(false);
+  };
+
   return (
     <div className="flex flex-col gap-3 pt-1">
+      {confirmingQuit && (
+        <ConfirmModal
+          title="Quit this quiz?"
+          message={`You are ${index + 1} of ${total} questions in. Your score for this run will be lost.`}
+          confirmLabel="Quit"
+          cancelLabel="Keep going"
+          onConfirm={onQuit}
+          onCancel={cancelQuit}
+        />
+      )}
       <div className="h-1.5 overflow-hidden rounded-full bg-cn-border dark:bg-cn-border-dark">
         <div
           className={`h-full rounded-full transition-colors ${fraction < 0.3 ? 'bg-cn-red' : 'bg-cn-gold'}`}
@@ -64,36 +80,15 @@ export function QuizRun({
       </div>
 
       <div className="flex items-center gap-3 font-pinyin text-xs font-bold tabular-nums text-cn-muted dark:text-cn-muted-dark">
-        {confirmingQuit ? (
-          <span className="flex items-center gap-2">
-            <span className="text-cn-ink dark:text-cn-cream">Quit?</span>
-            <button
-              onClick={onQuit}
-              className="rounded-lg bg-cn-red px-2 py-0.5 font-bold text-white"
-            >
-              Yes
-            </button>
-            <button
-              onClick={() => {
-                setConfirmingQuit(false);
-                onPauseChange(false);
-              }}
-              className="rounded-lg border border-cn-border px-2 py-0.5 font-bold dark:border-cn-border-dark"
-            >
-              Keep going
-            </button>
-          </span>
-        ) : (
-          <button
-            onClick={() => {
-              setConfirmingQuit(true);
-              onPauseChange(true);
-            }}
-            className="text-cn-red hover:underline dark:text-cn-red-light"
-          >
-            Quit
-          </button>
-        )}
+        <button
+          onClick={() => {
+            setConfirmingQuit(true);
+            onPauseChange(true);
+          }}
+          className="text-cn-red hover:underline dark:text-cn-red-light"
+        >
+          Quit
+        </button>
         <span>
           {index + 1} / {total}
         </span>
