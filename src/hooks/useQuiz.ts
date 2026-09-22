@@ -50,8 +50,19 @@ function loadConfig(): QuizConfig {
   }
 }
 
-export function useQuiz() {
+export interface QuizSummary {
+  correct: number;
+  total: number;
+  points: number;
+}
+
+/** `onFinish` fires once when the last question is done, with the final tally. */
+export function useQuiz(opts: { onFinish?: (summary: QuizSummary) => void } = {}) {
   const [phase, setPhase] = useState<QuizPhase>('setup');
+  const onFinishRef = useRef(opts.onFinish);
+  useEffect(() => {
+    onFinishRef.current = opts.onFinish;
+  }, [opts.onFinish]);
   const [config, setConfig] = useState<QuizConfig>(loadConfig);
 
   useEffect(() => {
@@ -126,6 +137,12 @@ export function useQuiz() {
     const next = indexRef.current + 1;
     if (next >= questionsRef.current.length) {
       setPhase('results');
+      const done = answersRef.current;
+      onFinishRef.current?.({
+        correct: done.filter((a) => a.correct).length,
+        total: done.length,
+        points: done.reduce((sum, a) => sum + a.points, 0),
+      });
       return;
     }
     indexRef.current = next;

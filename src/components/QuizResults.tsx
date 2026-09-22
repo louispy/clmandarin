@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import type { FlashcardList } from '../types';
 import { displayHanzi, type Script } from '../hooks/useScript';
 import { displayGloss } from '../utils/quiz';
+import { verdictFor, type QuizRecord } from '../utils/quiz-record';
 import type { QuizAnswer } from '../hooks/useQuiz';
 import { ShareStoryButton } from './ShareStoryButton';
 import { renderQuizStory } from '../utils/share-image';
@@ -146,6 +147,7 @@ export function QuizResults({
   totalPoints,
   correctCount,
   bestStreak,
+  outcome,
   script,
   lists,
   onAddMissedToList,
@@ -159,6 +161,7 @@ export function QuizResults({
   totalPoints: number;
   correctCount: number;
   bestStreak: number;
+  outcome: { previous: QuizRecord | null; isBest: boolean; isFirst: boolean } | null;
   script: Script;
   lists: FlashcardList[];
   onAddMissedToList: (listId: string) => Promise<void>;
@@ -167,6 +170,23 @@ export function QuizResults({
   onBackToSetup: () => void;
 }) {
   const avgMs = answers.length ? answers.reduce((s, a) => s + a.ms, 0) / answers.length : 0;
+  const verdict = verdictFor(correctCount, answers.length, missed.length);
+
+  // Measured against their own history, never against a standard — and only
+  // said when it is true. A run below their best shows the best as a target
+  // rather than as a reproach.
+  const previous = outcome?.previous ?? null;
+  const record = !outcome
+    ? null
+    : outcome.isFirst
+      ? `First run on ${sourceName}`
+      : outcome.isBest
+        ? `Best yet — up from ${previous?.correct}/${previous?.total}`
+        : previous && correctCount / Math.max(1, answers.length) === previous.ratio
+          ? 'Matched your best'
+          : previous
+            ? `Your best here: ${previous.correct}/${previous.total}`
+            : null;
 
   const renderStory = useCallback(
     () =>
@@ -187,6 +207,14 @@ export function QuizResults({
         <p className="font-pinyin text-[10px] font-bold uppercase tracking-widest text-cn-muted dark:text-cn-muted-dark">
           {sourceName}
         </p>
+        <p
+          className={`text-lg font-black ${
+            verdict.celebrate ? 'text-cn-gold' : 'text-cn-ink dark:text-cn-cream'
+          }`}
+        >
+          {verdict.celebrate && '\u2728 '}
+          {verdict.headline}
+        </p>
         {/* How many you got right is the result. The score is a flourish until
             there is someone to compare it against. */}
         <p className="font-pinyin text-5xl font-black tabular-nums leading-none text-cn-ink dark:text-cn-cream">
@@ -199,6 +227,12 @@ export function QuizResults({
         <p className="mt-1 font-pinyin text-sm font-black tabular-nums text-cn-gold">
           {totalPoints.toLocaleString()} points
         </p>
+        {record && (
+          <p className="mt-1.5 rounded-full bg-cn-gold/10 px-3 py-1 font-pinyin text-[11px] font-bold text-cn-gold-dark dark:text-cn-gold-light">
+            {record}
+          </p>
+        )}
+        <p className="mt-1.5 text-xs text-cn-muted dark:text-cn-muted-dark">{verdict.note}</p>
         <div className="mt-3 flex items-center gap-2">
           <ShareStoryButton render={renderStory} filename="clmandarin-quiz.png" label="Share result" />
         </div>
@@ -244,7 +278,8 @@ export function QuizResults({
           around it. */}
       <div className="flex flex-col gap-1.5">
         <p className="px-0.5 text-[10px] font-black uppercase tracking-widest text-cn-muted dark:text-cn-muted-dark">
-          Review · {answers.length} {answers.length === 1 ? 'question' : 'questions'}
+          {missed.length > 0 ? 'Worth another look' : 'Review'} · {answers.length}{' '}
+          {answers.length === 1 ? 'question' : 'questions'}
         </p>
         <div className="flex flex-col divide-y divide-cn-border rounded-2xl border border-cn-border dark:divide-cn-border-dark dark:border-cn-border-dark">
           {answers.map((a, i) => (

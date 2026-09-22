@@ -1,13 +1,14 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useRef } from 'react';
 import type { useDecks } from '../hooks/useDecks';
 import type { useLists } from '../hooks/useLists';
 import type { Script } from '../hooks/useScript';
-import { useQuiz } from '../hooks/useQuiz';
+import { useQuiz, type QuizSummary } from '../hooks/useQuiz';
 import { QuizSetup, type QuizSource } from '../components/QuizSetup';
 import { QuizRun } from '../components/QuizRun';
 import { QuizResults } from '../components/QuizResults';
 import { getWordsByIds } from '../utils/vocab-loader';
 import { quizzableWords, MIN_QUIZ_WORDS } from '../utils/quiz';
+import { recordRun, type QuizRecord } from '../utils/quiz-record';
 
 const SOURCE_KEY = 'clm-quiz-source';
 
@@ -28,7 +29,15 @@ export function QuizScreen({
   lists: ReturnType<typeof useLists>;
   script: Script;
 }) {
-  const quiz = useQuiz();
+  const [outcome, setOutcome] = useState<{ previous: QuizRecord | null; isBest: boolean; isFirst: boolean } | null>(null);
+  // Set from useQuiz's finish callback rather than an effect watching the
+  // phase, so the write happens once on the event that caused it.
+  const sourceIdRef = useRef<string | null>(null);
+  const quiz = useQuiz({
+    onFinish: useCallback((summary: QuizSummary) => {
+      setOutcome(recordRun(sourceIdRef.current, summary));
+    }, []),
+  });
   const [sourceId, setSourceId] = useState<string | null>(loadSourceId);
   // Set when a deck turns out to have too few words that work as questions.
   const [tooFew, setTooFew] = useState(false);
@@ -67,6 +76,8 @@ export function QuizScreen({
 
   const handleStart = useCallback(async () => {
     if (!selected) return;
+    sourceIdRef.current = selected.id;
+    setOutcome(null);
     const words = await getWordsByIds(wordIdsFor(selected.id));
     // The deck's size counts every word; the quiz can only use the ones that
     // carry a meaning worth choosing between, so a small deck can still come
@@ -145,6 +156,7 @@ export function QuizScreen({
         totalPoints={quiz.totalPoints}
         correctCount={quiz.correctCount}
         bestStreak={quiz.bestStreak}
+        outcome={outcome}
         script={script}
         lists={lists.lists}
         onAddMissedToList={handleAddMissedToList}
