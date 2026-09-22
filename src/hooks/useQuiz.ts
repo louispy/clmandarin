@@ -28,9 +28,38 @@ export const DEFAULT_QUIZ_CONFIG: QuizConfig = {
   revealSeconds: 3,
 };
 
+const CONFIG_KEY = 'clm-quiz-config';
+
+/**
+ * Quiz settings persist like the script and dark-mode preferences do. They
+ * used to live in React state alone, so every reload — or every deploy — put
+ * someone who had chosen 5-second questions back on 10.
+ *
+ * Merged over the defaults rather than used directly, so a stored config from
+ * an older build is missing at most a field rather than breaking the screen.
+ */
+function loadConfig(): QuizConfig {
+  try {
+    const raw = localStorage.getItem(CONFIG_KEY);
+    if (!raw) return DEFAULT_QUIZ_CONFIG;
+    const stored = JSON.parse(raw) as Partial<QuizConfig>;
+    return { ...DEFAULT_QUIZ_CONFIG, ...stored };
+  } catch {
+    return DEFAULT_QUIZ_CONFIG;
+  }
+}
+
 export function useQuiz() {
   const [phase, setPhase] = useState<QuizPhase>('setup');
-  const [config, setConfig] = useState<QuizConfig>(DEFAULT_QUIZ_CONFIG);
+  const [config, setConfig] = useState<QuizConfig>(loadConfig);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+    } catch {
+      // Private browsing and full quotas both throw here; the quiz still runs.
+    }
+  }, [config]);
   const [sourceName, setSourceName] = useState('');
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [index, setIndex] = useState(0);
