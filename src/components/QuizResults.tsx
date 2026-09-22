@@ -185,13 +185,19 @@ export function QuizResults({
     <div className="flex flex-col gap-4 pt-1">
       <div className="flex flex-col items-center gap-1 rounded-2xl border border-cn-border bg-cn-surface px-4 py-6 dark:border-cn-border-dark dark:bg-cn-surface-dark">
         <p className="font-pinyin text-[10px] font-bold uppercase tracking-widest text-cn-muted dark:text-cn-muted-dark">
-          {sourceName} · {answers.length} questions
+          {sourceName}
         </p>
-        <p className="font-pinyin text-5xl font-black tabular-nums leading-none text-cn-gold">
-          {totalPoints.toLocaleString()}
+        {/* How many you got right is the result. The score is a flourish until
+            there is someone to compare it against. */}
+        <p className="font-pinyin text-5xl font-black tabular-nums leading-none text-cn-ink dark:text-cn-cream">
+          {correctCount}
+          <span className="text-cn-muted dark:text-cn-muted-dark">/{answers.length}</span>
         </p>
         <p className="font-pinyin text-[10px] font-bold uppercase tracking-widest text-cn-muted dark:text-cn-muted-dark">
-          points
+          correct
+        </p>
+        <p className="mt-1 font-pinyin text-sm font-black tabular-nums text-cn-gold">
+          {totalPoints.toLocaleString()} points
         </p>
         <div className="mt-3 flex items-center gap-2">
           <ShareStoryButton render={renderStory} filename="clmandarin-quiz.png" label="Share result" />
@@ -199,7 +205,7 @@ export function QuizResults({
       </div>
 
       <div className="flex gap-2">
-        <Stat label="Correct" value={`${correctCount}/${answers.length}`} />
+        <Stat label="Accuracy" value={`${Math.round((correctCount / Math.max(1, answers.length)) * 100)}%`} />
         <Stat label="Avg time" value={`${(avgMs / 1000).toFixed(1)}s`} />
         <Stat label="Best streak" value={String(bestStreak)} />
       </div>

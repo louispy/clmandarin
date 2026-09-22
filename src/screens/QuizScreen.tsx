@@ -9,6 +9,16 @@ import { QuizResults } from '../components/QuizResults';
 import { getWordsByIds } from '../utils/vocab-loader';
 import { quizzableWords, MIN_QUIZ_WORDS } from '../utils/quiz';
 
+const SOURCE_KEY = 'clm-quiz-source';
+
+function loadSourceId(): string | null {
+  try {
+    return localStorage.getItem(SOURCE_KEY);
+  } catch {
+    return null;
+  }
+}
+
 export function QuizScreen({
   decks,
   lists,
@@ -19,7 +29,7 @@ export function QuizScreen({
   script: Script;
 }) {
   const quiz = useQuiz();
-  const [sourceId, setSourceId] = useState<string | null>(null);
+  const [sourceId, setSourceId] = useState<string | null>(loadSourceId);
   // Set when a deck turns out to have too few words that work as questions.
   const [tooFew, setTooFew] = useState(false);
 
@@ -33,7 +43,19 @@ export function QuizScreen({
     return [...fromDecks, ...fromLists];
   }, [decks.decks, lists.lists]);
 
+  // The remembered deck may since have been deleted, so fall back rather than
+  // showing an empty picker.
   const selected = sources.find((s) => s.id === sourceId) ?? sources[0] ?? null;
+
+  const chooseSource = useCallback((id: string) => {
+    setSourceId(id);
+    setTooFew(false);
+    try {
+      localStorage.setItem(SOURCE_KEY, id);
+    } catch {
+      // Private browsing throws; the picker still works for this session.
+    }
+  }, []);
 
   const wordIdsFor = useCallback(
     (id: string): string[] =>
@@ -107,6 +129,7 @@ export function QuizScreen({
         script={script}
         onAnswer={quiz.answer}
         onNext={quiz.next}
+        onTogglePinyin={() => quiz.setConfig({ ...quiz.config, showPinyin: !quiz.config.showPinyin })}
         onQuit={quiz.quit}
         onPauseChange={quiz.pause}
       />
@@ -143,7 +166,7 @@ export function QuizScreen({
       <QuizSetup
         sources={sources}
         sourceId={selected?.id ?? null}
-        onSourceChange={(id) => { setSourceId(id); setTooFew(false); }}
+        onSourceChange={chooseSource}
         config={quiz.config}
         onConfigChange={quiz.setConfig}
         onStart={handleStart}

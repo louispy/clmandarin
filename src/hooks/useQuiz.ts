@@ -26,6 +26,7 @@ export const DEFAULT_QUIZ_CONFIG: QuizConfig = {
   difficulty: 'hard',
   seconds: 10,
   revealSeconds: 3,
+  showPinyin: true,
 };
 
 const CONFIG_KEY = 'clm-quiz-config';

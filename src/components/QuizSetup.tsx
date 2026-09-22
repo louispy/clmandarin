@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { QuizConfig, QuizDirection, QuizDifficulty } from '../utils/quiz';
-import { DIRECTION_LABELS, MIN_QUIZ_WORDS } from '../utils/quiz';
+import { COUNT_OPTIONS, DIRECTION_LABELS, MIN_QUIZ_WORDS } from '../utils/quiz';
 
 export interface QuizSource {
   id: string;
@@ -72,9 +72,11 @@ export function QuizSetup({
   const maxCount = source ? source.count : 0;
   const effectiveCount = Math.min(config.count, maxCount);
 
-  const countOptions = [10, 20, maxCount].filter(
-    (n, i, arr) => n >= MIN_QUIZ_WORDS && arr.indexOf(n) === i && n <= maxCount
-  );
+  // Fixed rungs rather than "All 600": nobody sits through six hundred
+  // multiple-choice questions, and offering it makes the real choices look
+  // like a compromise.
+  const countOptions = COUNT_OPTIONS.filter((n) => n >= MIN_QUIZ_WORDS && n <= maxCount);
+  if (countOptions.length === 0 && maxCount >= MIN_QUIZ_WORDS) countOptions.push(maxCount);
 
   const summary = [
     `${effectiveCount} questions`,
@@ -83,6 +85,7 @@ export function QuizSetup({
     `${config.seconds}s`,
     config.revealSeconds === null ? 'manual next' : `next in ${config.revealSeconds}s`,
   ].join(' · ');
+  const effectiveCountValue = countOptions.includes(effectiveCount) ? effectiveCount : countOptions[0];
 
   return (
     <div className="flex flex-col gap-4 pt-1">
@@ -160,33 +163,29 @@ export function QuizSetup({
           <div className="flex flex-col gap-5 rounded-2xl border border-cn-border px-3.5 py-4 dark:border-cn-border-dark">
             <Field label="Questions">
               <Segmented
-                options={countOptions.map((n) => ({
-                  value: n,
-                  label: n === maxCount && n !== 10 && n !== 20 ? `All ${n}` : String(n),
-                }))}
-                value={effectiveCount}
+                options={countOptions.map((n) => ({ value: n, label: String(n) }))}
+                value={effectiveCountValue}
                 onChange={(count) => onConfigChange({ ...config, count })}
               />
             </Field>
 
             <Field label="Direction">
               <div className="flex flex-col gap-1.5">
-                <Segmented
-                  options={(['hanzi-en', 'en-hanzi'] as QuizDirection[]).map((d) => ({
-                    value: d,
-                    label: DIRECTION_LABELS[d],
-                  }))}
-                  value={config.direction}
-                  onChange={(direction) => onConfigChange({ ...config, direction })}
-                />
-                <Segmented
-                  options={(['pinyin-hanzi', 'audio-hanzi'] as QuizDirection[]).map((d) => ({
-                    value: d,
-                    label: DIRECTION_LABELS[d],
-                  }))}
-                  value={config.direction}
-                  onChange={(direction) => onConfigChange({ ...config, direction })}
-                />
+                {[
+                  ['hanzi-en', 'en-hanzi'],
+                  ['hanzi-pinyin', 'pinyin-hanzi'],
+                  ['audio-hanzi'],
+                ].map((row, i) => (
+                  <Segmented
+                    key={i}
+                    options={(row as QuizDirection[]).map((d) => ({
+                      value: d,
+                      label: DIRECTION_LABELS[d],
+                    }))}
+                    value={config.direction}
+                    onChange={(direction) => onConfigChange({ ...config, direction })}
+                  />
+                ))}
               </div>
             </Field>
 

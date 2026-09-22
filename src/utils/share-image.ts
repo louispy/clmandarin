@@ -297,10 +297,14 @@ export function renderQuizStory(
   // Leading has to clear the descender: a thousands separator drops about
   // 0.2em below the baseline, and at 1.05 the comma in "14,820" landed on top
   // of the POINTS label. Three-digit scores hid this.
-  rows.push(textRow(f, data.points.toLocaleString(), `900 ${big}px ${LATIN_STACK}`, GOLD, big, 1.28));
+  // Correct-out-of-total leads; the score sits under it.
+  const tally = `${data.correct}/${data.total}`;
+  rows.push(textRow(f, tally, `900 ${big}px ${LATIN_STACK}`, INK, big, 1.28));
   rows.push(gap(10, air));
-  rows.push(textRow(f, 'POINTS', `700 30px ${LATIN_STACK}`, MUTED, 30));
-  rows.push(gap(72, air));
+  rows.push(textRow(f, 'CORRECT', `700 30px ${LATIN_STACK}`, MUTED, 30));
+  rows.push(gap(14, air));
+  rows.push(textRow(f, `${data.points.toLocaleString()} points`, `800 40px ${LATIN_STACK}`, GOLD, 40));
+  rows.push(gap(56, air));
 
   const pct = data.total ? data.correct / data.total : 0;
   rows.push({
@@ -329,7 +333,7 @@ export function renderQuizStory(
   rows.push(gap(76, air));
 
   const stats: [string, string][] = [
-    [`${data.correct}/${data.total}`, 'CORRECT'],
+    [`${Math.round((data.correct / Math.max(1, data.total)) * 100)}%`, 'ACCURACY'],
     [`${data.bestStreak}`, 'BEST STREAK'],
     [`${data.avgSeconds.toFixed(1)}s`, 'AVG TIME'],
   ];

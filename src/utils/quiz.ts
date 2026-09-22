@@ -2,7 +2,12 @@ import type { VocabWord } from '../types';
 import { stripTones } from './vocab-loader';
 
 /** What the prompt shows, and therefore what the four options are. */
-export type QuizDirection = 'hanzi-en' | 'en-hanzi' | 'pinyin-hanzi' | 'audio-hanzi';
+export type QuizDirection =
+  | 'hanzi-en'
+  | 'en-hanzi'
+  | 'hanzi-pinyin'
+  | 'pinyin-hanzi'
+  | 'audio-hanzi';
 export type QuizDifficulty = 'normal' | 'hard';
 
 export interface QuizConfig {
@@ -16,7 +21,12 @@ export interface QuizConfig {
    * wait for the user to press Next.
    */
   revealSeconds: number | null;
+  /** Whether the reading is revealed with the answer. */
+  showPinyin: boolean;
 }
+
+/** Offered question counts, capped at what the deck holds. */
+export const COUNT_OPTIONS = [10, 20, 30];
 
 export interface QuizQuestion {
   /** The correct answer. */
@@ -89,6 +99,31 @@ function syllables(pinyin: string): Set<string> {
   return new Set(stripTones(pinyin.toLowerCase()).split(/\s+/).filter(Boolean));
 }
 
+/** Pinyin normalised for comparison, tones kept — mā and mǎ are distinguishable. */
+function pinyinKey(word: VocabWord): string {
+  return word.pinyin.toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * What would make two options indistinguishable for this direction.
+ *
+ * Asking for a meaning, two words sharing a gloss are both right. Asking for a
+ * reading — or reading one out — two homophones are both right, and 是 and 事
+ * are only one of many such pairs. Filtering on the wrong axis leaves questions
+ * with two correct answers.
+ */
+function ambiguityKey(word: VocabWord, direction: QuizDirection): string {
+  switch (direction) {
+    case 'hanzi-en':
+    case 'en-hanzi':
+      return glossKey(word);
+    case 'hanzi-pinyin':
+    case 'pinyin-hanzi':
+    case 'audio-hanzi':
+      return pinyinKey(word);
+  }
+}
+
 /**
  * How easily a candidate could be mistaken for the answer.
  *
@@ -115,16 +150,17 @@ function confusability(answer: VocabWord, candidate: VocabWord): number {
 function pickDistractors(
   answer: VocabWord,
   pool: VocabWord[],
-  difficulty: QuizDifficulty
+  difficulty: QuizDifficulty,
+  direction: QuizDirection
 ): VocabWord[] {
   const need = OPTION_COUNT - 1;
-  // Compare glosses normalised. A third of the vocabulary shares a gloss with
-  // at least one other word (情况 / 形势 / 局面 are all "situation"), and 326
-  // pairs differ only by capitalisation — an exact match would let "How" in as
-  // a distractor for "how", giving the question two right answers.
-  const answerGloss = glossKey(answer);
+  // Normalised, and on the axis the direction actually tests. A third of the
+  // vocabulary shares a gloss with another word (情况 / 形势 / 局面 are all
+  // "situation") and 326 pairs differ only by capitalisation; on the pinyin
+  // side, homophones are commoner still.
+  const answerKey = ambiguityKey(answer, direction);
   const candidates = pool.filter(
-    (w) => w.id !== answer.id && glossKey(w) !== answerGloss
+    (w) => w.id !== answer.id && ambiguityKey(w, direction) !== answerKey
   );
   if (candidates.length <= need) return candidates;
 
@@ -151,7 +187,7 @@ export function buildQuestions(words: VocabWord[], config: QuizConfig): QuizQues
   if (!canQuiz(pool.length)) return [];
   const picked = shuffle(pool).slice(0, Math.min(config.count, pool.length));
   return picked.map((word) => {
-    const distractors = pickDistractors(word, pool, config.difficulty);
+    const distractors = pickDistractors(word, pool, config.difficulty, config.direction);
     return { word, options: shuffle([word, ...distractors]) };
   });
 }
@@ -197,6 +233,7 @@ export function displayGloss(english: string): string {
 export function promptKind(direction: QuizDirection): 'hanzi' | 'english' | 'pinyin' | 'audio' {
   switch (direction) {
     case 'hanzi-en': return 'hanzi';
+    case 'hanzi-pinyin': return 'hanzi';
     case 'en-hanzi': return 'english';
     case 'pinyin-hanzi': return 'pinyin';
     case 'audio-hanzi': return 'audio';
@@ -204,13 +241,18 @@ export function promptKind(direction: QuizDirection): 'hanzi' | 'english' | 'pin
 }
 
 /** What the four option tiles show for a direction. */
-export function optionKind(direction: QuizDirection): 'hanzi' | 'english' {
-  return direction === 'hanzi-en' ? 'english' : 'hanzi';
+export function optionKind(direction: QuizDirection): 'hanzi' | 'english' | 'pinyin' {
+  switch (direction) {
+    case 'hanzi-en': return 'english';
+    case 'hanzi-pinyin': return 'pinyin';
+    default: return 'hanzi';
+  }
 }
 
 export const DIRECTION_LABELS: Record<QuizDirection, string> = {
   'hanzi-en': '中 → EN',
   'en-hanzi': 'EN → 中',
+  'hanzi-pinyin': '中 → Pinyin',
   'pinyin-hanzi': 'Pinyin → 中',
   'audio-hanzi': '♪ → 中',
 };
@@ -218,6 +260,7 @@ export const DIRECTION_LABELS: Record<QuizDirection, string> = {
 export const PROMPT_HINTS: Record<QuizDirection, string> = {
   'hanzi-en': 'What does this mean?',
   'en-hanzi': 'Which word is this?',
+  'hanzi-pinyin': 'How is this read?',
   'pinyin-hanzi': 'Which word is this?',
   'audio-hanzi': 'Which word did you hear?',
 };
