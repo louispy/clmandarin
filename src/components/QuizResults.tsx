@@ -179,13 +179,13 @@ export function QuizResults({
   const record = !outcome
     ? null
     : outcome.isFirst
-      ? `First run on ${sourceName}`
+      ? `First time on ${sourceName}`
       : outcome.isBest
-        ? `Best yet — up from ${previous?.correct}/${previous?.total}`
+        ? `New best — was ${previous?.correct}/${previous?.total}`
         : previous && correctCount / Math.max(1, answers.length) === previous.ratio
-          ? 'Matched your best'
+          ? 'Same as your best'
           : previous
-            ? `Your best here: ${previous.correct}/${previous.total}`
+            ? `Your best: ${previous.correct}/${previous.total}`
             : null;
 
   const renderStory = useCallback(
@@ -278,7 +278,7 @@ export function QuizResults({
           around it. */}
       <div className="flex flex-col gap-1.5">
         <p className="px-0.5 text-[10px] font-black uppercase tracking-widest text-cn-muted dark:text-cn-muted-dark">
-          {missed.length > 0 ? 'Worth another look' : 'Review'} · {answers.length}{' '}
+          {missed.length > 0 ? 'To review' : 'Review'} · {answers.length}{' '}
           {answers.length === 1 ? 'question' : 'questions'}
         </p>
         <div className="flex flex-col divide-y divide-cn-border rounded-2xl border border-cn-border dark:divide-cn-border-dark dark:border-cn-border-dark">

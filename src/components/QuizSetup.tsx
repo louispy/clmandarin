@@ -189,7 +189,7 @@ export function QuizSetup({
               </div>
             </Field>
 
-            <Field label="Distractors">
+            <Field label="Wrong answers">
               <Segmented
                 options={[
                   { value: 'normal' as QuizDifficulty, label: 'Normal' },

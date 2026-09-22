@@ -68,23 +68,27 @@ export interface Verdict {
 }
 
 /**
- * An honest reading of the run.
+ * An honest reading of the result.
  *
  * Deliberately not praise: Dweck's work is clear that encouragement a learner
  * finds non-credible does more harm than none at all, so nothing here claims
  * more than the numbers support. The tone lifts as the result does.
+ *
+ * Plain words on purpose. The audience is learning a language, and "strong
+ * run", "getting there" and "early days" are all idioms that read as noise to
+ * anyone who did not grow up with English.
  */
 export function verdictFor(correct: number, total: number, missed: number): Verdict {
   const ratio = total > 0 ? correct / total : 0;
   if (total === 0) return { headline: 'No questions', note: '', celebrate: false };
 
   const note = missed === 0
-    ? 'Nothing left to review.'
-    : `${missed} ${missed === 1 ? 'word is' : 'words are'} worth another look.`;
+    ? 'Nothing to review.'
+    : `${missed} ${missed === 1 ? 'word' : 'words'} to review.`;
 
-  if (ratio === 1) return { headline: 'Perfect run', note, celebrate: true };
-  if (ratio >= 0.8) return { headline: 'Strong run', note, celebrate: false };
-  if (ratio >= 0.6) return { headline: 'Good run', note, celebrate: false };
-  if (ratio >= 0.4) return { headline: 'Getting there', note, celebrate: false };
-  return { headline: 'Early days with this deck', note, celebrate: false };
+  if (ratio === 1) return { headline: 'Perfect!', note, celebrate: true };
+  if (ratio >= 0.8) return { headline: 'Great work', note, celebrate: false };
+  if (ratio >= 0.6) return { headline: 'Good work', note, celebrate: false };
+  if (ratio >= 0.4) return { headline: 'Keep going', note, celebrate: false };
+  return { headline: 'Keep studying', note, celebrate: false };
 }
