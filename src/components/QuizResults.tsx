@@ -283,7 +283,7 @@ export function QuizResults({
         </p>
         <div className="flex flex-col divide-y divide-cn-border rounded-2xl border border-cn-border dark:divide-cn-border-dark dark:border-cn-border-dark">
           {answers.map((a, i) => (
-            <div key={`${a.word.id}-${i}`} className="flex items-center gap-3 px-3 py-2.5">
+            <div key={`${a.word.id}-${i}`} className="flex items-center gap-3 px-3 py-3">
               <span
                 className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-black text-white ${
                   a.correct ? 'bg-[#2E7D52]' : 'bg-cn-red'
@@ -292,18 +292,18 @@ export function QuizResults({
               >
                 {a.correct ? '✓' : '✗'}
               </span>
-              <span className="min-w-[3rem] text-lg font-bold text-cn-ink dark:text-cn-cream">
+              <span className="min-w-[3.25rem] text-xl font-bold text-cn-ink dark:text-cn-cream">
                 {displayHanzi(a.word, script)}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block font-pinyin text-[11px] text-cn-red dark:text-cn-red-light">
+                <span className="block font-pinyin text-[13px] text-cn-red dark:text-cn-red-light">
                   {a.word.pinyin}
                 </span>
-                <span className="block truncate text-xs text-cn-muted dark:text-cn-muted-dark">
+                <span className="block truncate text-sm text-cn-muted dark:text-cn-muted-dark">
                   {displayGloss(a.word.english)}
                 </span>
               </span>
-              <span className="shrink-0 font-pinyin text-[10px] tabular-nums text-cn-muted dark:text-cn-muted-dark">
+              <span className="shrink-0 font-pinyin text-[11px] tabular-nums text-cn-muted dark:text-cn-muted-dark">
                 {a.chosenId === null ? 'timed out' : `${(a.ms / 1000).toFixed(1)}s`}
               </span>
             </div>
