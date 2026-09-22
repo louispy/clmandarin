@@ -109,6 +109,24 @@ export function QuizRun({
       {/* Fixed height: the Next button is taller than the countdown it
           replaces, and without this the row grows and nudges the tiles down
           the moment you answer. */}
+      <div className="flex h-5 items-center gap-2.5 font-pinyin text-xs font-bold tabular-nums text-cn-muted dark:text-cn-muted-dark">
+        <span>
+          {index + 1}/{total}
+        </span>
+        <span className={!locked && fraction < 0.3 ? 'text-cn-red dark:text-cn-red-light' : ''}>
+          {(msLeft / 1000).toFixed(1)}s
+        </span>
+        <span className="ml-auto flex items-center gap-2">
+          {locked && lastPoints > 0 && (
+            <span className="font-black text-[#2E7D52] dark:text-[#6FBF95]">+{lastPoints}</span>
+          )}
+          {streak >= 2 && <span className="text-cn-gold">&#128293;{streak}</span>}
+          <span className="font-black text-cn-ink dark:text-cn-cream">
+            {totalPoints.toLocaleString()}
+          </span>
+        </span>
+      </div>
+
       <div className="relative flex min-h-[9rem] flex-col items-center justify-center gap-2 rounded-2xl border border-cn-border bg-cn-surface px-4 py-6 text-center dark:border-cn-border-dark dark:bg-cn-surface-dark">
         {/* The prompt is already the reading in pinyin → 中, so there is
             nothing to reveal there. */}
@@ -168,8 +186,12 @@ export function QuizRun({
             switched off, which is the user's own doing. */}
         {config.showPinyin && kind !== 'pinyin' && (
           <p
-            className={`font-pinyin text-base font-bold tracking-wide text-cn-red transition-opacity dark:text-cn-red-light ${
-              locked ? 'opacity-100' : 'opacity-0'
+            // Keyed on the question so it remounts already hidden. Without the
+            // key it kept the previous question's opacity of 1 and animated
+            // down, flashing the new word's reading for a moment.
+            key={question.word.id}
+            className={`font-pinyin text-base font-bold tracking-wide text-cn-red dark:text-cn-red-light ${
+              locked ? 'opacity-100 transition-opacity' : 'opacity-0'
             }`}
             aria-hidden={!locked}
           >
@@ -211,46 +233,38 @@ export function QuizRun({
         })}
       </div>
 
-      <div className="flex h-6 items-center gap-2.5 font-pinyin text-xs font-bold tabular-nums text-cn-muted dark:text-cn-muted-dark">
+      {/* Actions, kept large and at the bottom for thumb reach. The row has a
+          fixed height so Next appearing does not move the tiles above it. */}
+      <div className="flex h-12 items-stretch gap-2">
         <button
           onClick={() => {
             setConfirmingQuit(true);
             onPauseChange(true);
           }}
-          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-cn-red text-white shadow-sm shadow-cn-red/30 transition-colors hover:bg-cn-red-dark"
-          title="Quit quiz"
-          aria-label="Quit quiz"
+          className="flex w-14 shrink-0 items-center justify-center rounded-2xl border border-cn-border text-cn-muted transition-colors hover:border-cn-red hover:text-cn-red dark:border-cn-border-dark dark:text-cn-muted-dark dark:hover:text-cn-red-light"
+          title="Leave the quiz"
+          aria-label="Leave the quiz"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
-            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+            <path fillRule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clipRule="evenodd" />
           </svg>
         </button>
-        <span>
-          {index + 1}/{total}
-        </span>
+
         {locked ? (
           <button
             onClick={onNext}
-            className="rounded-lg bg-cn-gold px-2 py-0.5 font-black tabular-nums text-cn-ink shadow-sm shadow-cn-gold/30 transition-colors hover:bg-cn-gold-light"
+            className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-cn-gold text-base font-black tabular-nums text-cn-ink shadow-lg shadow-cn-gold/25 transition-colors hover:bg-cn-gold-light"
           >
-            Next{revealing ? ` (${Math.ceil(revealLeft / 1000)})` : ''}&nbsp;&rarr;
+            Next{revealing ? ` (${Math.ceil(revealLeft / 1000)})` : ''}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+              <path fillRule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clipRule="evenodd" />
+            </svg>
           </button>
         ) : (
-          <span className={fraction < 0.3 ? 'text-cn-red dark:text-cn-red-light' : ''}>
-            {(msLeft / 1000).toFixed(1)}s
-          </span>
+          <p className="flex flex-1 items-center justify-center rounded-2xl border border-dashed border-cn-border font-pinyin text-xs font-bold uppercase tracking-widest text-cn-muted/70 dark:border-cn-border-dark dark:text-cn-muted-dark/70">
+            Pick an answer
+          </p>
         )}
-
-        {/* Score on the right, with what the last answer earned beside it. */}
-        <span className="ml-auto flex items-center gap-2">
-          {locked && lastPoints > 0 && (
-            <span className="font-black text-[#2E7D52] dark:text-[#6FBF95]">+{lastPoints}</span>
-          )}
-          {streak >= 2 && <span className="text-cn-gold">&#128293;{streak}</span>}
-          <span className="font-black text-cn-ink dark:text-cn-cream">
-            {totalPoints.toLocaleString()}
-          </span>
-        </span>
       </div>
     </div>
   );
