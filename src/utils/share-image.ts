@@ -330,29 +330,10 @@ export function renderQuizStory(
       ctx.fillText(`${Math.round(pct * 100)}%`, cx, cy + ring * 0.2);
     },
   });
-  rows.push(gap(76, air));
-
-  const stats: [string, string][] = [
-    [`${Math.round((data.correct / Math.max(1, data.total)) * 100)}%`, 'ACCURACY'],
-    [`${data.bestStreak}`, 'BEST STREAK'],
-    [`${data.avgSeconds.toFixed(1)}s`, 'AVG TIME'],
-  ];
-  rows.push({
-    h: 104,
-    draw: (y) => {
-      const colWidth = (m.w - margin * 2) / stats.length;
-      ctx.textAlign = 'center';
-      stats.forEach(([value, label], i) => {
-        const x = margin + colWidth * i + colWidth / 2;
-        ctx.fillStyle = INK;
-        ctx.font = `800 56px ${LATIN_STACK}`;
-        ctx.fillText(value, x, y + 56);
-        ctx.fillStyle = MUTED;
-        ctx.font = `700 24px ${LATIN_STACK}`;
-        ctx.fillText(label, x, y + 98);
-      });
-    },
-  });
+  // No stats row: the accuracy it carried is already the ring, and best
+  // streak and average time mean nothing to someone who sees this in a feed
+  // without knowing the rules. They stay on the results screen, where the
+  // person reading them just played the round.
 
   drawStack(f, rows);
   wordmark(f);
