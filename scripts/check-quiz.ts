@@ -32,11 +32,15 @@ check('canQuiz needs four words', !canQuiz(3) && canQuiz(4));
   const blank = everything.flatMap((q) => q.options).filter((o) => !String(o.english ?? '').trim());
   check('no option is blank', blank.length === 0);
   const gloss = (w: VocabWord) => String(w.english ?? '').trim().toLowerCase();
+  // Every option distinct from every other, not merely from the answer —
+  // two distractors sharing a meaning is just as broken as one matching it.
   const ambiguous = everything.filter(
-    (q) => q.options.filter((o) => gloss(o) === gloss(q.word)).length > 1
+    (q) => new Set(q.options.map(gloss)).size !== q.options.length
   );
-  check('no question has two options meaning the same thing',
-    ambiguous.length === 0);
+  check('no two options in a question mean the same thing', ambiguous.length === 0);
+  if (ambiguous.length) {
+    console.log('      e.g.', ambiguous[0].word.hanzi, '->', ambiguous[0].options.map((o) => o.english).join(' | '));
+  }
   const particles = everything.filter((q) => ['啊', '呀', '哎', '嗯', '之'].includes(q.word.hanzi));
   check('particles are never asked', particles.length === 0);
   check('particles are never offered',
@@ -68,8 +72,8 @@ for (const direction of ['hanzi-en', 'en-hanzi', 'hanzi-pinyin', 'pinyin-hanzi',
     direction === 'hanzi-en' || direction === 'en-hanzi'
       ? String(w.english ?? '').trim().toLowerCase()
       : w.pinyin.toLowerCase().replace(/\s+/g, ' ').trim();
-  const bad = qs.filter((q) => q.options.filter((o) => key(o) === key(q.word)).length > 1);
-  check(`${direction}: no question has two defensible answers`, bad.length === 0);
+  const bad = qs.filter((q) => new Set(q.options.map(key)).size !== q.options.length);
+  check(`${direction}: every option is distinguishable from the rest`, bad.length === 0);
   if (bad.length) {
     console.log('      e.g.', bad[0].word.hanzi, '->', bad[0].options.map((o) => `${o.hanzi}/${o.pinyin}`).join(', '));
   }

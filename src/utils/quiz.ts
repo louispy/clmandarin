@@ -147,6 +147,31 @@ function confusability(answer: VocabWord, candidate: VocabWord): number {
   return score;
 }
 
+/**
+ * Take the first `need` words whose ambiguity keys are all new.
+ *
+ * `seen` starts with the answer's key, so this rules out both a distractor
+ * that matches the answer and two distractors that match each other. Checking
+ * only against the answer left questions like 举 "Lift" offering "Hold",
+ * "Hold" and "Skin" — one right answer and two identical wrong ones.
+ */
+function takeDistinct(
+  candidates: VocabWord[],
+  need: number,
+  seen: Set<string>,
+  direction: QuizDirection
+): VocabWord[] {
+  const out: VocabWord[] = [];
+  for (const word of candidates) {
+    if (out.length === need) break;
+    const key = ambiguityKey(word, direction);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(word);
+  }
+  return out;
+}
+
 function pickDistractors(
   answer: VocabWord,
   pool: VocabWord[],
@@ -158,13 +183,12 @@ function pickDistractors(
   // vocabulary shares a gloss with another word (情况 / 形势 / 局面 are all
   // "situation") and 326 pairs differ only by capitalisation; on the pinyin
   // side, homophones are commoner still.
-  const answerKey = ambiguityKey(answer, direction);
-  const candidates = pool.filter(
-    (w) => w.id !== answer.id && ambiguityKey(w, direction) !== answerKey
-  );
-  if (candidates.length <= need) return candidates;
+  const seen = new Set([ambiguityKey(answer, direction)]);
+  const candidates = pool.filter((w) => w.id !== answer.id);
 
-  if (difficulty === 'normal') return shuffle(candidates).slice(0, need);
+  if (difficulty === 'normal') {
+    return takeDistinct(shuffle(candidates), need, seen, direction);
+  }
 
   // Hard: prefer confusable words, but keep some randomness so the same answer
   // doesn't always draw the same three distractors. Anything scoring zero is
@@ -172,10 +196,9 @@ function pickDistractors(
   const scored = candidates
     .map((w) => ({ w, score: confusability(answer, w) }))
     .sort((a, b) => b.score - a.score);
-  const similar = scored.filter((s) => s.score > 0).map((s) => s.w);
+  const similar = shuffle(scored.filter((s) => s.score > 0).slice(0, need * 3).map((s) => s.w));
   const rest = shuffle(scored.filter((s) => s.score === 0).map((s) => s.w));
-  const top = shuffle(similar.slice(0, need * 3)).slice(0, need);
-  return [...top, ...rest].slice(0, need);
+  return takeDistinct([...similar, ...rest], need, seen, direction);
 }
 
 /**
