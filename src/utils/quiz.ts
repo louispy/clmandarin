@@ -25,6 +25,32 @@ export interface QuizConfig {
   showPinyin: boolean;
 }
 
+export interface QuizSource {
+  id: string;
+  name: string;
+  sublabel: string;
+  count: number;
+  /** HSK level for a built-in deck, 0 for anything else. */
+  level: number;
+}
+
+/**
+ * What to call a set of decks. A contiguous run of HSK levels gets named as a
+ * range, because "HSK 1–4" is what the person was thinking when they picked it;
+ * anything else just gets counted.
+ */
+export function describeSelection(sources: QuizSource[]): string {
+  if (sources.length === 0) return 'Nothing selected';
+  if (sources.length === 1) return sources[0].name;
+  const levels = sources.map((s) => s.level);
+  if (levels.every((l) => l > 0)) {
+    const sorted = [...levels].sort((a, b) => a - b);
+    const contiguous = sorted.every((l, i) => i === 0 || l === sorted[i - 1] + 1);
+    if (contiguous) return `HSK ${sorted[0]}–${sorted[sorted.length - 1]}`;
+  }
+  return `${sources.length} decks`;
+}
+
 /** Offered question counts, capped at what the deck holds. */
 export const COUNT_OPTIONS = [10, 20, 30];
 
