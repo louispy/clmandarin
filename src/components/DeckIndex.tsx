@@ -15,9 +15,9 @@ export function DeckIndex({
   decks: Deck[];
   onOpen: (deckId: string) => void;
 }) {
-  // "My words" is empty until the user adds one — hide it rather than show a
-  // permanently empty deck.
-  const visible = decks.filter((d) => d.level > 0 || d.wordIds.length > 0);
+  // Only the six HSK levels, so the grid is always two clean rows of three.
+  // "My words" is not a level and sits with the user's own lists instead.
+  const visible = decks.filter((d) => d.level > 0);
 
   return (
     <div className="flex flex-col gap-1.5">

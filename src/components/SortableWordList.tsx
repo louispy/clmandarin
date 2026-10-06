@@ -265,17 +265,19 @@ export function SortableWordList({
           </span>
         )}
       </div>
-      {!editMode && visibilityChips}
       </div>
 
-      {/* Sticky toolbar: Edit/Done + Study */}
+      {/* Sticky toolbar: show/hide chips + Edit/Done + Study. The chips live
+          here rather than beside the search box so they stay within reach once
+          the list is scrolled — changing what is visible is something you do
+          while reading, not before you start. */}
       <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between gap-2 bg-cn-paper/95 px-4 pb-2 pt-2 backdrop-blur dark:bg-cn-paper-dark/95">
         {editMode ? (
           <span className="text-xs text-cn-muted dark:text-cn-muted-dark">
             Drag to reorder · tap <span className="font-bold text-cn-red dark:text-cn-red-light">Done</span> to exit
           </span>
         ) : (
-          <span />
+          visibilityChips
         )}
         <div className="flex items-center gap-2">
           {!q && (

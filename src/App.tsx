@@ -42,6 +42,8 @@ export function App() {
   // Reader toggles live here rather than in TextsScreen: that screen unmounts
   // on every tab switch, and resetting the reader each time would be a
   // regression. Both default off.
+  // Set when Home hands a search over, so the word list takes focus on arrival.
+  const [focusSearch, setFocusSearch] = useState(false);
   const [textShowPinyin, setTextShowPinyin] = useState(false);
   const [textShowTranslation, setTextShowTranslation] = useState(false);
 
@@ -192,6 +194,7 @@ export function App() {
               textCount={texts.texts.length}
               onSearch={(q) => {
                 vocab.handleSearch(q);
+                setFocusSearch(true);
                 navigate({ tab: 'browse' });
               }}
               onOpenDeck={(deckId) => navigate({ tab: 'cards', deckId })}
@@ -200,6 +203,7 @@ export function App() {
                 navigate({ tab: 'cards' });
               }}
               onOpenTexts={() => navigate({ tab: 'texts' })}
+              onOpenQuiz={() => navigate({ tab: 'quiz' })}
               onBrowse={() => navigate({ tab: 'browse' })}
               onAddCustomWord={handleAddCustomWord}
             />
@@ -216,6 +220,8 @@ export function App() {
               onDeleteCustomWord={handleDeleteCustomWord}
               onStartStudy={startStudy}
               onHome={() => navigate({ tab: 'home' })}
+              autoFocusSearch={focusSearch}
+              onSearchFocused={() => setFocusSearch(false)}
             />
           )}
 

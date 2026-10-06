@@ -33,6 +33,8 @@ export function VocabBrowser({
   onToggleVisibility,
   onStudyWord,
   onStudyFiltered,
+  autoFocusSearch,
+  onSearchFocused,
 }: {
   words: VocabWord[];
   dataLoading?: boolean;
@@ -59,11 +61,27 @@ export function VocabBrowser({
   onToggleVisibility: (field: keyof VisibilityState) => void;
   onStudyWord: (wordId: string) => void;
   onStudyFiltered: () => void;
+  /** Take the caret on mount, for a search started on the Home screen. */
+  autoFocusSearch?: boolean;
+  onSearchFocused?: () => void;
 }) {
   const [addMenu, setAddMenu] = useState(false);
   const [addCreate, setAddCreate] = useState(false);
   const [addNewName, setAddNewName] = useState('');
   const [addCustomOpen, setAddCustomOpen] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  // Home hands typing over mid-word, so the caret has to land here in the same
+  // frame or the on-screen keyboard closes and the next keystroke is lost.
+  useEffect(() => {
+    if (!autoFocusSearch) return;
+    const input = searchRef.current;
+    if (!input) return;
+    input.focus({ preventScroll: true });
+    const end = input.value.length;
+    input.setSelectionRange(end, end);
+    onSearchFocused?.();
+  }, [autoFocusSearch, onSearchFocused]);
   const addRef = useRef<HTMLDivElement>(null);
 
   // Default Level in the custom-word modal: the single selected HSK level, or 0 (None) otherwise.
@@ -131,6 +149,7 @@ export function VocabBrowser({
           <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clipRule="evenodd" />
         </svg>
         <input
+          ref={searchRef}
           type="text"
           value={searchQuery}
           onChange={(e) => onSearch(e.target.value)}

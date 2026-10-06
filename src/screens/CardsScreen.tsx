@@ -102,6 +102,9 @@ export function CardsScreen({
   }, [openDeck, decks]);
 
   const customCount = lists.lists.filter((l) => l.id !== FAVORITES_ID).length;
+  // Not an HSK level, so it sits with the user's own work rather than in the
+  // levels grid, where it left a lone tile on a third row.
+  const myWords = decks.decks.find((d) => d.level === 0);
 
   // ---- Built-in deck detail -------------------------------------------------
   if (openDeck) {
@@ -185,6 +188,28 @@ export function CardsScreen({
         <p className="px-0.5 text-[10px] font-black uppercase tracking-widest text-cn-muted dark:text-cn-muted-dark">
           Your lists
         </p>
+
+        {myWords && myWords.wordIds.length > 0 && (
+          <button
+            onClick={() => onOpenDeck(myWords.id)}
+            className="flex items-center gap-3 rounded-2xl border border-cn-border bg-cn-surface px-3.5 py-3 text-left transition-colors hover:border-cn-red/40 dark:border-cn-border-dark dark:bg-cn-surface-dark"
+          >
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-cn-red/10 text-sm font-bold text-cn-red dark:text-cn-red-light">
+              我
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block truncate text-sm font-bold text-cn-ink dark:text-cn-cream">
+                {myWords.name}
+              </span>
+              <span className="block font-pinyin text-xs tabular-nums text-cn-muted dark:text-cn-muted-dark">
+                {myWords.wordIds.length} {myWords.wordIds.length === 1 ? 'word' : 'words'} you added
+              </span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 shrink-0 text-cn-muted dark:text-cn-muted-dark">
+              <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.168 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.5 4.25a.75.75 0 0 1 0 1.08l-4.5 4.25a.75.75 0 0 1-1.06-.02Z" clipRule="evenodd" />
+            </svg>
+          </button>
+        )}
 
         <FlashcardManager
           lists={lists.lists}

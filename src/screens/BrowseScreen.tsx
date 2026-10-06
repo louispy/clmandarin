@@ -16,6 +16,8 @@ export function BrowseScreen({
   onDeleteCustomWord,
   onStartStudy,
   onHome,
+  autoFocusSearch,
+  onSearchFocused,
 }: {
   vocab: ReturnType<typeof useVocab>;
   lists: ReturnType<typeof useLists>;
@@ -26,6 +28,8 @@ export function BrowseScreen({
   onDeleteCustomWord: (wordId: string) => Promise<void>;
   onStartStudy: (words: VocabWord[], label: string, startIndex?: number) => void;
   onHome: () => void;
+  autoFocusSearch?: boolean;
+  onSearchFocused?: () => void;
 }) {
   const filterLabel = vocab.selectedLevels.length === 0
     ? 'All HSK'
@@ -106,6 +110,8 @@ export function BrowseScreen({
       onDeleteCustomWord={onDeleteCustomWord}
       searchQuery={vocab.searchQuery}
       onSearch={vocab.handleSearch}
+      autoFocusSearch={autoFocusSearch}
+      onSearchFocused={onSearchFocused}
       isSearching={vocab.isSearching}
       lists={lists.lists}
       onAddToList={handleAddToList}

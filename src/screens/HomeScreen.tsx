@@ -48,6 +48,7 @@ export function HomeScreen({
   onOpenDeck,
   onOpenLists,
   onOpenTexts,
+  onOpenQuiz,
   onBrowse,
   onAddCustomWord,
   textCount,
@@ -58,6 +59,7 @@ export function HomeScreen({
   onOpenDeck: (deckId: string) => void;
   onOpenLists: (listId?: string) => void;
   onOpenTexts: () => void;
+  onOpenQuiz: () => void;
   onBrowse: () => void;
   onAddCustomWord: (input: {
     hanzi: string;
@@ -73,12 +75,17 @@ export function HomeScreen({
 
   const favorites = lists.favorites;
   const myListCount = lists.lists.filter((l) => l.id !== lists.FAVORITES_ID).length;
-  const tiles = decks.decks.filter((d) => d.level > 0 || d.wordIds.length > 0);
+  // Six levels, two rows of three. My words is reachable from Jump to below.
+  const tiles = decks.decks.filter((d) => d.level > 0);
+  const myWords = decks.decks.find((d) => d.level === 0);
 
   return (
     <div className="flex flex-col gap-4 pt-1">
       <ChengyuCard entry={chengyu.entry} loading={chengyu.loading} failed={chengyu.failed} />
 
+      {/* Typing hands straight over to the word list rather than waiting for
+          Enter. The field there mounts focused with the caret at the end, so
+          the keyboard never drops and every later keystroke is local. */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -91,7 +98,11 @@ export function HomeScreen({
         </svg>
         <input
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            const next = e.target.value;
+            setQuery(next);
+            if (next.trim()) onSearch(next);
+          }}
           placeholder="Search 5,000 HSK words…"
           className="w-full bg-transparent text-sm text-cn-ink outline-none placeholder:text-cn-muted dark:text-cn-cream dark:placeholder:text-cn-muted-dark"
           aria-label="Search vocabulary"
@@ -135,6 +146,15 @@ export function HomeScreen({
           />
           <QuickLink label="My lists" glyph="▤" count={myListCount} onClick={() => onOpenLists()} />
           <QuickLink label="All words" glyph="中" onClick={onBrowse} />
+          <QuickLink label="Quiz" glyph="⚡" onClick={onOpenQuiz} />
+          {myWords && myWords.wordIds.length > 0 && (
+            <QuickLink
+              label="My words"
+              glyph="我"
+              count={myWords.wordIds.length}
+              onClick={() => onOpenDeck(myWords.id)}
+            />
+          )}
           <QuickLink label="Add a word" glyph="+" onClick={() => setAddOpen(true)} />
           <QuickLink label="Texts" glyph="文" count={textCount} onClick={onOpenTexts} />
         </div>
