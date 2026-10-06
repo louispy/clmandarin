@@ -304,7 +304,8 @@ export function VocabBrowser({
       )}
 
       {/* Toolbar: visibility toggles + view mode */}
-      <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between bg-cn-paper/95 px-4 pb-2 pt-2 backdrop-blur dark:bg-cn-paper-dark/95">
+      <div style={{ top: 'var(--app-header-h, 49px)' }}
+          className="sticky z-30 -mx-4 flex items-center justify-between border-b border-cn-border/60 bg-cn-paper/95 px-4 pb-2.5 pt-2.5 backdrop-blur dark:border-cn-border-dark/60 dark:bg-cn-paper-dark/95">
         <div className="flex items-center gap-1">
           <span className="mr-2 text-xs font-semibold uppercase tracking-wider text-cn-muted dark:text-cn-muted-dark">
             Show:

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { Route, Tab } from '../hooks/useRoute';
 import type { Script } from '../hooks/useScript';
 
@@ -49,8 +50,26 @@ export function AppHeader({
   dark: boolean;
   onToggleDark: () => void;
 }) {
+  const ref = useRef<HTMLElement>(null);
+
+  // Toolbars below stick to the bottom of this header. Its height is not fixed
+  // — the logo and padding both grow at the sm breakpoint — so it is measured
+  // and published rather than guessed. A hardcoded offset left the toolbar's
+  // top tucked behind the header on wider screens, swallowing its padding and
+  // letting the list scroll through the seam.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const publish = () =>
+      document.documentElement.style.setProperty('--app-header-h', `${el.offsetHeight}px`);
+    publish();
+    const observer = new ResizeObserver(publish);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-cn-border bg-cn-paper/95 backdrop-blur dark:border-cn-border-dark dark:bg-cn-paper-dark/95">
+    <header ref={ref} className="sticky top-0 z-40 border-b border-cn-border bg-cn-paper/95 backdrop-blur dark:border-cn-border-dark dark:bg-cn-paper-dark/95">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-1 px-2 py-3 sm:gap-2 sm:px-4">
         <h1 className="shrink-0 whitespace-nowrap text-2xl font-black tracking-tight text-cn-red dark:text-cn-red-light sm:text-3xl">
           CL<span className="text-cn-gold">&#20013;</span>M

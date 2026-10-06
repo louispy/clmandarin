@@ -271,7 +271,8 @@ export function SortableWordList({
           here rather than beside the search box so they stay within reach once
           the list is scrolled — changing what is visible is something you do
           while reading, not before you start. */}
-      <div className="sticky top-[49px] z-30 -mx-4 flex items-center justify-between gap-2 bg-cn-paper/95 px-4 pb-2 pt-2 backdrop-blur dark:bg-cn-paper-dark/95">
+      <div style={{ top: 'var(--app-header-h, 49px)' }}
+        className="sticky z-30 -mx-4 flex items-center justify-between gap-2 border-b border-cn-border/60 bg-cn-paper/95 px-4 pb-2.5 pt-2.5 backdrop-blur dark:border-cn-border-dark/60 dark:bg-cn-paper-dark/95">
         {editMode ? (
           <span className="text-xs text-cn-muted dark:text-cn-muted-dark">
             Drag to reorder · tap <span className="font-bold text-cn-red dark:text-cn-red-light">Done</span> to exit
